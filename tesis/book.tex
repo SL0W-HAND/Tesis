@@ -1,0 +1,66 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\input{EnvLayouts.tex}
+\input{shortcuts.tex}
+
+%----------------------------------------------------------------
+% Publisher logo
+\newcommand*{\plogo}{\fbox{$\mathcal{PL}$}} % Generic dummy publisher logo
+
+%----------------------------------------------------------------
+% Fonts
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+%\usepackage{PTSerif} % Use the Paratype Serif font
+%\usepackage{baskervillef}
+
+%----------------------------------------------------------------
+% Random text
+\usepackage{lipsum}
+
+\begin{document}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses headers and footers on the title page
+
+	\raggedleft % Right align everything
+	
+	\vspace*{\baselineskip} % Whitespace at the top of the page
+	
+	%------------------------------------------------
+	%	Author
+	%------------------------------------------------
+	
+	{\Large Daniel Carrete} % Author name
+	
+	\vspace*{0.167\textheight} % Whitespace before the title
+	
+	%------------------------------------------------
+	%	Title and subtitle
+	%------------------------------------------------
+	
+	\textbf{\LARGE Principal title}\\[\baselineskip] % First title line
+	
+	%{\textcolor{Red}{\Huge \LaTeX ~Templates}}\\[\baselineskip] % Main title line which draws the focus of the reader
+	
+	{\Large \textit{A predictable subtitle}} % Subtitle
+	
+	\vfill % Whitespace between the titles and the publisher
+	
+	%------------------------------------------------
+	%	Publisher
+	%------------------------------------------------
+	
+	{\large The Publisher~~\plogo} % Publisher and logo
+	
+	\vspace*{3\baselineskip} % Whitespace at the bottom of the page
+\end{titlepage}
+\chapter[short]{Title}
+\lipsum[2-4]
+\end{document}

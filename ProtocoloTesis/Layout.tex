@@ -1,0 +1,56 @@
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm} % Theorem Formatting
+\usepackage{amssymb}    % Math symbols such as \mathbb
+
+
+\tcbuselibrary{theorems}
+%configs pf colorbox
+\tcbset {
+  base/.style={
+    arc=0mm, 
+    bottomtitle=0.5mm,
+    boxrule=0mm,
+    colbacktitle=black!10!white, 
+    coltitle=black, 
+    fonttitle=\bfseries, 
+    left=2.5mm,
+    leftrule=1mm,
+    right=3.5mm,
+    title={#1},
+    toptitle=0.75mm, 
+  }
+}
+\definecolor{brandblue}{rgb}{0.34, 0.7, 1}
+\renewcommand\qedsymbol{$\blacksquare$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%theorems 
+
+%\newtcbtheorem[number within=section]{example}{Example}%
+%{ colframe=brandblue, 
+%base={#1}}{th}
+
+\newtcbtheorem[number within=section]{theorem}{Teorema}%
+{ colframe=black!30!white,
+base={#1}}{th}
+\newtcbtheorem[number within=section]{task}{Tarea}%
+{ colframe=red!, 
+base={#1}}{tsk}
+
+\newtheorem{problem}{Problema}[]
+\usepackage{cancel}
+\newtheorem{proposition}{Proposición}
+\newtheorem{axiom}{Axioma}[section]
+\newtheorem{lemma}{Lema}
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}
+\newenvironment{sol}{%\small%
+        \begin{trivlist} \item \textbf{Solución}. }{%
+            \hspace*{\fill}\end{trivlist}}%
+
+
+
+
+
+
+
+

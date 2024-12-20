@@ -1,0 +1,161 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[top = 2.5cm, bottom = 2.5cm, left = 2.5cm, right = 2.5cm]{geometry} 
+\usepackage[style=ieee,defernumbers=true]{biblatex}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{multirow} 
+\usepackage{booktabs}
+\usepackage{graphicx} 
+\usepackage{setspace}
+\setlength{\parindent}{0in}
+\usepackage{float}
+\usepackage{fancyhdr}
+
+\usepackage{amsmath}
+\usepackage{amsthm} % Theorem Formatting
+\usepackage{amssymb}    % Math symbols such as \mathbb
+
+%\usepackage[bibstyle=ieee]{biblatex}
+\usepackage{csquotes}
+\addbibresource{references.bib}
+
+\usepackage[spanish]{babel}
+
+%----------------------------------------------------------------
+% Random text
+\usepackage{lipsum}
+
+%----------------------------------------------------------------
+% Variables
+\newcommand{\homeworkName}{Protocolo de Tesis }
+\newcommand{\professorName}{}
+\newcommand{\class}{}
+
+\input{Layout.tex}
+\input{shortcuts.tex}
+\graphicspath{./figures}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3. Header (and Footer)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\pagestyle{fancy} 
+\fancyhf{} 
+\lhead{\footnotesize \homeworkName}
+\cfoot{\footnotesize \thepage} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 4. Your document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title section of the document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\thispagestyle{empty} 
+\begin{minipage}[]{0.25\linewidth}
+    \includegraphics[width=4cm]{escudo.png}\\
+\end{minipage}
+\begin{minipage}[ht]{0.75\linewidth}
+    \begin{tabular}{p{11.5cm}} 
+    {\Large \bf Protocolo de Tesis} \\
+    \today  \\ 
+    \hline 
+    \\
+    \end{tabular} 
+\end{minipage}
+
+%\vspace*{0.2cm} % Now we want to add some vertical space in between the line and our title.
+\vspace{0.4cm}
+\begin{flushleft}
+    \begin{tabular}{ll}
+        \textbf{Nombre del Tesista:}  Daniel Carrete Guzmán \\
+        \textbf{Nombre de la Propuesta de Tesis:} Análisis efectivo de la radiación de \\ 
+        agujeros negros regulares   \\
+        \textbf{Nombre del Director de Tesis Propuesto:}  Dr. Héctor Hugo Hernández Hernández \\
+        \textbf{Carrera:}  Ingeniería Física \\
+    \end{tabular}
+\end{flushleft}
+
+
+\section*{OBJETIVO GENERAL}
+Investigar la estructura y el comportamiento de los agujeros negros regulares en el marco de la relatividad general, con el fin de analizar 
+las consecuencias físicas generadas derivadas en estas soluciones de agujero negro, en particular se busca aplicar método de mecánica cuántica  efectiva \cite{bojowald-2006A, bojowald-2006B} para describir la radiación de Hawking, y como las características físicas de este tipo de solución afecta en este proceso. En particular analizar las  geodésicas en la vecindad de este tipo de soluciones regulares para partículas cuánticas.
+
+
+
+\section*{OBJETIVOS PARTICULARES}
+Se planea abarcar los siguientes temas en el desarrollo de la tesis:
+\begin{itemize}
+    \item Soluciones de agujero negro en relatividad general.
+    \item Radiación de Hawking en relatividad general.
+    \item Soluciones de agujeros negros regulares.
+    \item Geodésicas en esta solución regular.
+    \item Propuesta de radiación de Hawking como tunelaje cuántico con mecánica cuántica efectiva. 
+\end{itemize}
+
+
+\section*{DESCRIPCIÓN DETALLADA}
+La singularidad esencial en la teoría de la relatividad general de Einstein puede ser evitable si se pueden eludir las precondiciones del teorema de Penrose, es decir, si la condición de energía fuerte se rompe en las cercanías del centro de un agujero negro. La singularidad mencionada  incluye dos aspectos: (i) la divergencia de los invariantes de curvatura, y (ii) la incompletitud de las geodésicas \cite{lan-2023}. Ambos aspectos se tienen en cuenta ahora para determinar si un agujero negro contiene singularidades esenciales. En este sentido, los agujeros negros sin este tipo de  singularidades  se denominan agujeros negros regulares (no singulares).
+
+
+La estructura de un agujero negro regular se diferencia de la de un agujero negro de relatividad general en que evita la singularidad esencial, esto se logra mediante modificaciones a la métrica del espacio-tiempo en la solución de las ecuaciones de Einstein. Como ejemplos tenemos la métrica de Bardeen\cite{rodrigues-2018} o Hayward\cite{chiba-2017}, que introducen funciones de corrección en la solución de Schwarzschild o Kerr. 
+
+
+Se espera estudiar las geodésicas en este espacio-tiempo en la vecindad de la solución regular, ademas de la  radiación de Hawking, una radiación teórica producida  cerca del horizonte de sucesos de un agujero negro debido a efectos cuánticos. Se busca proponer esta radiación como un efecto de tunelaje cuántico\cite{parikh-2000}, en el contexto de esta estructura regular, auxiliándose donde sea necesario del método efectivo de mecánica cuántica.
+
+\section*{AMBIENTE DE DESARROLLO}
+N/A\\
+\section*{TIPO DE INVESTIGACIÓN}
+$(x)$ Investigación básica\\
+( )Investigación aplicada\\
+( )Investigación tecnológica\\
+( )Desarrollo experimental\\
+( )Desarrollo tecnológico
+
+\section*{MENCIONE COMO SE RELACIONA CON LAS MATERIAS DE SU CARRERA}
+Este trabajo tiene relación con las materias de  mecánica cuántica, teoría electromagnética y las optativas de Gravitación.
+
+\section*{APOYO FINANCIERO}
+N/A
+
+\section*{LUGAR DE DESARROLLO}
+Facultad de Ingeniería, Universidad Autónoma de Chihuahua.
+
+
+
+\vspace{2cm}
+\begin{center}
+    \begin{tabular}{p{10cm}}
+        \hline
+        \centering Dr. Héctor Hugo Hernández Hernández \tabularnewline
+        \centering \textit{Nombre y Firma del Director de Tesis Propuesto}\tabularnewline
+    \end{tabular}
+    \begin{tabular}{p{10cm}}
+    \vspace{2cm}
+    \textbf{Atentamente,}\\ 
+    \vspace{2.4cm}
+\end{tabular}
+    \begin{tabular}{p{10cm}}
+        \hline
+        \centering Daniel Carrete Guzmán \tabularnewline
+        \centering \textit{Nombre y Firma del Tesista} \tabularnewline
+    \end{tabular}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\printbibliography
+\nocite{*}
+\end{document}
