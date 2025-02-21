@@ -1,0 +1,280 @@
+\section{Solución de Schwarzschild}
+\label{sec:solucionSchwarzschild}
+La métrica de Schwarzschild fue la primera solución analítica a las ecuaciones de campo de Einstein. Esta solución comprende el caso mas sencillo posible, el de un objeto esféricamente simétrico y no rotante (Se puede ver la una traducción de la propuesta original en \cite{schwarzschild1999gravitationalfieldmasspoint}, en este texto haremos una derivación inspirada en \cite{eigenchris-2021}).
+\begin{definition}{Condiciones de Schwarzschild}{}
+    \begin{itemize}
+        \item Tomamos un universo estático y esféricamente simétrico, es decir, un universo que no cambia con el tiempo y que tiene la misma forma en todas las direcciones.
+        \item Se usan coordenadas esféricas $(t,r,\theta,\phi)$.
+        \item Se Toma una masa puntual M en el origen de coordenadas.
+        \item Se asume que no hay materia en el espacio-tiempo, es decir, que el tensor de energía-momento es cero.
+        \item lejos de la masa puntual, el espacio-tiempo debe ser plano, es decir, la métrica debe ser la métrica de Minkowski.
+    \end{itemize}
+\end{definition}
+Al saber que usaremos una simetría esférica, la métrica de Minkowski pasa de las componentes cartesianas a las componentes esféricas, es decir, la métrica de Minkowski en coordenadas esféricas es:
+\begin{equation}
+    \eta_{\mu \nu}=\left(\begin{array}{cccc}
+            -1 & 0 & 0 & 0 \\
+            0  & 1 & 0 & 0 \\
+            0  & 0 & 1 & 0 \\
+            0  & 0 & 0 & 1
+        \end{array}\right)=\left(\begin{array}{cccc}
+            -1 & 0 & 0     & 0                      \\
+            0  & 1 & 0     & 0                      \\
+            0  & 0 & r^{2} & 0                      \\
+            0  & 0 & 0     & r^{2} \sin ^{2} \theta
+        \end{array}\right)
+\end{equation}
+y
+\begin{equation}
+    \eta^{\mu \nu}=\left(\begin{array}{cccc}
+            -1 & 0 & 0 & 0 \\
+            0  & 1 & 0 & 0 \\
+            0  & 0 & 1 & 0 \\
+            0  & 0 & 0 & 1
+        \end{array}\right)=\left(\begin{array}{cccc}
+            -1 & 0 & 0               & 0                                \\
+            0  & 1 & 0               & 0                                \\
+            0  & 0 & \frac{1}{r^{2}} & 0                                \\
+            0  & 0 & 0               & \frac{1}{r^{2} \sin ^{2} \theta}
+        \end{array}\right),
+\end{equation}
+se considera que cuando la variable $r$ tiende a infinito la métrica se acerca asintóticamente a Minkowski.
+
+\subsection{Estático en el tiempo }
+\begin{definition}{Estático en el tiempo}{}
+    \begin{itemize}
+        \item Tiene un vector de Killing temporal.
+        \item Es irrotacional.
+    \end{itemize}
+\end{definition}
+Estático (en el tiempo):
+- $\partial_t g_{\mu \nu}=0$
+- $t \rightarrow -t$ no cambia $g_{\mu \nu}$
+
+\begin{align}
+     & g_{t i}=\overrightarrow{e_t} \cdot \overrightarrow{e_i} \rightarrow\left(-\overrightarrow{e_t}\right) \cdot \overrightarrow{e_i}=-g_{t i}\rightarrow g_{t i}=0 \\
+     & g_{t t}=\overrightarrow{e_t} \cdot \overrightarrow{e_t} \rightarrow\left(-\overrightarrow{e_t}\right) \cdot\left(-\overrightarrow{e_t}\right)=+g_{t t}
+\end{align}
+por lo tanto la métrica solo depende de $r, \theta, \phi$.
+\begin{equation}
+    g_{\mu \nu} \left[\begin{array}{cccc}
+            g_{t t} & 0            & 0                 & 0      \\
+            0       & g_{r r}      & g_{r \theta}      & g_{r \phi}      \\
+            0       & g_{\theta r} & g_{\theta \theta} & g_{\theta \phi} \\
+            0       & g_{\phi r}   & g_{\phi \theta}   & g_{\phi \phi}
+        \end{array}\right]
+\end{equation}
+
+\subsection{Simetría esférica}
+Debido a que estamos usando una simetría esférica se debe cumplir:
+\begin{itemize}
+    \item Los componentes $\theta, \phi$ deben usar la métrica para una esfera de radio $r$.
+    \item Permitir una función de escala radial $C(r)$.
+    \item Usar signos negativos (convención espacial).
+\end{itemize}
+
+\begin{equation}
+    \begin{array}{ll}
+        g_{\theta \theta} & g_{\theta \phi} \\
+        g_{\phi \theta}   & g_{\phi \phi}
+    \end{array} = \left[\begin{array}{cc}
+            -C(r) r^2 & 0                        \\
+            0         & -C(r) r^2(\sin \theta)^2
+        \end{array}\right].
+\end{equation}
+Ahora para los demás componentes de la métrica 
+\begin{equation}
+    \left[\begin{array}{cccc}
+            g_{t t} & 0            & 0            & 0                        \\
+            0       & g_{r r}      & g_{r \theta} & g_{r \phi}               \\
+            0       & g_{\theta r} & -C(r) r^2    & 0                        \\
+            0       & g_{\phi r}   & 0            & -C(r) r^2(\sin \theta)^2
+        \end{array}\right]
+\end{equation}
+Ahora debido a la ortogonalidad de los vectores base 
+\begin{equation}
+    \begin{aligned}
+         & \overrightarrow{e_\theta} \cdot \overrightarrow{e_r}=0=g_{\theta r} \\
+         & \overrightarrow{e_\phi} \cdot \overrightarrow{e_r}=0=g_{\phi r},
+    \end{aligned}
+\end{equation}
+es posible escribir la métrica de forma diagonal 
+\begin{equation}
+    \left[\begin{array}{cccc}
+            g_{t t}(r, \theta, \phi) & 0                        & 0         & 0                        \\
+            0                        & g_{r r}(r, \theta, \phi) & 0         & 0                        \\
+            0                        & 0                        & -C(r) r^2 & 0                        \\
+            0                        & 0                        & 0         & -C(r) r^2(\sin \theta)^2
+        \end{array}\right].
+\end{equation}
+Una noción clave para facilitar los cálculos es que estamos tomando en consideración una masa puntual en un universo vacío e isotrópico, así que es de esperarse que la métrica no dependa de las coordenadas $\theta$ y $\phi$, permitiéndonos escribirla solo en términos de la distancia al origen $r$ tal que
+\begin{equation}
+    \left[\begin{array}{cccc}
+            A(r) & 0     & 0         & 0                        \\
+            0    & -B(r) & 0         & 0                        \\
+            0    & 0     & -C(r) r^2 & 0                        \\
+            0    & 0     & 0         & -C(r) r^2(\sin \theta)^2
+        \end{array}\right].
+\end{equation}
+A continuación se tomará el siguiente cambio de variable:
+
+\begin{equation}
+    \tilde{r}=\sqrt{C(r)} \, r
+\end{equation}
+La forma de proceder va a ser  que cuando estemos lejos de la masa $M$, debemos tener las ecuaciones de campo débil a bajas velocidades y recuperar las ecuaciones de Newton.
+\begin{equation*}
+    g_{\mu \nu} \rightarrow \Gamma_{\mu \nu}^\sigma \rightarrow R_{\mu \nu} \rightarrow \text{Gravedad Newtoniana}
+\end{equation*}
+
+
+\subsection{Christoffel symbols}
+los símbolos de Christoffel
+\begin{equation}
+    \begin{gathered}
+        \Gamma_{\mu \nu}^0 \rightarrow\left[\begin{array}{cccc}
+                0                        & \frac{\partial_r A}{2 A} & 0 & 0 \\
+                \frac{\partial_r A}{2 A} & 0                        & 0 & 0 \\
+                0                        & 0                        & 0 & 0 \\
+                0                        & 0                        & 0 & 0
+            \end{array}\right]
+        \quad
+        \Gamma_{\mu \nu}^1 \rightarrow\left[\begin{array}{cccc}
+                \frac{\partial_r A}{2 B} & 0                        & 0            & 0                           \\
+                0                        & \frac{\partial_r B}{2 B} & 0            & 0                           \\
+                0                        & 0                        & -\frac{r}{B} & 0                           \\
+                0                        & 0                        & 0            & -\frac{r(\sin \theta)^2}{B}
+            \end{array}\right] \\
+        \Gamma_{\mu \nu}^2 \rightarrow\left[\begin{array}{cccc}
+                0 & 0           & 0           & 0                        \\
+                0 & 0           & \frac{1}{r} & 0                        \\
+                0 & \frac{1}{r} & 0           & 0                        \\
+                0 & 0           & 0           & -\sin \theta \cos \theta
+            \end{array}\right]
+        \quad
+        \Gamma_{\mu \nu}^3 \rightarrow\left[\begin{array}{cccc}
+                0 & 0           & 0           & 0           \\
+                0 & 0           & 0           & \frac{1}{r} \\
+                0 & 0           & 0           & \cot \theta \\
+                0 & \frac{1}{r} & \cot \theta & 0
+            \end{array}\right]
+    \end{gathered}
+\end{equation}
+
+\begin{equation}
+    \begin{gathered}
+        \Gamma_{01}^0=\Gamma_{10}^0=\frac{1}{2} \frac{1}{A}\left(\partial_r A\right), \quad \Gamma_{00}^1=\frac{1}{2} \frac{1}{B}\left(\partial_r A\right) \\
+        \Gamma_{11}^1=\frac{11}{2} \frac{1}{B}\left(\partial_r B\right), \quad \Gamma_{22}^1=-\frac{r}{B}, \quad \Gamma_{33}^1=-\frac{r(\sin \theta)^2}{B} \\
+        \Gamma_{12}^2=\Gamma_{21}^2=\Gamma_{13}^3=\Gamma_{31}^3=\frac{1}{r}, \quad \Gamma_{33}^2=-\sin \theta \cos \theta, \quad \Gamma_{23}^3=\Gamma_{32}^3=\cot \theta
+    \end{gathered}
+\end{equation}
+
+Calculate:
+- $R_{00}=0$
+- $R_{11}=0$
+$R_{\mu \nu}=0$
+- $R_{22}=0$
+
+\begin{equation}
+    R_{00}=\frac{\partial_r \partial_r A}{2 B}
+    -\frac{\partial_r A \,\partial_r B}{4 B^2}
+    +\frac{\partial_r A}{B r}
+    -\frac{\left(\partial_r A\right)^2}{4 A B}=0
+\end{equation}
+
+\begin{equation}
+    R_{00}+R_{11}=0
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        g_{\mu \nu} & \rightarrow\left[\begin{array}{cccc}
+                A(r) & 0     & 0    & 0                   \\
+                0    & -B(r) & 0    & 0                   \\
+                0    & 0     & -r^2 & 0                   \\
+                0    & 0     & 0    & -r^2(\sin \theta)^2
+            \end{array}\right] \\
+        g_{\mu \nu} & \rightarrow\left[\begin{array}{cccc}
+                1 & 0  & 0    & 0                   \\
+                0 & -1 & 0    & 0                   \\
+                0 & 0  & -r^2 & 0                   \\
+                0 & 0  & 0    & -r^2(\sin \theta)^2
+            \end{array}\right]
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{gathered}
+        B A^{\prime}+A B^{\prime}=0 \\
+        \partial_r(A B)=0 \\
+        \Rightarrow A B=K
+    \end{gathered}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+         & A(r) \rightarrow 1 \\
+         & B(r) \rightarrow 1
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    (1)(1)=K
+\end{equation}
+
+\begin{equation}
+    \Rightarrow B(r)=\frac{1}{A(r)} \text { para todo } r
+\end{equation}
+
+\begin{equation}
+    B^{\prime}=\partial_r\left(A^{-1}\right)=-\frac{A^{\prime}}{A^2}
+\end{equation}
+
+
+\begin{equation}
+    \begin{aligned}
+         & R_{22}=-2 A B+2 A B^2-r A^{\prime} B+r A B^{\prime}                                                                  \\
+         & 0=-2 A \frac{1}{A}+2 A\left(\frac{1}{A}\right)^2-r A^{\prime} \frac{1}{A}+r A\left(-\frac{A^{\prime}}{A^2}\right)
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    \Rightarrow r A^{\prime}=1-A
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+         & \frac{A(r)}{\partial} \equiv 1-\frac{k^{\prime}}{r}                                 \\
+         & \frac{\partial}{\partial r} A=\frac{\partial}{\partial r}\left(1-\frac{k}{r}\right) \\
+         & A^{\prime}=\frac{\partial}{\partial r} 1-k \frac{\partial}{\partial r} r^{-1}       \\
+         & A^{\prime}=0                                                                        \\
+         & A^{\prime}=\frac{k}{r^2}
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    g_{\mu \nu} \rightarrow\left[\begin{array}{cccc}
+            1-\frac{k}{r} & 0                                & 0    & 0                   \\
+            0             & -\left(1-\frac{k}{r}\right)^{-1} & 0    & 0                   \\
+            0             & 0                                & -r^2 & 0                   \\
+            0             & 0                                & 0    & -r^2(\sin \theta)^2
+        \end{array}\right]
+\end{equation}
+
+\begin{task}{}{}
+    Terminar la derivación
+\end{task}
+La métrica de Schwarzschild es:
+\begin{equation}
+    \boxed{g_{\mu \nu}=\left(\begin{array}{cccc}
+        -1+\frac{2 G m}{r c^2} & 0 & 0 & 0 \\
+        0 & \left(1-\frac{2 G m}{r c^2}\right)^{-1} & 0 & 0 \\
+        0 & 0 & r^2 & 0 \\
+        0 & 0 & 0 & r^2 \sin ^2 \theta
+        \end{array}\right)}
+    \end{equation}
+\subsection{Geodésicas en Schwarzschild tipo tiempo y nulas}
+
+\subsection{Cambio de coordenadas}
+Coordenadas de Eddington-Finkelstein (es decir, el componente $g_{r r}$ se elimina mediante un cambio de coordenadas y se introduce un término cruzado)
+
+$$
+\mathrm{d} s^2=\left(1-\frac{2 m}{r}\right) \mathrm{du}^2+2 \mathrm{dudr}-\mathrm{r}^2\left(\mathrm{~d} \vartheta^2+\sin ^2 \vartheta \mathrm{~d} \varphi^2\right)
+$$
+

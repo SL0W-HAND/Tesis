@@ -1,0 +1,39 @@
+\chapter{Agujeros Negros}
+
+Las ecuaciones de Einstein son la teoría moderna por la cual describimos la gravedad 
+\begin{equation}
+    R_{\mu \nu}-\frac{1}{2} R g_{\mu \nu}-\Lambda g_{\mu \nu} = \frac{8 \pi G}{c^4} T_{\mu \nu},
+    \label{EinsteinFieldEquations}
+\end{equation}
+estas describen como se curva el espacio dada una distribución de materia. Para los casos donde no estemos en presencia de materia se deben de cumplir las ecuaciones de vació
+\begin{equation}
+    R_{\mu \nu} = 0.
+    \label{vacuumFieldEquations}
+\end{equation}
+De manera genérica las ecuaciones de campo son un sistema de 16 ecuaciones parciales acopladas no lineales usualmente en un espacio-tiempo 3+1,  y aunque la ecuaciones tienden a ser muy complicadas, existen métodos de aproximación, para tratar con casos mas generales, pero de momento nos cenaremos en algunas de las  soluciones analíticas que se han encontrado. Estas soluciones representan casos idealizados que solo  nos permiten entender cómo se comporta la gravedad en situaciones específicas. Algunas de las soluciones más importantes son:
+
+\begin{itemize}
+    \item La métrica de Schwarzschild, que describe el campo gravitacional de un objeto esféricamente simétrico y no rotante.
+    \item La métrica de Kerr, que describe el campo gravitacional de un objeto esféricamente simétrico y rotante.
+    \item La métrica de Reissner-Nordström, que describe el campo gravitacional de un objeto cargado.
+    \item La métrica de Kerr-Newman, que describe el campo gravitacional de un objeto cargado y rotante.
+\end{itemize}
+Este capítulo se partirá de la métrica de Schwarzschild, ya que esta es la solución base para el desarrollo de conceptos más avanzados, ademas de que representa la forma que debe de representarse en cierto limite de las otras soluciones.
+
+\begin{task}{Redaccion}{}
+Corregir ete párrafo
+\end{task}
+
+
+
+\input{AgujerosNegros/Schwarzschild/Schwarzschild.tex}
+\input{AgujerosNegros/DiagramasDePenrose/DiagramasDePenrose.tex}
+\input{AgujerosNegros/kerr/Kerr.tex}
+
+
+\printbibliography[keyword={BlackHoles},heading=subbibliography]
+
+\begin{task}{Latex}{}
+Cambiar el titulo de referencias a referencias del capitulo    
+\end{task}
+\nocite{*}
