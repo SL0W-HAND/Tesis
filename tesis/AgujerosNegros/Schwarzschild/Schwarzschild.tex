@@ -58,7 +58,7 @@ Estático (en el tiempo):
 por lo tanto la métrica solo depende de $r, \theta, \phi$.
 \begin{equation}
     g_{\mu \nu} \left[\begin{array}{cccc}
-            g_{t t} & 0            & 0                 & 0      \\
+            g_{t t} & 0            & 0                 & 0               \\
             0       & g_{r r}      & g_{r \theta}      & g_{r \phi}      \\
             0       & g_{\theta r} & g_{\theta \theta} & g_{\theta \phi} \\
             0       & g_{\phi r}   & g_{\phi \theta}   & g_{\phi \phi}
@@ -82,7 +82,7 @@ Debido a que estamos usando una simetría esférica se debe cumplir:
             0         & -C(r) r^2(\sin \theta)^2
         \end{array}\right].
 \end{equation}
-Ahora para los demás componentes de la métrica 
+Ahora para los demás componentes de la métrica
 \begin{equation}
     \left[\begin{array}{cccc}
             g_{t t} & 0            & 0            & 0                        \\
@@ -91,14 +91,14 @@ Ahora para los demás componentes de la métrica
             0       & g_{\phi r}   & 0            & -C(r) r^2(\sin \theta)^2
         \end{array}\right]
 \end{equation}
-Ahora debido a la ortogonalidad de los vectores base 
+Ahora debido a la ortogonalidad de los vectores base
 \begin{equation}
     \begin{aligned}
          & \overrightarrow{e_\theta} \cdot \overrightarrow{e_r}=0=g_{\theta r} \\
          & \overrightarrow{e_\phi} \cdot \overrightarrow{e_r}=0=g_{\phi r},
     \end{aligned}
 \end{equation}
-es posible escribir la métrica de forma diagonal 
+es posible escribir la métrica de forma diagonal
 \begin{equation}
     \left[\begin{array}{cccc}
             g_{t t}(r, \theta, \phi) & 0                        & 0         & 0                        \\
@@ -188,17 +188,17 @@ $R_{\mu \nu}=0$
 \begin{equation}
     \begin{aligned}
         g_{\mu \nu} & \rightarrow\left[\begin{array}{cccc}
-                A(r) & 0     & 0    & 0                   \\
-                0    & -B(r) & 0    & 0                   \\
-                0    & 0     & -r^2 & 0                   \\
-                0    & 0     & 0    & -r^2(\sin \theta)^2
-            \end{array}\right] \\
+                                               A(r) & 0     & 0    & 0                   \\
+                                               0    & -B(r) & 0    & 0                   \\
+                                               0    & 0     & -r^2 & 0                   \\
+                                               0    & 0     & 0    & -r^2(\sin \theta)^2
+                                           \end{array}\right] \\
         g_{\mu \nu} & \rightarrow\left[\begin{array}{cccc}
-                1 & 0  & 0    & 0                   \\
-                0 & -1 & 0    & 0                   \\
-                0 & 0  & -r^2 & 0                   \\
-                0 & 0  & 0    & -r^2(\sin \theta)^2
-            \end{array}\right]
+                                               1 & 0  & 0    & 0                   \\
+                                               0 & -1 & 0    & 0                   \\
+                                               0 & 0  & -r^2 & 0                   \\
+                                               0 & 0  & 0    & -r^2(\sin \theta)^2
+                                           \end{array}\right]
     \end{aligned}
 \end{equation}
 
@@ -230,7 +230,7 @@ $R_{\mu \nu}=0$
 
 \begin{equation}
     \begin{aligned}
-         & R_{22}=-2 A B+2 A B^2-r A^{\prime} B+r A B^{\prime}                                                                  \\
+         & R_{22}=-2 A B+2 A B^2-r A^{\prime} B+r A B^{\prime}                                                               \\
          & 0=-2 A \frac{1}{A}+2 A\left(\frac{1}{A}\right)^2-r A^{\prime} \frac{1}{A}+r A\left(-\frac{A^{\prime}}{A^2}\right)
     \end{aligned}
 \end{equation}
@@ -263,18 +263,336 @@ $R_{\mu \nu}=0$
 La métrica de Schwarzschild es:
 \begin{equation}
     \boxed{g_{\mu \nu}=\left(\begin{array}{cccc}
-        -1+\frac{2 G m}{r c^2} & 0 & 0 & 0 \\
-        0 & \left(1-\frac{2 G m}{r c^2}\right)^{-1} & 0 & 0 \\
-        0 & 0 & r^2 & 0 \\
-        0 & 0 & 0 & r^2 \sin ^2 \theta
-        \end{array}\right)}
-    \end{equation}
+                -1+\frac{2 G m}{r c^2} & 0                                       & 0   & 0                  \\
+                0                      & \left(1-\frac{2 G m}{r c^2}\right)^{-1} & 0   & 0                  \\
+                0                      & 0                                       & r^2 & 0                  \\
+                0                      & 0                                       & 0   & r^2 \sin ^2 \theta
+            \end{array}\right)}
+\end{equation}
 \subsection{Geodésicas en Schwarzschild tipo tiempo y nulas}
+\begin{equation}
+    \frac{d^2 x^\sigma}{d \lambda^2}+\Gamma_{\mu \nu}^\sigma \frac{d x^\mu}{d \lambda} \frac{d x^\nu}{d \lambda}=0
+\end{equation}
+\begin{equation}
+    \begin{array}{c}
+        \begin{array}{c}
+            \text { Geodesic Equation } \\
+            \text { (proper time) }
+        \end{array} \\
+        \frac{d^2 x^\sigma}{d \tau^2}+\Gamma_{\mu \nu}^\sigma \frac{d x^\mu}{d \tau} \frac{d x^v}{d \tau}=0
+    \end{array}
+\end{equation}
 
-\subsection{Cambio de coordenadas}
+\begin{equation}
+    \begin{array}{|c|}
+        \hline \begin{array}{c}
+                   \text { Geodesic Equation } \\
+                   \text { (generic parameter) }
+               \end{array}                                                                                   \\
+        \hline \frac{d^2 x^\sigma}{d \lambda^2}+\Gamma_{\mu \nu}^\sigma \frac{d x^\mu}{d \lambda} \frac{d x^\nu}{d \lambda}=0 \\
+        \hline
+    \end{array}
+\end{equation}
+
+
+
+\subsection{Cambio de coordenadas Eddington-Finkelstein}
 Coordenadas de Eddington-Finkelstein (es decir, el componente $g_{r r}$ se elimina mediante un cambio de coordenadas y se introduce un término cruzado)
 
 $$
-\mathrm{d} s^2=\left(1-\frac{2 m}{r}\right) \mathrm{du}^2+2 \mathrm{dudr}-\mathrm{r}^2\left(\mathrm{~d} \vartheta^2+\sin ^2 \vartheta \mathrm{~d} \varphi^2\right)
+    \mathrm{d} s^2=\left(1-\frac{2 m}{r}\right) \mathrm{du}^2+2 \mathrm{dudr}-\mathrm{r}^2\left(\mathrm{~d} \vartheta^2+\sin ^2 \vartheta \mathrm{~d} \varphi^2\right)
 $$
 
+\begin{equation}
+    \begin{array}{l}
+        \text { Radial light-like geodesics }                                                                                                      \\
+        \text { ( } \theta=\phi=\text { const })                                                                                                   \\
+        0=\left(\frac{d c t}{d \lambda}\right)^2 g_{t t}+\left(\frac{d r}{d \lambda}\right)^2 g_{r r}^\alpha                                       \\
+        0=\left(\frac{d c t}{d \lambda}\right)^2\left(1-\frac{r_s}{r}\right)-\left(\frac{d r}{d \lambda}\right)^2\left(1-\frac{r_S}{r}\right)^{-1} \\
+        0=\left(\frac{d c t}{d r}\right)^2\left(1-\frac{r_s}{r}\right)-\left(\frac{d r}{d r}\right)^2\left(1-\frac{r_S}{r}\right)^{-1}             \\
+        \frac{d c t}{d r}= \pm\left(1-\frac{r_s}{r}\right)^{-1} \operatorname{ct}(r)= \pm\left(r+r_s \log \left|\frac{r}{r_s}-1\right|\right)+k
+    \end{array}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        c t \rightarrow \underline{\underline{\tilde{t}}} & =c t+r_s \log \left|\frac{r}{r_s}-1\right|         \\
+        c t                                               & =c \tilde{t}-r_s \log \left|\frac{r}{r_s}-1\right|
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    \begin{array}{l}
+        \text { Ingoing (light) } \stackrel{d}{c t}=-r-r_s \log \left|\frac{r}{r_s}-1\right|+k \\
+        \text { Geodesics: }                                                                   \\
+        c \tilde{t}-r_s \log \left|\frac{r}{r_s}-1\right|=-r-r_s \log \left|\frac{r}{r_s}-1\right|+k
+    \end{array}
+\end{equation}
+\begin{equation}
+    c \tilde{t}=-r+k
+\end{equation}
+\begin{equation}
+    \begin{array}{l}
+        \text { - Ingoing light beams should have constant coordina } \\
+        \begin{array}{c}
+            c t \rightarrow c \tilde{t}=c t+\underbrace{r_s \log \left|\frac{r}{r_s}-1\right|} \\
+            c t \rightarrow v=c t+r+r_s \log \left|\frac{r}{r_s}-1\right|
+        \end{array}
+    \end{array}
+\end{equation}
+$$
+    \begin{aligned}
+        c t \rightarrow v & =c t+r+r_s \log \left|\frac{r}{r_s}-1\right| \\
+        c t               & =v-r-r_s \log \left|\frac{r}{r_s}-1\right|
+    \end{aligned}
+$$
+
+ngoing (light) ieodesics:
+
+$$
+    c t=-r-r_s \log \left|\frac{r}{r_s}-1\right|+k
+$$
+
+\begin{equation}
+    \begin{array}{c}
+        v=k             \\
+        \begin{array}{l}
+            v=c \tilde{t}+r \\
+            r_{i n}=r
+        \end{array} \\
+        \hline
+    \end{array}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        \frac{\partial}{\partial v}       & =\frac{\partial c t}{\partial v} \frac{\partial}{\partial c t}+\frac{\partial r}{\partial v} \frac{\partial}{\partial r}                                  \\
+        \frac{\partial}{\partial r_{i n}} & =\frac{\partial c t}{\partial r_{i n}} \frac{\frac{\partial}{\partial c t}}{\partial c t}+\frac{\partial r}{\partial r_{i n}} \frac{\partial}{\partial r}
+    \end{aligned}
+\end{equation}
+
+
+\begin{equation}
+    \begin{array}{l}
+        v=c t+\underbrace{r+r_s \log \left|\frac{r}{r_s}-1\right|} \\
+        r_{i n}=r                                                  \\
+        v=c t+r^*                                                  \\
+        r_{i n}=r
+    \end{array}
+\end{equation}
+
+\begin{equation}
+    \begin{array}{l}
+        \frac{d r^*}{\frac{d r_{i n}}{s}}=\frac{d r^*}{d r}                              \\
+        =\frac{\partial}{\partial r}\left(r+r_s \log \left|\frac{r}{r_s}-1\right|\right) \\
+        =1+r_S\left(\frac{1}{\frac{r}{r_s}-1} \frac{1}{r_s}\right)                       \\
+        =1+r_s \frac{1}{r-r_s}                                                           \\
+        =\frac{r-r_S}{r-r_s}+\frac{r_s}{r-r_s}                                           \\
+        =\frac{r}{r-r_S}                                                                 \\
+        =\frac{1}{1-\frac{r_S}{r}}
+    \end{array}
+\end{equation}
+
+
+\begin{equation}
+    \begin{array}{l|l}
+        \frac{\partial}{\partial v}=\frac{\partial q^1}{\partial v} \frac{\partial}{\partial c t}+\frac{\partial r}{\partial v} \frac{\partial}{\partial r} & \frac{\partial}{\partial r_{i n}}=\frac{\partial c t}{\partial r_{i n}} \frac{\partial}{\partial c t}+\frac{\partial r}{\partial r_{i n}} \frac{\partial}{\partial r}                                 \\
+        \frac{\partial}{\partial v}=\underbrace{1 \frac{\partial}{\partial c t}}+0 \frac{\partial}{\partial r}                                              & \begin{array}{l}
+                                                                                                                                                                  \frac{\partial}{\partial r_{i n}}=\frac{\partial c t}{\partial r^*} \frac{d r^*}{d r_{i n}} \frac{\partial}{\partial c t}+1 \frac{\partial}{\partial r} \\
+                                                                                                                                                                  \frac{\partial}{\partial r_{i n}}=\underbrace{(-1)} \frac{1}{1-r_s} \frac{\partial}{\partial c t}+1 \frac{\partial}{\partial r}                         \\
+                                                                                                                                                                  \frac{\partial}{\partial r_{i n}}=\frac{-1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+1 \frac{\partial}{\partial r}
+                                                                                                                                                              \end{array}
+    \end{array}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+        \frac{\partial}{\partial v}       & =\frac{\partial}{\partial c t}                                                        \\
+        \frac{\partial}{\partial r_{i n}} & =\frac{-1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+\frac{\partial}{\partial r}
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{array}{l}
+        \left.\frac{\partial}{\partial r_{i n}} \cdot \frac{\partial}{\partial r_{i n}}=\left(-\frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+\frac{\partial}{\partial r}\right) \cdot\left(-\frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+\frac{\partial}{\partial r}\right)\right) \\
+        \frac{\partial}{\partial r_{i n}} \cdot \frac{\partial}{\partial r_{i n}}=\left(-\frac{1}{1-\frac{r_s}{r}}\right)^2\left(\frac{\partial}{\partial c t} \cdot \frac{\partial}{\partial c t}\right)+(1)^2\left(\frac{\partial}{\partial r} \cdot \frac{\partial}{\partial r}\right)               \\
+        \frac{\partial}{\partial r_{i n}} \cdot \frac{\partial}{\partial r_{i n}}=\left(\frac{1}{1-\frac{r_s}{r}}\right)^2\left(1-\frac{r_s}{r}\right)+(1)^2\left(-\frac{1}{1-\frac{r_s}{r}}\right)
+    \end{array}
+\end{equation}
+\begin{equation}
+    \begin{array}{l}
+        \frac{\partial}{\partial v} \cdot \frac{\partial}{\partial r_{i n}}=\left(\frac{\partial}{\partial c t}\right) \cdot\left(-\frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+\frac{\partial}{\partial r}\right)                                                  \\
+        \frac{\partial}{\partial v} \cdot \frac{\partial}{\partial r_{i n}}=-\left(\frac{1}{1-\frac{r_s}{r}}\right)\left(\frac{\partial}{\partial c t} \cdot \frac{\partial}{\partial c t}\right)+\left(\frac{\partial}{\partial c t} \cdot \frac{\partial}{\partial r}\right) \\
+        \frac{\partial}{\partial v} \cdot \frac{\partial}{\partial r_{i n}}=-\left(\frac{1}{1-\frac{r_s}{r}}\right)\left(1-\frac{r_s}{r}\right)+0                                                                                                                              \\
+        \frac{\partial}{\partial v} \cdot \frac{\partial}{\partial r_{i n}}=-1
+    \end{array}
+\end{equation}
+\begin{equation}
+    \frac{\partial}{\partial v} \cdot \frac{\partial}{\partial v}=\frac{\partial}{\partial c t} \cdot \frac{\partial}{\partial c t}=1-\frac{r_s}{r}
+\end{equation}
+
+
+geodesic\begin{equation}
+    \begin{array}{l}
+        \left.\left\|\frac{d}{d \lambda}\right\|^2\right)=\frac{d}{d \lambda} \cdot \frac{d}{d \lambda}=\left(\frac{d x^\mu}{d \lambda} \frac{\partial}{\partial x^\mu}\right) \cdot\left(\frac{d x^v}{d \lambda} \frac{\partial}{\partial x^v}\right)=\frac{d x^\mu}{d \lambda} \frac{d x^v}{d \lambda}\left(\frac{\partial}{\partial x^\mu} \cdot \frac{\partial}{\partial x^v}\right)                                                                                                                                                         \\
+        =\frac{d v}{d \lambda} \frac{d v}{d \lambda}\left(\frac{\partial}{\partial v} \cdot \frac{\partial}{\partial v}\right)+\frac{d v}{d \lambda} \frac{d r_{i n}}{d \lambda}\left(\frac{\partial}{\partial v} \cdot \frac{\partial}{\partial r_{i n}}\right)+\frac{d r_{i n}}{d \lambda} \frac{d v}{d \lambda}\left(\frac{\partial}{\partial r_{i n}} \cdot \frac{\partial}{\partial v}\right)+\frac{d r_{i n}}{d \lambda} \frac{d r_{i n}}{d \lambda}\left(\frac{\partial}{\partial r_{i n}} \cdot \frac{\partial}{\partial r_{i n}}\right) \\
+        =\left(\frac{d v}{d \lambda}\right)^2\left(1-\frac{r_s}{r_{i n}}\right)+\frac{d v}{d \lambda} \frac{d r_{i n}}{d \lambda}(-1)+\frac{d r_{i n}}{d \lambda} \frac{d v}{d \lambda}(-1)+\frac{d r_{i n}}{d \lambda} \frac{d r_{i n}}{d \lambda}(0)                                                                                                                                                                                                                                                                                           \\
+        =\left(1-\frac{r_s}{r_{i n}}\right)\left(\frac{d v}{d \lambda}\right)^2-2 \frac{d v}{d \lambda} \frac{d r_{i n}}{d \lambda}
+    \end{array}
+\end{equation}
+
+outgoing light beams
+\begin{equation}
+    c t=\oplus r+r_S \log \left|\frac{r}{r_s}-1\right|+k
+\end{equation}
+
+\begin{equation}
+    v-r-r_s \log \left|\frac{r}{r_s}-1\right|=+r+r_s \log \left|\frac{r}{r_s}-1\right|+k
+\end{equation}
+Outgoing Light Geodesics (Eddington-Finkelstein Coordinates):
+
+$$
+    v=2\left(r+r_s \log \left|\frac{r}{r_s}-1\right|\right)+k \quad r \equiv r_{i n}
+$$
+\begin{equation}
+    c t \rightarrow u=c t-r-r_s \log \left|\frac{1}{r_s}-1\right|
+\end{equation}
+
+\begin{equation}
+    c t=u+r+r_s \log \left|\frac{r}{r_s}-1\right|
+\end{equation}
+
+
+\begin{equation}
+    \begin{array}{l}
+        \text { Ingoing (light) }                                                            \\
+        \text { Geodest }=-r-r_s \log \left|\frac{r}{r_s}-1\right|+k                         \\
+        u+r+r_s \log \left|\frac{r}{r_s}-1\right|=-r-r_s \log \left|\frac{r}{r_s}-1\right|+k \\
+        u=\underline{2}\left(-r-r_s \log \left|\frac{r}{r_s}-1\right|\right)+k
+    \end{array}
+\end{equation}
+
+outgoing light beams
+\begin{equation}
+    u+r+r_s \log \left|\frac{r}{r_s}-1\right|=r+r_s \log \left|\frac{r}{r_s}-1\right|+k
+\end{equation}
+
+
+for the metric
+\begin{equation}
+    \begin{array}{l}
+        c t=u+r^* \\
+        r=r_{o u t}
+    \end{array}
+\end{equation}
+
+\begin{equation}
+    \begin{array}{l}
+        \frac{\partial}{\partial u}=\frac{\partial c t^1}{\partial u} \frac{\partial}{\partial c t}+\frac{\partial r^d}{\partial u} \frac{\partial}{\partial r} \\
+        \frac{\partial}{\partial u}=1 \frac{\partial}{\partial c t}+0 \frac{\partial}{\partial r} \left\lvert\, \begin{array}{l}
+                                                                                                                    \frac{\partial c t}{\partial r_{o u t}}=\frac{\partial}{\partial r_{o u t}}+\frac{\partial r}{\partial r_{o u t}} \frac{\partial}{\partial r}               \\
+                                                                                                                    \frac{\partial}{\partial r_{o u t}}=\frac{\partial c t}{\partial r^*} \frac{d r^*}{d r_{o u t}} \frac{\partial}{\partial c t}+1 \frac{\partial}{\partial r} \\
+                                                                                                                    \frac{\partial}{\partial r_{o u t}}=(+1) \frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+1 \frac{\partial}{\partial r}                              \\
+                                                                                                                    \frac{\partial}{\partial r_{o u t}}=\frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+1 \frac{\partial}{\partial r}
+                                                                                                                \end{array}\right.
+    \end{array}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        \frac{\partial}{\partial r_{\text {out }}} \cdot \frac{\partial}{\partial r_{\text {out }}} & =\left(\frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+\frac{\partial}{\partial r}\right) \cdot\left(\frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+\frac{\partial}{\partial r}\right) \\
+        \frac{\partial}{\partial r_{\text {out }}} \cdot \frac{\partial}{\partial r_{\text {out }}} & =\left(\frac{1}{1-\frac{r_s}{r}}\right)^2\left(\frac{\partial}{\partial c t} \cdot \frac{\partial}{\partial c t}\right)+(1)^2\left(\frac{\partial}{\partial r} \cdot \frac{\partial}{\partial r}\right) \\
+        \frac{\partial}{\partial r_{\text {out }}} \cdot \frac{\partial}{\partial r_{\text {out }}} & =\left(\frac{1}{1-\frac{r_s}{r}}\right)^2\left(1-\frac{r_s}{r}\right)+(1)^2\left(-\frac{1}{1-\frac{r_s}{r}}\right)                                                                                      \\
+        \frac{\partial}{\partial r_{\text {out }}} \cdot \frac{\partial}{\partial r_{\text {out }}} & =\frac{1}{1-\frac{r_s}{r}}-\frac{1}{1-\frac{r_s}{r}}=0 r_{\text {out }} \text {-coordinate is light-like }
+    \end{aligned}
+\end{equation}
+
+
+\begin{equation}
+    \begin{array}{l}
+        \left.\left\|\frac{d}{d \lambda}\right\|^2\right)=\frac{d}{d \lambda} \cdot \frac{d}{d \lambda}=\left(\frac{d x^\mu}{d \lambda} \frac{\partial}{\partial x^\mu}\right) \cdot\left(\frac{d x^v}{d \lambda} \frac{\partial}{\partial x^v}\right)=\frac{d x^\mu}{d \lambda} \frac{d x^v}{d \lambda}\left(\frac{\partial}{\partial x^\mu} \cdot \frac{\partial}{\partial x^\nu}\right)                                                                                                                                                                                                                               \\
+        =\frac{d u}{d \lambda} \frac{d u}{d \lambda}\left(\frac{\partial}{\partial u} \cdot \frac{\partial}{\partial u}\right)+\frac{d u}{d \lambda} \frac{d r_{\text {out }}}{d \lambda}\left(\frac{\partial}{\partial u} \cdot \frac{\partial}{\partial r_{\text {out }}}\right)+\frac{d r_{\text {out }}}{d \lambda} \frac{d u}{d \lambda}\left(\frac{\partial}{\partial r_{\text {out }}} \cdot \frac{\partial}{\partial u}\right)+\frac{d r_{\text {out }}}{d \lambda} \frac{d r_{\text {out }}}{d \lambda}\left(\frac{\partial}{\partial r_{\text {out }}} \cdot \frac{\partial}{\partial r_{\text {out }}}\right) \\
+        =\left(\frac{d u}{d \lambda}\right)^2\left(1-\frac{r_s}{r_{\text {out }}}\right)+\frac{d u}{d \lambda} \frac{d r_{\text {out }}}{d \lambda}(+1)+\frac{d r_{\text {out }}}{d \lambda} \frac{d u}{d \lambda}(+1)+\frac{d r_{\text {out }}}{d \lambda} \frac{d r_{\text {out }}}{d \lambda}(0)                                                                                                                                                                                                                                                                                                                      \\
+        =\left(1-\frac{r_s}{r_{\text {out }}}\right)\left(\frac{d u}{d \lambda}\right)^2+2 \frac{d u}{d \lambda} \frac{d r_{\text {out }}}{d \lambda}
+    \end{array}
+\end{equation}
+
+
+Ingoing Eddington-Finkelstein coordinates:
+
+$$
+    \begin{array}{l}
+        v=c t+r+                                                                                                                         \\
+        \quad r_s \log \left(\frac{r}{r_s}-1\right) \quad g_{\mu \nu} \rightarrow\left[\begin{array}{cccc}
+                                                                                               1-\frac{r_s}{r} & -1 & 0    & 0                   \\
+                                                                                               -1              & 0  & 0    & 0                   \\
+                                                                                               0               & 0  & -r^2 & 0                   \\
+                                                                                               0               & 0  & 0    & -r^2(\sin \theta)^2
+                                                                                           \end{array}\right] \\
+        r_{\text {in }}=r
+    \end{array}
+$$
+
+Outgoing Eddington-Finkelstein coordinates:
+
+$$
+    \begin{array}{l}
+        u=c t-r-                                                                                                                   \\
+        r_s \log \left(\frac{r}{r_s}-1\right) \quad g_{\mu \nu} \rightarrow\left[\begin{array}{cccc}
+                                                                                         1-\frac{r_s}{r} & +1                              \\
+                                                                                         +1              & 0                               \\
+                                                                                         \hline 0        & 0  & -r^2 & 0                   \\
+                                                                                         0               & 0  & 0    & -r^2(\sin \theta)^2
+                                                                                     \end{array}\right] \\
+        r_{\text {out }}=r
+    \end{array}
+$$
+- Show that light/massive particles can pass through event horizon
+But...
+- Ingoing EF coords: outgoing light beams don't work at $r_s$
+- Outgoing EF coords: ingoing light beams don't work at $r_s$
+
+\subsection{Cambio de coordenadas de Kruskal-Szekeres}
+
+take
+$v=c t+r+r_s \log \left|\frac{r}{r_s}-1\right|$ (ingoing EF) $u=c t-r-r_s \log \left|\frac{r}{r_s}-1\right|$ (outgoing EF)
+
+
+\begin{equation}
+    \frac{v+u}{2}=c t \quad \frac{v-u}{2}=r+r_s \log \left|\frac{r}{r_s}-1\right|
+\end{equation}
+
+\begin{equation}
+    \begin{array}{l}
+        c t=\frac{v+u}{2}, r^*=\frac{v-u}{2} \\
+        r^*=r+r_s \log \left|\frac{r}{r_s}-1\right|
+    \end{array}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        \frac{d r^*}{d r} & =1+r_S\left(\frac{1}{r_s}-1\right)                           \\
+        \frac{d r^*}{d r} & =\frac{r-r_s}{r-r_s}+\frac{r_s}{r-r_s}=\frac{r}{r-r_s}       \\
+        \frac{d r^*}{d r} & =\frac{1}{1-\frac{r_s}{r}}=\left(1-\frac{r_s}{r}\right)^{-1} \\
+        \frac{d r}{d r^*} & =1-\frac{r_s}{r}
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{array}{l}
+        \frac{\partial}{\partial v}=\frac{\partial c t}{\partial v} \frac{\partial}{\partial c t}+\frac{\partial r}{\partial v} \frac{\partial}{\partial r}                     \\
+        \frac{\partial}{\partial v}=\frac{\partial c t}{\partial v} \frac{\partial}{\partial c t}+\frac{d r}{d r^*} \frac{\partial r^*}{\partial v} \frac{\partial}{\partial r} \\
+        \frac{\partial}{\partial v}=\frac{1}{2} \frac{\partial}{\partial c t}+\left(1-\frac{r_s}{r}\right) \frac{1}{2} \frac{\partial}{\partial r}                              \\
+        \frac{\partial}{\partial u}=\frac{\partial c t}{\partial u} \frac{\partial}{\partial c t}+\frac{\partial r}{\partial u} \frac{\partial}{\partial r}                     \\
+        \frac{\partial}{\partial u}=\frac{\partial c t}{\partial u} \frac{\partial}{\partial c t}+\frac{d r}{d r^*} \frac{\partial r^*}{\partial u} \frac{\partial}{\partial r} \\
+        \frac{\partial}{\partial u}=\frac{1}{2} \frac{\partial}{\partial c t}-\left(1-\frac{r_s}{r}\right) \frac{1}{2} \frac{\partial}{\partial r}
+    \end{array}
+\end{equation}
+
+
+we get
+\begin{equation}
+    \begin{array}{l}
+        \frac{\partial}{\partial v}=\frac{1}{2} \frac{\partial}{\partial c t} \mp\left(1-\frac{r_s}{r}\right) \frac{1}{2} \frac{\partial}{\partial r} \\
+        \frac{\partial}{\partial u}=\frac{1}{2} \frac{\partial}{\partial c t}-\left(1-\frac{r_s}{r}\right) \frac{1}{2} \frac{\partial}{\partial r}
+    \end{array}
+\end{equation}
+contunuar el video en 20:24
