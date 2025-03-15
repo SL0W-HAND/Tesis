@@ -5,3 +5,6 @@
 *.bcf
 *.log
 tesis/indent.log
+*/media
+*.fls
+*.xml

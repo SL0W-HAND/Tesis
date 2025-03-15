@@ -1,6 +1,6 @@
 \section{Solución de Schwarzschild}
 \label{sec:solucionSchwarzschild}
-La métrica de Schwarzschild fue la primera solución analítica a las ecuaciones de campo de Einstein. Esta solución comprende el caso mas sencillo posible, el de un objeto esféricamente simétrico y no rotante (Se puede ver la una traducción de la propuesta original en \cite{schwarzschild1999gravitationalfieldmasspoint}, en este texto haremos una derivación inspirada en \cite{eigenchris-2021}).
+\noindent La métrica de Schwarzschild fue la primera solución analítica a las ecuaciones de campo de Einstein. Esta solución comprende el caso mas sencillo posible, el de un objeto esféricamente simétrico y no rotante (Se puede ver la una traducción de la propuesta original en \cite{schwarzschild1999gravitationalfieldmasspoint}, en este texto haremos una derivación inspirada en \cite{eigenchris-2021}).
 \begin{definition}{Condiciones de Schwarzschild}{}
     \begin{itemize}
         \item Tomamos un universo estático y esféricamente simétrico, es decir, un universo que no cambia con el tiempo y que tiene la misma forma en todas las direcciones.
@@ -38,39 +38,48 @@ y
             0  & 0 & 0               & \frac{1}{r^{2} \sin ^{2} \theta}
         \end{array}\right),
 \end{equation}
-se considera que cuando la variable $r$ tiende a infinito la métrica se acerca asintóticamente a Minkowski.
+se considera que cuando la variable $r$ tiende a infinito la métrica se acerca asintóticamente a Minkowski. A continuación escribiremos que implicaciones tiene cada condición.
 
-\subsection{Estático en el tiempo }
-\begin{definition}{Estático en el tiempo}{}
+\subsubsection*{Estático en el tiempo}
+
+La métrica de Schwarzschild describe el espacio-tiempo exterior a una distribución esféricamente simétrica de masa en vacío. Una de sus propiedades fundamentales es que es \textbf{estática}, lo que significa que el espacio-tiempo no cambia con el tiempo y no presenta términos de arrastre (frame-dragging).
+
+Formalmente, una solución es estática si cumple dos condiciones:
+1. Es \textbf{estacionaria}, es decir, existe un vector de Killing temporal que refleja la invariancia bajo traslaciones en el tiempo.
+2. Es \textbf{irrotacional}, lo que implica que el vector de Killing temporal es ortogonal a las hipersuperficies espaciales.
+
+\begin{definition}{Implicaciones para una solución estática}{}
     \begin{itemize}
-        \item Tiene un vector de Killing temporal.
-        \item Es irrotacional.
+        \item Existe un vector de Killing temporal \( \xi^\mu \) tal que \( \nabla_{(\mu} \xi_{\nu)} = 0 \).
+        \item La métrica no depende explícitamente de la coordenada temporal:
+              \[ \partial_t g_{\mu \nu} = 0. \]
+        \item La reversión temporal \( t \to -t \) deja invariante la métrica:
+              \[ g_{\mu\nu}(t) = g_{\mu\nu}(-t). \]
+        \item No hay términos cruzados entre las coordenadas espaciales y temporales, es decir:
+              \[ g_{ti} = 0, \quad \forall i \in \{r, \theta, \phi\}. \]
     \end{itemize}
 \end{definition}
-Estático (en el tiempo):
-- $\partial_t g_{\mu \nu}=0$
-- $t \rightarrow -t$ no cambia $g_{\mu \nu}$
 
-\begin{align}
-     & g_{t i}=\overrightarrow{e_t} \cdot \overrightarrow{e_i} \rightarrow\left(-\overrightarrow{e_t}\right) \cdot \overrightarrow{e_i}=-g_{t i}\rightarrow g_{t i}=0 \\
-     & g_{t t}=\overrightarrow{e_t} \cdot \overrightarrow{e_t} \rightarrow\left(-\overrightarrow{e_t}\right) \cdot\left(-\overrightarrow{e_t}\right)=+g_{t t}
-\end{align}
-por lo tanto la métrica solo depende de $r, \theta, \phi$.
+A partir de esta propiedad, la métrica en coordenadas de tipo \((t, r, \theta, \phi)\) adopta la forma general:
+
 \begin{equation}
-    g_{\mu \nu} \left[\begin{array}{cccc}
-            g_{t t} & 0            & 0                 & 0               \\
-            0       & g_{r r}      & g_{r \theta}      & g_{r \phi}      \\
-            0       & g_{\theta r} & g_{\theta \theta} & g_{\theta \phi} \\
-            0       & g_{\phi r}   & g_{\phi \theta}   & g_{\phi \phi}
-        \end{array}\right]
+    g_{\mu \nu} =
+    \begin{bmatrix}
+        g_{tt} & 0            & 0                & 0              \\
+        0      & g_{rr}       & g_{r\theta}      & g_{r\phi}      \\
+        0      & g_{\theta r} & g_{\theta\theta} & g_{\theta\phi} \\
+        0      & g_{\phi r}   & g_{\phi\theta}   & g_{\phi\phi}
+    \end{bmatrix}.
 \end{equation}
 
-\subsection{Simetría esférica}
+Debido a la simetría esférica de Schwarzschild, los términos fuera de la diagonal desaparecen, quedando únicamente las componentes \( g_{tt} \) y \( g_{rr} \) como funciones de \( r \). En secciones posteriores, exploraremos cómo esta estructura nos lleva a la forma explícita de la métrica de Schwarzschild.
+
+
+\subsubsection*{Simetría esférica}
 Debido a que estamos usando una simetría esférica se debe cumplir:
 \begin{itemize}
     \item Los componentes $\theta, \phi$ deben usar la métrica para una esfera de radio $r$.
     \item Permitir una función de escala radial $C(r)$.
-    \item Usar signos negativos (convención espacial).
 \end{itemize}
 
 \begin{equation}
@@ -78,20 +87,11 @@ Debido a que estamos usando una simetría esférica se debe cumplir:
         g_{\theta \theta} & g_{\theta \phi} \\
         g_{\phi \theta}   & g_{\phi \phi}
     \end{array} = \left[\begin{array}{cc}
-            -C(r) r^2 & 0                        \\
-            0         & -C(r) r^2(\sin \theta)^2
+            C(r) r^2 & 0                       \\
+            0        & C(r) r^2(\sin \theta)^2
         \end{array}\right].
 \end{equation}
-Ahora para los demás componentes de la métrica
-\begin{equation}
-    \left[\begin{array}{cccc}
-            g_{t t} & 0            & 0            & 0                        \\
-            0       & g_{r r}      & g_{r \theta} & g_{r \phi}               \\
-            0       & g_{\theta r} & -C(r) r^2    & 0                        \\
-            0       & g_{\phi r}   & 0            & -C(r) r^2(\sin \theta)^2
-        \end{array}\right]
-\end{equation}
-Ahora debido a la ortogonalidad de los vectores base
+Ahora para los demás componentes de la métrica considerando a la ortogonalidad de los vectores base
 \begin{equation}
     \begin{aligned}
          & \overrightarrow{e_\theta} \cdot \overrightarrow{e_r}=0=g_{\theta r} \\
@@ -101,19 +101,19 @@ Ahora debido a la ortogonalidad de los vectores base
 es posible escribir la métrica de forma diagonal
 \begin{equation}
     \left[\begin{array}{cccc}
-            g_{t t}(r, \theta, \phi) & 0                        & 0         & 0                        \\
-            0                        & g_{r r}(r, \theta, \phi) & 0         & 0                        \\
-            0                        & 0                        & -C(r) r^2 & 0                        \\
-            0                        & 0                        & 0         & -C(r) r^2(\sin \theta)^2
+            g_{t t}(r, \theta, \phi) & 0                        & 0        & 0                       \\
+            0                        & g_{r r}(r, \theta, \phi) & 0        & 0                       \\
+            0                        & 0                        & C(r) r^2 & 0                       \\
+            0                        & 0                        & 0        & C(r) r^2(\sin \theta)^2
         \end{array}\right].
 \end{equation}
 Una noción clave para facilitar los cálculos es que estamos tomando en consideración una masa puntual en un universo vacío e isotrópico, así que es de esperarse que la métrica no dependa de las coordenadas $\theta$ y $\phi$, permitiéndonos escribirla solo en términos de la distancia al origen $r$ tal que
 \begin{equation}
     \left[\begin{array}{cccc}
-            A(r) & 0     & 0         & 0                        \\
-            0    & -B(r) & 0         & 0                        \\
-            0    & 0     & -C(r) r^2 & 0                        \\
-            0    & 0     & 0         & -C(r) r^2(\sin \theta)^2
+            -A(r) & 0    & 0        & 0                       \\
+            0     & B(r) & 0        & 0                       \\
+            0     & 0    & C(r) r^2 & 0                       \\
+            0     & 0    & 0        & C(r) r^2(\sin \theta)^2
         \end{array}\right].
 \end{equation}
 A continuación se tomará el siguiente cambio de variable:
@@ -127,7 +127,7 @@ La forma de proceder va a ser  que cuando estemos lejos de la masa $M$, debemos 
 \end{equation*}
 
 
-\subsection{Christoffel symbols}
+\subsubsection{Christoffel symbols}
 los símbolos de Christoffel
 \begin{equation}
     \begin{gathered}
@@ -269,286 +269,197 @@ La métrica de Schwarzschild es:
                 0                      & 0                                       & 0   & r^2 \sin ^2 \theta
             \end{array}\right)}
 \end{equation}
-\subsection{Geodésicas en Schwarzschild tipo tiempo y nulas}
-\begin{equation}
-    \frac{d^2 x^\sigma}{d \lambda^2}+\Gamma_{\mu \nu}^\sigma \frac{d x^\mu}{d \lambda} \frac{d x^\nu}{d \lambda}=0
-\end{equation}
-\begin{equation}
-    \begin{array}{c}
-        \begin{array}{c}
-            \text { Geodesic Equation } \\
-            \text { (proper time) }
-        \end{array} \\
-        \frac{d^2 x^\sigma}{d \tau^2}+\Gamma_{\mu \nu}^\sigma \frac{d x^\mu}{d \tau} \frac{d x^v}{d \tau}=0
-    \end{array}
-\end{equation}
+\subsection{Geodésicas en Schwarzschild tipo  nulas}
 
+El movimiento de los cuerpos y de la luz en el espacio-tiempo de Schwarzschild está dado por la ecuación geodésica:
 \begin{equation}
-    \begin{array}{|c|}
-        \hline \begin{array}{c}
-                   \text { Geodesic Equation } \\
-                   \text { (generic parameter) }
-               \end{array}                                                                                   \\
-        \hline \frac{d^2 x^\sigma}{d \lambda^2}+\Gamma_{\mu \nu}^\sigma \frac{d x^\mu}{d \lambda} \frac{d x^\nu}{d \lambda}=0 \\
-        \hline
-    \end{array}
+    \frac{\mathrm{d}^2 x^\mu}{\mathrm{d} \lambda^2}+\Gamma^\mu{ }_{\nu \rho} \frac{\mathrm{~d} x^\nu}{\mathrm{d} \lambda} \frac{\mathrm{~d} x^\rho}{\mathrm{d} \lambda}=0
+    \label{eq:geodesic}
 \end{equation}
+Con $X^0 = ct$, $X^1 = r$, $X^2 = \theta$, $X^3 = \phi$ y $\lambda$ es un parámetro afín.
 
+Donde los símbolos de Christoffel no cero son:
+$$
+    \begin{array}{l}
+        \Gamma^0{ }_{10}=\Gamma^0{ }_{01}=\dfrac{G M}{c^2 r\left(r - \dfrac{2 G M}{c^2}\right)},                                                                                                                       \\
+        \Gamma^1{ }_{11}=-\dfrac{G M}{c^2 r\left(r - \dfrac{2 G M}{c^2}\right)}, \quad \Gamma^1{ }_{22}=-\left(r - \dfrac{2 G M}{c^2}\right), \quad \Gamma^1{ }_{33}=-\left(r - \dfrac{2 G M}{c^2}\right) \sin \theta, \\
+        \Gamma^2{ }_{12}=\Gamma^2{ }_{21}=\Gamma^3{ }_{13}=\Gamma^3{ }_{31}=\dfrac{1}{r}, \quad \Gamma^2{ }_{33}=-\sin \theta \cos \theta,                                                                             \\
+        \Gamma^3{ }_{23}=\Gamma^3{ }_{32}=\cot \theta.
+    \end{array}
+$$
+
+Particularmente nos interesa el caso de geodésicas nulas, es decir, aquellas que describen la trayectoria de la luz en el espacio-tiempo. Además se considera simetría radial por lo que $\theta=\pi/2$ y $\phi=0$(Si deseas ver las demás solo hay que remplazar los valores en la ecuación \ref{eq:geodesic}).
+
+Nos centraremos únicamente en las que nos interesan para describir la luz. Considere  la ecuación geodésica con $\mu=0$ es
+
+$$
+    \frac{\mathrm{d}^2 t}{\mathrm{d} \lambda^2}+\dfrac{2 G M}{c^2 r\left(r - \dfrac{2 G M}{c^2}\right)} \frac{\mathrm{d} t}{\mathrm{d} \lambda} \frac{\mathrm{d} r}{\mathrm{d} \lambda}=0
+$$
+ó
+$$
+    \frac{\mathrm{d}}{\mathrm{~d} \lambda}\left[\left(1-\dfrac{2 G M}{c^2 r}\right) \frac{\mathrm{d} t}{\mathrm{~d} \lambda}\right]=0
+$$
+lo cual se integra para dar
+$$
+    \left(1-\dfrac{2 G M}{c^2 r}\right) \frac{\mathrm{d} t}{\mathrm{~d} \lambda}=b=\text { const. }
+$$
+Para el cálculo de geodésicas tipo luz, escribimos el elemento de línea
+\begin{equation}
+    \begin{aligned}
+        \mathrm{d} s^2 & =g_{\mu \nu} \mathrm{d} x^\mu \mathrm{d} x^\nu                                                                      \\
+                       & =-\left(1-\dfrac{2 G M}{r c^2}\right)c^2 \mathrm{d} t^2+\left(1-\dfrac{2 G M}{r c^2}\right)^{-1} \mathrm{d} r^2 = 0
+    \end{aligned}
+\end{equation}
+recordando
+\begin{equation}
+    \left(1-\frac{2 G m}{r c^2}\right)^{-1} \frac{dt}{d\lambda}  = b \rightarrow  \left(\frac{dt}{d\lambda}\right)^2 = b^2 \left(1-\frac{2 G m}{r c^2}\right)^{-2}
+\end{equation}
+entonces
+\begin{equation}
+    \frac{d r }{d \lambda}= \pm cb
+\end{equation}
+Y finalmente podemos relacionar $r$ con $t$  de la siguiente manera
+\begin{equation}
+    \frac{\frac{dr}{d\lambda}}{\frac{dt}{d\lambda}} =   \frac{dr}{dt} =  \frac{\pm cb }{ b \left(1-\frac{2 G m}{r c^2}\right)^{-1}} = \pm c \left(1-\frac{2 G m}{r c^2}\right)
+\end{equation}
+Resolviendo esta ultima ecuación
+\begin{equation}
+    ct = \pm \left(r + \frac{2 G m}{c^2}ln\abs{r -\frac{2 G m}{c^2} } + k \right)
+\end{equation}
+donde el signo $+$ es para geodésicas salientes y el signo $-$ es para geodésicas entrantes.
 
 
 \subsection{Cambio de coordenadas Eddington-Finkelstein}
-Coordenadas de Eddington-Finkelstein (es decir, el componente $g_{r r}$ se elimina mediante un cambio de coordenadas y se introduce un término cruzado)
-
-$$
-    \mathrm{d} s^2=\left(1-\frac{2 m}{r}\right) \mathrm{du}^2+2 \mathrm{dudr}-\mathrm{r}^2\left(\mathrm{~d} \vartheta^2+\sin ^2 \vartheta \mathrm{~d} \varphi^2\right)
-$$
-
+Las coordenadas de Eddington-Finkelstein son un sistema de coordenadas para la solución de Schwarzschild cuya idea principal es usar las trayectorias de la luz (geodésicas nulas radiales) para definir las coordenadas temporal y radial. Esto es posible debido a la simetría radial, donde \( \theta, \varphi = \text{cte} \implies d\Omega^2 = 0 \).
+Partimos de la trayectoria de la luz en términos de la coordenada radial \( r \) y el tiempo \( ct \):
 \begin{equation}
-    \begin{array}{l}
-        \text { Radial light-like geodesics }                                                                                                      \\
-        \text { ( } \theta=\phi=\text { const })                                                                                                   \\
-        0=\left(\frac{d c t}{d \lambda}\right)^2 g_{t t}+\left(\frac{d r}{d \lambda}\right)^2 g_{r r}^\alpha                                       \\
-        0=\left(\frac{d c t}{d \lambda}\right)^2\left(1-\frac{r_s}{r}\right)-\left(\frac{d r}{d \lambda}\right)^2\left(1-\frac{r_S}{r}\right)^{-1} \\
-        0=\left(\frac{d c t}{d r}\right)^2\left(1-\frac{r_s}{r}\right)-\left(\frac{d r}{d r}\right)^2\left(1-\frac{r_S}{r}\right)^{-1}             \\
-        \frac{d c t}{d r}= \pm\left(1-\frac{r_s}{r}\right)^{-1} \operatorname{ct}(r)= \pm\left(r+r_s \log \left|\frac{r}{r_s}-1\right|\right)+k
-    \end{array}
+    ct(r) = \pm \left( r + r_s \log \left| \frac{r}{r_s} - 1 \right| \right) + k,
 \end{equation}
-
+donde el signo \( + \) corresponde a geodésicas salientes y \( - \) a entrantes. Introducimos las nuevas variables \( c\tilde{t} \) y \( \tilde{r} \):
 \begin{equation}
     \begin{aligned}
-        c t \rightarrow \underline{\underline{\tilde{t}}} & =c t+r_s \log \left|\frac{r}{r_s}-1\right|         \\
-        c t                                               & =c \tilde{t}-r_s \log \left|\frac{r}{r_s}-1\right|
+        c\tilde{t} & = ct + r_s \log \left| \frac{r}{r_s} - 1 \right|,         \\
+        ct         & = c\tilde{t} - r_s \log \left| \frac{r}{r_s} - 1 \right|.
     \end{aligned}
 \end{equation}
+Combinando con la ecuación de las geodésicas entrantes (\( - \)):
 \begin{equation}
-    \begin{array}{l}
-        \text { Ingoing (light) } \stackrel{d}{c t}=-r-r_s \log \left|\frac{r}{r_s}-1\right|+k \\
-        \text { Geodesics: }                                                                   \\
-        c \tilde{t}-r_s \log \left|\frac{r}{r_s}-1\right|=-r-r_s \log \left|\frac{r}{r_s}-1\right|+k
-    \end{array}
+    c\tilde{t} - r_s \log \left| \frac{r}{r_s} - 1 \right| = -r - r_s \log \left| \frac{r}{r_s} - 1 \right| + k,
 \end{equation}
+simplificando y renombrando la variable $\tilde{t} \to t$:
 \begin{equation}
-    c \tilde{t}=-r+k
+    c\tilde{t} = -r + k \to ct= -r + k .
 \end{equation}
-\begin{equation}
-    \begin{array}{l}
-        \text { - Ingoing light beams should have constant coordina } \\
-        \begin{array}{c}
-            c t \rightarrow c \tilde{t}=c t+\underbrace{r_s \log \left|\frac{r}{r_s}-1\right|} \\
-            c t \rightarrow v=c t+r+r_s \log \left|\frac{r}{r_s}-1\right|
-        \end{array}
-    \end{array}
-\end{equation}
-$$
-    \begin{aligned}
-        c t \rightarrow v & =c t+r+r_s \log \left|\frac{r}{r_s}-1\right| \\
-        c t               & =v-r-r_s \log \left|\frac{r}{r_s}-1\right|
-    \end{aligned}
-$$
-
-ngoing (light) ieodesics:
-
-$$
-    c t=-r-r_s \log \left|\frac{r}{r_s}-1\right|+k
-$$
-
-\begin{equation}
-    \begin{array}{c}
-        v=k             \\
-        \begin{array}{l}
-            v=c \tilde{t}+r \\
-            r_{i n}=r
-        \end{array} \\
-        \hline
-    \end{array}
-\end{equation}
-
+nos da las trayectorias de la luz entrantes al agujero negro.
+Introducimos la coordenada \( v \):
 \begin{equation}
     \begin{aligned}
-        \frac{\partial}{\partial v}       & =\frac{\partial c t}{\partial v} \frac{\partial}{\partial c t}+\frac{\partial r}{\partial v} \frac{\partial}{\partial r}                                  \\
-        \frac{\partial}{\partial r_{i n}} & =\frac{\partial c t}{\partial r_{i n}} \frac{\frac{\partial}{\partial c t}}{\partial c t}+\frac{\partial r}{\partial r_{i n}} \frac{\partial}{\partial r}
+        v  & = ct + r + r_s \log \left| \frac{r}{r_s} - 1 \right|, \\
+        ct & = v - r - r_s \log \left| \frac{r}{r_s} - 1 \right|.
     \end{aligned}
 \end{equation}
 
-
+Para geodésicas entrantes (\( v = k \)), las coordenadas finales son:
 \begin{equation}
-    \begin{array}{l}
-        v=c t+\underbrace{r+r_s \log \left|\frac{r}{r_s}-1\right|} \\
-        r_{i n}=r                                                  \\
-        v=c t+r^*                                                  \\
-        r_{i n}=r
-    \end{array}
+    \boxed{
+        v = ct + r + r_s \log \left| \frac{r}{r_s} - 1 \right|, \quad
+        r_{\text{in}} = r
+    }
 \end{equation}
 
+\subsubsection{Métrica de Schwarzschild en coordenadas de Eddington-Finkelstein}
+La métrica se obtiene expresando los vectores base \( e_v \) y \( e_{r_{\text{in}}} \) en términos de las bases originales \( e_{ct} \) y \( e_r \). Primero, definimos \( r^* = r + r_s \log \left| \frac{r}{r_s} - 1 \right| \), con lo que:
 \begin{equation}
-    \begin{array}{l}
-        \frac{d r^*}{\frac{d r_{i n}}{s}}=\frac{d r^*}{d r}                              \\
-        =\frac{\partial}{\partial r}\left(r+r_s \log \left|\frac{r}{r_s}-1\right|\right) \\
-        =1+r_S\left(\frac{1}{\frac{r}{r_s}-1} \frac{1}{r_s}\right)                       \\
-        =1+r_s \frac{1}{r-r_s}                                                           \\
-        =\frac{r-r_S}{r-r_s}+\frac{r_s}{r-r_s}                                           \\
-        =\frac{r}{r-r_S}                                                                 \\
-        =\frac{1}{1-\frac{r_S}{r}}
-    \end{array}
+    v = ct + r^*, \quad r_{\text{in}} = r.
 \end{equation}
 
-
-\begin{equation}
-    \begin{array}{l|l}
-        \frac{\partial}{\partial v}=\frac{\partial q^1}{\partial v} \frac{\partial}{\partial c t}+\frac{\partial r}{\partial v} \frac{\partial}{\partial r} & \frac{\partial}{\partial r_{i n}}=\frac{\partial c t}{\partial r_{i n}} \frac{\partial}{\partial c t}+\frac{\partial r}{\partial r_{i n}} \frac{\partial}{\partial r}                                 \\
-        \frac{\partial}{\partial v}=\underbrace{1 \frac{\partial}{\partial c t}}+0 \frac{\partial}{\partial r}                                              & \begin{array}{l}
-                                                                                                                                                                  \frac{\partial}{\partial r_{i n}}=\frac{\partial c t}{\partial r^*} \frac{d r^*}{d r_{i n}} \frac{\partial}{\partial c t}+1 \frac{\partial}{\partial r} \\
-                                                                                                                                                                  \frac{\partial}{\partial r_{i n}}=\underbrace{(-1)} \frac{1}{1-r_s} \frac{\partial}{\partial c t}+1 \frac{\partial}{\partial r}                         \\
-                                                                                                                                                                  \frac{\partial}{\partial r_{i n}}=\frac{-1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+1 \frac{\partial}{\partial r}
-                                                                                                                                                              \end{array}
-    \end{array}
-\end{equation}
+Las derivadas parciales para los vectores base son:
 \begin{equation}
     \begin{aligned}
-        \frac{\partial}{\partial v}       & =\frac{\partial}{\partial c t}                                                        \\
-        \frac{\partial}{\partial r_{i n}} & =\frac{-1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+\frac{\partial}{\partial r}
+        e_v               & = \frac{\partial ct}{\partial v} e_{ct} + \frac{\partial r}{\partial v} e_r = e_{ct},                                                            \\
+        e_{r_{\text{in}}} & = \frac{\partial ct}{\partial r_{\text{in}}} e_{ct} + \frac{\partial r}{\partial r_{\text{in}}} e_r = -\frac{1}{1 - \frac{r_s}{r}} e_{ct} + e_r.
     \end{aligned}
 \end{equation}
 
+Calculando \( \frac{dr^*}{dr} \):
 \begin{equation}
-    \begin{array}{l}
-        \left.\frac{\partial}{\partial r_{i n}} \cdot \frac{\partial}{\partial r_{i n}}=\left(-\frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+\frac{\partial}{\partial r}\right) \cdot\left(-\frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+\frac{\partial}{\partial r}\right)\right) \\
-        \frac{\partial}{\partial r_{i n}} \cdot \frac{\partial}{\partial r_{i n}}=\left(-\frac{1}{1-\frac{r_s}{r}}\right)^2\left(\frac{\partial}{\partial c t} \cdot \frac{\partial}{\partial c t}\right)+(1)^2\left(\frac{\partial}{\partial r} \cdot \frac{\partial}{\partial r}\right)               \\
-        \frac{\partial}{\partial r_{i n}} \cdot \frac{\partial}{\partial r_{i n}}=\left(\frac{1}{1-\frac{r_s}{r}}\right)^2\left(1-\frac{r_s}{r}\right)+(1)^2\left(-\frac{1}{1-\frac{r_s}{r}}\right)
-    \end{array}
-\end{equation}
-\begin{equation}
-    \begin{array}{l}
-        \frac{\partial}{\partial v} \cdot \frac{\partial}{\partial r_{i n}}=\left(\frac{\partial}{\partial c t}\right) \cdot\left(-\frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+\frac{\partial}{\partial r}\right)                                                  \\
-        \frac{\partial}{\partial v} \cdot \frac{\partial}{\partial r_{i n}}=-\left(\frac{1}{1-\frac{r_s}{r}}\right)\left(\frac{\partial}{\partial c t} \cdot \frac{\partial}{\partial c t}\right)+\left(\frac{\partial}{\partial c t} \cdot \frac{\partial}{\partial r}\right) \\
-        \frac{\partial}{\partial v} \cdot \frac{\partial}{\partial r_{i n}}=-\left(\frac{1}{1-\frac{r_s}{r}}\right)\left(1-\frac{r_s}{r}\right)+0                                                                                                                              \\
-        \frac{\partial}{\partial v} \cdot \frac{\partial}{\partial r_{i n}}=-1
-    \end{array}
-\end{equation}
-\begin{equation}
-    \frac{\partial}{\partial v} \cdot \frac{\partial}{\partial v}=\frac{\partial}{\partial c t} \cdot \frac{\partial}{\partial c t}=1-\frac{r_s}{r}
+    \frac{dr^*}{dr} = 1 + \frac{r_s}{r - r_s} = \frac{1}{1 - \frac{r_s}{r}}.
 \end{equation}
 
-
-geodesic\begin{equation}
-    \begin{array}{l}
-        \left.\left\|\frac{d}{d \lambda}\right\|^2\right)=\frac{d}{d \lambda} \cdot \frac{d}{d \lambda}=\left(\frac{d x^\mu}{d \lambda} \frac{\partial}{\partial x^\mu}\right) \cdot\left(\frac{d x^v}{d \lambda} \frac{\partial}{\partial x^v}\right)=\frac{d x^\mu}{d \lambda} \frac{d x^v}{d \lambda}\left(\frac{\partial}{\partial x^\mu} \cdot \frac{\partial}{\partial x^v}\right)                                                                                                                                                         \\
-        =\frac{d v}{d \lambda} \frac{d v}{d \lambda}\left(\frac{\partial}{\partial v} \cdot \frac{\partial}{\partial v}\right)+\frac{d v}{d \lambda} \frac{d r_{i n}}{d \lambda}\left(\frac{\partial}{\partial v} \cdot \frac{\partial}{\partial r_{i n}}\right)+\frac{d r_{i n}}{d \lambda} \frac{d v}{d \lambda}\left(\frac{\partial}{\partial r_{i n}} \cdot \frac{\partial}{\partial v}\right)+\frac{d r_{i n}}{d \lambda} \frac{d r_{i n}}{d \lambda}\left(\frac{\partial}{\partial r_{i n}} \cdot \frac{\partial}{\partial r_{i n}}\right) \\
-        =\left(\frac{d v}{d \lambda}\right)^2\left(1-\frac{r_s}{r_{i n}}\right)+\frac{d v}{d \lambda} \frac{d r_{i n}}{d \lambda}(-1)+\frac{d r_{i n}}{d \lambda} \frac{d v}{d \lambda}(-1)+\frac{d r_{i n}}{d \lambda} \frac{d r_{i n}}{d \lambda}(0)                                                                                                                                                                                                                                                                                           \\
-        =\left(1-\frac{r_s}{r_{i n}}\right)\left(\frac{d v}{d \lambda}\right)^2-2 \frac{d v}{d \lambda} \frac{d r_{i n}}{d \lambda}
-    \end{array}
-\end{equation}
-
-outgoing light beams
-\begin{equation}
-    c t=\oplus r+r_S \log \left|\frac{r}{r_s}-1\right|+k
-\end{equation}
-
-\begin{equation}
-    v-r-r_s \log \left|\frac{r}{r_s}-1\right|=+r+r_s \log \left|\frac{r}{r_s}-1\right|+k
-\end{equation}
-Outgoing Light Geodesics (Eddington-Finkelstein Coordinates):
-
-$$
-    v=2\left(r+r_s \log \left|\frac{r}{r_s}-1\right|\right)+k \quad r \equiv r_{i n}
-$$
-\begin{equation}
-    c t \rightarrow u=c t-r-r_s \log \left|\frac{1}{r_s}-1\right|
-\end{equation}
-
-\begin{equation}
-    c t=u+r+r_s \log \left|\frac{r}{r_s}-1\right|
-\end{equation}
-
-
-\begin{equation}
-    \begin{array}{l}
-        \text { Ingoing (light) }                                                            \\
-        \text { Geodest }=-r-r_s \log \left|\frac{r}{r_s}-1\right|+k                         \\
-        u+r+r_s \log \left|\frac{r}{r_s}-1\right|=-r-r_s \log \left|\frac{r}{r_s}-1\right|+k \\
-        u=\underline{2}\left(-r-r_s \log \left|\frac{r}{r_s}-1\right|\right)+k
-    \end{array}
-\end{equation}
-
-outgoing light beams
-\begin{equation}
-    u+r+r_s \log \left|\frac{r}{r_s}-1\right|=r+r_s \log \left|\frac{r}{r_s}-1\right|+k
-\end{equation}
-
-
-for the metric
-\begin{equation}
-    \begin{array}{l}
-        c t=u+r^* \\
-        r=r_{o u t}
-    \end{array}
-\end{equation}
-
-\begin{equation}
-    \begin{array}{l}
-        \frac{\partial}{\partial u}=\frac{\partial c t^1}{\partial u} \frac{\partial}{\partial c t}+\frac{\partial r^d}{\partial u} \frac{\partial}{\partial r} \\
-        \frac{\partial}{\partial u}=1 \frac{\partial}{\partial c t}+0 \frac{\partial}{\partial r} \left\lvert\, \begin{array}{l}
-                                                                                                                    \frac{\partial c t}{\partial r_{o u t}}=\frac{\partial}{\partial r_{o u t}}+\frac{\partial r}{\partial r_{o u t}} \frac{\partial}{\partial r}               \\
-                                                                                                                    \frac{\partial}{\partial r_{o u t}}=\frac{\partial c t}{\partial r^*} \frac{d r^*}{d r_{o u t}} \frac{\partial}{\partial c t}+1 \frac{\partial}{\partial r} \\
-                                                                                                                    \frac{\partial}{\partial r_{o u t}}=(+1) \frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+1 \frac{\partial}{\partial r}                              \\
-                                                                                                                    \frac{\partial}{\partial r_{o u t}}=\frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+1 \frac{\partial}{\partial r}
-                                                                                                                \end{array}\right.
-    \end{array}
-\end{equation}
-
+Los componentes de la métrica \( g_{\mu\nu} = e_\mu \cdot e_\nu \) son:
 \begin{equation}
     \begin{aligned}
-        \frac{\partial}{\partial r_{\text {out }}} \cdot \frac{\partial}{\partial r_{\text {out }}} & =\left(\frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+\frac{\partial}{\partial r}\right) \cdot\left(\frac{1}{1-\frac{r_s}{r}} \frac{\partial}{\partial c t}+\frac{\partial}{\partial r}\right) \\
-        \frac{\partial}{\partial r_{\text {out }}} \cdot \frac{\partial}{\partial r_{\text {out }}} & =\left(\frac{1}{1-\frac{r_s}{r}}\right)^2\left(\frac{\partial}{\partial c t} \cdot \frac{\partial}{\partial c t}\right)+(1)^2\left(\frac{\partial}{\partial r} \cdot \frac{\partial}{\partial r}\right) \\
-        \frac{\partial}{\partial r_{\text {out }}} \cdot \frac{\partial}{\partial r_{\text {out }}} & =\left(\frac{1}{1-\frac{r_s}{r}}\right)^2\left(1-\frac{r_s}{r}\right)+(1)^2\left(-\frac{1}{1-\frac{r_s}{r}}\right)                                                                                      \\
-        \frac{\partial}{\partial r_{\text {out }}} \cdot \frac{\partial}{\partial r_{\text {out }}} & =\frac{1}{1-\frac{r_s}{r}}-\frac{1}{1-\frac{r_s}{r}}=0 r_{\text {out }} \text {-coordinate is light-like }
+        g_{vv}          & = e_v \cdot e_v = -\left(1 - \frac{r_s}{r}\right), \\
+        g_{vr} = g_{rv} & = e_v \cdot e_{r_{\text{in}}} = 1,                 \\
+        g_{rr}          & = e_{r_{\text{in}}} \cdot e_{r_{\text{in}}} = 0.
+    \end{aligned}
+\end{equation}
+Por lo tanto, la métrica en coordenadas de Eddington-Finkelstein es:
+\begin{equation}
+    ds^2 = -\left(1 - \frac{r_s}{r}\right) dv^2 + 2 dv dr + r^2 d\Omega^2.
+\end{equation}
+\subsubsection{Coordenadas salientes de Eddington-Finkelstein}
+Para geodésicas nulas salientes (\(+\)), partimos de:
+\begin{equation}
+    ct(r) = r + r_s \log \left| \frac{r}{r_s} - 1 \right| + k.
+\end{equation}
+Introducimos la coordenada \( u \):
+\begin{equation}
+    \begin{aligned}
+        u  & = ct - r - r_s \log \left| \frac{r}{r_s} - 1 \right|, \\
+        ct & = u + r + r_s \log \left| \frac{r}{r_s} - 1 \right|.
+    \end{aligned}
+\end{equation}
+Para rayos salientes (\(+\)):
+\begin{equation}
+    u + r + r_s \log \left| \frac{r}{r_s} - 1 \right| = r + r_s \log \left| \frac{r}{r_s} - 1 \right| + k,
+\end{equation}
+simplificando:
+\begin{equation}
+    u = k \quad \Rightarrow \quad \boxed{u = ct - r - r_s \log \left| \frac{r}{r_s} - 1 \right|, \quad r_{\text{out}} = r}.
+\end{equation}
+
+\subsubsection{Métrica en coordenadas salientes}
+
+Definiendo \( r^* = r + r_s \log \left| \frac{r}{r_s} - 1 \right| \), tenemos:
+\begin{equation}
+    u = ct - r^*, \quad r_{\text{out}} = r.
+\end{equation}
+
+Vectores base en términos de \( e_{ct} \) y \( e_r \):
+\begin{equation}
+    \begin{aligned}
+        e_u                & = \frac{\partial ct}{\partial u} e_{ct} + \frac{\partial r}{\partial u} e_r = e_{ct},                                                             \\
+        e_{r_{\text{out}}} & = \frac{\partial ct}{\partial r_{\text{out}}} e_{ct} + \frac{\partial r}{\partial r_{\text{out}}} e_r = \frac{1}{1 - \frac{r_s}{r}} e_{ct} + e_r.
     \end{aligned}
 \end{equation}
 
-
+Componentes de la métrica \( g_{\mu\nu} = e_\mu \cdot e_\nu \):
 \begin{equation}
-    \begin{array}{l}
-        \left.\left\|\frac{d}{d \lambda}\right\|^2\right)=\frac{d}{d \lambda} \cdot \frac{d}{d \lambda}=\left(\frac{d x^\mu}{d \lambda} \frac{\partial}{\partial x^\mu}\right) \cdot\left(\frac{d x^v}{d \lambda} \frac{\partial}{\partial x^v}\right)=\frac{d x^\mu}{d \lambda} \frac{d x^v}{d \lambda}\left(\frac{\partial}{\partial x^\mu} \cdot \frac{\partial}{\partial x^\nu}\right)                                                                                                                                                                                                                               \\
-        =\frac{d u}{d \lambda} \frac{d u}{d \lambda}\left(\frac{\partial}{\partial u} \cdot \frac{\partial}{\partial u}\right)+\frac{d u}{d \lambda} \frac{d r_{\text {out }}}{d \lambda}\left(\frac{\partial}{\partial u} \cdot \frac{\partial}{\partial r_{\text {out }}}\right)+\frac{d r_{\text {out }}}{d \lambda} \frac{d u}{d \lambda}\left(\frac{\partial}{\partial r_{\text {out }}} \cdot \frac{\partial}{\partial u}\right)+\frac{d r_{\text {out }}}{d \lambda} \frac{d r_{\text {out }}}{d \lambda}\left(\frac{\partial}{\partial r_{\text {out }}} \cdot \frac{\partial}{\partial r_{\text {out }}}\right) \\
-        =\left(\frac{d u}{d \lambda}\right)^2\left(1-\frac{r_s}{r_{\text {out }}}\right)+\frac{d u}{d \lambda} \frac{d r_{\text {out }}}{d \lambda}(+1)+\frac{d r_{\text {out }}}{d \lambda} \frac{d u}{d \lambda}(+1)+\frac{d r_{\text {out }}}{d \lambda} \frac{d r_{\text {out }}}{d \lambda}(0)                                                                                                                                                                                                                                                                                                                      \\
-        =\left(1-\frac{r_s}{r_{\text {out }}}\right)\left(\frac{d u}{d \lambda}\right)^2+2 \frac{d u}{d \lambda} \frac{d r_{\text {out }}}{d \lambda}
-    \end{array}
+    \begin{aligned}
+        g_{uu}          & = e_u \cdot e_u = -\left(1 - \frac{r_s}{r}\right), \\
+        g_{ur} = g_{ru} & = e_u \cdot e_{r_{\text{out}}} = -1,               \\
+        g_{rr}          & = e_{r_{\text{out}}} \cdot e_{r_{\text{out}}} = 0.
+    \end{aligned}
+\end{equation}
+
+La métrica en coordenadas salientes es:
+\begin{equation}
+    ds^2 = -\left(1 - \frac{r_s}{r}\right) du^2 - 2 du dr + r^2 d\Omega^2.
 \end{equation}
 
 
-Ingoing Eddington-Finkelstein coordinates:
-
-$$
-    \begin{array}{l}
-        v=c t+r+                                                                                                                         \\
-        \quad r_s \log \left(\frac{r}{r_s}-1\right) \quad g_{\mu \nu} \rightarrow\left[\begin{array}{cccc}
-                                                                                               1-\frac{r_s}{r} & -1 & 0    & 0                   \\
-                                                                                               -1              & 0  & 0    & 0                   \\
-                                                                                               0               & 0  & -r^2 & 0                   \\
-                                                                                               0               & 0  & 0    & -r^2(\sin \theta)^2
-                                                                                           \end{array}\right] \\
-        r_{\text {in }}=r
-    \end{array}
-$$
-
-Outgoing Eddington-Finkelstein coordinates:
-
-$$
-    \begin{array}{l}
-        u=c t-r-                                                                                                                   \\
-        r_s \log \left(\frac{r}{r_s}-1\right) \quad g_{\mu \nu} \rightarrow\left[\begin{array}{cccc}
-                                                                                         1-\frac{r_s}{r} & +1                              \\
-                                                                                         +1              & 0                               \\
-                                                                                         \hline 0        & 0  & -r^2 & 0                   \\
-                                                                                         0               & 0  & 0    & -r^2(\sin \theta)^2
-                                                                                     \end{array}\right] \\
-        r_{\text {out }}=r
-    \end{array}
-$$
-- Show that light/massive particles can pass through event horizon
-But...
-- Ingoing EF coords: outgoing light beams don't work at $r_s$
-- Outgoing EF coords: ingoing light beams don't work at $r_s$
+En estas coordenadas:
+\begin{itemize}
+    \item Líneas con \( u = \text{cte} \) son geodésicas salientes con pendiente \( +1 \) en diagramas espacio-temporales.
+    \item La métrica es regular en \( r = r_s \), eliminando la singularidad coordenada de Schwarzschild.
+    \item \( r_{\text{out}} \) coincide con la coordenada radial areal.
+\end{itemize}
+\begin{itemize}
+    \item Mostrar que las partículas de luz/masivas pueden pasar a través del horizonte de eventos, pero...
+    \item En coordenadas de EF entrantes: los haces de luz salientes no funcionan en $r_s$
+    \item En coordenadas de EF salientes: los haces de luz entrantes no funcionan en $r_s$
+\end{itemize}
 
 \subsection{Cambio de coordenadas de Kruskal-Szekeres}
 
@@ -566,33 +477,118 @@ $v=c t+r+r_s \log \left|\frac{r}{r_s}-1\right|$ (ingoing EF) $u=c t-r-r_s \log \
         r^*=r+r_s \log \left|\frac{r}{r_s}-1\right|
     \end{array}
 \end{equation}
+\subsection{Coordenadas Kruskal-Szekeres}
 
+\subsubsection{Coordenadas nulas originales}
+Definimos las coordenadas entrante (\(v\)) y saliente (\(u\)) de Eddington-Finkelstein:
 \begin{equation}
     \begin{aligned}
-        \frac{d r^*}{d r} & =1+r_S\left(\frac{1}{r_s}-1\right)                           \\
-        \frac{d r^*}{d r} & =\frac{r-r_s}{r-r_s}+\frac{r_s}{r-r_s}=\frac{r}{r-r_s}       \\
-        \frac{d r^*}{d r} & =\frac{1}{1-\frac{r_s}{r}}=\left(1-\frac{r_s}{r}\right)^{-1} \\
-        \frac{d r}{d r^*} & =1-\frac{r_s}{r}
+        v   & = ct + r^*                                      \\
+        u   & = ct - r^*                                      \\
+        r^* & \equiv r + r_s \log\left|\frac{r}{r_s}-1\right|
     \end{aligned}
 \end{equation}
 
+\subsubsection{Vectores base en coordenadas \( (u, v) \)}
+Expresamos los vectores base en términos de \( e_{ct} \) y \( e_r \):
+\begin{equation}
+    \begin{aligned}
+        e_v & = \frac{\partial ct}{\partial v}e_{ct} + \frac{\partial r}{\partial v}e_r = \frac{1}{2}e_{ct} + \frac{1}{2}\left(1-\frac{r_s}{r}\right)^{-1}e_r \\
+        e_u & = \frac{\partial ct}{\partial u}e_{ct} + \frac{\partial r}{\partial u}e_r = \frac{1}{2}e_{ct} - \frac{1}{2}\left(1-\frac{r_s}{r}\right)^{-1}e_r
+    \end{aligned}
+\end{equation}
+
+\subsubsection{Productos punto fundamentales}
+Usando la métrica de Schwarzschild \( g(e_{ct},e_{ct}) = -\left(1-\frac{r_s}{r}\right) \) y \( g(e_r,e_r) = \left(1-\frac{r_s}{r}\right)^{-1} \):
+\begin{equation}
+    \begin{aligned}
+        e_v \cdot e_v & = \left(\frac{1}{2}\right)^2 g(e_{ct},e_{ct}) + \left(\frac{1}{2}\left(1-\frac{r_s}{r}\right)^{-1}\right)^2 g(e_r,e_r) = 0                                        \\
+        e_u \cdot e_u & = \left(\frac{1}{2}\right)^2 g(e_{ct},e_{ct}) + \left(\frac{1}{2}\left(1-\frac{r_s}{r}\right)^{-1}\right)^2 g(e_r,e_r) = 0                                        \\
+        e_v \cdot e_u & = \left(\frac{1}{2}\right)^2 g(e_{ct},e_{ct}) - \left(\frac{1}{2}\left(1-\frac{r_s}{r}\right)^{-1}\right)^2 g(e_r,e_r) = -\frac{1}{2}\left(1-\frac{r_s}{r}\right)
+    \end{aligned}
+\end{equation}
+
+\subsubsection{Métrica en coordenadas nulas}
+La métrica se expresa como:
+\begin{equation}
+    ds^2 = 2(e_v \cdot e_u) du\, dv + r^2 d\Omega^2 = -\left(1-\frac{r_s}{r}\right) du\, dv + r^2(d\theta^2 + \sin^2\theta d\varphi^2)
+\end{equation}
+
+\subsubsection{Transformación a Kruskal-Szekeres}
+
 \begin{equation}
     \begin{array}{l}
-        \frac{\partial}{\partial v}=\frac{\partial c t}{\partial v} \frac{\partial}{\partial c t}+\frac{\partial r}{\partial v} \frac{\partial}{\partial r}                     \\
-        \frac{\partial}{\partial v}=\frac{\partial c t}{\partial v} \frac{\partial}{\partial c t}+\frac{d r}{d r^*} \frac{\partial r^*}{\partial v} \frac{\partial}{\partial r} \\
-        \frac{\partial}{\partial v}=\frac{1}{2} \frac{\partial}{\partial c t}+\left(1-\frac{r_s}{r}\right) \frac{1}{2} \frac{\partial}{\partial r}                              \\
-        \frac{\partial}{\partial u}=\frac{\partial c t}{\partial u} \frac{\partial}{\partial c t}+\frac{\partial r}{\partial u} \frac{\partial}{\partial r}                     \\
-        \frac{\partial}{\partial u}=\frac{\partial c t}{\partial u} \frac{\partial}{\partial c t}+\frac{d r}{d r^*} \frac{\partial r^*}{\partial u} \frac{\partial}{\partial r} \\
-        \frac{\partial}{\partial u}=\frac{1}{2} \frac{\partial}{\partial c t}-\left(1-\frac{r_s}{r}\right) \frac{1}{2} \frac{\partial}{\partial r}
+        \frac{v-u}{2}=r+r_s \log \left|\frac{r}{r_s}-1\right|                                                  \\
+        \frac{v-u}{2 r_s}=\frac{r}{r_s}+\log \left|\frac{r}{r_s}-1\right|                                      \\
+        \left.e^{\frac{v-u}{2 r_s}}=e^{\left.\frac{r}{r_s}+\log \right\rvert\, \frac{r}{r_s} 1} \right\rvert\, \\
+        -e^{\frac{v}{2 r_s}}\left(-e^{-\frac{u}{2 r_s}}\right)=e^{\frac{r}{r_s}}\left|\frac{r}{r_s}-1\right|
+    \end{array}
+\end{equation}
+Definimos las nuevas coordenadas:
+\begin{equation}
+    \mathcal{U} = -e^{-\frac{u}{4r_s}}, \quad \mathcal{V} = e^{\frac{v}{4r_s}}
+\end{equation}
+
+\subsubsection{Vectores base en Kruskal-Szekeres}
+Relación diferencial usando la regla de la cadena:
+\begin{equation}
+    \begin{aligned}
+        e_\mathcal{U} & = \frac{\partial u}{\partial \mathcal{U}} e_u = 4r_s e^{\frac{u}{4r_s}} e_u = -4r_s \mathcal{U}^{-1} e_u \\
+        e_\mathcal{V} & = \frac{\partial v}{\partial \mathcal{V}} e_v = 4r_s e^{-\frac{v}{4r_s}} e_v = 4r_s \mathcal{V}^{-1} e_v
+    \end{aligned}
+\end{equation}
+
+\subsubsection{Producto punto clave}
+Calculamos el producto punto usando \( e_u \cdot e_v = -\frac{1}{2}\left(1-\frac{r_s}{r}\right) \):
+\begin{equation}
+    e_\mathcal{U} \cdot e_\mathcal{V} = (-4r_s \mathcal{U}^{-1})(4r_s \mathcal{V}^{-1})(e_u \cdot e_v) = \frac{8r_s^2}{\mathcal{U}\mathcal{V}}\left(1-\frac{r_s}{r}\right)
+\end{equation}
+
+\subsubsection{Relación geométrica fundamental}
+De la definición de \( \mathcal{U} \) y \( \mathcal{V} \):
+\begin{equation}
+    \mathcal{U}\mathcal{V} = -e^{\frac{r^*}{2r_s}} = -\left|\frac{r}{r_s}-1\right|^{1/2}e^{\frac{r}{2r_s}}
+\end{equation}
+
+Sustituyendo en el producto punto:
+\begin{equation}
+    e_\mathcal{U} \cdot e_\mathcal{V} = \frac{32r_s^3}{r}e^{-\frac{r}{r_s}}
+\end{equation}
+
+\subsubsection{Métrica final de Kruskal-Szekeres}
+La métrica toma su forma canónica:
+\begin{equation}
+    \boxed{ds^2 = \frac{32r_s^3}{r}e^{-\frac{r}{r_s}} d\mathcal{U}d\mathcal{V} + r^2(d\theta^2 + \sin^2\theta d\varphi^2)}
+\end{equation}
+
+\begin{equation}
+    \text{con } \mathcal{U}\mathcal{V} = \left(1-\frac{r}{r_s}\right)e^{\frac{r}{r_s}} \quad \text{y} \quad \frac{\mathcal{V}}{\mathcal{U}} = -e^{\frac{ct}{2r_s}}
+\end{equation}
+
+\begin{equation}
+    \begin{array}{l}
+        T \equiv \frac{V+U}{2} \\
+        X \equiv \frac{V-U}{2} \\
+        \hline
+    \end{array}
+\end{equation}
+
+\begin{equation}
+    \begin{array}{l}
+        V=T+X \\
+        U=T-X
     \end{array}
 \end{equation}
 
 
-we get
 \begin{equation}
     \begin{array}{l}
-        \frac{\partial}{\partial v}=\frac{1}{2} \frac{\partial}{\partial c t} \mp\left(1-\frac{r_s}{r}\right) \frac{1}{2} \frac{\partial}{\partial r} \\
-        \frac{\partial}{\partial u}=\frac{1}{2} \frac{\partial}{\partial c t}-\left(1-\frac{r_s}{r}\right) \frac{1}{2} \frac{\partial}{\partial r}
+        \text { Schwarzschild Metric (TX Kruskal-Szekeres ) } \\
+        g_{\mu \nu} \rightarrow\left[\begin{array}{cccc}
+                                             +\frac{4 r_s^3}{r} e^{-\frac{r}{r_s}} & 0                                     & 0    & 0                   \\
+                                             0                                     & -\frac{4 r_s^3}{r} e^{-\frac{r}{r_s}} & 0    & 0                   \\
+                                             0                                     & 0                                     & -r^2 & 0                   \\
+                                             0                                     & 0                                     & 0    & -r^2(\sin \theta)^2
+                                         \end{array}\right]
     \end{array}
 \end{equation}
-contunuar el video en 20:24
