@@ -2,124 +2,236 @@ from manim import *
 import numpy as np
 
 
-class RoodHeatGraph(ThreeDScene):
+class rayos_Luz_Schwarzschild(Scene):
     def construct(self):
-        # Set background color
-        self.camera.background_color = "#ece6e2"
-        # 3d axis scene configurations
-        axes_3d = ThreeDAxes(
-            x_range=(0, 15),
-            y_range=(0, 16),
-            z_range=(0, 1.5),
-            z_length=3,
-            # fill_color=BLACK,
-            axis_config={"include_numbers": True}
-        )
-        axes_3d.set_color(BLACK)
+        Schwarzschild_radius = 2
+        def light_ray(x, k, sign):
+            if x == 2:
+                return 0  # Evita valores indefinidos
+            value = x + 2 * np.log(np.abs(x - 2) + 1e-6) + k  # Evita log(0)
+            return value if sign == 'plus' else -value
 
-        # Labels
-        y_label = axes_3d.get_y_axis_label("y").shift(LEFT*2).shift(UP)
-        x_label = axes_3d.get_x_axis_label("x").shift(DOWN*2)
-        z_label = axes_3d.get_z_axis_label("z").shift(DOWN*2)
-        for i in range(0, 1):
-            axes_3d.get_z_axis().numbers[i].rotate(
-                axis=RIGHT, angle=180 * DEGREES).rotate(axis=UP, angle=-90 * DEGREES)
+        self.camera.background_color = "#FFF"
 
-        grid_labels = VGroup(x_label, y_label, z_label)
-        grid_labels.set_color(BLACK)
-
-        # Math functions
-        def heatFunction(x, y):
-            return (np.e**(-0.4*y))*(np.sin(x))
-
-        # Math functions to graphs
-
-        # esta no funciono
-        curves = VGroup(*[
-            ParametricFunction(
-                lambda t: axes_3d.coords_to_point(t, y, heatFunction(t, y)),
-                t_range=[0, 14, 0.1],
-                stroke_width=2,
-                stroke_color=color_gradient((RED, BLUE), 2),
-            ) for y in range(0, 15, 3)
-        ])
-
-        resolution_fa = 30
-
-        surface = Surface(
-            lambda u, v: axes_3d.c2p(u, v, heatFunction(u, v)),
-            resolution=(resolution_fa, resolution_fa),
-            v_range=[0, 15],
-            u_range=[0, 14],
-            stroke_color=GRAY,
-        )
-        surface.set_style(fill_opacity=0.1)
-
-        surface2 = Surface(
-            lambda u, v: axes_3d.c2p(u, 1, heatFunction(u, 1)),
-            resolution=(resolution_fa, resolution_fa),
-            v_range=[0, 1],
-            u_range=[0, 14],
-            stroke_width=5
-        ).set_fill_by_value(axes=axes_3d, colorscale=[(RED, -0.5), (YELLOW, 0), (GREEN, 0.5)], axis=2)
-
-        # aqui me atore
-        color_curves = VGroup(*[
-            Surface(
-                lambda u, v: axes_3d.c2p(u, y, heatFunction(u, y)),
-                resolution=(resolution_fa, resolution_fa),
-                u_range=[0, 14],
-                v_range=[0, 15],
-                stroke_width=5
-            ).set_fill_by_value(axes=axes_3d, colorscale=[(RED, -0.5), (YELLOW, 0), (GREEN, 0.5)], axis=2)
-            for y in range(0, 15, 3)])
-
-        # Elements in scene
-        self.add(axes_3d, grid_labels, surface, surface2, color_curves)
-
-        # Camara config
-        self.set_camera_orientation(
-            phi=75*DEGREES,
-            theta=-60*DEGREES,
-            zoom=0.9,
-            focal_distance=10000
-        )
-
-class inEFcoordinates(Scene):
-    def v(x):
-        return 
-    def construct(self):
+        # Configuración de los ejes
         axes = Axes(
-            x_range=[-10, 10.3, 1],
-            y_range=[-1.5, 1.5, 1],
+            x_range=[-0, 5],
+            y_range=[-2, 2],
+            axis_config={"color": BLACK, "include_ticks": False},
+            tips=True,
             x_length=10,
-            axis_config={"color": GREEN},
-            x_axis_config={
-                "numbers_to_include": np.arange(-10, 10.01, 2),
-                "numbers_with_elongated_ticks": np.arange(-10, 10.01, 2),
-            },
-            tips=False,
-        )
-        axes_labels = axes.get_axis_labels()
-        sin_graph = axes.plot(lambda x: np.sin(x), color=BLUE)
-        cos_graph = axes.plot(lambda x: np.cos(x), color=RED)
-
-        sin_label = axes.get_graph_label(
-            sin_graph, "\\sin(x)", x_val=-10, direction=UP / 2
-        )
-        cos_label = axes.get_graph_label(cos_graph, label="\\cos(x)")
-
-        vert_line = axes.get_vertical_line(
-            axes.i2gp(TAU, cos_graph), color=YELLOW, line_func=Line
-        )
-        line_label = axes.get_graph_label(
-            cos_graph, r"x=2\pi", x_val=TAU, direction=UR, color=WHITE
+            y_length=10
         )
 
-        plot = VGroup(axes, sin_graph, cos_graph, vert_line)
-        labels = VGroup(axes_labels, sin_label, cos_label, line_label)
-        self.add(plot, labels)
+        # Etiquetas de los ejes
+        x_label = MathTex("r").next_to(axes.x_axis, RIGHT).set_color(BLACK)
+        y_label = MathTex("ct").next_to(axes.y_axis, LEFT).set_color(BLACK)
+
+
+        Schwarzschild_line = DashedVMobject(Line(
+            axes.coords_to_point(2, -2),
+            axes.coords_to_point(2, 2),
+            color=BLACK
+        ))
+        # Graficar múltiples rayos_entrantes de luz
+        rayos_entrantes = VGroup()
+        vectors_in = VGroup()
+        in_color = RED
+        for k in [-2, 0, 2]:
+            graph_in = VGroup(
+            axes.plot(
+                lambda x: light_ray(x, k, 'minus'),
+                x_range=[0, 1.9999, 0.01],
+                color=in_color
+            ),
+            axes.plot(
+                lambda x: light_ray(x, k, 'minus'),
+                x_range=[2.0001, 5, 0.01],
+                color=in_color
+            )
+            )
+            for x in np.arange(0, 1.9999, 0.5):
+                vectors_in.add(Arrow(
+                    start=axes.c2p(x + 0.01, light_ray(x + 0.01, k, 'minus'), 0),
+                    end=axes.c2p(x, light_ray(x, k, 'minus'), 0),
+                    buff=0,
+                    color=in_color,
+                    stroke_width=20,
+                    max_tip_length_to_length_ratio=40
+                ))
+            for x in np.arange(2.0001, 5, 0.5):
+                vectors_in.add(Arrow(
+                    start=axes.c2p(x + 0.01, light_ray(x + 0.01, k, 'minus'), 0),
+                    end=axes.c2p(x, light_ray(x, k, 'minus'), 0),
+                    buff=0,
+                    color=in_color,
+                    stroke_width=20,
+                    max_tip_length_to_length_ratio=40
+                ))
+            rayos_entrantes.add(graph_in)
+
+        # Graficar múltiples rayos_salientes de luz
+        rayos_salientes = VGroup()
+        vectors_out = VGroup()
+        out_color = BLUE
+        for k in [-2, 0, 2]:
+            graph_out = VGroup(
+            axes.plot(
+                lambda x: light_ray(x, k, 'plus'),
+                x_range=[0, 1.9999, 0.01],
+                color=out_color
+            ),
+            axes.plot(
+                lambda x: light_ray(x, k, 'plus'),
+                x_range=[2.0001, 5, 0.01],
+                color=out_color
+            )
+            )
+            for x in np.arange(0.15, 1.9999, 0.5):
+                vectors_out.add(Arrow(
+                    start=axes.c2p(x , light_ray(x, k, 'plus'), 0),
+                    end=axes.c2p(x+ 0.01, light_ray(x+ 0.01, k, 'plus'), 0),
+                    buff=0,
+                    color=out_color,
+                    stroke_width=20,
+                    max_tip_length_to_length_ratio=40
+                ))
+            for x in np.arange(2.0001, 5, 0.5):
+                vectors_out.add(Arrow(
+                    start=axes.c2p(x , light_ray(x, k, 'plus'), 0),
+                    end=axes.c2p(x+ 0.01, light_ray(x+ 0.01, k, 'plus'), 0),
+                    buff=0,
+                    color=out_color,
+                    stroke_width=20,
+                    max_tip_length_to_length_ratio=40
+                ))
+            rayos_salientes.add(graph_out)
     
-with tempconfig({"quality": "medium_quality", "preview": False, "pixel_width": 1920, "pixel_height": 1080}):
-    scene = RoodHeatGraph()
+
+
+        # Agregar a la escena
+        self.add(axes, x_label, y_label, rayos_entrantes, vectors_in, rayos_salientes, vectors_out,Schwarzschild_line)
+ 
+
+class Kruskal_Szekeres_diagram(Scene):
+    def construct(self):
+        self.camera.background_color = "#FFF"
+        plane = NumberPlane(
+            x_range=(-2, 2),
+            y_range=(-2, 2),
+            background_line_style={
+                "stroke_color": WHITE,
+                "stroke_width": 0,
+                "stroke_opacity": 0.6
+            },
+            axis_config={"color": WHITE},
+        )
+        # Configuración de los ejes
+        #Ecuacion de la singularidad
+        singularity = plane.plot_implicit_curve(lambda x, y: y**2 - x**2 - 1 , color=BLACK,stroke_width = 3)
+
+       
+        #Lineas de r constante
+        r_group = VGroup()
+        #interior
+        for r in np.arange(0, 0.95, 0.07):
+            r_const = plane.plot_implicit_curve(lambda x,y: y**2 - x**2 + np.exp(r)*(r-1),
+                color=RED,
+                stroke_width=1
+            )
+            r_group.add(r_const)
+        #exterior
+        for r in np.arange(1.2, 5, 0.1):
+            r_const = plane.plot_implicit_curve(
+                lambda x,y: y**2 - x**2 + np.exp(r)*(r-1),
+                color=RED,
+                stroke_width = 1
+            )
+            r_group.add(r_const)
+        
+
+
+        #Horizonte de Schwarzschild
+        horizon = plane.plot_implicit_curve(lambda x, y: y**2 - x**2 , color=BLACK,)
+        horizon = DashedVMobject(horizon,num_dashes=100)
+        
+
+        plane = NumberPlane(
+            x_range=(-2, 2),
+            y_range=(-2, 2),
+            background_line_style={
+                "stroke_color": WHITE,
+                "stroke_width": 0,
+                "stroke_opacity": 0.6
+            },
+            axis_config={"color":WHITE},
+        )
+        #Lineas de t constante
+        t_const_group = VGroup()
+        for t in np.arange(-20, 20, 0.3):
+            #Izquierda y derecha
+            t_const = plane.plot_implicit_curve(
+            lambda x,y: y - x*np.tanh(t/2),
+            color=BLACK,
+            stroke_width = 1,
+            )
+            t_const_group.add(t_const)
+           # Top & bottom curves (red)
+            y_max = np.sqrt(1/(1-np.tanh(t/2)**2))
+            t_const = plane.plot_implicit_curve(
+                lambda x, y: np.where(y <= y_max and y>= - y_max, x - y * np.tanh(t / 2), np.nan),
+                color=RED,
+                stroke_width=1,
+            )
+            t_const_group.add(t_const)
+
+            
+        Kruskal_diag = VGroup( plane, singularity, r_group, horizon, t_const_group,)
+       
+        self.add(Kruskal_diag)
+        directions = Axes(
+            x_range=[0, 1],
+            y_range=[0, 1],
+            axis_config={"color": BLACK},
+            tips=True,
+            x_length=2,
+            y_length=2
+        )
+        x_label = MathTex("U").next_to(directions.x_axis, RIGHT).set_color(BLACK)
+        y_label = MathTex("V").next_to(directions.y_axis, UP).set_color(BLACK)
+        directions.shift(3*LEFT + 2*DOWN)
+        self.add(directions, x_label, y_label)
+
+        
+class kerr_BH_regions(ThreeDScene):
+    def construct(self):
+        self.camera.background_color = "#FFF"
+        axes = ThreeDAxes(
+            axis_config={"color": BLACK}
+        )
+        sphere = Surface(
+            lambda u, v: np.array([
+                1.5 * np.cos(u) * np.cos(v),
+                1.5 * np.cos(u) * np.sin(v),
+                1.5 * np.sin(u)
+            ]), v_range=[(1/4)*TAU, TAU], u_range=[-PI / 2, PI / 2],
+            checkerboard_colors=[RED_D, RED_E], resolution=(60, 60)
+        )
+        #euler 
+        curve1 = ParametricFunction(
+            lambda u: (
+                1.6 * np.cos(u),
+                1.6 * np.sin(u),
+                0
+            ), color=BLUE, t_range = (-3*TAU, 5*TAU, 0.01)
+        ).set_shade_in_3d(True)
+        
+        self.renderer.camera.light_source.move_to(4*IN) # changes the source of the light
+        self.set_camera_orientation(phi=75 * DEGREES, theta=30 * DEGREES,zoom=1.6)
+        self.add(axes, sphere,curve1)        
+
+
+
+with tempconfig({"quality": "medium_quality", "preview": False, "pixel_width": 1920, "pixel_height": 1080 }):
+    scene = kerr_BH_regions()
     scene.render()

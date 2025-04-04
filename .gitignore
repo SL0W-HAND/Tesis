@@ -5,6 +5,7 @@
 *.bcf
 *.log
 tesis/indent.log
-*/media
+*/*/*/media
+*/*/*/__pycache__
 *.fls
 *.xml

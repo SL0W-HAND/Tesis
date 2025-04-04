@@ -326,10 +326,22 @@ Resolviendo esta ultima ecuación
 \begin{equation}
     ct = \pm \left(r + \frac{2 G m}{c^2}ln\abs{r -\frac{2 G m}{c^2} } + k \right)
 \end{equation}
+O en términos de el radio de Schwarzschild $r_s = \frac{2 G m}{c^2}$
+\begin{equation}
+    ct = \pm \left(r + r_s ln\abs{r - r_s} + k \right)
+\end{equation}
 donde el signo $+$ es para geodésicas salientes y el signo $-$ es para geodésicas entrantes.
+\begin{figure}[H]
+    \begin{small}
+        \begin{center}
+            \includegraphics[width=0.95\textwidth]{AgujerosNegros/Schwarzschild/media/images/rayos_Luz_Schwarzschild_ManimCE_v0.19.0.png}
+        \end{center}
+        \caption{}
+        \label{fig:lightraysSchwarzschild}
+    \end{small}
+\end{figure}
 
-
-\subsection{Cambio de coordenadas Eddington-Finkelstein}
+\subsection{ordenadas Eddington-Finkelstein}
 Las coordenadas de Eddington-Finkelstein son un sistema de coordenadas para la solución de Schwarzschild cuya idea principal es usar las trayectorias de la luz (geodésicas nulas radiales) para definir las coordenadas temporal y radial. Esto es posible debido a la simetría radial, donde \( \theta, \varphi = \text{cte} \implies d\Omega^2 = 0 \).
 Partimos de la trayectoria de la luz en términos de la coordenada radial \( r \) y el tiempo \( ct \):
 \begin{equation}
@@ -358,8 +370,24 @@ Introducimos la coordenada \( v \):
         ct & = v - r - r_s \log \left| \frac{r}{r_s} - 1 \right|.
     \end{aligned}
 \end{equation}
-
-Para geodésicas entrantes (\( v = k \)), las coordenadas finales son:
+Reemplazando en la ecuación de los rayos de luz entrantes
+\begin{equation}
+    \begin{aligned}
+        ct =v - r - r_s \log \left| \frac{r}{r_s} - 1 \right|  = - r - r_s \log \left| \frac{r}{r_s} - 1 \right| + k,
+        v = k
+    \end{aligned}
+\end{equation}
+y para los salientes
+\begin{equation}
+    \begin{aligned}
+        ct = v - r - r_s \log \left| \frac{r}{r_s} - 1 \right|= r + r_s \log \left| \frac{r}{r_s} - 1 \right| + k, \\
+        v = 2 \left(r_s \log \left| \frac{r}{r_s} - 1 \right|\right) +k
+    \end{aligned}
+\end{equation}
+\begin{task}{Graficar}{}
+    Gráfica esto.
+\end{task}
+Las coordenadas finales son:
 \begin{equation}
     \boxed{
         v = ct + r + r_s \log \left| \frac{r}{r_s} - 1 \right|, \quad
@@ -412,11 +440,24 @@ Introducimos la coordenada \( u \):
 \end{equation}
 Para rayos salientes (\(+\)):
 \begin{equation}
-    u + r + r_s \log \left| \frac{r}{r_s} - 1 \right| = r + r_s \log \left| \frac{r}{r_s} - 1 \right| + k,
+    \begin{aligned}
+        u + r + r_s \log \left| \frac{r}{r_s} - 1 \right| = r + r_s \log \left| \frac{r}{r_s} - 1 \right| + k, \\
+        u = k.
+    \end{aligned}
 \end{equation}
-simplificando:
+Y para los entrantes (\(-\)):
 \begin{equation}
-    u = k \quad \Rightarrow \quad \boxed{u = ct - r - r_s \log \left| \frac{r}{r_s} - 1 \right|, \quad r_{\text{out}} = r}.
+    \begin{aligned}
+        u + r + r_s \log \left| \frac{r}{r_s} - 1 \right| = -r - r_s \log \left| \frac{r}{r_s} - 1 \right| + k, \\
+        u = -2\left(r + r_s \log \left| \frac{r}{r_s} - 1 \right|  \right) +k.
+    \end{aligned}
+\end{equation}
+\begin{task}{Graficar}{}
+    Gráfica esto.
+\end{task}
+Las coordenadas finales son:
+\begin{equation}
+    \boxed{u = ct - r - r_s \log \left| \frac{r}{r_s} - 1 \right|, \quad r_{\text{out}} = r}.
 \end{equation}
 
 \subsubsection{Métrica en coordenadas salientes}
@@ -461,22 +502,7 @@ En estas coordenadas:
     \item En coordenadas de EF salientes: los haces de luz entrantes no funcionan en $r_s$
 \end{itemize}
 
-\subsection{Cambio de coordenadas de Kruskal-Szekeres}
 
-take
-$v=c t+r+r_s \log \left|\frac{r}{r_s}-1\right|$ (ingoing EF) $u=c t-r-r_s \log \left|\frac{r}{r_s}-1\right|$ (outgoing EF)
-
-
-\begin{equation}
-    \frac{v+u}{2}=c t \quad \frac{v-u}{2}=r+r_s \log \left|\frac{r}{r_s}-1\right|
-\end{equation}
-
-\begin{equation}
-    \begin{array}{l}
-        c t=\frac{v+u}{2}, r^*=\frac{v-u}{2} \\
-        r^*=r+r_s \log \left|\frac{r}{r_s}-1\right|
-    \end{array}
-\end{equation}
 \subsection{Coordenadas Kruskal-Szekeres}
 
 \subsubsection{Coordenadas nulas originales}
@@ -517,12 +543,12 @@ La métrica se expresa como:
 \subsubsection{Transformación a Kruskal-Szekeres}
 
 \begin{equation}
-    \begin{array}{l}
-        \frac{v-u}{2}=r+r_s \log \left|\frac{r}{r_s}-1\right|                                                  \\
-        \frac{v-u}{2 r_s}=\frac{r}{r_s}+\log \left|\frac{r}{r_s}-1\right|                                      \\
-        \left.e^{\frac{v-u}{2 r_s}}=e^{\left.\frac{r}{r_s}+\log \right\rvert\, \frac{r}{r_s} 1} \right\rvert\, \\
+    \begin{aligned}
+        \frac{v-u}{2}=r+r_s \log \left|\frac{r}{r_s}-1\right|                 \\
+        \frac{v-u}{2 r_s}=\frac{r}{r_s}+\log \left|\frac{r}{r_s}-1\right|     \\
+        e^{\frac{v-u}{2 r_s}}=e^{\frac{r}{r_s}+\log \abs{ \frac{r}{r_s} 1} }, \\
         -e^{\frac{v}{2 r_s}}\left(-e^{-\frac{u}{2 r_s}}\right)=e^{\frac{r}{r_s}}\left|\frac{r}{r_s}-1\right|
-    \end{array}
+    \end{aligned}
 \end{equation}
 Definimos las nuevas coordenadas:
 \begin{equation}
@@ -564,31 +590,136 @@ La métrica toma su forma canónica:
 \begin{equation}
     \text{con } \mathcal{U}\mathcal{V} = \left(1-\frac{r}{r_s}\right)e^{\frac{r}{r_s}} \quad \text{y} \quad \frac{\mathcal{V}}{\mathcal{U}} = -e^{\frac{ct}{2r_s}}
 \end{equation}
-
+De momento $\mathcal{V}$ y $\mathcal{U}$ son coordenadas nulas, que describen trayectorias de luz, pero podemos hacerlas espaciales y temporales definiendo:
 \begin{equation}
-    \begin{array}{l}
-        T \equiv \frac{V+U}{2} \\
-        X \equiv \frac{V-U}{2} \\
-        \hline
-    \end{array}
+    \begin{aligned}
+        T \equiv \frac{\mathcal{V}+\mathcal{U}}{2} \\
+        X \equiv \frac{\mathcal{V}-\mathcal{U}}{2} \\
+    \end{aligned}
 \end{equation}
-
+y viceversa
 \begin{equation}
-    \begin{array}{l}
-        V=T+X \\
-        U=T-X
-    \end{array}
+    \begin{aligned}
+        \mathcal{V}=T+X \\
+        \mathcal{U}=T-X
+    \end{aligned}
 \end{equation}
-
-
+De modo que la métrica en términos de $T$ y $X$ es:
 \begin{equation}
-    \begin{array}{l}
-        \text { Schwarzschild Metric (TX Kruskal-Szekeres ) } \\
-        g_{\mu \nu} \rightarrow\left[\begin{array}{cccc}
+        g_{\mu \nu} =\left[\begin{array}{cccc}
                                              +\frac{4 r_s^3}{r} e^{-\frac{r}{r_s}} & 0                                     & 0    & 0                   \\
                                              0                                     & -\frac{4 r_s^3}{r} e^{-\frac{r}{r_s}} & 0    & 0                   \\
                                              0                                     & 0                                     & -r^2 & 0                   \\
                                              0                                     & 0                                     & 0    & -r^2(\sin \theta)^2
                                          \end{array}\right]
+\end{equation}
+Usando el mismo truco que usamos anteriormente podemos encontar las geodésicas nulas en estas coordenadas.
+\begin{equation}
+    \begin{array}{l}
+        0=\left(\frac{d T}{d \lambda}\right)^2\left(\frac{\partial}{\partial T} \cdot \frac{\partial}{\partial T}\right)+\left(\frac{d X}{d \lambda}\right)^2\left(\frac{\partial}{\partial X} \cdot \frac{\partial}{\partial X}\right) \\
+        0=\left(\frac{d T}{d \lambda}\right)^2 g_{T T}+\left(\frac{d X}{d \lambda}\right)^2 g_{X X}                                                                                                                                     \\
+        0=\left(\frac{d T}{d \lambda}\right)^2\left(+2 g_{U V}\right)+\left(\frac{d X}{d \lambda}\right)^2\left(-2 g_{U V}\right)
     \end{array}
 \end{equation}
+
+\begin{equation}
+    \d{X}{\lambda} =\pm \d{T}{\lambda} \to \d{X}{T} = \pm 1 \to T = \pm Y + k
+\end{equation}
+
+Eso quiere decir que las geodésicas nulas en estas coordenadas son rectas en el espacio-tiempo. 
+ahora volver a poner las coordenadas en términos de $r$ y $t$ solo es cuestión de una composición de funciones.
+
+\begin{equation}
+    \begin{aligned}
+        T&=\frac{V+U}{2} \\
+        X&=\frac{V-U}{2}
+    \end{aligned}
+    \quad ; 
+    \begin{aligned}
+        V&=e^{\frac{v}{2 r_s}} \\
+        U&=-e^{-\frac{u}{2 r_s}}
+    \end{aligned}
+    \quad ; 
+    \begin{aligned}
+        v&=c t+r+r_s \log \left|\frac{r}{r_s}-1\right| \\
+        u&=c t-r-r_s \log \left|\frac{r}{r_s}-1\right|
+    \end{aligned}
+\end{equation}
+Simplificando
+\begin{equation}
+    \begin{aligned}
+        T & =  \frac{1}{2}\left(V + U\right)                                                                                                                                                      \\
+          & = \frac{1}{2} e^{\frac{v}{2 r_s}}-\frac{1}{2} e^{-\frac{u}{2 r_S}}                                                                                                                    \\
+          & = \frac{1}{2} e^{\frac{1}{2 r_s}\left(c t+r+r_s \log \left|\frac{r}{r_s}-1\right|\right)}-\frac{1}{2} e^{-\frac{1}{2 r_s}\left(c t-r-r_s \log \left|\frac{r}{r_s}-1\right|\right)}    \\
+          & =\frac{1}{2} e^{\frac{c t}{2 r_s}} e^{\frac{r}{2 r_s}}\left(\left|\frac{r}{r_s}-1\right|\right)^{1 / 2}-\frac{1}{2} e^{\frac{-c t}{2 r_s}} e^{\frac{r}{2 r_s}}\left(\left|\frac{r}{r_s}-1\right|\right)^{1 / 2} \\
+          & = e^{\frac{r}{2 r_s}} \sqrt{\left|\frac{r}{r_s}-1\right|} \frac{1}{2}\left(e^{\frac{c t}{2 r_s}}-e^{\frac{-c t}{2 r_s}}\right)                                                                     \\
+          & = e^{\frac{r}{2 r_s}} \sqrt{\left|\frac{r}{r_s}-1\right|} \sinh\left(\frac{ct}{2r_s}\right)
+          \label{eq:Kruskal-SzekeresT(r,t)}
+    \end{aligned}
+\end{equation}
+y para $X$ el calculo es prácticamente el mismo a excepción de un signo ($+$) en la diferencia de exponentes.
+\begin{equation}
+        X  = e^{\frac{r}{2 r_s}} \sqrt{\left|\frac{r}{r_s}-1\right|}  \cosh\left(\frac{ct}{2r_s}\right)
+        \label{eq:Kruskal-SzekeresX(r,t)}
+\end{equation}
+Donde podemos desarrollar la siguiente identidad
+\begin{equation}
+    \begin{aligned}
+        T^2 - X^2 &= \left( e^{\frac{r}{2r_s}} \sqrt{\left|\frac{r}{r_s}-1\right|}\, \sinh\left(\frac{ct}{2r_s}\right) \right)^2 
+        - \left( e^{\frac{r}{2r_s}} \sqrt{\left|\frac{r}{r_s}-1\right|}\, \cosh\left(\frac{ct}{2r_s}\right) \right)^2\\[1mm]
+        &= e^{\frac{r}{r_s}} \left|\frac{r}{r_s}-1\right| \left[ \sinh^2\left(\frac{ct}{2r_s}\right) - \cosh^2\left(\frac{ct}{2r_s}\right) \right]\\[1mm]
+        &= -\, e^{\frac{r}{r_s}} \left|\frac{r}{r_s}-1\right|\\[2mm]
+        &=
+        \begin{cases}
+            -\, e^{\frac{r}{r_s}} \left(\dfrac{r}{r_s}-1\right), & \text{si } r > r_s,\\[2mm]
+            -\, e^{\frac{r}{r_s}} \left(1-\dfrac{r}{r_s}\right), & \text{si } r < r_s.
+        \end{cases}
+    \end{aligned}
+    \label{eq:Kruskal-SzekeresT^2-X^2}
+\end{equation}
+\begin{task}{Demostrar}{}
+    Demostrar la identidad (\ref{eq:Kruskal-SzekeresT^2-X^2}).
+\end{task}
+Esta identidad nos ayuda a determinar las líneas de \(r\) constante en el espacio-tiempo de Schwarzschild. Lo interesante ocurre cuando observamos el caso \(r < r_s\): el valor absoluto \(\left|\frac{r}{r_s}-1\right|\) en la ecuación (\ref{eq:Kruskal-SzekeresT^2-X^2}) se puede expresar como \(1-\frac{r}{r_s}\). ¿Por qué es importante notar esto? Si nos fijamos en la segunda línea de la ecuación, podemos identificar los coeficientes de la siguiente forma:
+\begin{equation}
+    \begin{aligned}
+        T^2 - X^2 &= e^{\frac{r}{r_s}} \left(1-\frac{r}{r_s}\right) \left[ \sinh^2\left(\frac{ct}{2r_s}\right) - \cosh^2\left(\frac{ct}{2r_s}\right) \right] \\
+        &= -\, e^{\frac{r}{r_s}} \left(\frac{r}{r_s}-1\right) \left[ \sinh^2\left(\frac{ct}{2r_s}\right) - \cosh^2\left(\frac{ct}{2r_s}\right) \right] \\
+        &= e^{\frac{r}{r_s}} \left(\frac{r}{r_s}-1\right) \left[ \cosh^2\left(\frac{ct}{2r_s}\right) - \sinh^2\left(\frac{ct}{2r_s}\right) \right].
+    \end{aligned}
+\end{equation}
+De ello se deduce que, dentro del horizonte de eventos (\(r < r_s\)), se tienen las siguientes expresiones:
+\begin{equation}
+    X = e^{\frac{r}{2r_s}} \sqrt{1-\frac{r}{r_s}} \, \frac{1}{2} \sinh\left(\frac{ct}{2r_s}\right), \quad 
+    T = e^{\frac{r}{2r_s}} \sqrt{1-\frac{r}{r_s}} \, \frac{1}{2} \cosh\left(\frac{ct}{2r_s}\right).
+\end{equation}
+Dado que el negativo de estas coordenadas $-X$ y $-T$ cumplen la identidad (\ref{eq:Kruskal-SzekeresT^2-X^2}) podemos escribir lo que se llama la extensión máxima de las coordenadas de Kruskal-Szekeres
+\begin{table}[H]
+    \centering
+    \caption{Extensión máxima de las coordenadas de Kruskal-Szekeres}
+    \begin{tabular}{|c|c|c|}
+        \hline Region & $T$                                                                                         & $X$                                                                                \\
+        \hline$I$        & $+\sinh \left(\frac{c t}{2 r_s}\right)\frac{r}{2 r_s} \sqrt{\frac{r}{r_s}-1}$ & $+\cosh \left(\frac{c t}{2 r_s}\right) e^{\frac{r}{2 r_s}} \sqrt{\frac{r}{r_s}-1}$ \\
+        \hline$I I$       & $+\cosh \left(\frac{c t}{2 r_s}\right) e^{\frac{r}{2 r_s}} \sqrt{1-\frac{r}{r_s}}$          & $+\sinh \left(\frac{c t}{2 r_s}\right) e^{\frac{r}{2 r_s}} \sqrt{1-\frac{r}{r_s}}$ \\
+        \hline$I I I$   & $-\sinh \left(\frac{c t}{2 r_s}\right) e^{\frac{r}{2 r_s}} \sqrt{\frac{r}{r_s}-1}$          & $-\cosh \left(\frac{c t}{2 r_s}\right) e^{\frac{r}{2 r_s}} \sqrt{\frac{r}{r_s}-1}$ \\
+        \hline$I V$      & $-\cosh \left(\frac{c t}{2 r_s}\right) e^{\frac{r}{2 r_s}} \sqrt{1-\frac{r}{r_s}}$          & $-\sinh \left(\frac{c t}{2 r_s}\right) e^{\frac{r}{2 r_s}} \sqrt{1-\frac{r}{r_s}}$ \\
+        \hline
+    \end{tabular}
+\end{table}
+Ahora para la lineas de tiempo constante es fácil ver la siguiente relación
+\begin{equation}
+    \tanh \left(\frac{ct}{2 r_s}\right)=\left\{\begin{array}{ll}
+        T / X & \text { (en region I y III) } \\
+        X / T & \text { (en region II y IV) }
+        \end{array}\right.
+\end{equation}
+Con esto tenemos todo lo necesario para construir el diagrama de Kruskal-Szekeres.  
+\begin{figure}[H]
+    \begin{small}
+        \begin{center}
+            \includegraphics[width=0.95\textwidth]{AgujerosNegros/Schwarzschild/media/images/Kruskal_Szekeres_diagram_ManimCE_v0.19.0.png}
+        \end{center}
+        \caption{}
+        \label{fig:}
+    \end{small}
+\end{figure}

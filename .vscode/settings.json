@@ -13,6 +13,7 @@
         "Reissner",
         "rotante",
         "Schwarzschild",
-        "Szekeres"
+        "Szekeres",
+        "tetradas"
     ]
 }

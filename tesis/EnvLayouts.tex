@@ -53,6 +53,12 @@ base={#1}}{df}
     \hrulefill\par\vspace{10pt}\noindent\rmfamily
 }{\par\noindent\hrulefill\vrule width10pt height2pt depth2pt\par }
 
+\newenvironment{note}[1][]{%
+  \par\vspace{5pt}\noindent
+  {\textbf{Nota:} #1 \vspace{10pt}}%
+  \hrulefill\par\vspace{10pt}\noindent\rmfamily
+}{\par\noindent\hrulefill\vrule width10pt height2pt depth2pt\par }
+
 \usepackage{cancel}
 \newtheorem{proposition}{Proposición}
 \newtheorem{axiom}{Axioma}[section]

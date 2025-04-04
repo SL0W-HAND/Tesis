@@ -1,0 +1,218 @@
+\section{Algoritmo de Newman-Janis y agujeros negros rotantes}
+El algoritmo de Newman-Janis es una técnica en relatividad general que permite generar soluciones exactas a las ecuaciones de Einstein. En 1965, Ezra T. Newman y Alfred I. Janis \cite{newman-1965} descubrieron que, mediante una transformación de coordenadas complejas aplicada a la métrica de Schwarzschild, podían obtener la métrica de Kerr, que describe un agujero negro en rotación.
+
+Particularmente nos centraremos en usar el desarrollo echo por \cite{drake-2000} donde da una version de este algoritmo donde remueve algunas de las ambigüedades  presentes en el trabajo original de \cite[text]{newman-1965}.
+
+El algoritmo se puede resumir en 5 pasos
+\begin{enumerate}[1]
+    \item Escribe un elemento de línea estático y esféricamente simétrico en coordenadas nulas avanzadas $\{u, r, \theta, \phi\}$
+
+          \begin{equation}
+              d s^2=e^{2 \Phi(r)} d u^2+e^{\Phi(r)+\lambda(r)} d u d r-r^2\left(d \theta^2+\sin ^2 \theta d \phi^2\right)
+          \end{equation}
+
+    \item Expresar la forma contravariante de la métrica en términos de un tetrad nulo,
+          \begin{equation}
+              g^{\mu \nu}=l^\mu n^\nu+l^\nu n^\mu-m^\mu \bar{m}^\nu-m^\nu \bar{m}^\mu
+          \end{equation}
+
+          donde
+
+          \begin{equation}
+              l_\mu l^\mu=m_\mu m^\mu=n_\mu n^\mu=0, \quad l_\mu n^\mu=-m_\mu \bar{m}^\mu=1, \quad l_\mu m^\mu=n_\mu m^\mu=0
+          \end{equation}
+
+
+          Donde los tetrads nulos tendrán la forma inicial
+          \begin{equation}
+              \begin{aligned}
+                  l^\mu & =\delta_1^\mu                                                                     \\
+                  n^\mu & =e^{-\lambda(r)-\Phi(r)} \delta_0^\mu-\frac{1}{2} e^{-2 \lambda(r)} \delta_1^\mu  \\
+                  m^\mu & =\frac{1}{\sqrt{2} r}\left(\delta_2^\mu+\frac{i}{\sin \theta} \delta_3^\mu\right)
+              \end{aligned}
+          \end{equation}
+
+          En este punto se es conveniente usar la notación de tetradas:
+
+          \begin{equation}
+              Z_a^\mu=\left(l^\mu, n^\mu, m^\mu, \bar{m}^\mu\right), \quad a=1,2,3,4
+          \end{equation}
+
+    \item el siguiente paso es hacer una  transformación compleja directa que extiende las coordenadas $x^\rho$ a un nuevo conjunto de coordenadas complejas $\tilde{x}^\rho$
+
+          \begin{equation}
+              x^\rho \rightarrow \tilde{x}^\rho=x^\rho+i y^\rho\left(x^\sigma\right)
+          \end{equation}
+
+          donde $y^\rho\left(x^\sigma\right)$ son funciones analíticas de las coordenadas reales $x^\sigma$, y simultáneamente dejamos que los vectores tetrad nulos $Z_a^\mu$ sufran una transformación
+
+          \begin{equation}
+              Z_a^\mu\left(x^\rho\right) \rightarrow \tilde{Z}_a^\mu\left(\tilde{x}^\rho, \overline{\tilde{x}}^\rho\right)
+          \end{equation}
+
+          Finalmente requerimos como condición  que la transformación recupere el tetrad y la métrica antiguos cuando $\tilde{x}^\rho=\overline{\tilde{x}}^\rho$. En resumen, el efecto de esta ``transformación tilde `` es crear una nueva métrica cuyos componentes(reales) son  funciones de variables complejas,
+
+          \begin{equation}
+              g_{\mu \nu} \rightarrow \tilde{g}_{\mu \nu}: \tilde{\mathrm{x}} \times \tilde{\mathrm{x}} \mapsto \mathbb{R}
+          \end{equation}
+
+          mientras que se debe de cumplir también
+
+          \begin{equation}
+              \left.\tilde{Z}_a^\mu\left(\tilde{x}^\rho, \overline{\tilde{x}}^\rho\right)\right|_{\overline{\mathbf{x}}=\overline{\mathbf{x}}}=Z_a^\mu\left(x^\rho\right)
+          \end{equation}
+
+          La transformación tilde claramente no es única, ya que existen muchas opciones diferentes para los coeficientes de los vectores tetrad nulos que satisfacen las condiciones.
+          En el paper original \cite{newman-1965} se elige la transformación tilde como
+
+          \begin{equation}
+              \tilde{x}^\rho=x^\rho+i a \cos x^2\left(\delta_0^\rho-\delta_1^\rho\right)= x^\rho+i a \cos \theta \left(\delta_0^\rho-\delta_1^\rho\right) .
+          \end{equation}
+          En este caso, la transformación tilde se  escribe para cada coordenada $\rho$ como
+          \begin{itemize}
+              \item Para $\rho=0$ (coordenada $u$):
+                    \begin{equation}
+                        \tilde{u}=u+i a \cos \theta
+                    \end{equation}
+                    porque $\delta_0^0=1$ y $\delta_1^0=0$.
+
+              \item Para $\rho=1$ (coordenada $r$):
+                    \begin{equation}
+                        \tilde{r}=r-i a \cos \theta
+                    \end{equation}
+                    ya que $\delta_0^1=0$ y $\delta_1^1=1$.
+
+              \item Para $\rho=2,3$ (coordenadas $\theta$ y $\phi$):
+                    \begin{equation}
+                        \tilde{\theta}=\theta, \quad \tilde{\phi}=\phi
+                    \end{equation}
+                    pues $\delta_0^\rho-\delta_1^\rho=0$ para $\rho=2,3$.
+          \end{itemize}
+
+          Después de aplicar la transformación, las coordenadas $\tilde{x}^\rho$ son complejas.El radio $r$ se reemplaza por $\tilde{r}=r-i a \cos \theta$, lo que permitirá que las funciones métricas (por ejemplo, $e^{2 \Phi}$ ) pasen a tener una dependencia combinada en $r$ y $\theta$.
+          \begin{itemize}
+            \item $u \rightarrow \tilde{u}=u + ia \cos \theta$ (coordenada tipo luz)
+              \item $r \rightarrow \tilde{r}=r - i a \cos \theta$
+              \item $\theta \rightarrow \tilde{\theta}=\theta$
+              \item $\phi \rightarrow \tilde{\phi}=\phi$
+          \end{itemize}
+          \begin{equation}
+              \begin{aligned}
+                  l^\mu & \rightarrow \tilde{l}^\mu=\delta_1^\mu                                                                                                                             \\
+                  n^\mu & \rightarrow \tilde{n}^\mu=e^{-\lambda(\tilde{r}, \tilde{r})-\phi(\tilde{r}, \tilde{r})} \delta_0^\mu-\frac{1}{2} e^{-2 \lambda(\tilde{r}, \tilde{r})} \delta_1^\mu \\
+                  m^\mu & \rightarrow \tilde{m}^\mu=\frac{1}{\sqrt{2} \overline{\tilde{r}}} \left(\delta_2^\mu+\frac{i}{\sin \tilde{\theta}} \delta_3^\mu\right)
+              \end{aligned}
+          \end{equation}
+
+
+          En el paso 3 se extiende la variable radial $r$ a una variable compleja. La idea es reemplazar $r$ por $\tilde{r}$ (y análogamente para $\theta$ si fuera necesario) de modo que las funciones métricas pasen a depender de dos variables: $r$ y $\theta$. De esta forma, se escriben las funciones como $\phi(\tilde{r}, \tilde{r})$ y $\lambda(\tilde{r}, \tilde{r})$.
+        \begin{note}
+        Imposición de la Condición de Realidad:  
+        Para recuperar una métrica real, se redefinen las coordenadas:  
+        \begin{itemize}
+            \item $\tilde{r} \rightarrow r$,  
+            \item $\overline{\tilde{r}} \rightarrow r$,  
+            \item $\tilde{\theta} \rightarrow \theta$,  
+            \item $\tilde{r}+\overline{\tilde{r}}=2 r$,  
+            \item $\tilde{r}-\overline{\tilde{r}}=2 i a \cos \theta$.  
+        \end{itemize}      
+    \end{note}
+
+
+    2. Problema de la Complejidad
+
+Una métrica compleja no tiene sentido físico en relatividad general, ya que el espaciotiempo es real. Por lo tanto, se requiere eliminar las partes imaginarias introducidas por la complejificación. Esto se logra mediante la condición de realidad.
+3. Mecanismo de la Condición de Realidad
+
+La condición de realidad opera en dos niveles:
+a. Sustitución de $\tilde{r}$ y $\overline{\tilde{r}}$
+
+Se reemplazan las combinaciones de $\tilde{r}$ (complejo) y su conjugado $\overline{\tilde{r}}=r-i a \cos \theta$ por expresiones reales que dependen de $r$ y $\theta$. Por ejemplo:
+
+$$
+\tilde{r}+\overline{\tilde{r}}=2 r, \quad \tilde{r} \overline{\tilde{r}}=r^2+a^2 \cos ^2 \theta .
+$$
+
+
+Ejemplo:
+Si una función compleja es $f(\tilde{r})=\frac{1}{\tilde{r}}$, la condición de realidad la convierte en:
+
+$$
+f(r, \theta)=\frac{1}{r^2+a^2 \cos ^2 \theta} \cdot(r-i a \cos \theta)
+$$
+
+pero solo se conserva la parte real relevante para la métrica.
+
+b. Simetrización de Funciones
+
+Las funciones que dependían originalmente de $r$ en la métrica estática se redefinen como funciones simétricas en $\tilde{r}$ y $\overline{\tilde{r}}$. Por ejemplo:
+- En la métrica de Schwarzschild, $1-\frac{2 M}{r}$ se convierte en $1-\frac{2 M}{\tilde{r}} \rightarrow 1-\frac{2 M r}{r^2+a^2 \cos ^2 \theta}$.
+4. Aplicación en las Tetradas
+
+Las tetradas nulas $l^\mu, n^\mu, m^\mu$ también se afectan por la complejificación. Para garantizar su realidad:
+a. Tetrada $m^\mu$
+
+La parte angular $m^\mu$ adquiere un término adicional $i a \sin \theta\left(\delta_0^\mu-\delta_1^\mu\right)$, que cancela las contribuciones imaginarias del denominador complejo $\tilde{r}=r+i a \cos \theta$.
+Ejemplo:
+
+$$
+m^\mu=\frac{1}{\sqrt{2}(r+i a \cos \theta)}(\underbrace{i a \sin \theta\left(\delta_0^\mu-\delta_1^\mu\right)}_{\text {Cancela imaginarios }}+\delta_2^\mu+\frac{i}{\sin \theta} \delta_3^\mu)
+$$
+
+b. Tetradas $l^\mu y n^\mu$
+
+Se mantienen reales al reemplazar $\tilde{r} \rightarrow r$ en sus componentes radiales, pero incorporando $a$ en las funciones $\phi(r, \theta)$ y $\lambda(r, \theta)$.
+          %%Esta "complejización" implica que el tetrad queda escrito en términos de $\tilde{r}$ y su conjugado $\overline{\tilde{r}}$, como se observa en $\tilde{m}^\mu$. En este paso, se asume que al revertir a variables reales, se identifican las partes reales de $\tilde{r}$ con el nuevo radio real $r$ y se introduce una dependencia en el ángulo $\theta$ a través del parámetro de rotación $a$.    
+
+
+    \item Se obtiene una nueva métrica al realizar una transformación de coordenadas complejas en los vectores tetrad nulos $\tilde{Z}_a^\mu$. Los vectores tetrad nulos se transforman de la manera habitual
+
+
+          \begin{equation}
+              Z_a^\mu=\tilde{Z}_a^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}
+          \end{equation}
+          mediante esta transformacion, de forma generica podemos efectuar la de las tatradas $m^\mu=\tilde{m}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}$ y $l^\mu=\tilde{l}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}$
+
+          \begin{equation}
+            \begin{aligned}
+                l^\mu&=\tilde{l}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}\\
+&  = + \tilde{l}^0 \frac{\partial x^\mu}{\partial \tilde{x}^0}+ \tilde{l}^1 \frac{\partial x^\mu}{\partial \tilde{x}^1} + \tilde{l}^2 \frac{\partial x^\mu}{\partial \tilde{x}^2} + \tilde{l}^3 \frac{\partial x^\mu}{\partial \tilde{x}^3} \\
+& = \delta_1^0 \frac{\partial x^\mu }{\partial \tilde{x}^0} + \delta_1^1 \frac{\partial x^\mu }{\partial \tilde{x}^1} + \delta_1^2 \frac{\partial x^\mu }{\partial \tilde{x}^2} + \delta_1^3 \frac{\partial x^\mu }{\partial \tilde{x}^3}\\
+&= \delta_1^1 \frac{\partial x^\mu }{\partial \tilde{x}^1} = \delta_1^\mu
+            \end{aligned}
+          \end{equation}
+
+el caso $m^\mu=\tilde{m}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}$
+
+            \begin{equation}
+                \begin{aligned}
+                    m^\mu & =\tilde{m}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}                                                                                   \\
+                            & =\tilde{m}^0 \frac{\partial x^\mu}{\partial \tilde{x}^0}+\tilde{m}^1 \frac{\partial x^\mu}{\partial \tilde{x}^1}+\tilde{m}^2 \frac{\partial x^\mu}{\partial \tilde{x}^2}+\tilde{m}^3 \frac{\partial x^\mu}{\partial \tilde{x}^3}\\
+                            & = 0* \frac{\partial x^\mu}{\partial \tilde{x}^0} + 0* \frac{\partial x^\mu}{\partial \tilde{x}^1} +\frac{1}{\sqrt{2} \tilde{r}}\frac{\partial x^\mu}{\partial \tilde{x}^2} + \frac{1}{\sqrt{2} \tilde{r}}\frac{i}{\sin \tilde{\theta}}\frac{\partial x^\mu}{\partial \tilde{x}^3}\\
+                            &=\frac{1}{\sqrt{2}(r+i a \cos \theta)}\left(i a \sin \theta\left(\delta_0^\mu-\delta_1^\mu\right)+\delta_2^\mu+\frac{i}{\sin \theta} \delta_3^\mu\right)
+                \end{aligned}
+            \end{equation}
+            dado que la tetrada $n^\mu$ es particular para cada metrica semilla que se use el calculo de esta debe de hacerse de forma particular, 
+          Al efectuar la transformación del tetrad, se obtiene:
+          \begin{equation}
+              \begin{aligned}
+                  l^\mu & =\delta_1^\mu                                                                                                                                            \\
+                  n^\mu & =e^{-\lambda(r, \theta)-\phi(r, \theta)} \delta_0^\mu-\frac{1}{2} e^{-2 \lambda(r, \theta)} \delta_1^\mu                                                 \\
+                  m^\mu & =\frac{1}{\sqrt{2}(r+i a \cos \theta)}\left[i a \sin \theta\left(\delta_0^\mu-\delta_1^\mu\right)+\delta_2^\mu+\frac{i}{\sin \theta} \delta_3^\mu\right]
+              \end{aligned}
+          \end{equation}
+
+
+
+    \item Finalmente, se asume que una simple transformación de coordenadas de la forma $u=t+F(r), \phi=\psi+G(r)$ transformará la métrica a coordenadas de Boyer-Lindquist. Un conjunto de coordenadas en el que la métrica tiene solo un término fuera de la diagonal $g_{t \phi}$ se denominará "Boyer-Lindquist".
+          Para obtener la representación usual de la métrica de Kerr en coordenadas de Boyer-Lindquist, es necesario realizar una transformación en la coordenada nula $u$ y en la coordenada angular $\phi$:
+
+          $$
+              u=t-\int \frac{a}{r^2+a^2+Q^2-2 m r} d r
+          $$
+
+          $$
+              \phi=\psi-\int \frac{r^2+a^2}{r^2+a^2+Q^2-2 m r} d r
+          $$
+
+\end{enumerate}
