@@ -7,50 +7,50 @@
 %configs pf colorbox
 \tcbset {
   base/.style={
-    arc=0mm, 
-    bottomtitle=0.5mm,
-    boxrule=0mm,
-    colbacktitle=black!10!white, 
-    coltitle=black, 
-    fonttitle=\bfseries, 
-    left=2.5mm,
-    leftrule=1mm,
-    right=3.5mm,
-    title={#1},
-    toptitle=0.75mm, 
-  }
+      arc=0mm,
+      bottomtitle=0.5mm,
+      boxrule=0mm,
+      colbacktitle=black!10!white,
+      coltitle=black,
+      fonttitle=\bfseries,
+      left=2.5mm,
+      leftrule=1mm,
+      right=3.5mm,
+      title={#1},
+      toptitle=0.75mm,
+    }
 }
 \definecolor{brandblue}{rgb}{0.34, 0.7, 1}
 \renewcommand\qedsymbol{$\blacksquare$}
 
 \newtcbtheorem[number within=section]{theorem}{Theorem}%
 { colframe=black!30!white,
-base={#1}}{th}
+  base={#1}}{th}
 \newtcbtheorem[number within=section]{task}{Tarea}%
-{ colframe=red!, 
-base={#1}}{tsk}
+{ colframe=red!,
+  base={#1}}{tsk}
 
 \newtcbtheorem[number within=section]{definition}{Definición}%
-{ colframe=brandblue, 
-base={#1}}{df}
+{ colframe=brandblue,
+  base={#1}}{df}
 
 \newcounter{example}[chapter]
 \counterwithin*{example}{chapter}
 \newenvironment{example}[2][]{%
-    \stepcounter{example}%
-    \counterwithin{example}{chapter}
-    \refstepcounter{example}
-    \par\vspace{5pt}\noindent
-    {\textbf{Example~\theexample} \vspace{10pt}}%
-    \hrulefill\par\vspace{10pt}\noindent\rmfamily
+  \stepcounter{example}%
+  \counterwithin{example}{chapter}
+  \refstepcounter{example}
+  \par\vspace{5pt}\noindent
+  {\textbf{Example~\theexample} \vspace{10pt}}%
+  \hrulefill\par\vspace{10pt}\noindent\rmfamily
 }{\par\noindent\hrulefill\vrule width10pt height2pt depth2pt\par }
 
 \newtheorem{problem}{Problem}[chapter]
 
 \newenvironment{problemsContainer}[1][]{%
-    \par\vspace{5pt}\noindent
-    {\textbf{#1} \vspace{10pt}}%
-    \hrulefill\par\vspace{10pt}\noindent\rmfamily
+  \par\vspace{5pt}\noindent
+  {\textbf{#1} \vspace{10pt}}%
+  \hrulefill\par\vspace{10pt}\noindent\rmfamily
 }{\par\noindent\hrulefill\vrule width10pt height2pt depth2pt\par }
 
 \newenvironment{note}[1][]{%
@@ -64,5 +64,10 @@ base={#1}}{df}
 \newtheorem{axiom}{Axioma}[section]
 \newtheorem{lemma}{Lema}
 \newenvironment{sol}{%\small%
-        \begin{trivlist} \item \textbf{Solución}. }{%
-            \hspace*{\fill}\end{trivlist}}%
+  \begin{trivlist} \item \textbf{Solución}. }{%
+    \hspace*{\fill}\end{trivlist}}%
+\newenvironment{demostracion}{%
+  \par\vspace{5pt}\noindent
+  {\textbf{Demostración:} \vspace{10pt}}%
+  \hrulefill\par\vspace{10pt}\noindent\rmfamily
+}{\hspace*{\fill}$\qedsymbol$\par\noindent\hrulefill\vrule width10pt height2pt depth2pt\par }

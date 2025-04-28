@@ -1,0 +1,400 @@
+\section{Derivada de Lie}
+La derivada de Lie es una operación que mide cómo un campo vectorial $B$ actúa sobre otro campo vectorial $A$. En términos más simples, la derivada de Lie nos dice cómo cambia el campo vectorial $A$ a lo largo de las trayectorias definidas por el campo vectorial $B$. Este cambio es invariante bajo coordenadas, y por lo tanto, la derivada de Lie está definida en cualquier variedad diferenciable.
+La derivada de Lie puede definirse de varias maneras equivalentes en este trabajo solo veré algunas de ellas, solo con las que son necesarias para el desarrollo de la teoría de agujeros negros.
+
+Para un campo tensorial, la derivada de Lie es la velocidad con la que el campo tensorial cambia bajo la deformación del espacio causada por el flujo.
+
+La definición algebraica de la derivada de Lie de un campo tensorial se basa en los siguientes cuatro axiomas:
+
+\begin{axiom}\label{ax:Lie1}
+    La derivada de Lie de una función es igual a la derivada direccional de la función. Este hecho a menudo se expresa con la fórmula
+
+    $$
+        \mathcal{L}_Y f=Y(f).
+    $$
+    \begin{equation}
+        \mathscr{L}_A f\left(x^\alpha\right)=A^\alpha \partial_\alpha f
+    \end{equation}
+
+\end{axiom}
+
+\begin{axiom}\label{ax:Lie2}
+    La derivada de Lie obedece la siguiente versión de la regla de Leibniz: Para cualquier par de campos tensoriales $S$ y $T$, tenemos
+
+    $$
+        \mathcal{L}_Y(S \otimes T)=\left(\mathcal{L}_Y S\right) \otimes T+S \otimes\left(\mathcal{L}_Y T\right).
+    $$
+\end{axiom}
+
+\begin{axiom}\label{ax:Lie3}
+    La derivada de Lie obedece la regla de Leibniz con respecto a la contracción:
+
+    $$
+        \mathcal{L}_X\left(T\left(Y_1, \ldots, Y_n\right)\right)=\left(\mathcal{L}_X T\right)\left(Y_1, \ldots, Y_n\right)+T\left(\left(\mathcal{L}_X Y_1\right), \ldots, Y_n\right)+\cdots+T\left(Y_1, \ldots,\left(\mathcal{L}_X Y_n\right)\right).
+    $$
+\end{axiom}
+
+\begin{axiom}\label{ax:Lie4}
+    La derivada de Lie conmuta con la derivada exterior en funciones:
+
+    $$
+        \left[\mathcal{L}_X, d\right]=0.
+    $$
+\end{axiom}
+
+\noindent La primera forma y la más genérica para dos campos vectoriales
+\begin{equation}
+    \mathscr{L}_B A^\alpha := B^\beta \frac{\partial A^\alpha}{\partial x^\beta}-A^\beta \frac{\partial B^\alpha}{\partial x^\beta}.
+\end{equation}
+Si se observa esta definición esta hecha con derivadas parciales, pero es util representarla con derivadas covariantes remplazando las parciales la cual es una expresión util para expresar la derivada de Lie un función de derivadas covariantes.
+\begin{equation}
+    \boxed{\mathscr{L}_B A^\alpha = B^\beta \nabla_\beta A^\alpha  - A^\beta \nabla_\beta B^\alpha }
+\end{equation}
+\begin{proof}[Demostración:]
+    Empezamos escribiendo las derivadas covariantes de los vectores $A$ y $B$ multiplicadas por su contraparte
+    \begin{align*}
+        \nabla_\beta B^\alpha & =\partial_\beta B^\alpha+\Gamma_{\beta \gamma}^\alpha B^\gamma ,\\
+        \nabla_\beta A^\alpha & =\partial_\beta A^\alpha+\Gamma_{\beta \gamma}^\alpha A^\gamma .\\
+        A^\beta \nabla_\beta B^\alpha & =A^\beta \partial_\beta B^\alpha+\Gamma_{\beta \gamma}^\alpha A^\beta B^\gamma  \\,
+        B^\beta \nabla_\beta A^\alpha & =B^\beta \partial_\beta A^\alpha+\Gamma_{\beta \gamma}^\alpha B^\beta A^\gamma.
+    \end{align*}
+    Sacamos la diferencia entre estas dos expresiones
+    \begin{equation}
+        \begin{aligned}
+            B^\beta \nabla_\beta A^\alpha  - A^\beta \nabla_\beta B^\alpha & = B^\beta \partial_\beta A^\alpha+\Gamma_{\beta \gamma}^\alpha B^\beta A^\gamma- (A^\beta \partial_\beta B^\alpha+\Gamma_{\beta \gamma}^\alpha A^\beta B^\gamma )   \\
+                                                                           & = B^\beta \partial_\beta A^\alpha - A^\beta \partial_\beta B^\alpha+\Gamma_{\beta \gamma}^\alpha  B^\beta A^\gamma -\Gamma_{ \gamma \beta}^\alpha A^\gamma  B^\beta \\
+                                                                           & =B^\beta \partial_\beta A^\alpha - A^\beta \partial_\beta B^\alpha                                                                                                  \\
+                                                                           & = \mathscr{L}_B A^\alpha .                                                                                                                                          \\
+        \end{aligned}
+    \end{equation}
+\end{proof}
+
+\noindent De memento la derivada solo la definimos para un vector contravariante $A^\alpha$, pero podemos extenderla a uno covariante
+\begin{equation}
+    \boxed{\mathscr{L}_u B_\alpha=B_\beta \partial_\alpha u^\beta+u^\mu \partial_\mu B_\alpha .}
+\end{equation}
+\begin{proof}[Demostración:]
+    Usando la  ``regla de Leibniz'' para la derivada de Lie del axioma \ref{ax:Lie2}
+    \begin{equation}
+        \mathscr{L}_u\left(A^\alpha B_\alpha\right)=\left(\mathscr{L}_u A^\alpha\right) B_{\alpha} + A^\alpha \left(\mathscr{L}_u B_\alpha\right)
+    \end{equation}
+    y con el uso del axioma \ref{ax:Lie1} y el hecho de que $A^\alpha B_\alpha$ tine que ser igual a un numero que en general depende del punto, es decir una función de la posición.
+
+    \begin{equation}
+        \mathscr{L}_u\left(A^\alpha B_\alpha\right)=\left(\mathscr{L}_u A^\alpha\right) B_\alpha+A^\alpha\left(\mathscr{L}_u B_\alpha\right)=u^\mu \partial_\mu\left(A^\alpha B_\alpha\right).
+    \end{equation}
+    Desarrollando
+    \begin{align*}
+        \left(u^\beta \partial_\beta A^\alpha-A^\beta \partial_\beta u^\alpha\right) B_\alpha+A^\alpha \mathscr{L}_u B_\alpha=u^\mu\left(\partial_\mu A^\alpha\right) B_\alpha+u^\mu A^\alpha (\partial_\mu B_\alpha ),\\
+        \left(u^\beta \partial_\mu A^\alpha\right) B_\alpha-A^\beta\left(\partial_\mu u^\alpha\right) B_\alpha+A^\alpha \mathscr{L}_u B_\alpha=u^\mu B_\alpha \partial_\mu A^\alpha+u^\mu A^\alpha \partial_\mu B_\alpha,
+    \end{align*}
+    \begin{align*}
+        A^\alpha \mathscr{L}_u B_\alpha   & =  u^\mu B_\alpha \partial_\mu A^\alpha+u^\mu A^\alpha \partial_\mu B_\alpha  - \left(u^\beta \partial_\mu A^\alpha\right) B_\alpha + A^\beta\left(\partial_\mu u^\alpha\right) B_\alpha \\
+        & = B_\alpha A^\beta \partial_\beta u^\alpha+u^\mu A^\alpha \partial_\mu B_\alpha\\
+        & = A^\alpha\left(B_\beta \partial_\alpha u^\beta+u^\mu \partial_\mu B_\alpha\right).\\
+    \end{align*}
+    Finalmente
+    \begin{equation}
+        \mathscr{L}_u B_\alpha  = B_\beta \partial_\alpha u^\beta+u^\mu \partial_\mu B_\alpha.
+    \end{equation}
+\end{proof}
+
+
+
+\noindent De manera similar a la anterior definición de la derivada de Lie para un vector contravariante, podemos expresar la derivada de lie de un tensor covariante en términos de la derivada covariante \footnote{No estoy diciendo que la derivada parcial sea igual a la covariante, sino que combinaciones de derivadas parciales son equivalentes a combinaciones de derivadas covariantes.}.
+\begin{equation}
+    \boxed{\mathscr{L}_u B_\alpha=B_\beta \v{\nabla}_\alpha u^\beta+u^\mu \v{\nabla}_\mu B_\alpha}.
+\end{equation}
+
+
+\noindent Por ultimo la derivada de un tensor $\T{T}^{\mu \nu} \v{e_\mu} \otimes \v{e_\nu}$, es 
+\begin{equation}
+    \boxed{\mathscr{L}_u \T{T}^{\mu \nu} = u^\beta \partial_\beta T^{\mu \nu}   -  \T{T}^{\alpha \nu} \partial_\alpha u^\mu  -\T{T}^{\mu \alpha} \partial_\alpha u^\nu}.
+\end{equation}
+
+\begin{proof}
+    A partir del axioma \ref{ax:Lie2}
+\begin{equation}
+    \mathscr{L}_u \left( \T{T}^{\mu \nu} \v{e_\mu} \otimes \v{e_\nu} \right) = \mathscr{L}_u(\T{T}^{\mu \nu}) \v{e_\mu} \otimes \v{e_\nu} + \T{T}^{\mu \nu} \mathscr{L}_u \left( \v{e_\mu} \otimes \v{e_\nu} \right).
+\end{equation}
+Primero nos ocupamos de la parte de la derivada de Lie de la base.
+Las componentes de la base las representare como $\v{e_\alpha} = \delta^\mu_\alpha \v{e_\mu} $,
+
+
+\begin{equation}
+    \begin{aligned}
+        \mathscr{L}_u (\delta^\mu_\alpha \v{e_\mu})& = \mathscr{L}_u (\delta^\alpha_\nu) \v{e_\alpha} \\
+        &= \left( u^\beta \partial_\beta \delta^\alpha_\nu - \delta^\beta_\nu \partial_\beta u^\alpha \right) \v{e_\alpha} \\
+        &= \left(  - \delta^\beta_\nu \partial_\beta u^\alpha \right) \v{e_\alpha}                                         \\
+        &   = - (\partial_\nu u^\alpha) \v{e_\alpha}   .                                                                           \\
+    \end{aligned}
+\end{equation}
+Con la regla de Leibniz
+\begin{equation}
+    \begin{aligned}
+        \mathscr{L}_u (\v{e_\mu} \otimes \v{e_\nu}) & = \mathscr{L}_u (\v{e_\mu}) \otimes  \v{e_\nu} + \v{e_\nu}\otimes\mathscr{L}_u (\v{e_\nu})                                                     \\
+                                                    & = \left( - \partial_\mu u^\alpha \v{e_\alpha} \right) \otimes  \v{e_\nu} + \v{e_\mu}\otimes\left( - \partial_\nu u^\alpha \v{e_\alpha} \right) \\
+                                                    & = - \partial_\mu u^\alpha \v{e_\alpha} \otimes  \v{e_\nu} - \partial_\nu u^\alpha \v{e_\mu}\otimes\v{e_\alpha}      .                           \\
+    \end{aligned}
+\end{equation}
+Ahora nos ocupamos de la parte de la derivada de Lie del tensor, sabemos que en si el componente $T^{\mu \nu}$ de un tensor es una función de las coordenadas, y su derivada de Lie es $\mathscr{L}_u T^{\mu \nu} = u^\beta \partial_\beta T^{\mu \nu} $.
+
+Finalmente todo el conjunto
+\begin{equation}
+    \begin{aligned}
+        \mathscr{L}_u \left( \T{T}^{\mu \nu} \v{e_\mu} \otimes \v{e_\nu} \right) & = \mathscr{L}_u(\T{T}^{\mu \nu}) \v{e_\mu} \otimes \v{e_\nu} + \T{T}^{\mu \nu} \mathscr{L}_u \left( \v{e_\mu} \otimes \v{e_\nu} \right)                                                                                                                                                                \\
+                                                                                 & = u^\beta \partial_\beta T^{\mu \nu}  \v{e_\mu} \otimes \v{e_\nu}  - \T{T}^{\mu \nu}( \partial_\mu u^\alpha \v{e_\alpha} \otimes  \v{e_\nu} +\partial_\nu u^\alpha \v{e_\mu}\otimes\v{e_\alpha} )                                                                                                      \\
+                                                                                 & = u^\beta \partial_\beta T^{\mu \nu}  \v{e_\mu} \otimes \v{e_\nu}  - ( \underbrace{\T{T}^{\mu \nu} \partial_\mu u^\alpha \v{e_\alpha} \otimes  \v{e_\nu} }_{\alpha \leftrightarrow \mu}+\underbrace{\T{T}^{\mu \nu} \partial_\nu u^\alpha \v{e_\mu}\otimes\v{e_\alpha} }_{\alpha \leftrightarrow \nu}) \\
+                                                                                 & = u^\beta \partial_\beta T^{\mu \nu}  \v{e_\mu} \otimes \v{e_\nu}  - ( \T{T}^{\alpha \nu} \partial_\alpha u^\mu \v{e_\mu} \otimes  \v{e_\nu} +\T{T}^{\mu \alpha} \partial_\alpha u^\nu \v{e_\mu}\otimes\v{e_\nu} )                                                                                     \\
+                                                                                 & = (u^\beta \partial_\beta T^{\mu \nu}   -  \T{T}^{\alpha \nu} \partial_\alpha u^\mu  -\T{T}^{\mu \alpha} \partial_\alpha u^\nu  )\v{e_\mu}\otimes\v{e_\nu},
+    \end{aligned}
+\end{equation}
+de manera que  podemos hacer la siguiente identificación
+\begin{equation}
+  \mathscr{L}_u \T{T}^{\mu \nu} = u^\beta \partial_\beta T^{\mu \nu}   -  \T{T}^{\alpha \nu} \partial_\alpha u^\mu  -\T{T}^{\mu \alpha} \partial_\alpha u^\nu.
+\end{equation}
+\end{proof}
+
+\noindent Haciendo el mismo procedimiento prácticamente igual  para la derivada un tensor covariante 
+\begin{equation}
+    \boxed{\mathscr{L}_u \T{T}_{\mu \nu} = u^\beta \partial_\beta T_{\mu \nu}   +  \T{T}_{\mu \beta } \partial_\nu u^\beta  + \T{T}_{ \beta \nu} \partial_\mu u^\beta.}
+\end{equation}
+De manera similar a la anterior definición de la derivada de Lie para un vector contravariante, podemos expresar la derivada de lie de un tensor covariante en términos de la derivada covariante 
+
+\begin{equation}
+    \boxed{\mathscr{L}_u \T{T}_{\mu \nu} = u^\beta \v{\nabla}_\beta \T{T}_{\mu \nu}+\T{T}_{\beta \nu}\v{\nabla}_\mu u^\beta +\T{T}_{\mu \beta } \v{\nabla}_\nu u^\beta}.
+\end{equation}
+
+\begin{proof}
+  
+ La derivada covariante de un tensor (0,2) multiplicada por un vector $u^\beta$ es
+ \begin{equation}
+     u^\beta \v{\nabla}_\beta \T{T}_{\mu \nu} = u^\beta \partial_\beta T_{\mu \nu} - u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu} - u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha},
+ \end{equation},
+ y la derivada covariante de un vector $u^\beta$ 
+ \begin{equation}
+     \v{\nabla}_\mu u^\beta =  \partial_\mu u^\beta + \Gamma^\beta_{\mu \gamma} u^\gamma,
+ \end{equation}
+ multiplicado por el tensor $\T{T}_{\beta \nu}$ es
+ \begin{equation}
+     \T{T}_{\beta \nu}\v{\nabla}_\mu u^\beta =  \T{T}_{\beta \nu}\partial_\mu u^\beta +\T{T}_{\beta \nu}\Gamma^\beta_{\mu \gamma} u^\gamma.
+ \end{equation}
+ Tal que reacomodando los términos de las ecuaciones anteriores podemos escribir
+ \begin{equation}
+     \begin{aligned}
+         u^\beta \partial_\beta T_{\mu \nu}      & = u^\beta \v{\nabla}_\beta \T{T}_{\mu \nu} +u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu} + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}, \\
+         \T{T}_{\beta \nu}\partial_\mu u^\beta   & = \T{T}_{\beta \nu}\v{\nabla}_\mu u^\beta - \T{T}_{\beta \nu}\Gamma^\beta_{\mu \gamma} u^\gamma                                                 , \\
+         \T{T}_{\mu \beta } \partial_\nu u^\beta & = \T{T}_{\mu \beta } \v{\nabla}_\nu u^\beta -  \T{T}_{\mu \beta } \Gamma^\beta_{\nu \gamma} u^\gamma.
+     \end{aligned}
+ \end{equation}
+ Podemos reconstruir la derivada de Lie de un tensor (0,2) como
+ \begin{equation}
+     \begin{aligned}
+         \mathscr{L}_u \T{T}_{\mu \nu} & = u^\beta \v{\nabla}_\beta \T{T}_{\mu \nu} +u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu} + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha} + \T{T}_{\beta \nu}\v{\nabla}_\mu u^\beta \\
+         & \qquad  - \T{T}_{\beta \nu}\Gamma^\beta_{\mu \gamma} u^\gamma +\T{T}_{\mu \beta } \v{\nabla}_\nu u^\beta -  \T{T}_{\mu \beta } \Gamma^\beta_{\nu \gamma} u^\gamma \\
+                                       & = u^\beta \v{\nabla}_\beta \T{T}_{\mu \nu}+\T{T}_{\beta \nu}\v{\nabla}_\mu u^\beta +\T{T}_{\mu \beta } \v{\nabla}_\nu u^\beta +  \\
+         &\qquad u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu} + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}- \T{T}_{\beta \nu}\Gamma^\beta_{\mu \gamma} u^\gamma  -  \T{T}_{\mu \beta } \Gamma^\beta_{\nu \gamma} u^\gamma                                                                                                                                                                \\
+                                       & = u^\beta \v{\nabla}_\beta \T{T}_{\mu \nu}+\T{T}_{\beta \nu}\v{\nabla}_\mu u^\beta +\T{T}_{\mu \beta } \v{\nabla}_\nu u^\beta +                                                                                        \\
+        & \qquad u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu}- \underbrace{u^\gamma\Gamma^\beta_{\mu \gamma}\T{T}_{\beta \nu}}_{\begin{array}{l}
+                                                                                                                                    \gamma \rightarrow \beta \\
+                                                                                                                                    \beta \rightarrow \alpha
+                                                                                                                                \end{array}}  + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}- \underbrace{u^\gamma \Gamma^\beta_{\nu \gamma}\T{T}_{\mu \beta }}_{\begin{array}{l}
+                                                                                                                                                                                                                                                                         \gamma \rightarrow \beta \\
+                                                                                                                                                                                                                                                                         \beta \rightarrow \alpha
+                                                                                                                                                                                                                                                                     \end{array}}                                                                                                  \\
+                                       & =  u^\beta \v{\nabla}_\beta \T{T}_{\mu \nu}+\T{T}_{\beta \nu}\v{\nabla}_\mu u^\beta +\T{T}_{\mu \beta } \v{\nabla}_\nu u^\beta +                                                                                                                                                                                                                  \\
+        &\qquad u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu}-u^\beta \Gamma^\alpha_{\mu \beta}\T{T}_{\alpha \nu} + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}- u^\beta \Gamma^\alpha_{\nu \beta}\T{T}_{\mu \alpha }                                                                                                                                                                     \\
+                                       & = u^\beta \v{\nabla}_\beta \T{T}_{\mu \nu}+\T{T}_{\beta \nu}\v{\nabla}_\mu u^\beta +\T{T}_{\mu \beta } \v{\nabla}_\nu u^\beta.
+     \end{aligned}
+ \end{equation}
+\end{proof}
+\noindent Asi mismo la derivada de Lie de un tensor (2,0) se puede expresar como
+\begin{equation}
+    \mathscr{L}_u \T{T}^{\mu \nu} = u^\beta \v{\nabla}_\beta \T{T}^{\mu \nu}-\T{T}^{\beta \nu}\v{\nabla}_\beta u^\mu - \T{T}^{\mu \beta } \v{\nabla}_\beta u^\nu.
+\end{equation}
+Como recopilatorio de esta sección sobre la derivada de Lie
+\begin{definition}{Derivada de Lie}{}
+    La derivada de Lie de un campo vectorial $A^\alpha$ a lo largo de otro campo vectorial $B^\beta$ es
+    \begin{equation}
+        \mathscr{L}_B A^\alpha := B^\beta \frac{\partial A^\alpha}{\partial x^\beta}-A^\beta \frac{\partial B^\alpha}{\partial x^\beta}.
+    \end{equation}
+    \begin{equation}
+        \boxed{\mathscr{L}_B A^\alpha = B^\beta \nabla_\beta A^\alpha  - A^\beta \nabla_\beta B^\alpha }
+    \end{equation}
+    \begin{equation}
+        \boxed{\mathscr{L}_u B_\alpha=B_\beta \partial_\alpha u^\beta+u^\mu \partial_\mu B_\alpha .}
+    \end{equation}
+    \begin{equation}
+        \boxed{\mathscr{L}_u B_\alpha=B_\beta \v{\nabla}_\alpha u^\beta+u^\mu \v{\nabla}_\mu B_\alpha}.
+    \end{equation}
+    y la de un tensor
+    \begin{equation}
+        \boxed{\mathscr{L}_u \T{T}^{\mu \nu} = u^\beta \partial_\beta T^{\mu \nu}   -  \T{T}^{\alpha \nu} \partial_\alpha u^\mu  -\T{T}^{\mu \alpha} \partial_\alpha u^\nu}.
+    \end{equation}
+    \begin{equation}
+        \boxed{\mathscr{L}_u \T{T}_{\mu \nu} = u^\beta \partial_\beta T_{\mu \nu}   +  \T{T}_{\mu \beta } \partial_\nu u^\beta  + \T{T}_{ \beta \nu} \partial_\mu u^\beta}.
+    \end{equation}
+    \begin{equation}
+        \boxed{\mathscr{L}_u \T{T}_{\mu \nu} = u^\beta \v{\nabla}_\beta \T{T}_{\mu \nu}+\T{T}_{\beta \nu}\v{\nabla}_\mu u^\beta +\T{T}_{\mu \beta } \v{\nabla}_\nu u^\beta}.
+    \end{equation}
+    \begin{equation}
+        \mathscr{L}_u \T{T}^{\mu \nu} = u^\beta \v{\nabla}_\beta \T{T}^{\mu \nu}-\T{T}^{\beta \nu}\v{\nabla}_\beta u^\mu - \T{T}^{\mu \beta } \v{\nabla}_\beta u^\nu.
+    \end{equation}
+\end{definition}
+
+
+\section{Vectores de Killing}
+\noindent Los vectores de Killing se definen a partir de la derivada de Lie de la métrica
+\begin{equation}
+    \mathscr{L}_u \T{g}_{\mu \nu} =0
+\end{equation}
+es conocida como la ecuación de killing, lo que representa esta ecuación es buscar vectores que no cambian la métrica, es decir, que la métrica no cambia al movernos a lo largo de las trayectorias definidas por el vector $u^\beta$.
+por mera notación estos vectores de killing los representare con $\xi ^\beta$ para identificarlos fácilmente,
+\begin{equation}
+    \mathscr{L}_\xi \T{g}_{\mu \nu} =0.
+\end{equation}
+Aquí es donde podemos observar la ventaja de usar la derivada de Lie con derivadas covariantes, ya que podemos aprovechar la compatibilidad de la métrica
+\begin{equation}
+    \begin{aligned}
+        \mathscr{L}_\xi \T{g}_{\mu \nu} &= \xi^\beta \v{\nabla}_\beta \T{g}_{\mu \nu} +\T{g}_{\beta \nu}\v{\nabla}_\mu \xi^\beta +\T{g}_{\mu \beta } \v{\nabla}_\nu \xi^\beta \\
+        &= \T{g}_{\beta \nu}\v{\nabla}_\mu \xi^\beta +\T{g}_{\mu \beta } \v{\nabla}_\nu \xi^\beta                                                                             \\
+        &= \v{\nabla}_\mu (\T{g}_{\beta \nu} \xi^\beta) + \v{\nabla}_\nu (\T{g}_{\mu \beta } \xi^\beta)                                                                       \\
+        &= \v{\nabla}_\mu  \xi_\nu + \v{\nabla}_\nu \xi_\mu\\
+        & =0             \\
+    \end{aligned}
+\end{equation}
+\begin{definition}{Vectores de killing}{}
+    Los vectores de Killing son aquellos que satisfacen la ecuación
+    \begin{equation}
+        \mathscr{L}_\xi g_{\mu \nu} =0   \Longleftrightarrow   \v{\nabla}_\mu  \xi_\nu + \v{\nabla}_\nu \xi_\mu
+        =0      .
+        \label{eq:killing}
+    \end{equation}
+    Representan simetrías del espacio-tiempo, es decir, son vectores que no cambian la métrica al moverse a lo largo de las trayectorias definidas por el vector $\v{\xi}$.
+    
+\end{definition}
+\begin{note}
+    La ecuación de Killing es una ecuación diferencial parcial de segundo orden, por lo que en general tiene $n(n+1)/2$ soluciones independientes, donde $n$ es la dimensión del espacio-tiempo.
+\end{note}
+Encontrar los vectores de Killing implica resolver la ecuación (\ref{eq:killing}), para una métrica dada este es un procedimiento tedioso, pero en general se puede hacer, a continuación se muestran los vectores de killing para el espacio-tiempo de Minkowski, el cual es el espacio-tiempo plano.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c|l}
+\hline
+\textbf{Vector de Killing} & \textbf{Interpretación} \\ \hline
+$\v{\xi}=e_1$ & Traslación en $x$ \\ \hline
+$\v{\xi}=e_2$ & Traslación en $y$ \\ \hline
+$\v{\xi}=e_3$ & Traslación en $z$ \\ \hline
+$\v{\xi}=x e_2-y e_1$ & Rotación en torno al eje $z$ \\ \hline
+$\v{\xi}=y e_3-z e_2$ & Rotación en torno al eje $x$ \\ \hline
+$\v{\xi}=z e_1-x e_3$ & Rotación en torno al eje $y$ \\ \hline
+$\v{\xi}=e_0$ & Traslación en el tiempo \\ \hline
+$\v{\xi}=x e_0+c t e_1$ & Boost en $x$ \\ \hline
+$\v{\xi}=y e_0+c t e_2$ & Boost en $y$ \\ \hline
+$\v{\xi}=z e_0+c t e_3$ & Boost en $z$ \\ \hline
+\end{tabular}
+\caption{Vectores de Killing de Minkowski}
+\end{table}
+
+\subsection{Vectores de Killing y cantidades conservadas}
+Consideremos una partícula masiva que se mueve a lo largo de una geodésica en un espacio-tiempo que admite un vector de Killing $\vec{\xi}$. Las ecuaciones de la geodésica, escritas en términos de la cuatro-velocidad de la partícula $\vec{U}=\frac{d x^\alpha}{d \tau}$, son
+
+\begin{equation}
+\frac{d U^\alpha}{d \tau}+\Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu=0
+\label{eq:geodesicaU}
+\end{equation}
+Si contraemos esta ecuación con el vector de Killing $\xi_\alpha$, obtenemos
+
+\begin{equation}
+\begin{aligned}
+    \xi_\alpha\left[\frac{d U^\alpha}{d \tau}+\Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu\right] & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau}-U^\alpha \frac{d \xi_\alpha}{d \tau}+\Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu \xi_\alpha \\
+    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta \frac{\partial \xi_\beta}{\partial x^\nu} \frac{d x^\nu}{d \tau} + \Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu \xi_\alpha \\
+    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \frac{\partial \xi_\beta}{\partial x^\nu} + \Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu \xi_\alpha\\
+    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \left[ \frac{\partial \xi_\beta}{\partial x^\nu} - \Gamma^\alpha{ }_{\beta \nu}  \xi_\alpha \right]\\ 
+    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \v{\nabla}_\nu \xi_\beta \\
+\end{aligned}    
+\end{equation}
+Dado que $\v{\nabla}_\nu \xi_\beta $ es simétrico bajo lo indices inferiores, podemos tratar este objeto como los componentes simétricos de un tensor (0,2) y escribirlo como
+\[
+    \v{\nabla}_\nu \xi_\beta = \frac{1}{2} \left( \v{\nabla}_\nu \xi_\beta + \v{\nabla}_\beta \xi_\nu \right).
+\]
+Y ademas usando la ecuación de Killing (\ref{eq:killing}) 
+\begin{equation}
+\begin{aligned}
+    \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \v{\nabla}_\nu \xi_\beta & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - \frac{1}{2}U^\beta U^\nu  \left( \v{\nabla}_\nu \xi_\beta + \v{\nabla}_\beta \xi_\nu \right)\\
+    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - \frac{1}{2}U^\beta U^\nu \mathscr{L}_\xi g_{\beta \nu} \\
+    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau}.
+\end{aligned}    
+\end{equation}
+Dado que \ref{eq:geodesicaU} es $0$ su contracción con $\xi_\alpha$ también es $0$, por lo que podemos escribir
+\begin{equation}
+    \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} = 0.
+\end{equation}
+
+De maneta que la cantidad $\xi_\alpha U^\alpha$ es constante a lo largo de la geodésica, es decir, es una cantidad conservada.
+Como ejemplo tomemos el caso del vector de killing $\v{\xi} = \v{e}_0$($\xi^0 =1$) en el espacio-tiempo de Minkowski, que representa la traslación temporal. 
+\begin{equation}
+    \begin{aligned}
+        \xi_0 U^\alpha & = \eta_{0 \beta} \xi^0 U^\beta \\
+        & = \eta_{0 0 } U^0 \\
+        & = U^0 = \text{cte.} \\
+    \end{aligned}
+\end{equation} 
+Dado que en el espacio-tiempo plano el vector energía-momento de una partícula masiva es $p^\alpha=m c U^\alpha=$ $\left\{E / c, m v^i \gamma\right\}$, la ecuación anterior se convierte en
+\[
+    \frac{E}{c}=\text{constante}.
+\]
+
+
+\subsection{Simetrías }
+Con los  vectores de killing podemos identificar e imponer simetrías en el espacio-tiempo,
+Supongamos que tienes un vector de Killing temporal
+
+\begin{equation}
+    \xi^a=(1,0,0,0),   
+\end{equation}
+(lo cual equivale a decir que $\v{e}_0$ es un vector de Killing).
+Ahora, debe cumplirse la ecuación de Killing:
+
+\begin{equation}
+    \nabla_a \xi_b+\nabla_b \xi_a=0.
+\end{equation}
+Como $\xi^a=\delta_0^a$ (solo tiene componente temporal), las derivadas relevantes son las que involucran componentes con $t$.
+
+Desarrollando un término:
+
+\begin{equation}
+    \nabla_a \xi_b=\partial_a \xi_b-\Gamma_{a b}^c \xi_c.
+\end{equation}
+Pero como $\xi^c$ solo tiene componente temporal ( $\xi^0=1$ ), esto se reduce a:
+
+\begin{equation}
+    \nabla_a \xi_b=-\Gamma_{a b}^0   . 
+\end{equation}
+Entonces, la ecuación de Killing dice:
+
+\begin{equation}
+    \Gamma_{a b}^0+\Gamma_{b a}^0=0   . 
+\end{equation}
+Es decir, el símbolo de Christoffel con índice superior 0 debe ser antisimétrico en los índices $a, b$.
+Como los Christoffel dependen de derivadas de la métrica:
+\begin{equation}
+    \Gamma_{a b}^0=\frac{1}{2} g^{0 c}\left(\pdi{a} g_{b 0}+\pdi{b} g_{a 0}-\pdi{0} g_{a b}\right).
+\end{equation}
+Para que sean antisimétricos en $a, b$ :
+\begin{equation}
+\begin{aligned}
+    \Gamma^0{}_{a b} & =-\Gamma^0{}_{b a} \\
+    \frac{1}{2} g^{0 c}\left(\pdi{a} g_{b 0}+\pdi{b} g_{a 0}-\pdi{0} g_{a b}\right) & = - \left( \frac{1}{2} g^{0 c}\left(\pdi{b} g_{a 0}+\pdi{a} g_{b 0}-\pdi{0} g_{b a }\right)\right) \\
+    \pdi{0} g_{a b}& = -\pdi{0} g_{b a }, \\
+\end{aligned}    
+\end{equation}
+las derivadas respecto al tiempo deben desaparecer, las componentes de la métrica no dependen del tiempo.
+\begin{equation}
+    \partial_t g_{\mu \nu}=0    
+\end{equation}
+para todas las $\mu, \nu$.
+\begin{note}
+Esto se repite si imponemos un vector de killing unitario en alguna de las direcciones de la base, por ejemplo $\xi^a=(0,1,0,0)$, lo que implica que la métrica no depende de la coordenada $x$ en el caso de que trabajemos con coordenadas cartesianas. 
+\end{note}

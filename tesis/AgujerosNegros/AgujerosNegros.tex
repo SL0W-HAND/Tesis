@@ -1,6 +1,6 @@
 \chapter{Agujeros Negros}
 
-Las ecuaciones de Einstein son la teoría moderna por la cual describimos la gravedad 
+Las ecuaciones de Einstein son la teoría moderna por la cual describimos la gravedad
 \begin{equation}
     R_{\mu \nu}-\frac{1}{2} R g_{\mu \nu}-\Lambda g_{\mu \nu} = \frac{8 \pi G}{c^4} T_{\mu \nu},
     \label{EinsteinFieldEquations}
@@ -20,19 +20,8 @@ De manera genérica las ecuaciones de campo son un sistema de 16 ecuaciones parc
 \end{itemize}
 Este capítulo se partirá de la métrica de Schwarzschild, ya que esta es la solución base para el desarrollo de conceptos más avanzados, ademas de que representa la forma que debe alcanzarse en cierto limite de las otras soluciones.
 
-\section{Vectores de Killing}
-\label{sec:vectoresKilling}
-
-
-\begin{definition}{Definición de vector de Killing}{}
-      \begin{equation}
-        \nabla_\mu K_\nu + \nabla_\nu K_\mu = 0
-      \end{equation}
-\end{definition}
-
-Los vectores de Killing son un tipo especial de campo vectorial que se asocian a simetrías en la geometría del espacio-tiempo. En el contexto de la relatividad general, un vector de Killing es un campo vectorial $K^\mu$ que satisface la ecuación de Killing:
-
-
+Se partirá de algunas definiciones necesarias para  para simetrías en el espacio-tiempo,
+\input{AgujerosNegros/DerivadaLieVectoresKilling.tex}
 \input{AgujerosNegros/Schwarzschild/Schwarzschild.tex}
 \input{AgujerosNegros/kerr/Kerr.tex}
 \input{AgujerosNegros/DiagramasDePenrose/DiagramasDePenrose.tex}
@@ -41,6 +30,6 @@ Los vectores de Killing son un tipo especial de campo vectorial que se asocian a
 \printbibliography[keyword={BlackHoles},heading=subbibliography]
 
 \begin{task}{Latex}{}
-Cambiar el titulo de referencias a referencias del capitulo    
+    Cambiar el titulo de referencias a referencias del capitulo
 \end{task}
 \nocite{*}
