@@ -610,7 +610,26 @@ El algoritmo se puede resumir en 5 pasos:
           \end{equation}
 
           mediante esta transformación, de forma genérica podemos efectuar la de las tetradas $m^\mu = \tilde{m}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}$ y $l^\mu = \tilde{l}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}$:
-
+          \begin{note}
+            Las derivadas parciales $\pd{x^\mu}{\tilde{x}^\nu}$ las tomamos a partir de las transformaciones inversas:
+            $$\begin{aligned} u & =\tilde{u}-i a \cos \tilde{\theta} \\ r & =\tilde{r}+i a \cos \tilde{\theta} \\ \theta & =\tilde{\theta} \\ \phi & =\tilde{\phi}\end{aligned}$$
+            y la matriz jacobiana de la transformación es:
+            \begin{equation}
+               \left(\pd{x^\mu}{\tilde{x}^\nu}\right) =\left(\begin{array}{cccc}
+                1 & 0 & +i a \sin \theta & 0\\
+                0 & 1 & -i a \sin \theta & 0\\
+                0 & 0 & 1 & 0\\
+                0 & 0 & 0& 1
+                \end{array}\right)
+                \end{equation}
+                Lo cual nos da que:
+                \begin{align*}
+                \pd{x^\mu}{\tilde{x}^0}&= \delta^\mu_0\\
+                \pd{x^\mu}{\tilde{x}^1}&= \delta^\mu_1\\
+                \pd{x^\mu}{\tilde{x}^2}&= ia (\delta^\mu_0 - \delta^\mu_1)\sin \theta + \delta^\mu_2\\
+                \pd{x^\mu}{\tilde{x}^3}&=\delta^\mu_3
+                \end{align*}
+          \end{note}
           \begin{equation}
               \begin{aligned}
                   l^\mu & = \tilde{l}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}                                                                                                                                                                           \\
@@ -635,8 +654,7 @@ El algoritmo se puede resumir en 5 pasos:
 
           \begin{equation}
               \begin{aligned}
-                  l^\mu & = \delta_1^\mu                                                                                                                                           \\
-                  n^\mu & = e^{-\lambda(r, \theta) - \phi(r, \theta)} \delta_0^\mu - \frac{1}{2} e^{-2 \lambda(r, \theta)} \delta_1^\mu                                            \\
+                  l^\mu & = \delta_1^\mu     \\
                   m^\mu & = \frac{1}{\sqrt{2}(r + ia \cos \theta)} \left[ ia \sin \theta (\delta_0^\mu - \delta_1^\mu) + \delta_2^\mu + \frac{i}{\sin \theta} \delta_3^\mu \right]
               \end{aligned}
           \end{equation}
@@ -655,7 +673,7 @@ El algoritmo se puede resumir en 5 pasos:
 \subsection{Aplicación a la métrica de Schwarzschild}
 La métrica de Schwarzschild en coordenadas avanzadas de Eddington-Finkelstein es:
 \begin{equation}
-    ds^2=\left(1-\frac{2 M}{r}\right) d u^2+2 d u d r-r^2\left(d \theta^2+\sin ^2 \theta d \phi^2\right) .
+    ds^2=\left(1-\frac{2 m}{r}\right) d u^2+2 d u d r-r^2\left(d \theta^2+\sin ^2 \theta d \phi^2\right) .
 \end{equation}
 
 El "seed metric" propuesto es
@@ -668,7 +686,7 @@ Comparando término a término con la métrica obtenida:
 Tenemos
 
 \begin{equation}
-    e^{2 \Phi(r)}=1-\frac{2 M}{r}
+    e^{2 \Phi(r)}=1-\frac{2 m}{r}
 \end{equation}
 
 lo que implica
@@ -694,7 +712,40 @@ Despejando para $\lambda(r)$,
         =           & \frac{1}{2} \ln \left(\frac{4 r}{r-2 M}\right)
     \end{aligned}
 \end{equation}
-como lo comentamos en el caso generico solo hace falta preocuparse por el caso de la tetrada $n^\mu$ que es particular para cada metrica semilla, en este caso se obtiene
+como lo comentamos en el caso genérico solo hace falta preocuparse por el caso de la tetrada $n^\mu$ que es particular para cada métrica semilla, en este caso se obtiene
 \begin{equation}
     n^\mu=e^{-\lambda(r)-\Phi(r)} \delta_0^\mu-\frac{1}{2} e^{-2 \lambda(r)} \delta_1^\mu
 \end{equation}
+Para el caso particular de la métrica de Schwarzschild tenemos
+\begin{equation}
+   \begin{aligned}
+    n^\mu&=e^{- \frac{1}{2} \ln \left(\frac{4 r}{r-2 m}\right) -\frac{1}{2} \ln \left(1-\frac{2 m}{r}\right)  }\delta_0^\mu-\frac{1}{2} e^{-2 \frac{1}{2} \ln \left(\frac{4 r}{r-2 m}\right)} \delta_1^\mu \\
+    &=e^{\ln \left(\frac{4 r}{r-2 m}\right)^{-1/2}}e^{\ln \left(1-\frac{2 m}{r}\right)^{-1/2}} \delta_0^\mu-\frac{1}{2} e^{\ln \left(\frac{4 r}{r-2 m}\right)^{-1}} \delta_1^\mu \\
+    &=\left(\frac{4 r}{r-2 m}\right)^{-1/2}\left(1-\frac{2 m}{r}\right)^{-1/2} \delta_0^\mu-\frac{1}{2} \left(\frac{4 r}{r-2 m}\right)^{-1} \delta_1^\mu \\ 
+    &=\left(\frac{4 r}{r-2 m}\frac{r - 2 m}{r}\right)^{-1/2}\delta_0^\mu-\frac{1}{2} \left(\frac{r-2 m}{4r}\right)\delta_1^\mu \\
+    &= \frac{1}{2}\delta_0^\mu-\frac{1}{8} \left(1 - \frac{2 m}{r}\right)\delta_1^\mu \\
+   \end{aligned}
+\end{equation}
+procederemos a la hacer la transformación compleja de la tetrada $n^\mu \to \tilde{n}^\mu$:
+\begin{equation}
+    \tilde{n}^\mu=\frac{1}{2}\delta_0^\mu-\frac{1}{8} \left(1 - \frac{2 m}{\tilde{\bar{r} }}\right)\delta_1^\mu 
+\end{equation}
+Para sacar la nueva tetrada $n^\mu$ se hace el siguiente procedimiento:
+\begin{equation}
+\begin{aligned}
+    n^\mu&= \tilde{n}^\mu \pd{x^\mu}{\tilde{x}^\nu} \\
+&= \tilde{n}^0 \pd{x^\mu}{\tilde{x}^0} + \tilde{n}^1 \pd{x^\mu}{\tilde{x}^1} + \tilde{n}^2 \pd{x^\mu}{\tilde{x}^2} + \tilde{n}^3 \pd{x^\mu}{\tilde{x}^3} \\
+&= \tilde{n}^0 \pd{x^\mu}{\tilde{x}^0} + \tilde{n}^1 \pd{x^\mu}{\tilde{x}^1} +0 \cdot \pd{x^\mu}{\tilde{x}^2} + 0 \cdot \pd{x^\mu}{\tilde{x}^3} \\
+& = \frac{1}{2}\delta^{\mu}_0 -\frac{1}{8} \left(1 - \frac{2 m\tilde{r}}{\tilde{\bar{r}}\tilde{r}}\right)\delta_1^\mu \\
+& = \frac{1}{2}\delta^{\mu}_0 -\frac{1}{8} \left(1 - \frac{2 m(r-ia\cos\theta)}{r^2+a^2 \cos^2 \theta }\right)\delta_1^\mu \\
+\end{aligned}    
+\end{equation}
+de forma que todas las tetradas quedan como:
+\begin{equation}
+    \begin{aligned}
+        l^\mu & = \delta_1^\mu     \\
+        n^\mu & = \frac{1}{2}\delta^{\mu}_0 -\frac{1}{8} \left(1 - \frac{2 m(r-ia\cos\theta)}{r^2+a^2 \cos^2 \theta }\right)\delta_1^\mu  \\
+        m^\mu & = \frac{1}{\sqrt{2}(r + ia \cos \theta)} \left[ ia \sin \theta (\delta_0^\mu - \delta_1^\mu) + \delta_2^\mu + \frac{i}{\sin \theta} \delta_3^\mu \right]
+    \end{aligned}
+\end{equation}
+

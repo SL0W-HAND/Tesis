@@ -204,15 +204,12 @@ el caso $m^\mu=\tilde{m}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}$
 
 
 
-    \item Finalmente, se asume que una simple transformación de coordenadas de la forma $u=t+F(r), \phi=\psi+G(r)$ transformará la métrica a coordenadas de Boyer-Lindquist. Un conjunto de coordenadas en el que la métrica tiene solo un término fuera de la diagonal $g_{t \phi}$ se denominará "Boyer-Lindquist".
-          Para obtener la representación usual de la métrica de Kerr en coordenadas de Boyer-Lindquist, es necesario realizar una transformación en la coordenada nula $u$ y en la coordenada angular $\phi$:
-
-          $$
-              u=t-\int \frac{a}{r^2+a^2+Q^2-2 m r} d r
-          $$
-
-          $$
-              \phi=\psi-\int \frac{r^2+a^2}{r^2+a^2+Q^2-2 m r} d r
-          $$
+    \item El paso consiste en transformar la nueva métrica a coordenadas de Boyer-Lindquist mediante una transformación de la forma $u=t+\int g(r) d r$ y $\phi=\psi+\int h(r) d r$, donde las funciones $g(r)$ y $h(r)$ necesariamente satisfacen las ecuaciones:
+        \begin{equation}
+            \begin{array}{l}
+            g(r)=-\frac{e^{\lambda(r, \theta)}\left(\Sigma+a^2 \sin ^2 \theta e^{\lambda(r, \theta)+\Phi(r, \theta)}\right)}{e^{\Phi(r, \theta)}\left(\Sigma+a^2 \sin ^2 \theta e^{2 \lambda(r, \theta)}\right)} \\
+            h(r)=-\frac{a e^{2 \lambda(r, \theta)}}{\Sigma+a^2 \sin ^2 \theta e^{2 \lambda(r, \theta)}} .
+            \end{array}
+        \end{equation}
 
 \end{enumerate}

@@ -1,15 +1,13 @@
 \section{Solución de Schwarzschild}
 \label{sec:solucionSchwarzschild}
 \noindent La métrica de Schwarzschild fue la primera solución analítica a las ecuaciones de campo de Einstein. Esta solución comprende el caso mas sencillo posible, el de un objeto esféricamente simétrico y no rotante (Se puede ver la una traducción de la propuesta original en \cite{schwarzschild1999gravitationalfieldmasspoint}, en este texto haremos una derivación inspirada en \cite{eigenchris-2021}).
-\begin{definition}{Condiciones de Schwarzschild}{}
-    \begin{itemize}
-        \item Tomamos un universo estático y esféricamente simétrico, es decir, un universo que no cambia con el tiempo y que tiene la misma forma en todas las direcciones.
-        \item Se usan coordenadas esféricas $(t,r,\theta,\phi)$.
-        \item Se Toma una masa puntual M en el origen de coordenadas.
-        \item Se asume que no hay materia en el espacio-tiempo, es decir, que el tensor de energía-momento es cero.
-        \item lejos de la masa puntual, el espacio-tiempo debe ser plano, es decir, la métrica debe ser la métrica de Minkowski.
-    \end{itemize}
-\end{definition}
+\begin{itemize}
+    \item Tomamos un universo estático y esféricamente simétrico, es decir, un universo que no cambia con el tiempo y que tiene la misma forma en todas las direcciones.
+    \item Se usan coordenadas esféricas $(t,r,\theta,\phi)$.
+    \item Se Toma una masa puntual M en el origen de coordenadas.
+    \item Se asume que no hay materia en el espacio-tiempo, es decir, que el tensor de energía-momento es cero.
+    \item lejos de la masa puntual, el espacio-tiempo debe ser plano, es decir, la métrica debe ser la métrica de Minkowski.
+\end{itemize}
 Al saber que usaremos una simetría esférica, la métrica de Minkowski pasa de las componentes cartesianas a las componentes esféricas, es decir, la métrica de Minkowski en coordenadas esféricas es:
 \begin{equation}
     \eta_{\mu \nu}=\left(\begin{array}{cccc}
@@ -38,29 +36,22 @@ y
             0  & 0 & 0               & \frac{1}{r^{2} \sin ^{2} \theta}
         \end{array}\right),
 \end{equation}
-se considera que cuando la variable $r$ tiende a infinito la métrica se acerca asintóticamente a Minkowski. A continuación escribiremos que implicaciones tiene cada condición.
+Bajo las condiciones de simetría esférica y estática, se imponen los  vectores de Killing $\v{\xi}_1 = \v{e}_t$ y $\v{\xi}_2 = \v{e}_\phi$ .
+La implicación de estos killings 
+\begin{align}
+\pdi{t}{g_{\mu \nu}} = 0 ,\\
+\pdi{\phi}{g_{\mu \nu}} = 0 ,\\
+\end{align}
 
-\subsubsection*{Estático en el tiempo}
 
-La métrica de Schwarzschild describe el espacio-tiempo exterior a una distribución esféricamente simétrica de masa en vacío. Una de sus propiedades fundamentales es que es \textbf{estática}, lo que significa que el espacio-tiempo no cambia con el tiempo y no presenta términos de arrastre (frame-dragging).
+Formalmente, una solución es estática en el tiempo si cumple dos condiciones:
+1. Es \textbf{estacionaria}, es decir la invariancia bajo traslaciones en el tiempo, es decir la reversión temporal \( t \to -t \) deja invariante la métrica:
+          \[ g_{\mu\nu}(t) = g_{\mu\nu}(-t). \]
+2. Es \textbf{irrotacional}, lo que implica que el vector de Killing temporal es ortogonal a las hipersuperficies espaciales.No hay términos cruzados entre las coordenadas espaciales y temporales, es decir:
+          \[ g_{ti} = 0, \quad \forall i \in \{r, \theta, \phi\}. \]
 
-Formalmente, una solución es estática si cumple dos condiciones:
-1. Es \textbf{estacionaria}, es decir, existe un vector de Killing temporal que refleja la invariancia bajo traslaciones en el tiempo.
-2. Es \textbf{irrotacional}, lo que implica que el vector de Killing temporal es ortogonal a las hipersuperficies espaciales.
 
-\begin{definition}{Implicaciones para una solución estática}{}
-    \begin{itemize}
-        \item Existe un vector de Killing temporal \( \xi^\mu \) tal que \( \nabla_{(\mu} \xi_{\nu)} = 0 \).
-        \item La métrica no depende explícitamente de la coordenada temporal:
-              \[ \partial_t g_{\mu \nu} = 0. \]
-        \item La reversión temporal \( t \to -t \) deja invariante la métrica:
-              \[ g_{\mu\nu}(t) = g_{\mu\nu}(-t). \]
-        \item No hay términos cruzados entre las coordenadas espaciales y temporales, es decir:
-              \[ g_{ti} = 0, \quad \forall i \in \{r, \theta, \phi\}. \]
-    \end{itemize}
-\end{definition}
-
-A partir de esta propiedad, la métrica en coordenadas de tipo \((t, r, \theta, \phi)\) adopta la forma general:
+A partir de estas propiedades, la métrica en coordenadas de tipo \((t, r, \theta, \phi)\) adopta la forma general:
 
 \begin{equation}
     g_{\mu \nu} =
@@ -72,10 +63,23 @@ A partir de esta propiedad, la métrica en coordenadas de tipo \((t, r, \theta, 
     \end{bmatrix}.
 \end{equation}
 
-Debido a la simetría esférica de Schwarzschild, los términos fuera de la diagonal desaparecen, quedando únicamente las componentes \( g_{tt} \) y \( g_{rr} \) como funciones de \( r \). En secciones posteriores, exploraremos cómo esta estructura nos lleva a la forma explícita de la métrica de Schwarzschild.
 
 
-\subsubsection*{Simetría esférica}
+Dadas las simetrías angulares angulares implican que la métrica debe de ser invariante bajo cambios de coordenadas angulares, es decir, la métrica no debe depender de las coordenadas angulares \(\theta\) y \(\phi\). Esto implica que los componentes cruzados de la métrica deben ser cero, es decir que la métrica debe ser diagonal. 
+
+
+
+\begin{equation}
+    g_{\mu \nu} =
+    \begin{bmatrix}
+        g_{tt} & 0            & 0                & 0              \\
+        0      & g_{rr}       &   0    &  0  \\
+        0      & 0 & g_{\theta\theta} &0 \\
+        0      &  0  & 0 & g_{\phi\phi}
+    \end{bmatrix}.
+\end{equation}
+
+
 Debido a que estamos usando una simetría esférica se debe cumplir:
 \begin{itemize}
     \item Los componentes $\theta, \phi$ deben usar la métrica para una esfera de radio $r$.
@@ -91,22 +95,7 @@ Debido a que estamos usando una simetría esférica se debe cumplir:
             0        & C(r) r^2(\sin \theta)^2
         \end{array}\right].
 \end{equation}
-Ahora para los demás componentes de la métrica considerando a la ortogonalidad de los vectores base
-\begin{equation}
-    \begin{aligned}
-         & \overrightarrow{e_\theta} \cdot \overrightarrow{e_r}=0=g_{\theta r} \\
-         & \overrightarrow{e_\phi} \cdot \overrightarrow{e_r}=0=g_{\phi r},
-    \end{aligned}
-\end{equation}
-es posible escribir la métrica de forma diagonal
-\begin{equation}
-    \left[\begin{array}{cccc}
-            g_{t t}(r, \theta, \phi) & 0                        & 0        & 0                       \\
-            0                        & g_{r r}(r, \theta, \phi) & 0        & 0                       \\
-            0                        & 0                        & C(r) r^2 & 0                       \\
-            0                        & 0                        & 0        & C(r) r^2(\sin \theta)^2
-        \end{array}\right].
-\end{equation}
+
 Una noción clave para facilitar los cálculos es que estamos tomando en consideración una masa puntual en un universo vacío e isotrópico, así que es de esperarse que la métrica no dependa de las coordenadas $\theta$ y $\phi$, permitiéndonos escribirla solo en términos de la distancia al origen $r$ tal que
 \begin{equation}
     \left[\begin{array}{cccc}
@@ -115,163 +104,141 @@ Una noción clave para facilitar los cálculos es que estamos tomando en conside
             0     & 0    & C(r) r^2 & 0                       \\
             0     & 0    & 0        & C(r) r^2(\sin \theta)^2
         \end{array}\right].
+        \label{eq:genericMetric}
 \end{equation}
 A continuación se tomará el siguiente cambio de variable:
 
 \begin{equation}
-    \tilde{r}=\sqrt{C(r)} \, r
+    \tilde{r}=\sqrt{C(r)}  r,
 \end{equation}
-La forma de proceder va a ser  que cuando estemos lejos de la masa $M$, debemos tener las ecuaciones de campo débil a bajas velocidades y recuperar las ecuaciones de Newton.
+que permite escribir la métrica \ref{eq:genericMetric} como 
+\begin{equation}
+    \left[\begin{array}{cccc}
+            -A(\tilde{r}) & 0    & 0        & 0                       \\
+            0     & B(\tilde{r}) & 0        & 0                       \\
+            0     & 0    & \tilde{r} & 0                       \\
+            0     & 0    & 0        & \tilde{r} (\sin \theta)^2
+        \end{array}\right].
+\end{equation}
+Y ya que esto es una métrica tensorial independiente de la elección de coordenadas  $\tilde{r}$ la escribiré como $r$.
+La forma de proceder va a ser  calcular los Christoffel para despues llegar al tensor de Ricci que debe de cumplir las ecuaciones de vacío 
 \begin{equation*}
-    g_{\mu \nu} \rightarrow \Gamma_{\mu \nu}^\sigma \rightarrow R_{\mu \nu} \rightarrow \text{Gravedad Newtoniana}
+    g_{\mu \nu} \rightarrow \Gamma_{\mu \nu}^\sigma \rightarrow R_{\mu \nu}.
 \end{equation*}
 
-
-\subsubsection{Christoffel symbols}
-los símbolos de Christoffel
+los símbolos de Christoffel los obtenemos de resolver la siguiente ecuación
 \begin{equation}
-    \begin{gathered}
-        \Gamma_{\mu \nu}^0 \rightarrow\left[\begin{array}{cccc}
-                0                        & \frac{\partial_r A}{2 A} & 0 & 0 \\
-                \frac{\partial_r A}{2 A} & 0                        & 0 & 0 \\
-                0                        & 0                        & 0 & 0 \\
-                0                        & 0                        & 0 & 0
-            \end{array}\right]
-        \quad
-        \Gamma_{\mu \nu}^1 \rightarrow\left[\begin{array}{cccc}
-                \frac{\partial_r A}{2 B} & 0                        & 0            & 0                           \\
-                0                        & \frac{\partial_r B}{2 B} & 0            & 0                           \\
-                0                        & 0                        & -\frac{r}{B} & 0                           \\
-                0                        & 0                        & 0            & -\frac{r(\sin \theta)^2}{B}
-            \end{array}\right] \\
-        \Gamma_{\mu \nu}^2 \rightarrow\left[\begin{array}{cccc}
-                0 & 0           & 0           & 0                        \\
-                0 & 0           & \frac{1}{r} & 0                        \\
-                0 & \frac{1}{r} & 0           & 0                        \\
-                0 & 0           & 0           & -\sin \theta \cos \theta
-            \end{array}\right]
-        \quad
-        \Gamma_{\mu \nu}^3 \rightarrow\left[\begin{array}{cccc}
-                0 & 0           & 0           & 0           \\
-                0 & 0           & 0           & \frac{1}{r} \\
-                0 & 0           & 0           & \cot \theta \\
-                0 & \frac{1}{r} & \cot \theta & 0
-            \end{array}\right]
-    \end{gathered}
+    \Gamma_{\mu \nu}^\sigma=\frac{1}{2} g^{\sigma \rho}\left(\partial_\nu g_{\mu \rho}+\partial_\mu g_{\nu \rho}-\partial_\rho g_{\mu \nu}\right).
 \end{equation}
+Los Christoffel no cero son:
+\begin{equation}
+\begin{aligned}
+    &\Gamma_{01}^0=\Gamma_{10}^0=\frac{1}{2} \frac{1}{A}\left(\partial_r A\right),\\ 
+    &\Gamma_{00}^1=\frac{1}{2} \frac{1}{B}\left(\partial_r A\right),\\
+    & \Gamma_{11}^1=\frac{11}{2} \frac{1}{B}\left(\partial_r B\right),\\
+    &\Gamma_{22}^1=-\frac{r}{B},\\
+    &\Gamma_{33}^1=-\frac{r(\sin \theta)^2}{B},\\
+    &\Gamma_{12}^2=\Gamma_{21}^2=\Gamma_{13}^3=\Gamma_{31}^3=\frac{1}{r},\\
+    &\Gamma_{33}^2=-\sin \theta \cos \theta,\\
+    &\Gamma_{23}^3=\Gamma_{32}^3=\cot \theta
+\end{aligned}
+\end{equation}
+Para calcular el tensor de Ricci $R_{\mu \nu}$ se obtiene contrayendo el tensor de Riemann:
 
 \begin{equation}
-    \begin{gathered}
-        \Gamma_{01}^0=\Gamma_{10}^0=\frac{1}{2} \frac{1}{A}\left(\partial_r A\right), \quad \Gamma_{00}^1=\frac{1}{2} \frac{1}{B}\left(\partial_r A\right) \\
-        \Gamma_{11}^1=\frac{11}{2} \frac{1}{B}\left(\partial_r B\right), \quad \Gamma_{22}^1=-\frac{r}{B}, \quad \Gamma_{33}^1=-\frac{r(\sin \theta)^2}{B} \\
-        \Gamma_{12}^2=\Gamma_{21}^2=\Gamma_{13}^3=\Gamma_{31}^3=\frac{1}{r}, \quad \Gamma_{33}^2=-\sin \theta \cos \theta, \quad \Gamma_{23}^3=\Gamma_{32}^3=\cot \theta
-    \end{gathered}
+    R_{\mu \nu}=R_{\mu \alpha \nu}^\alpha=\partial_\alpha \Gamma_{\mu \nu}^\alpha-\partial_\nu \Gamma_{\mu \alpha}^\alpha+\Gamma_{\alpha \lambda}^\alpha \Gamma_{\mu \nu}^\lambda-\Gamma_{\nu \lambda}^\alpha \Gamma_{\mu \alpha}^\lambda .
 \end{equation}
 
-Calculate:
-- $R_{00}=0$
-- $R_{11}=0$
-$R_{\mu \nu}=0$
-- $R_{22}=0$
-
+\begin{task}{Escribir programa para calcular el ricci}{}
+    task
+\end{task}
+Los componentes del tensor de Ricci son:
 \begin{equation}
-    R_{00}=\frac{\partial_r \partial_r A}{2 B}
-    -\frac{\partial_r A \,\partial_r B}{4 B^2}
-    +\frac{\partial_r A}{B r}
-    -\frac{\left(\partial_r A\right)^2}{4 A B}=0
-\end{equation}
-
-\begin{equation}
-    R_{00}+R_{11}=0
-\end{equation}
+    \begin{array}{l}
+    R_{00}=2 r A B A^{\prime \prime}-r A A^{\prime} B^{\prime}+4 A B A^{\prime}-r B\left(A^{\prime}\right)^2=0 ,\\
+    R_{11}=-2 r A B A^{\prime \prime}+r B\left(A^{\prime}\right)^2+r A A^{\prime} B^{\prime}+4 A^2 B^{\prime}=0, \\
+    R_{22}=-2 A B+2 A B^2-r A^{\prime} B+r A B^{\prime}=0.
+    \end{array}
+    \end{equation}
+Si sumamos los componentes $R_{00} + R_{11} = 0 $:
 
 \begin{equation}
     \begin{aligned}
-        g_{\mu \nu} & \rightarrow\left[\begin{array}{cccc}
-                                               A(r) & 0     & 0    & 0                   \\
-                                               0    & -B(r) & 0    & 0                   \\
-                                               0    & 0     & -r^2 & 0                   \\
-                                               0    & 0     & 0    & -r^2(\sin \theta)^2
-                                           \end{array}\right] \\
-        g_{\mu \nu} & \rightarrow\left[\begin{array}{cccc}
-                                               1 & 0  & 0    & 0                   \\
-                                               0 & -1 & 0    & 0                   \\
-                                               0 & 0  & -r^2 & 0                   \\
-                                               0 & 0  & 0    & -r^2(\sin \theta)^2
-                                           \end{array}\right]
-    \end{aligned}
-\end{equation}
-
-\begin{equation}
-    \begin{gathered}
+        4 A B A^{\prime} + 4 A^2 B^{\prime} = 0 \\
         B A^{\prime}+A B^{\prime}=0 \\
         \partial_r(A B)=0 \\
         \Rightarrow A B=K
-    \end{gathered}
-\end{equation}
-\begin{equation}
-    \begin{aligned}
-         & A(r) \rightarrow 1 \\
-         & B(r) \rightarrow 1
     \end{aligned}
 \end{equation}
-\begin{equation}
-    (1)(1)=K
-\end{equation}
-
-\begin{equation}
-    \Rightarrow B(r)=\frac{1}{A(r)} \text { para todo } r
-\end{equation}
-
-\begin{equation}
-    B^{\prime}=\partial_r\left(A^{-1}\right)=-\frac{A^{\prime}}{A^2}
-\end{equation}
-
-
+donde \( K \) es una constante de integración. Para determinar \( K \), consideramos el límite cuando \( r \to \infty \):
 \begin{equation}
     \begin{aligned}
-         & R_{22}=-2 A B+2 A B^2-r A^{\prime} B+r A B^{\prime}                                                               \\
-         & 0=-2 A \frac{1}{A}+2 A\left(\frac{1}{A}\right)^2-r A^{\prime} \frac{1}{A}+r A\left(-\frac{A^{\prime}}{A^2}\right)
+         & A(r) \rightarrow 1, \\
+         & B(r) \rightarrow 1.
     \end{aligned}
 \end{equation}
-\begin{equation}
-    \Rightarrow r A^{\prime}=1-A
-\end{equation}
+$A(r)$ y $B(r)$ son funciones de \( r \) que tienden a 1 cuando (debido a que tienden a Minkowski)  \( r \to \infty \). Por lo tanto, \( K = 1 \):
 
+\begin{equation}
+    \Rightarrow B(r)=\frac{1}{A(r)} \text { para todo } r \quad \text { y } B^{\prime}=\partial_r\left(A^{-1}\right)=-\frac{A^{\prime}}{A^2}.
+\end{equation}
+Con esta información es posible sustituir \( B(r) \) en la ecuación \( R_{22} = 0 \):
 \begin{equation}
     \begin{aligned}
-         & \frac{A(r)}{\partial} \equiv 1-\frac{k^{\prime}}{r}                                 \\
-         & \frac{\partial}{\partial r} A=\frac{\partial}{\partial r}\left(1-\frac{k}{r}\right) \\
-         & A^{\prime}=\frac{\partial}{\partial r} 1-k \frac{\partial}{\partial r} r^{-1}       \\
-         & A^{\prime}=0                                                                        \\
-         & A^{\prime}=\frac{k}{r^2}
+         & R_{22}=-2 A B+2 A B^2-r A^{\prime} B+r A B^{\prime}   = 0                                                           \\
+         &-2 A \frac{1}{A}+2 A\left(\frac{1}{A}\right)^2-r A^{\prime} \frac{1}{A}+r A\left(-\frac{A^{\prime}}{A^2}\right)=0\\
+         & -2 + 2 \frac{1}{A}-\frac{r A^{\prime}}{A}- \frac{r A^{\prime}}{A}=0 \\
+            & -2 + \frac{2}{A} - \frac{2r A^{\prime}}{A}=0 \\
+            &\Rightarrow  A^{\prime} + \frac{A}{r}=\frac{1}{r}.
+    \end{aligned}
+    \label{eq:ricci22}
+\end{equation}
+Resolviendo la ecuación anterior por factor integrante:
+\begin{equation}
+    \begin{aligned}
+        A &= e^{- \int 1/r d r} \left[\int \left(\frac{1}{r}e^{\int 1/r dr } \right)dr - k\right]\\
+        &= e^{- \ln r} \left[\int \frac{1}{r} e^{\ln r} dr   - k\right] \\
+        &=\frac{1}{r}\left[\int dr - k\right]\\
+        &= 1 - \frac{k}{r}. \\
     \end{aligned}
 \end{equation}
-
+Inmediatamente se desvela que $B=\frac{1}{1 - \frac{k}{r}}  $,por lo que la métrica queda como:
 \begin{equation}
-    g_{\mu \nu} \rightarrow\left[\begin{array}{cccc}
-            1-\frac{k}{r} & 0                                & 0    & 0                   \\
-            0             & -\left(1-\frac{k}{r}\right)^{-1} & 0    & 0                   \\
-            0             & 0                                & -r^2 & 0                   \\
-            0             & 0                                & 0    & -r^2(\sin \theta)^2
+    g_{\mu \nu} =\left[\begin{array}{cccc}
+        -\left(1-\frac{k}{r}\right) & 0                                & 0    & 0                   \\
+            0             & \left(1-\frac{k}{r}\right)^{-1} & 0    & 0                   \\
+            0             & 0                                & r^2 & 0                   \\
+            0             & 0                                & 0    & r^2(\sin \theta)^2
         \end{array}\right]
 \end{equation}
-
-\begin{task}{}{}
-    Terminar la derivación
-\end{task}
-La métrica de Schwarzschild es:
+Por ultimo debemos de tomar la aproximación de campo débil para obtener la constante de integración \( k \) 
 \begin{equation}
-    \boxed{g_{\mu \nu}=\left(\begin{array}{cccc}
-                -1+\frac{2 G m}{r c^2} & 0                                       & 0   & 0                  \\
-                0                      & \left(1-\frac{2 G m}{r c^2}\right)^{-1} & 0   & 0                  \\
+    g_{\mu \nu} =  \eta_{\mu \nu}+ h_{\mu \nu} .
+\end{equation}
+Centrémonos en el componente \( g_{tt} \) donde \( h_{tt} = -\frac{-2 \mathbf{\Phi}}{c^2}  = \frac{2MG}{rc^2}\) :
+\begin{equation}
+    g_{tt} = -1 + \frac{k}{r} = \eta_{tt} + h_{tt} = -1 + \frac{2GM}{rc^2}
+\end{equation}
+Donde $k = \frac{2GM}{c^2}$.
+\begin{definition}{Metrica de Schwarzschild}{}
+La métrica de Schwarzschild es una solución exacta a las ecuaciones de campo de Einstein en el vacío, que describe el campo gravitacional de un objeto esféricamente simétrico y no rotante. La métrica se expresa como:
+\begin{equation}
+    g_{\mu \nu}=\left(\begin{array}{cccc}
+                -1+\frac{2 G M}{r c^2} & 0                                       & 0   & 0                  \\
+                0                      & \left(1-\frac{2 G M}{r c^2}\right)^{-1} & 0   & 0                  \\
                 0                      & 0                                       & r^2 & 0                  \\
                 0                      & 0                                       & 0   & r^2 \sin ^2 \theta
-            \end{array}\right)}
+            \end{array}\right)
 \end{equation}
+
+\begin{note}
+    Observe que la métrica  diverge en el punto \( r = 2GM/c^2 \), este punto se conoce como \textbf{radio de Schwarzschild} y corresponde a la frontera del horizonte de eventos de un agujero negro también es usual encontrase con este punto definido como $r_s = 2GM/c^2 =2m $, la ultima notación ($2m$) se encuentra cuando se trabaja con unidades naturales pero aquí mayormente nos referiremos a  $m = GM/c^2$.   
+\end{note}  
+\end{definition}
+
 \subsection{Geodésicas en Schwarzschild tipo  nulas}
 
-El movimiento de los cuerpos y de la luz en el espacio-tiempo de Schwarzschild está dado por la ecuación geodésica:
+\noindent El movimiento de los cuerpos y de la luz en el espacio-tiempo de Schwarzschild está dado por la ecuación geodésica:
 \begin{equation}
     \frac{\mathrm{d}^2 x^\mu}{\mathrm{d} \lambda^2}+\Gamma^\mu{ }_{\nu \rho} \frac{\mathrm{~d} x^\nu}{\mathrm{d} \lambda} \frac{\mathrm{~d} x^\rho}{\mathrm{d} \lambda}=0
     \label{eq:geodesic}
@@ -287,8 +254,7 @@ $$
         \Gamma^3{ }_{23}=\Gamma^3{ }_{32}=\cot \theta.
     \end{array}
 $$
-
-Particularmente nos interesa el caso de geodésicas nulas, es decir, aquellas que describen la trayectoria de la luz en el espacio-tiempo. Además se considera simetría radial por lo que $\theta=\pi/2$ y $\phi=0$(Si deseas ver las demás solo hay que remplazar los valores en la ecuación \ref{eq:geodesic}).
+Particularmente nos interesa el caso de geodésicas nulas, es decir, aquellas que describen la trayectoria de la luz en el espacio-tiempo. Además se considera simetría radial por lo que $\theta=\pi/2$ y $\phi=0$(Si se desea ver las demás solo hay que remplazar los valores en la ecuación \ref{eq:geodesic}).
 
 Nos centraremos únicamente en las que nos interesan para describir la luz. Considere  la ecuación geodésica con $\mu=0$ es
 
@@ -341,7 +307,7 @@ donde el signo $+$ es para geodésicas salientes y el signo $-$ es para geodési
     \end{small}
 \end{figure}
 
-\subsection{ordenadas Eddington-Finkelstein}
+\subsection{Coordenadas Eddington-Finkelstein}
 Las coordenadas de Eddington-Finkelstein son un sistema de coordenadas para la solución de Schwarzschild cuya idea principal es usar las trayectorias de la luz (geodésicas nulas radiales) para definir las coordenadas temporal y radial. Esto es posible debido a la simetría radial, donde \( \theta, \varphi = \text{cte} \implies d\Omega^2 = 0 \).
 Partimos de la trayectoria de la luz en términos de la coordenada radial \( r \) y el tiempo \( ct \):
 \begin{equation}
@@ -408,13 +374,13 @@ Las derivadas parciales para los vectores base son:
         e_{r_{\text{in}}} & = \frac{\partial ct}{\partial r_{\text{in}}} e_{ct} + \frac{\partial r}{\partial r_{\text{in}}} e_r = -\frac{1}{1 - \frac{r_s}{r}} e_{ct} + e_r.
     \end{aligned}
 \end{equation}
-
 Calculando \( \frac{dr^*}{dr} \):
+
 \begin{equation}
     \frac{dr^*}{dr} = 1 + \frac{r_s}{r - r_s} = \frac{1}{1 - \frac{r_s}{r}}.
 \end{equation}
-
 Los componentes de la métrica \( g_{\mu\nu} = e_\mu \cdot e_\nu \) son:
+
 \begin{equation}
     \begin{aligned}
         g_{vv}          & = e_v \cdot e_v = -\left(1 - \frac{r_s}{r}\right), \\
@@ -427,7 +393,7 @@ Por lo tanto, la métrica en coordenadas de Eddington-Finkelstein es:
     ds^2 = -\left(1 - \frac{r_s}{r}\right) dv^2 + 2 dv dr + r^2 d\Omega^2.
 \end{equation}
 \subsubsection{Coordenadas salientes de Eddington-Finkelstein}
-Para geodésicas nulas salientes (\(+\)), partimos de:
+\noindent Para geodésicas nulas salientes (\(+\)), partimos de:
 \begin{equation}
     ct(r) = r + r_s \log \left| \frac{r}{r_s} - 1 \right| + k.
 \end{equation}
@@ -506,7 +472,7 @@ En estas coordenadas:
 \subsection{Coordenadas Kruskal-Szekeres}
 
 \subsubsection{Coordenadas nulas originales}
-Definimos las coordenadas entrante (\(v\)) y saliente (\(u\)) de Eddington-Finkelstein:
+\noindent Definimos las coordenadas entrante (\(v\)) y saliente (\(u\)) de Eddington-Finkelstein:
 \begin{equation}
     \begin{aligned}
         v   & = ct + r^*                                      \\
@@ -665,34 +631,38 @@ y para $X$ el calculo es prácticamente el mismo a excepción de un signo ($+$) 
 Donde podemos desarrollar la siguiente identidad
 \begin{equation}
     \begin{aligned}
-        T^2 - X^2 &= \left( e^{\frac{r}{2r_s}} \sqrt{\left|\frac{r}{r_s}-1\right|}\, \sinh\left(\frac{ct}{2r_s}\right) \right)^2 
-        - \left( e^{\frac{r}{2r_s}} \sqrt{\left|\frac{r}{r_s}-1\right|}\, \cosh\left(\frac{ct}{2r_s}\right) \right)^2\\[1mm]
-        &= e^{\frac{r}{r_s}} \left|\frac{r}{r_s}-1\right| \left[ \sinh^2\left(\frac{ct}{2r_s}\right) - \cosh^2\left(\frac{ct}{2r_s}\right) \right]\\[1mm]
-        &= -\, e^{\frac{r}{r_s}} \left|\frac{r}{r_s}-1\right|\\[2mm]
+         X^2 -T^2  &=  \left( e^{\frac{r}{2r_s}} \sqrt{\left|\frac{r}{r_s}-1\right|}\, \cosh\left(\frac{ct}{2r_s}\right) \right)^2- \left( e^{\frac{r}{2r_s}} \sqrt{\left|\frac{r}{r_s}-1\right|}\, \sinh\left(\frac{ct}{2r_s}\right) \right)^2 \\[1mm]
+        &= e^{\frac{r}{r_s}} \left|\frac{r}{r_s}-1\right| \left[ \cosh^2\left(\frac{ct}{2r_s}\right) -\sinh^2\left(\frac{ct}{2r_s}\right) \right]\\[1mm]
+        &= \, e^{\frac{r}{r_s}} \left|\frac{r}{r_s}-1\right|\\[2mm]
         &=
         \begin{cases}
-            -\, e^{\frac{r}{r_s}} \left(\dfrac{r}{r_s}-1\right), & \text{si } r > r_s,\\[2mm]
-            -\, e^{\frac{r}{r_s}} \left(1-\dfrac{r}{r_s}\right), & \text{si } r < r_s.
+            \, e^{\frac{r}{r_s}} \left(\dfrac{r}{r_s}-1\right), & \text{si } r > r_s,\\[2mm]
+            \, e^{\frac{r}{r_s}} \left(1-\dfrac{r}{r_s}\right), & \text{si } r < r_s.
         \end{cases}
     \end{aligned}
     \label{eq:Kruskal-SzekeresT^2-X^2}
 \end{equation}
-\begin{task}{Demostrar}{}
-    Demostrar la identidad (\ref{eq:Kruskal-SzekeresT^2-X^2}).
-\end{task}
+
+\noindent
 Esta identidad nos ayuda a determinar las líneas de \(r\) constante en el espacio-tiempo de Schwarzschild. Lo interesante ocurre cuando observamos el caso \(r < r_s\): el valor absoluto \(\left|\frac{r}{r_s}-1\right|\) en la ecuación (\ref{eq:Kruskal-SzekeresT^2-X^2}) se puede expresar como \(1-\frac{r}{r_s}\). ¿Por qué es importante notar esto? Si nos fijamos en la segunda línea de la ecuación, podemos identificar los coeficientes de la siguiente forma:
 \begin{equation}
     \begin{aligned}
-        T^2 - X^2 &= e^{\frac{r}{r_s}} \left(1-\frac{r}{r_s}\right) \left[ \sinh^2\left(\frac{ct}{2r_s}\right) - \cosh^2\left(\frac{ct}{2r_s}\right) \right] \\
-        &= -\, e^{\frac{r}{r_s}} \left(\frac{r}{r_s}-1\right) \left[ \sinh^2\left(\frac{ct}{2r_s}\right) - \cosh^2\left(\frac{ct}{2r_s}\right) \right] \\
-        &= e^{\frac{r}{r_s}} \left(\frac{r}{r_s}-1\right) \left[ \cosh^2\left(\frac{ct}{2r_s}\right) - \sinh^2\left(\frac{ct}{2r_s}\right) \right].
+       X^2 -  T^2  &= e^{\frac{r}{r_s}} \left(1-\frac{r}{r_s}\right) \left[ \cosh^2\left(\frac{ct}{2r_s}\right) - \sinh^2\left(\frac{ct}{2r_s}\right) \right] \\
+        &= -\, e^{\frac{r}{r_s}} \left(\frac{r}{r_s}-1\right) \left[ \cosh^2\left(\frac{ct}{2r_s}\right) - \sinh^2\left(\frac{ct}{2r_s}\right) \right] \\
+        &= e^{\frac{r}{r_s}} \left(\frac{r}{r_s}-1\right) \left[ \sinh^2\left(\frac{ct}{2r_s}\right) - \cosh^2\left(\frac{ct}{2r_s}\right) \right].
     \end{aligned}
 \end{equation}
 De ello se deduce que, dentro del horizonte de eventos (\(r < r_s\)), se tienen las siguientes expresiones:
 \begin{equation}
-    X = e^{\frac{r}{2r_s}} \sqrt{1-\frac{r}{r_s}} \, \frac{1}{2} \sinh\left(\frac{ct}{2r_s}\right), \quad 
-    T = e^{\frac{r}{2r_s}} \sqrt{1-\frac{r}{r_s}} \, \frac{1}{2} \cosh\left(\frac{ct}{2r_s}\right).
+    X = e^{\frac{r}{2r_s}} \sqrt{\frac{r}{r_s}-1} \, \frac{1}{2} \sinh\left(\frac{ct}{2r_s}\right), \quad 
+    T = e^{\frac{r}{2r_s}} \sqrt{\frac{r}{r_s}-1} \, \frac{1}{2} \cosh\left(\frac{ct}{2r_s}\right).
 \end{equation}
+Esto implica que, dentro del horizonte de eventos, las coordenadas \(T\) y \(X\) se invierten en comparación con el caso fuera del horizonte. Dado este intercambio de coordenadas cuando se pasa el horizonte de eventos, normalmente por conveniencia matemática la ecuación \ref{eq:Kruskal-SzekeresT^2-X^2} se expresa sin el valor absoluto, es decir:
+\begin{equation}
+    X^2 - T^2 = e^{\frac{r}{r_s}} \left(\frac{r}{r_s}-1\right) \left[ \cosh^2\left(\frac{ct}{2r_s}\right) - \sinh^2\left(\frac{ct}{2r_s}\right) \right],
+\end{equation} 
+para $r \epsilon [0,\infty ) $.
+
 Dado que el negativo de estas coordenadas $-X$ y $-T$ cumplen la identidad (\ref{eq:Kruskal-SzekeresT^2-X^2}) podemos escribir lo que se llama la extensión máxima de las coordenadas de Kruskal-Szekeres
 \begin{table}[H]
     \centering
@@ -706,7 +676,8 @@ Dado que el negativo de estas coordenadas $-X$ y $-T$ cumplen la identidad (\ref
         \hline
     \end{tabular}
 \end{table}
-Ahora para la lineas de tiempo constante es fácil ver la siguiente relación
+
+\noindent Ahora para la lineas de tiempo constante es fácil ver la siguiente relación
 \begin{equation}
     \tanh \left(\frac{ct}{2 r_s}\right)=\left\{\begin{array}{ll}
         T / X & \text { (en region I y III) } \\
