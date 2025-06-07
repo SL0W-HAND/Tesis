@@ -1,431 +1,3 @@
-\section{Solución de Kerr}
-\noindent En el caso de un agujero negro en rotación (métrica de Kerr), el espacio-tiempo fuera de él es estacionario, y se puede elegir un marco de referencia independiente del tiempo que asintóticamente tiende al marco de Lorentz en el infinito.
-Primero analizamos las condiciones subyacentes requeridas para desarrollar una métrica que describa el espacio-tiempo alrededor de una masa en rotación uniforme. Nos enfocamos primero en el caso de velocidad lenta y campo débil antes de considerar el efecto de arrastre de marco (frame dragging).
-
-Dada la simetría axial, comenzamos con las coordenadas:
-\begin{equation}
-    x^\mu = \left(x^0, x^1, x^2, x^3\right) = (c t, r, \theta, \varphi)
-\end{equation}
-Un espacio-tiempo estacionario es aquel donde los componentes de $g_{\mu\nu}$ son independientes de $t$:
-\begin{equation}
-    \frac{\partial g_{\mu\nu}}{\partial x^0} = \frac{\partial g_{\mu\nu}}{\partial t} = 0
-\end{equation}
-Un espacio-tiempo axialmente simétrico tiene componentes independientes de $\varphi$:
-\begin{equation}
-    \frac{\partial g_{\mu\nu}}{\partial x^3} = \frac{\partial g_{\mu\nu}}{\partial \varphi} = 0
-\end{equation}
-
-%Esto implica la existencia de dos vectores de Killing:
-%\begin{equation}
-%    \mathbf{e}_t \quad \text{y} \quad \mathbf{e}_\varphi
-%\end{equation}
-La métrica tiene la forma genérica inicial:
-\begin{equation}
-    g_{\mu\nu}(r, \theta) = \begin{bmatrix}
-        g_{00} & g_{01} & g_{02} & g_{03} \\
-        g_{10} & g_{11} & g_{12} & g_{13} \\
-        g_{20} & g_{21} & g_{22} & g_{23} \\
-        g_{30} & g_{31} & g_{32} & g_{33}
-    \end{bmatrix} = g_{\nu\mu}
-\end{equation}
-
-El elemento de línea es:
-\begin{equation}
-    \mathrm{d}s^2 = g_{\mu\nu} \mathrm{d}x^\mu \mathrm{d}x^\nu
-\end{equation}
-
-\begin{itemize}
-    \item La invariancia bajo $t \to -t$ y $\varphi \to -\varphi$ implica:
-          \begin{align}
-              (-c \mathrm{d}t)(-\mathrm{d}\varphi) & = c \mathrm{d}t \mathrm{d}\varphi \\
-              \Rightarrow g_{03}                   & = g_{30} \neq 0
-          \end{align}
-
-    \item No existen simetrías para otros pares de coordenadas, eliminando términos cruzados adicionales, como por ejemplo $(-c d t)(-c d t)=c^2 d t^2$ pero $-c d t d r \neq c d t d r$.             .
-\end{itemize}
-Para ilustrar esto tómese el caso donde el elemento de linea lo consideramos bajo diferentes cambios de signos:
-\begin{align*}
-     & d s^2=g_{00} c^2 d t^2+g_{01} c d t d r+\ldots \ldots \ldots  \\
-     & d s^2=g_{00} c^2 d t^2-g_{01} c d t d r+\ldots \ldots \ldots. \\
-\end{align*}
-Donde es fácil observar que bajo los cambios de signo, los términos cruzados no son iguales,
-\[-c d t d \theta \neq c d t d \theta,-d \theta d \varphi \neq d \theta d \varphi,-d r d \varphi \neq d r d \varphi,\]
-Lo que implica directamente que , $g_{01}=g_{02}=g_{23}=g_{13}=0$ y podamos escribir el elemento de linea  en bloques como:
-\begin{align}
-    \mathrm{d}s^2 & = g_{00} c^2 \mathrm{d}t^2 + 2 g_{03} \mathrm{d}t \mathrm{d}\varphi + g_{33} \mathrm{d}\varphi^2 \nonumber \\
-                  & + \left(g_{11} \mathrm{d}r^2 + 2 g_{12} \mathrm{d}r \mathrm{d}\theta + g_{22} \mathrm{d}\theta^2\right).
-\end{align}
-Los coeficientes $g_{\mu\nu}$ dependen solo de $r$ y $\theta$. El término entre paréntesis corresponde a una subvariedad bidimensional:
-\begin{align}
-    \mathrm{d}s^2 & = g_{00} c^2 \mathrm{d}t^2 + 2 g_{03} c \mathrm{d}t \mathrm{d}\varphi + g_{33} \mathrm{d}\varphi^2 \nonumber \\
-                  & + g_{\alpha\beta} \mathrm{d}x^\alpha \mathrm{d}x^\beta \quad (\alpha,\beta = 1,2).
-\end{align}
-Toda variedad pseudo-Riemanniana bidimensional es \textbf{conformalmente plana}. Esto significa que existe un factor conforme $\Omega(r,\theta)$ tal que:
-\begin{equation}
-    g_{\alpha\beta} = \Omega^2(r,\theta) \eta_{\alpha\beta}, \quad \text{con} \quad \eta_{\alpha\beta} = \begin{bmatrix}
-        1 & 0 \\
-        0 & 1
-    \end{bmatrix}.
-\end{equation}
-Esta propiedad implica que:
-\begin{itemize}
-    \item El término cruzado $g_{12}$ se anula ($\eta_{12} = 0 \Rightarrow g_{12} = 0$)
-    \item La métrica 2D puede diagonalizarse mediante transformaciones conformes
-    \item $\Omega(r,\theta)$ codifica la curvatura mediante un factor escalar
-\end{itemize}
-La métrica simplificada queda entonces:
-\begin{align}
-    \mathrm{d}s^2 & = g_{tt} c^2 \mathrm{d}t^2 + g_{rr} \mathrm{d}r^2 + g_{\theta\theta} \mathrm{d}\theta^2 \nonumber \\
-                  & + 2 g_{t\varphi} c \mathrm{d}t \mathrm{d}\varphi + g_{\varphi\varphi} \mathrm{d}\varphi^2
-\end{align}
-como condición final, imponemos que la forma final de esta métrica debe reducirse a la métrica de Schwarzschild cuando la rotación desaparece.
-Recordemos que el elemento de línea de Schwarzschild es,
-$$
-    d s_{Sch}^2=-\left(1-\frac{2 G M}{c^2 r}\right) c^2 d t^2+\left(1-\frac{2 G M}{c^2 r}\right)^{-1} d r^2+r^2\left(d \theta^2+\sin ^2 \theta d \varphi^2\right).
-$$
-En el caso de una masa en rotación lenta en la aproximación de campo débil, podríamos imaginar una corrección a la métrica de Schwarzschild para obtener un nuevo elemento de línea que describa este caso, en la forma,
-
-$$
-    d s^2=d s_{S c h}^2-\frac{4 G M a c}{c^3 r^2} \sin ^2 \theta r d \varphi c d t=d s_{S c h}^2-\frac{4 G J}{c^3 r^2} \sin ^2 \theta r d \varphi c d t
-$$
-El último término es el de Lense-Thirring, que describe el arrastre de los marcos inerciales y es válido solo hasta primer orden en el momento angular, $J = Mac$. (No voy a discutir mucho sobre el efecto Lense-Thirring, porque eso va más allá del alcance de este trabajo. Si quiere ver más, consulte ).
-\begin{multline}
-    d s^2 = - \left(1-\frac{2 G M}{c^2 r}\right) c^2 d t^2
-    + \left(1-\frac{2 G M}{c^2 r}\right)^{-1} d r^2 \\
-    + r^2\left(d \theta^2+\sin^2 \theta d \varphi^2\right)
-    - \frac{4 G J}{c^3 r} \sin^2 \theta d \varphi c d t.
-\end{multline}
-bajo la aproximación de campo débil cuando $\frac{2GM}{c^2r} \ll 1$ (y $v \ll c$):
-\begin{equation}
-    \left(1-\frac{2GM}{c^2r}\right)^{-1} \approx 1 + \frac{2GM}{c^2r} \quad (\text{Expansión de Taylor a primer orden})
-\end{equation}
-Esto puede ocurrir cuando $M$ es pequeño o $r$ es grande o ambas condiciones son verdaderas.
-Esto lleva a la siguiente forma de la aproximación de campo débil para una masa en rotación lenta, la métrica se simplifica a:
-\begin{multline}
-    ds^2 \approx -\left(1-\frac{2GM}{c^2r}\right)c^2\mathrm{d}t^2
-    + \left(1+\frac{2GM}{c^2r}\right)\mathrm{d}r^2 \\
-    + r^2\left(\mathrm{d}\theta^2 + \sin^2\theta\mathrm{d}\varphi^2\right)
-    - \frac{4GJ}{c^3r}\sin^2\theta\, \mathrm{d}\varphi\, \mathrm{d}t
-\end{multline}
-En términos del parámetro de Kerr $a = J/Mc$:
-\begin{align}
-    ds^2 \approx & -\left(1-\frac{2GM}{c^2r}\right)c^2\mathrm{d}t^2
-    + \left(1+\frac{2GM}{c^2r}\right)\mathrm{d}r^2 \nonumber                              \\
-                 & + r^2\left(\mathrm{d}\theta^2 + \sin^2\theta\mathrm{d}\varphi^2\right)
-    - \frac{4GMa}{c^2r}\sin^2\theta\, \mathrm{d}\varphi\, \mathrm{d}t
-\end{align}
-
-Continuando con la aproximación.
-\begin{equation}
-    \begin{aligned}
-        d s^2 \approx & -\left(1-\frac{2 G M}{c^2 r}\right) c^2 d t^2+\left(1+\frac{2 G M}{c^2 r}\right) d r^2+r^2\left(d \theta^2+\sin ^2 \theta d \varphi^2\right) \\
-                      & -\frac{4 G M a c}{c^3 r} \sin ^2 \theta d \varphi c d t                                                                                      \\
-        \approx       & -c^2 d t^2+\left(1+\frac{2 G M}{c^2 r}\right) d r^2+r^2\left(d \theta^2+\sin ^2 \theta d \varphi^2\right)+\frac{2 G M}{c^2 r} c^2 d t^2      \\
-                      & -\frac{4 G M a}{c^2 r} \sin ^2 \theta d \varphi c d t+\frac{2 G M}{c^2 r} a^2 \sin ^4 \theta d \varphi^2                                     \\
-        =             & -c^2 d t^2+\left(1+\frac{2 G M}{c^2 r}\right) d r^2+r^2\left(d \theta^2+\sin ^2 \theta d \varphi^2\right)                                    \\
-                      & +\frac{2 G M}{c^2 r}\left(c^2 d t^2-2 a \sin ^2 \theta d \varphi c d t+a^2 \sin ^4 \theta d \varphi^2\right)                                 \\
-        =             & -c^2 d t^2+\left(1+\frac{2 G M}{c^2 r}\right) d r^2+r^2\left(d \theta^2+\sin ^2 \theta d \varphi^2\right)                                    \\
-                      & +\frac{2 G M}{c^2 r}\left(c d t-a \sin ^2 \theta d \varphi\right)^2
-    \end{aligned}
-\end{equation}
-Al expandir el cuadrado perfecto en la última línea:
-\begin{equation}
-    \left(c\mathrm{d}t - a\sin^2\theta\mathrm{d}\varphi\right)^2 = c^2\mathrm{d}t^2 - 2ac\sin^2\theta\mathrm{d}t\mathrm{d}\varphi + a^2\sin^4\theta\mathrm{d}\varphi^2
-\end{equation}
-
-El término $a^2\sin^4\theta\mathrm{d}\varphi^2$ aparece naturalmente en la expansión algebraica. Sin embargo, en nuestra aproximación a \textbf{primer orden en $a$}, este término sería de orden $\mathcal{O}(a^2)$ y en principio debería despreciarse. Su presencia aquí se justifica por dos razones:
-
-\begin{itemize}
-    \item \textbf{Consistencia matemática}: Al mantenerlo, preservamos la estructura exacta del cuadrado perfecto, lo que facilita la interpretación geométrica.
-
-    \item \textbf{Orden de aproximación}: Aunque $a^2$ es técnicamente de segundo orden, el factor $\frac{2GM}{c^2r}$ (que es $\ll1$ en el régimen de campo débil) lo convierte en un término de orden $\mathcal{O}\left(\frac{GM}{c^2r}a^2\right)$, que puede considerarse despreciable frente a los términos lineales en $a$.
-\end{itemize}
-Esta ecuación sigue siendo válida hasta el primer orden en $a$.
-Sabemos que los cuerpos en rotación se abultan en el plano ecuatorial alejándose del eje de rotación y se vuelven esferoidales oblatos en forma. Esto sugiere que podemos hacer una conjetura educada y usar coordenadas esferoidales o coordenadas elipsoidales como punto de partida en nuestra búsqueda de la forma de la métrica de Kerr.
-
-\begin{align}
-     & x=\sqrt{r^2+a^2} \sin \theta \cos \varphi \\
-     & y=\sqrt{r^2+a^2} \sin \theta \sin \varphi \\
-     & z=r \cos \theta
-\end{align}
-La utilización de coordenadas esferoidales se motiva por el hecho de que la métrica de Kerr es axialmente simétrica y la fuente de la métrica está rotando. La métrica debería ser simétrica bajo rotaciones alrededor del eje de rotación. Además, se observa que, al principio, el parámetro $a$ de las coordenadas es simplemente una constante; pero lo que procederemos a hacer es la conjetura fundamentada de escribir la métrica en términos de las coordenadas esferoidales y, luego, proponemos que el parámetro $a $estará relacionado con el momento angular de la fuente. Finalmente, comparamos los términos con nuestra aproximación de la métrica.
-
-Primero queremos expresar la métrica de Minkowski en coordenadas esferoidales oblatas.
-
-$$
-    d s^2=-c^2 d t^2+d x^2+d y^2+d z^2
-$$
-Ahora el cambio de coordenadas está dado por las siguientes ecuaciones,
-\begin{align}
-    d x & = \frac{\partial x}{\partial r} d r + \frac{\partial x}{\partial \theta} d \theta + \frac{\partial x}{\partial \varphi} d \varphi \nonumber                    \\
-        & = \frac{r}{\sqrt{r^2+a^2}} \sin \theta \cos \varphi d r + \sqrt{r^2+a^2} \cos \theta \cos \varphi d \theta - \sqrt{r^2+a^2} \sin \theta \sin \varphi d \varphi
-\end{align}
-\begin{align}
-    d y & = \frac{\partial y}{\partial r} d r + \frac{\partial y}{\partial \theta} d \theta + \frac{\partial y}{\partial \varphi} d \varphi \nonumber                    \\
-        & = \frac{r}{\sqrt{r^2+a^2}} \sin \theta \sin \varphi d r + \sqrt{r^2+a^2} \cos \theta \sin \varphi d \theta + \sqrt{r^2+a^2} \sin \theta \cos \varphi d \varphi
-\end{align}
-\begin{align}
-    d z & = \frac{\partial z}{\partial r} d r + \frac{\partial z}{\partial \theta} d \theta \nonumber \\
-        & = \cos \theta d r - r \sin \theta d \theta
-\end{align}
-
-\begin{equation}
-    \begin{aligned}
-        d x^2+d y^2+d z^2 & = \left(\frac{a^2}{2\left(a^2+r^2\right)}+\frac{r^2}{a^2+r^2}+\frac{a^2 \cos ^2 \theta}{2\left(a^2+r^2\right)}-\frac{a^2 \sin ^2 \theta}{2\left(a^2+r^2\right)}\right) d r^2+                                                     \\
-                          & \left(\frac{a^4}{2\left(a^2+r^2\right)}+\frac{3 a^2 r^2}{2\left(a^2+r^2\right)}+\frac{r^4}{a^2+r^2}+\frac{a^4 \cos ^2 \theta}{2\left(a^2+r^2\right)}+\right.                                                                      \\
-                          & \left.\frac{a^2 r^2 \cos ^2 \theta}{2\left(a^2+r^2\right)}-\frac{a^4 \sin ^2 \theta}{2\left(a^2+r^2\right)}-\frac{a^2 r^2 \sin ^2 \theta}{2\left(a^2+r^2\right)}\right) d \theta^2+\left(\frac{a^4}{2\left(a^2+r^2\right)}\right. \\
-                          & \frac{a^2 r^2}{a^2+r^2}+\frac{r^4}{2\left(a^2+r^2\right)}-\frac{a^4 \cos ^2 \theta}{2\left(a^2+r^2\right)}-\frac{a^2 r^2 \cos ^2 \theta}{a^2+r^2}-                                                                                \\
-                          & \left.\frac{r^4 \cos ^2 \theta}{2\left(a^2+r^2\right)}+\frac{a^4 \sin ^2 \theta}{2\left(a^2+r^2\right)}+\frac{a^2 r^2 \sin ^2 \theta}{a^2+r^2}+\frac{r^4 \sin ^2 \theta}{2\left(a^2+r^2\right)}\right) d \varphi^2
-    \end{aligned}
-\end{equation}
-Ahora hagamos algunas simplificaciones para los coeficientes.
-Primero para el coeficiente de $d r^2$ tenemos,
-\begin{align}
-    \begin{aligned}
-        \frac{a^2}{2\left(a^2+r^2\right)}+\frac{r^2}{a^2+r^2}+\frac{a^2 \cos ^2 \theta}{2\left(a^2+r^2\right)}-\frac{a^2 \sin ^2 \theta}{2\left(a^2+r^2\right)}    & =                                        \\
-        \frac{a^2}{2\left(a^2+r^2\right)}+\frac{2 r^2}{2\left(a^2+r^2\right)}+\frac{a^2\left(2 \cos ^2 \theta-1\right)}{2\left(a^2+r^2\right)}                     & =                                        \\
-        \frac{a^2}{2\left(a^2+r^2\right)}+\frac{2 r^2}{2\left(a^2+r^2\right)}+\frac{2 a^2 \cos ^2 \theta}{2\left(a^2+r^2\right)}-\frac{a^2}{2\left(a^2+r^2\right)} & =                                        \\
-        \frac{2 r^2}{2\left(a^2+r^2\right)}+\frac{2 a^2 \cos ^2 \theta}{2\left(a^2+r^2\right)}                                                                     & = \frac{r^2+a^2 \cos ^2 \theta}{a^2+r^2}
-    \end{aligned}
-\end{align}
-para   $ d \theta^2$
-\begin{align}
-    \begin{aligned}
-         & \frac{a^4}{2\left(a^2+r^2\right)}+\frac{3 a^2 r^2}{2\left(a^2+r^2\right)}+\frac{r^4}{a^2+r^2}+\frac{a^4 \cos ^2 \theta}{2\left(a^2+r^2\right)}+                                                    \\
-         & \frac{a^2 r^2 \cos ^2 \theta}{2\left(a^2+r^2\right)}-\frac{a^4 \sin ^2 \theta}{2\left(a^2+r^2\right)}-\frac{a^2 r^2 \sin ^2 \theta}{2\left(a^2+r^2\right)}=\frac{a^4}{2\left(a^2+r^2\right)}+      \\
-         & \frac{3 a^2 r^2}{2\left(a^2+r^2\right)}+\frac{r^4}{a^2+r^2}+\frac{a^4\left(2 \cos ^2 \theta-1\right)}{2\left(a^2+r^2\right)}+\frac{a^2 r^2\left(2 \cos ^2 \theta-1\right)}{2\left(a^2+r^2\right)}= \\
-         & \frac{2 a^2 r^2}{2\left(a^2+r^2\right)}+\frac{r^4}{a^2+r^2}+\frac{2 a^4 \cos ^2 \theta}{2\left(a^2+r^2\right)}+\frac{2 a^2 r^2 \cos ^2 \theta}{2\left(a^2+r^2\right)}=                             \\
-         & \frac{a^2 r^2}{\left(a^2+r^2\right)}+\frac{r^4}{a^2+r^2}+\frac{a^4 \cos ^2 \theta}{\left(a^2+r^2\right)}+\frac{a^2 r^2 \cos ^2 \theta}{\left(a^2+r^2\right)}=                                      \\
-         & \frac{\left(r^2+a^2 \cos ^2 \theta\right)\left(r^2+a^2\right)}{a^2+r^2}=   r^2+a^2 \cos ^2 \theta
-    \end{aligned}
-\end{align}
-para $ d \varphi^2$
-\begin{equation}
-    \begin{aligned}
-         & \frac{a^4}{2\left(a^2+r^2\right)}+\frac{a^2 r^2}{a^2+r^2}+\frac{r^4}{2\left(a^2+r^2\right)}-\frac{a^4 \cos ^2 \theta}{2\left(a^2+r^2\right)}-\frac{a^2 r^2 \cos ^2 \theta}{a^2+r^2}        \\
-         & -\frac{r^4 \cos ^2 \theta}{2\left(a^2+r^2\right)}+\frac{a^4 \sin ^2 \theta}{2\left(a^2+r^2\right)}+\frac{a^2 r^2 \sin ^2 \theta}{a^2+r^2}+\frac{r^4 \sin ^2 \theta}{2\left(a^2+r^2\right)} \\
-         & =\frac{a^4}{2\left(a^2+r^2\right)}+\frac{a^2 r^2}{a^2+r^2}+\frac{r^4}{2\left(a^2+r^2\right)}-\frac{a^4 \cos 2 \theta}{2\left(a^2+r^2\right)}-                                              \\
-         & \frac{2 a^2 r^2 \cos 2 \theta}{2\left(a^2+r^2\right)}-\frac{r^4 \cos 2 \theta}{2\left(a^2+r^2\right)}                                                                                      \\
-         & =\frac{1}{2\left(a^2+r^2\right)}\left(\left(a^2+r^2\right)^2-\left(a^2+r^2\right)^2 \cos 2 \theta\right)                                                                                   \\
-         & =\frac{1}{2}\left(\left(a^2+r^2\right)-\left(a^2+r^2\right) \cos 2 \theta\right)                                                                                                           \\
-         & =\frac{1}{2}\left(\left(a^2+r^2\right)-\left(a^2+r^2\right)\left(1-2 \sin ^2 \theta\right)\right)                                                                                          \\
-         & =\frac{1}{2}\left(2\left(a^2+r^2\right) \sin ^2 \theta\right)                                                                                                                              \\
-         & =\left(a^2+r^2\right) \sin ^2 \theta
-    \end{aligned}
-\end{equation}
-Hagamos la sustitución, $\rho^2=r^2+a^2 \cos ^2 \theta$ para que podamos escribir la métrica en una forma más compacta,
-\begin{align}
-    d s^2= & -c^2 d t^2+d x^2+d y^2+d z^2                                                                                       \\
-    =-     & c^2 d t^2+\frac{\left(r^2+a^2 \cos ^2 \theta\right)}{a^2+r^2} d r^2+\left(r^2+a^2 \cos ^2 \theta\right) d \theta^2 \\
-           & +\left(a^2+r^2\right) \sin ^2 \theta d \varphi^2                                                                   \\
-    =      & -c^2 d t^2+\frac{\rho^2}{a^2+r^2} d r^2+\rho^2 d \theta^2+\left(a^2+r^2\right) \sin ^2 \theta d \varphi^2
-\end{align}
-Esta es la métrica del espacio de Minkowski en coordenadas esferoidales, ahora queremos modificar la métrica para que se parezca a la que aproximamos antes, incluyendo la condición de que la métrica se reduzca a la métrica de Schwarzschild cuando la masa deja de rotar ($a = 0$).
-
-Nótese que no hay un término cruzado en esta forma de la métrica, lo cual es contrario a lo que esperamos de una fuente rotante.
-Podemos, a modo de conjetura, agregar dos términos cruzados que se cancelen entre sí para que efectivamente estemos agregando cero al lado derecho.
-
-\begin{align}
-    d s^2=  & -c^2 d t^2+\frac{\rho^2}{a^2+r^2} d r^2+\rho^2 d \theta^2+\left(a^2+r^2\right) \sin ^2 \theta d \varphi^2                                      \\
-    \approx & \alpha \left(c^2 d t^2-2 a \sin ^2 \theta c d t d \varphi+a^2 \sin ^4 \theta d \varphi^2\right)+\frac{\rho^2}{a^2+r^2} d r^2+\rho^2 d \theta^2 \\
-            & +\beta \left(\left(a^2+r^2\right)^2 d \varphi^2-2 a\left(a^2+r^2\right) c d t d \varphi+a^2 c^2 d t^2\right)
-\end{align}
-Esto parece una expansión binomial donde las constantes indeterminadas al frente pueden encontrarse de tal manera que resulten en la cancelación de los términos cruzados.
-\begin{align}
-    \begin{aligned}
-        d s^2 \approx & -\frac{\left(a^2+r^2\right)}{\rho^2}\left(c^2 d t^2-2 a \sin ^2 \theta c d t d \varphi+a^2 \sin ^4 \theta d \varphi^2\right)+\frac{\rho^2}{a^2+r^2} d r^2 \\
-                      & +\rho^2 d \theta^2+\frac{\sin ^2 \theta}{\rho^2}\left(\left(a^2+r^2\right)^2 d \varphi^2-2 a\left(a^2+r^2\right) c d t d \varphi+a^2 c^2 d t^2\right)     \\
-                      & \approx  -\frac{\left(a^2+r^2\right)}{\rho^2}\left(c d t-a \sin ^2 \theta d \varphi\right)^2+\frac{\rho^2}{a^2+r^2} d r^2+\rho^2 d \theta^2               \\
-                      & +\frac{\sin ^2 \theta}{\rho^2}\left(\left(a^2+r^2\right) d \varphi-a c d t\right)^2
-    \end{aligned}
-\end{align}
-También nos falta la presencia de la masa fuente $M$ en cualquiera de los términos. Sabemos que en el límite cuando $a \rightarrow 0$ y la masa deja de rotar, esta métrica se reduce a la métrica de Schwarzschild.
-La métrica de Schwarzschild tiene la masa $M$ de la fuente apareciendo en los términos $d t^2, d r^2$ así como en el término cruzado. Esto sugiere que necesitamos alterar los coeficientes de los primeros y segundos términos de la siguiente manera.
-
-\begin{align}
-    \frac{-\left(a^2+r^2\right)}{\rho^2} & \rightarrow \frac{-\left(a^2+r^2\right)+k}{\rho^2} \\
-    \frac{\rho^2}{a^2+r^2}               & \rightarrow \frac{\rho^2}{a^2+r^2+h}
-\end{align}
-Sustituyendo estos términos, ahora tenemos,
-\begin{align}
-    d s^2 \approx & \frac{-\left(a^2+r^2\right)+k}{\rho^2}\left(c d t-a \sin ^2 \theta d \varphi\right)^2+\frac{\rho^2}{a^2+r^2+h} d r^2                                 \\
-                  & +\rho^2 d \theta^2+\frac{\sin ^2 \theta}{\rho^2}\left(\left(a^2+r^2\right) d \varphi-a c d t\right)^2                                                \\
-    =             & \frac{-\left(a^2+r^2\right)+k}{r^2+a^2 \cos ^2 \theta}\left(c d t-a \sin ^2 \theta d \varphi\right)^2+\frac{r^2+a^2 \cos ^2 \theta}{a^2+r^2+h} d r^2 \\
-                  & +\left(r^2+a^2 \cos ^2 \theta\right) d \theta^2+\frac{\sin ^2 \theta}{r^2+a^2 \cos ^2 \theta}\left(\left(a^2+r^2\right) d \varphi-a c d t\right)^2
-\end{align}
-
-Cuando $a \rightarrow 0$ se obtiene,
-\begin{align*}
-    \lim _{a \rightarrow 0} & \left[ \frac{-(a^2+r^2)+k}{r^2+a^2 \cos^2 \theta}(c\mathrm{d}t-a\sin^2\theta\mathrm{d}\phi)^2 + \frac{r^2+a^2\cos^2\theta}{a^2+r^2+h}\mathrm{d}r^2 \right.      \\
-                            & +\left. (r^2+a^2\cos^2\theta)\mathrm{d}\theta^2 + \frac{\sin^2\theta}{r^2+a^2\cos^2\theta}\left((a^2+r^2)\mathrm{d}\phi - ac\mathrm{d}t\right)^2 \right]        \\
-    ds^2                    & \approx \frac{-r^2+k}{r^2}(c\mathrm{d}t)^2 + \frac{r^2}{r^2+h}\mathrm{d}r^2 + r^2\mathrm{d}\theta^2 + \frac{\sin^2\theta}{r^2}(r^2\mathrm{d}\phi)^2             \\
-                            & = \frac{-r^2+k}{r^2}c^2\mathrm{d}t^2 + \frac{r^2}{r^2+h}\mathrm{d}r^2 + r^2\mathrm{d}\theta^2 + r^2\sin^2\theta\mathrm{d}\phi^2                                 \\
-                            & = -\left(1-\frac{k}{r^2}\right)c^2\mathrm{d}t^2 + \frac{r^2}{r^2+h}\mathrm{d}r^2 + r^2\mathrm{d}\theta^2 + r^2\sin^2\theta\mathrm{d}\phi^2                      \\
-                            & = -\left(1-\frac{k}{r^2}\right)c^2\mathrm{d}t^2 + \left(\frac{1}{1+\frac{h}{r^2}}\right)\mathrm{d}r^2 + r^2\mathrm{d}\theta^2 + r^2\sin^2\theta\mathrm{d}\phi^2
-\end{align*}
-
-Esto lleva a las siguientes identificaciones,
-\begin{align}
-     & 1-\frac{k}{r^2}=1-\frac{2 G M}{c^2 r} \Rightarrow k=\frac{2 G M r}{c^2}                                                              \\
-     & \frac{1}{1+\frac{h}{r^2}}=\frac{1}{1-\frac{2 G M}{c^2 r}}=\left(1-\frac{2 G M}{c^2 r}\right)^{-1} \Rightarrow h=-\frac{2 G M r}{c^2}
-\end{align}
-lo que nos lleva a
-\begin{align}
-    d s^2 \approx & \frac{-\left(a^2+r^2\right)+k}{r^2+a^2 \cos ^2 \theta}\left(c d t-a \sin ^2 \theta d \varphi\right)^2+\frac{r^2+a^2 \cos ^2 \theta}{a^2+r^2+h} d r^2                                     \\
-                  & +\left(r^2+a^2 \cos ^2 \theta\right) d \theta^2+\frac{\sin ^2 \theta}{r^2+a^2 \cos ^2 \theta}\left(\left(a^2+r^2\right) d \varphi-a c d t\right)^2                                       \\
-    =             & \frac{-\left(a^2+r^2\right)+\frac{2 G M r}{c^2}}{r^2+a^2 \cos ^2 \theta}\left(c d t-a \sin ^2 \theta d \varphi\right)^2+\frac{r^2+a^2 \cos ^2 \theta}{a^2+r^2-\frac{2 G M r}{c^2}} d r^2 \\
-                  & +\left(r^2+a^2 \cos ^2 \theta\right) d \theta^2+\frac{\sin ^2 \theta}{r^2+a^2 \cos ^2 \theta}\left(\left(a^2+r^2\right) d \varphi-a c d t\right)^2
-\end{align}
-Ahora hagamos las sustituciones,
-$$
-    \rho^2=r^2+a^2 \cos ^2 \theta \quad \text { and } \quad \Delta=a^2+r^2-\frac{2 G M r}{c^2}
-$$
-Lo que lleva a,
-\begin{align}
-    d s^2 \approx & \frac{-\left(a^2+r^2\right)+\frac{2 G M r}{c^2}}{r^2+a^2 \cos ^2 \theta}\left(c d t-a \sin ^2 \theta d \varphi\right)^2+\frac{r^2+a^2 \cos ^2 \theta}{a^2+r^2-\frac{2 G M r}{c^2}} d r^2 \\
-                  & +\left(r^2+a^2 \cos ^2 \theta\right) d \theta^2+\frac{\sin ^2 \theta}{r^2+a^2 \cos ^2 \theta}\left(\left(a^2+r^2\right) d \varphi-a c d t\right)^2                                       \\
-    =-            & \frac{\Delta}{\rho^2}\left(c d t-a \sin ^2 \theta d \varphi\right)^2+\frac{\rho^2}{\Delta} d r^2+\rho^2 d \theta^2                                                                       \\
-                  & +\frac{\sin ^2 \theta}{\rho^2}\left(\left(a^2+r^2\right) d \varphi-a c d t\right)^2
-\end{align}
-Podemos expandir esto y reescribirlo.
-\begin{align}
-    d s^2 \approx & -\frac{\Delta}{\rho^2} c^2 d t^2+2 \frac{\Delta}{\rho^2} a \sin ^2 \theta c d t d \varphi-\frac{\Delta}{\rho^2} a^2 \sin ^4 \theta d \varphi^2               \\
-                  & +\frac{\rho^2}{\Delta} d r^2+\rho^2 d \theta^2+\frac{\sin ^2 \theta}{\rho^2}\left(a^2+r^2\right)^2 d \varphi^2                                               \\
-                  & -2 \frac{\sin ^2 \theta}{\rho^2}\left(a^2+r^2\right) a c d t d \varphi+\frac{\sin ^2 \theta}{\rho^2} a^2 c^2 d t^2                                           \\
-    =             & -\left(\frac{\Delta}{\rho^2}-\frac{\sin ^2 \theta}{\rho^2} a^2\right) c^2 d t^2-2 \frac{a \sin ^2 \theta}{\rho^2}\left(a^2+r^2-\Delta\right) c d t d \varphi \\
-                  & +\frac{\rho^2}{\Delta} d r^2+\rho^2 d \theta^2+\frac{\sin ^2 \theta}{\rho^2}\left(\left(a^2+r^2\right)^2-\Delta a^2 \sin ^2 \theta\right) d \varphi^2
-\end{align}
-Ahora hacemos las sustituciones,
-\begin{align}
-     & a^2+r^2-\Delta=a^2+r^2-\left(a^2+r^2-\frac{2 G M r}{c^2}\right)=\frac{2 G M r}{c^2} \\
-     & \Sigma^2=\left(a^2+r^2\right)^2-\Delta a^2 \sin ^2 \theta
-\end{align}
-tal que,
-\begin{align}
-    d s^2 \approx & -\left(\frac{\Delta-a^2 \sin ^2 \theta}{\rho^2}\right) c^2 d t^2-2 \frac{a \sin ^2 \theta}{\rho^2} \frac{2 G M r}{c^2} c d t d \varphi \\
-                  & +\frac{\rho^2}{\Delta} d r^2+\rho^2 d \theta^2+\frac{\Sigma^2 \sin ^2 \theta}{\rho^2} d \varphi^2                                      \\
-    =             & -\frac{\Delta-a^2 \sin ^2 \theta}{\rho^2} c^2 d t^2-\frac{4 G M r a \sin ^2 \theta}{c^2 \rho^2} c d t d \varphi                        \\
-                  & +\frac{\rho^2}{\Delta} d r^2+\rho^2 d \theta^2+\frac{\Sigma^2 \sin ^2 \theta}{\rho^2} d \varphi^2
-\end{align}
-Esta es una forma de la métrica de Kerr que buscamos en las coordenadas de Boyer-Lindquist $(t, r, \theta, \varphi)$.
-
-Para verificar que realmente funciona, necesitamos comprobar que satisface la ecuación de Einstein en el caso de vacío o espacio vacío.
-Una forma de la métrica de Kerr es
-
-$$
-    g_{\mu \nu}=\left[\begin{array}{cccc}
-            -\frac{\Delta-a^2 \sin ^2 \theta}{\rho^2}    & 0                     & 0      & -\frac{2 G M r a \sin ^2 \theta}{c^2 \rho^2} \\
-            0                                            & \frac{\rho^2}{\Delta} & 0      & 0                                            \\
-            0                                            & 0                     & \rho^2 & 0                                            \\
-            -\frac{2 G M r a \sin ^2 \theta}{c^2 \rho^2} & 0                     & 0      & \frac{\Sigma^2 \sin ^2 \theta}{\rho^2}
-        \end{array}\right]
-$$
-
-Una forma del elemento de línea es,
-$$
-    d s^2 =-\frac{\Delta-a^2 \sin ^2 \theta}{\rho^2} c^2 d t^2-\frac{4 G M r a \sin ^2 \theta}{c^2 \rho^2} c d t d \varphi+\frac{\rho^2}{\Delta} d r^2+\rho^2 d \theta^2+\frac{\Sigma^2 \sin ^2 \theta}{\rho^2} d \varphi^2
-$$
-como nota podemos expresar el término $\frac{\Sigma^2 \sin ^2 \theta}{\rho^2}$ de la siguiente manera,
-\begin{equation}
-    \begin{aligned}
-        \frac{\Sigma^2 \sin ^2 \theta}{\rho^2} & =\frac{1}{\rho^2}\left[\left(a^2+r^2\right)^2-\Delta a^2 \sin ^2 \theta\right] \sin ^2 \theta                                                                         \\
-                                               & =\frac{1}{\rho^2}\left[\left(a^2+r^2\right)^2-\left(a^2+r^2-\frac{2 G M r}{c^2}\right) a^2 \sin ^2 \theta\right] \sin ^2 \theta                                       \\
-                                               & =\frac{1}{\rho^2}\left[a^4+2 a^2 r^2+r^4-a^4 \sin ^2 \theta-r^2 a^2 \sin ^2 \theta+\frac{2 G M r}{c^2} a^2 \sin ^2 \theta\right] \sin ^2 \theta                       \\
-                                               & =\frac{1}{\rho^2}\left[a^4-a^4 \sin ^2 \theta+r^4+a^2 r^2+a^2 r^2-a^2 r^2 \sin ^2 \theta+\frac{2 G M r}{c^2} a^2 \sin ^2 \theta\right] \sin ^2 \theta                 \\
-                                               & =\frac{1}{\rho^2}\left[a^4\left(1-\sin ^2 \theta\right)+r^4+a^2 r^2+a^2 r^2\left(1-\sin ^2 \theta\right)+\frac{2 G M r}{c^2} a^2 \sin ^2 \theta\right] \sin ^2 \theta \\
-                                               & =\frac{1}{\rho^2}\left[a^4 \cos ^2 \theta+r^4+a^2 r^2+a^2 r^2 \cos ^2 \theta+\frac{2 G M r}{c^2} a^2 \sin ^2 \theta\right] \sin ^2 \theta                             \\
-                                               & =\frac{1}{\rho^2}\left[r^2\left(r^2+a^2\right)+a^2 \cos ^2 \theta\left(r^2+a^2\right)+\frac{2 G M r}{c^2} a^2 \sin ^2 \theta\right] \sin ^2 \theta                    \\
-                                               & =\frac{1}{\rho^2}\left[\left(r^2+a^2\right)\left(r^2+a^2 \cos ^2 \theta\right)+\frac{2 G M r}{c^2} a^2 \sin ^2 \theta\right] \sin ^2 \theta                           \\
-                                               & =\frac{1}{\rho^2}\left[\left(r^2+a^2\right) \rho^2+\frac{2 G M r}{c^2} a^2 \sin ^2 \theta\right] \sin ^2 \theta                                                       \\
-                                               & =\left[\left(r^2+a^2\right)+\frac{2 G M r}{c^2 \rho^2} a^2 \sin ^2 \theta\right] \sin ^2 \theta                                                                       \\
-                                               & =\left(r^2+a^2+\frac{2 G M r}{c^2 \rho^2} a^2 \sin ^2 \theta\right) \sin ^2 \theta
-    \end{aligned}
-\end{equation}
-
-\subsection{Arrastre de marcos inerciales}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Sabemos que esta métrica tiene dos vectores de Killing, de modo que a lo largo de las geodésicas seguidas por una partícula dada tenemos,
-
-$$
-    \frac{d}{d \lambda}({\underset{\sim}{x}} \cdot \underset{\sim}{u})=0
-$$
-
-Uno de los vectores de Killing es,
-
-$$
-    \underset{\sim}{K}=K^\alpha{\underset{\sim}{\alpha}}_\alpha=(0,0,0,1) \mathbf{e}_\varphi
-$$
-
-El cuatro-momento de la partícula basado en su cuatro-velocidad es,
-
-$$
-    \underset{\sim}{p}=m_0 \underset{\sim}{u}=\left(p^t, p^r, p^\theta, p^{\varphi}\right)
-$$
-En esta geometría, el componente del momento angular del cuatro-momento de la partícula se conserva a lo largo de sus geodésicas.
-
-
-\begin{align}
-     & \frac{d}{d \lambda}\left(\underset{\sim}{K} \cdot m_0 \underset{\sim}{u}\right)=\frac{d}{d \lambda}(\underset{\sim}{K} \cdot \underset{\sim}{p}) \\
-     & =\frac{d}{d \lambda}\left((0,0,0,1) \frac{\partial}{\partial \varphi}-\left(p^t, p^r, p^\theta, p^{\varphi}\right)\right)                        \\
-     & =\frac{d}{d \lambda}\left(g_{\varphi \varphi} 1 p^{\varphi}\right)                                                                               \\
-     & =\frac{d}{d \lambda}\left(g_{\varphi \varphi} p^{\varphi}\right)                                                                                 \\
-     & =\frac{d}{d \lambda}\left(p_{\varphi}\right)                                                                                                     \\
-     & =0                                                                                                                                               \\
-     & \Rightarrow p_{\varphi}=\text { constante }=\mathrm{L}
-\end{align}
-
-Para esta geometría tenemos dos vectores de Killing y una métrica de la forma,
-$$
-    d s^2=g_{t t} c^2 d t^2+g_{t r} d r^2+g_{\theta \theta} d \theta^2+2 g_{t \varphi} c d t d \varphi+g_{\varphi \varphi} d \varphi^2
-$$
-Los componentes contravariantes temporal y azimutal del cuatro-momento son:
-\begin{align}
-     & \mathrm{p}^{\varphi}=g^{\varphi \alpha} p_\alpha=g^{\varphi t} p_t+g^{\varphi \varphi} p_{\varphi} \\
-     & \mathrm{p}^t=g^{t \alpha} p_\alpha=g^{t t} p_t+g^{t \varphi} p_{\varphi}
-\end{align}
-
-Ahora digamos que liberamos nuestra partícula, con masa $m_0$, desde el reposo y lejos de la masa fuente $M$ de modo que inicialmente tiene, $p_{\varphi}=0$ (a lo largo de su geodésica). Los componentes de su cuatro-momento que son constantes a lo largo de las geodésicas por las que se mueve son,
-
-$$
-    \mathrm{p}^t=m_0 u^0=m_0 c \frac{d t}{d \tau} \quad \text { y } \quad \mathrm{p}^{\varphi}=m_0 u^{\varphi}=m_0 \frac{d \varphi}{d \tau}
-$$
-
-Estas dos cantidades nos permiten formar el resultado,
-
-$$
-    \frac{d \varphi}{c d t}=\frac{d \varphi}{d(c t)}=m_0 \frac{d \varphi}{d \tau} \frac{d \tau}{m_0 c d t}=\frac{\mathrm{p}^{\varphi}}{\mathrm{p}^t}=\frac{g^{\varphi t}}{g^{t t}}=\omega(r, \theta)
-$$
-
-Aquí, $\omega$ es la velocidad angular de coordenadas que adquiere la partícula a medida que se mueve a lo largo de su geodésica (lo que significa que está cayendo libremente), aunque comenzó desde el reposo lejos de la masa fuente $M$.
-El hecho de que esta partícula siga una geodésica significa que la curvatura del espacio-tiempo alrededor de la masa fuente debe estar curvada de tal manera que la partícula adquiera una velocidad angular en la misma dirección que la masa fuente.
-Este efecto se llama arrastre de marcos inerciales.
-En el caso de los fotones tenemos en algún marco inercial una cuatro-velocidad dada por,
-
-$$
-    \underset{\sim}{u}=\frac{d x^\mu}{d \lambda}{\underset{\sim}{\mu}}^e \quad \text { y } \quad \underset{\sim}{u} \cdot \underset{\sim}{u}=0
-$$
-
-- El cuatro-momento de este fotón en algún marco inercial arbitrario es,
-
-$$
-    \underset{\sim}{p}=\alpha \underset{\sim}{u}=\alpha\left(\frac{c d t}{d \lambda}, \frac{d r}{d \lambda}, \frac{d \theta}{d \lambda}, \frac{d \varphi}{d \lambda}\right)=\left(p^t, p^r, p^\theta, p^{\varphi}\right)
-$$
-
-- Cuando nuevamente liberamos un fotón en la dirección de la masa fuente con componente de momento angular inicial cero, aún obtenemos,
-
-$$
-    \frac{d \varphi}{c d t}=\frac{d \varphi}{d(c t)}=\alpha \frac{d \varphi}{d \lambda} \frac{d \lambda}{\alpha c d t}=\frac{\mathrm{p}^{\varphi}}{\mathrm{p}^t}=\frac{g^{\varphi t}}{g^{t t}}=\omega(r, \theta)
-$$
-
-- Dado que los fotones siguen la curvatura del espacio-tiempo, son una forma de sondear ese espacio-tiempo y determinar el efecto que tiene el objeto rotante con masa M en el espacio-tiempo.
-- Nótese que la dirección de la velocidad angular adquirida por la partícula, ya sea con masa o un fotón, está en la misma dirección que la rotación de la masa fuente $M$,
-
-$$
-    \frac{d \varphi}{d t}=c \omega(r, \theta)
-$$
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \section{Algoritmo de Newman-Janis y agujeros negros rotantes}
 
@@ -446,6 +18,7 @@ El algoritmo se puede resumir en 5 pasos:
 
           \begin{equation}
               g^{\mu \nu} = l^\mu n^\nu + l^\nu n^\mu - m^\mu \bar{m}^\nu - m^\nu \bar{m}^\mu
+              \label{MetricaTetrada}
           \end{equation}
 
           donde
@@ -659,15 +232,9 @@ El algoritmo se puede resumir en 5 pasos:
               \end{aligned}
           \end{equation}
 
-    \item Finalmente, se asume que una simple transformación de coordenadas de la forma $u = t + F(r), \phi = \psi + G(r)$ transformará la métrica a coordenadas de Boyer-Lindquist. Un conjunto de coordenadas en el que la métrica tiene solo un término fuera de la diagonal $g_{t \phi}$ se denominará "Boyer-Lindquist". Para obtener la representación usual de la métrica de Kerr en coordenadas de Boyer-Lindquist, es necesario realizar una transformación en la coordenada nula $u$ y en la coordenada angular $\phi$:
-
-          $$
-              u = t - \int \frac{a}{r^2 + a^2 + Q^2 - 2mr} dr
-          $$
-
-          $$
-              \phi = \psi - \int \frac{r^2 + a^2}{r^2 + a^2 + Q^2 - 2mr} dr
-          $$
+    \item \begin{task}
+        Convertir la métrica obtenida a coordenadas de Boyer-Lindquist, que son las coordenadas más comunes para describir agujeros negros rotantes. 
+    \end{task}
 \end{enumerate}
 
 \subsection{Aplicación a la métrica de Schwarzschild}
@@ -748,4 +315,35 @@ de forma que todas las tetradas quedan como:
         m^\mu & = \frac{1}{\sqrt{2}(r + ia \cos \theta)} \left[ ia \sin \theta (\delta_0^\mu - \delta_1^\mu) + \delta_2^\mu + \frac{i}{\sin \theta} \delta_3^\mu \right]
     \end{aligned}
 \end{equation}
+Y usando la transformación (\ref{MetricaTetrada}) obtenemos una forma de la métrica de Kerr
+\begin{equation}
+   g^{\mu\nu} =  \left(\begin{matrix}
+- \frac{a^{2} \sin^{2}{\left(\theta \right)}}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} & \frac{0.5 \left(a^{2} \sin^{2}{\left(\theta \right)} + a^{2} + r^{2}\right)}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} & 0 & - \frac{a}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} \\
+\frac{0.5 \left(a^{2} \sin^{2}{\left(\theta \right)} + a^{2} + r^{2}\right)}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} & \frac{- 3 a^{2} \sin^{2}{\left(\theta \right)} - a^{2} - 2 i a m \cos{\left(\theta \right)} + 2 m r - r^{2}}{4 \left(a^{2} \cos^{2}{\left(\theta \right)} + r^{2}\right)} & 0 & \frac{a}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} \\
+0 & 0 & - \frac{1}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} & 0 \\
+- \frac{a}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} & \frac{a}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} & 0 & - \frac{1}{\left(a^{2} \cos^{2}{\left(\theta \right)} + r^{2}\right) \sin^{2}{\left(\theta \right)}} \\
+\end{matrix}\right)
+\end{equation}
 
+\begin{task}
+    Verificar que la métrica obtenida es equivalente a la métrica de Kerr en coordenadas de Boyer-Lindquist.
+
+\end{task}
+La mewtrica en coordenadas de Boyer-Lindquist es:
+
+\begin{equation}
+    g_{\mu \nu}=\left(\begin{array}{cccc}
+-\left(1-\frac{2 M r}{\Sigma}\right) c^2 & 0 & 0 & -\frac{2 M a r \sin ^2 \theta}{\Sigma} c \\
+0 & \frac{\Sigma}{\Delta} & 0 & 0 \\
+0 & 0 & \Sigma & 0 \\
+-\frac{2 M a r \sin ^2 \theta}{\Sigma} c & 0 & 0 & \left(r^2+a^2+\frac{2 M r a^2 \sin ^2 \theta}{\Sigma}\right) \sin ^2 \theta
+\end{array}\right)
+    \label{eq:MetricaKerrBL}
+\end{equation}
+Donde funciones $\Sigma$ y $\Delta$ son:
+- $\Sigma=r^2+a^2 \cos ^2 \theta$
+- $\Delta=r^2-2 M r+a^2$
+
+\section{Análisis de la métrica de Kerr}
+\subsection{Símbolos de Christoffel}
+Se uso el algoritmo que aparece en los anexos para calcular los símbolos de Christoffel no cero de la métrica de Kerr

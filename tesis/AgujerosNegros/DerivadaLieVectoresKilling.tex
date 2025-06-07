@@ -8,38 +8,33 @@ La definición algebraica de la derivada de Lie de un campo tensorial se basa en
 
 \begin{axiom}\label{ax:Lie1}
     La derivada de Lie de una función es igual a la derivada direccional de la función. Este hecho a menudo se expresa con la fórmula
-
-    $$
-        \mathcal{L}_Y f=Y(f).
-    $$
-    \begin{equation}
-        \mathscr{L}_A f\left(x^\alpha\right)=A^\alpha \partial_\alpha f
-    \end{equation}
+    \[
+    \mathcal{L}_X f = X(f) = X^\mu \partial_\mu f
+    \]
 
 \end{axiom}
 
 \begin{axiom}\label{ax:Lie2}
     La derivada de Lie obedece la siguiente versión de la regla de Leibniz: Para cualquier par de campos tensoriales $S$ y $T$, tenemos
 
-    $$
-        \mathcal{L}_Y(S \otimes T)=\left(\mathcal{L}_Y S\right) \otimes T+S \otimes\left(\mathcal{L}_Y T\right).
-    $$
+    \[
+        \mathcal{L}_X(S \otimes T) = (\mathcal{L}_X S) \otimes T + S \otimes (\mathcal{L}_X T)
+        \]
 \end{axiom}
 
 \begin{axiom}\label{ax:Lie3}
     La derivada de Lie obedece la regla de Leibniz con respecto a la contracción:
-
-    $$
-        \mathcal{L}_X\left(T\left(Y_1, \ldots, Y_n\right)\right)=\left(\mathcal{L}_X T\right)\left(Y_1, \ldots, Y_n\right)+T\left(\left(\mathcal{L}_X Y_1\right), \ldots, Y_n\right)+\cdots+T\left(Y_1, \ldots,\left(\mathcal{L}_X Y_n\right)\right).
-    $$
+    \[
+        \mathcal{L}_X(T(Y_1, \ldots, Y_n)) = (\mathcal{L}_X T)(Y_1, \ldots, Y_n) + \sum_{i=1}^n T(Y_1, \ldots, \mathcal{L}_X Y_i, \ldots, Y_n)
+        \]
 \end{axiom}
 
 \begin{axiom}\label{ax:Lie4}
     La derivada de Lie conmuta con la derivada exterior en funciones:
 
-    $$
-        \left[\mathcal{L}_X, d\right]=0.
-    $$
+    \[
+    \left[\mathcal{L}_X, d\right] = 0 \quad \text{o equivalentemente,} \quad \mathcal{L}_X \circ d = d \circ \mathcal{L}_X
+    \]
 \end{axiom}
 
 \noindent La primera forma y la más genérica para dos campos vectoriales
