@@ -7,6 +7,8 @@ def delta(i, j):
     return 1 if i == j else 0
 
 
+
+
 # New null tetrads
 def l(mu):
     return delta(mu, 1) 
@@ -15,7 +17,7 @@ def m(mu):
     return (1/(sqrt(2)*(r + I*a*cos(theta))))*(I*a*sin(theta)*(delta(mu, 0) - delta(mu, 1)) + delta(mu, 2) + (I /sin(theta))*delta(mu, 3))
 
 def n(mu):
-    return delta(mu,0)/2 - (1-(2*mass*(r- I*a*cos(theta)))/(r**2 +a**2*cos(theta)**2))*delta(mu,1)/8
+    return delta(mu,0)*Rational(1, 2) - (1-(2*mass*(r- I*a*cos(theta)))/(r**2 +a**2*cos(theta)**2))*delta(mu,1)/8
 
 def m_conjugate(mu):
     return m(mu).conjugate()

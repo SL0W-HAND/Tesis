@@ -273,6 +273,87 @@ Aquí es donde podemos observar la ventaja de usar la derivada de Lie con deriva
 \end{note}
 Encontrar los vectores de Killing implica resolver la ecuación (\ref{eq:killing}), para una métrica dada este es un procedimiento tedioso, pero en general se puede hacer, a continuación se muestran los vectores de killing para el espacio-tiempo de Minkowski, el cual es el espacio-tiempo plano.
 
+ejemplo de la métrica de Minkowski
+Dado que los Christoffel son cero, la ecuación de Killing se reduce a
+\begin{equation}
+    \begin{aligned}
+        \partial_\mu \xi_\nu + \partial_\nu \xi_\mu =0\\
+        \partial_\mu \xi_\nu + \partial_\nu \xi_\mu =0.
+    \end{aligned}
+\end{equation}
+Tomemos la derivada parcial de la ecuación con respecto a una tercera coordenada, $x^\sigma$ :
+
+$$
+\partial_\sigma\left(\partial_\mu \xi_\nu+\partial_\nu \xi_\mu\right)=0
+$$
+
+Como las derivadas parciales conmutan en coordenadas cartesianas (ej. $\partial_\sigma \partial_\mu=\partial_\mu \partial_\sigma$ ), podemos reescribir esta y otras dos permutaciones cíclicas de los indices ( $\mu, \nu, \sigma$ ):
+1. $\partial_\sigma \partial_\mu \xi_\nu+\partial_\sigma \partial_\nu \xi_\mu=0$
+2. $\partial_\mu \partial_\nu \xi_\sigma+\partial_\mu \partial_\sigma \xi_\nu=0$
+3. $\partial_\nu \partial_\sigma \xi_\mu+\partial_\nu \partial_\mu \xi_\sigma=0$
+
+Paso 2: Aislar la segunda derivada
+Ahora, combinamos estas tres ecuaciones. Si sumamos la (2) y la (3) y le restamos la (1):
+
+$$
+\left(\partial_\mu \partial_\nu \xi_\sigma+\partial_\mu \partial_\sigma \xi_\nu\right)+\left(\partial_\nu \partial_\sigma \xi_\mu+\partial_\nu \partial_\mu \xi_\sigma\right)-\left(\partial_\sigma \partial_\mu \xi_\nu+\partial_\sigma \partial_\nu \xi_\mu\right)=0
+$$
+
+Reagrupando términos y usando la conmutatividad de las derivadas:
+
+$$
+2 \partial_\mu \partial_\nu \xi_\sigma+\left(\partial_\mu \partial_\sigma \xi_\nu-\partial_\sigma \partial_\mu \xi_\nu\right)+\left(\partial_\nu \partial_\sigma \xi_\mu-\partial_\sigma \partial_\nu \xi_\mu\right)=0
+$$
+
+
+Los términos entre paréntesis son cero. Esto nos deja con un resultado crucial:
+
+$$
+2 \partial_\mu \partial_\nu \xi_\sigma=0 \quad \Longrightarrow \quad \partial_\mu \partial_\nu \xi_\sigma=0
+$$
+
+
+Paso 3: Integrar la ecuación resultante
+La ecuación $\partial_\mu \partial_\nu \xi_\sigma=0$ nos dice que la segunda derivada de cualquier componente de $\xi$ con respecto a cualquier par de coordenadas es cero. La única función cuya segunda derivada es siempre cero es una función lineal.
+
+Por lo tanto, la solución general para cada componente $\xi_\sigma$ debe ser lineal en las coordenadas $x^\rho$ :
+
+$$
+\xi_\sigma(x)=A_{\sigma \rho} x^\rho+c_\sigma
+$$
+
+
+Donde $A_{\sigma \rho}$ y $c_\sigma$ son constantes. $A_{\sigma \rho}$ es una matriz constante de $4 \times 4$ y $c_\sigma$ es un vector constante de 4 componentes.
+
+Ahora debemos encontrar las restricciones que la ecuación de Killing original impone sobre las constantes $A_{\sigma \rho}$ y $c_\sigma$. Sustituimos nuestra solución general en $\partial_\mu \xi_\nu+\partial_\nu \xi_\mu=0$.
+
+Primero, calculamos la derivada de nuestra solución:
+
+$$
+\partial_\mu \xi_\nu=\partial_\mu\left(A_{\nu \rho} x^\rho+c_\nu\right)=A_{\nu \rho} \delta_\mu^\rho=A_{\nu \mu}
+$$
+
+
+Donde $\delta_\mu^\rho$ es la delta de Kronecker (es 1 si $\rho=\mu$ y 0 en caso contrario).
+Ahora sustituimos este resultado en la ecuación de Killing:
+
+$$
+A_{\nu \mu}+A_{\mu \nu}=0
+$$
+
+
+Esto implica que:
+
+$$
+A_{\mu \nu}=-A_{\nu \mu}
+$$
+
+
+Esta condición nos dice que la matriz de constantes $A_{\mu \nu}$ debe ser antisimétrica.
+
+3 Rotaciones: Las componentes puramente espaciales $\left(A_{12}, A_{13}, A_{23}\right)$ generan rotaciones en los planos $\mathrm{xy}, \mathrm{xz}, \mathrm{yz}$. Por ejemplo, la elección $A_{21}=-A_{12}=1$ y el resto cero, nos da el vector de Killing rotacional $\xi^\mu=(0,-y, x, 0)$ que mencionaste en tu pregunta anterior.
+
+
 \begin{table}[H]
 \centering
 \begin{tabular}{c|l}

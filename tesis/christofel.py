@@ -1,15 +1,13 @@
-from sympy import symbols, Function, Matrix, Rational, diff, simplify, latex, init_printing, sin, cos
+from sympy import symbols,trigsimp,factor,cancel, Function, Matrix, Rational, diff, simplify, latex, init_printing, sin, cos
 
 # Definición de Símbolos
-# Se mantienen los símbolos originales que definiste
-t, r, theta, phi, Gamma_sym = symbols('t r theta phi Gamma') # Renombré 'Gamma' a 'Gamma_sym' para evitar confusión con el nombre de la función Christoffel, aunque en tu código original no causaba error.
-# CORRECCIÓN PRINCIPAL: 'indices' ahora es una lista de los 4 símbolos de coordenadas
+
+t, r, theta, phi, Gamma_sym = symbols('t r theta phi Gamma') 
+
 indices = [t, r, theta, phi] 
-A = Function('A')(r) # Para la métrica 3D comentada, se mantiene
+
 
 # Parámetros y expresiones para la métrica de Kerr
-# Se mantienen tus definiciones originales para 'a, M, c, delta, sigma' como símbolos.
-# 'delta' y 'sigma' (minúsculas) se redefinen inmediatamente como expresiones.
 a, M, c, delta_s, sigma_s = symbols('a M c Delta Sigma', real=True) # Delta y Sigma (mayúsculas) son símbolos, delta y sigma (minúsculas) se definen abajo
 
 # Expresiones para la métrica (usando _expr para distinguirlas de los símbolos si fuera necesario)
@@ -17,8 +15,7 @@ delta = r**2 - 2*M*r + a**2
 sigma = r**2 + a**2*cos(theta)**2
 
 # Función para convertir índices a su forma de LaTeX
-def latex_index(index_symbol): # El argumento es un símbolo (ej: t, r, theta, phi)
-    # CORRECCIÓN: Añadido 't' al diccionario
+def latex_index(index_symbol): 
     index_dict = {'t': 't', 'r': 'r', 'theta': '\\theta', 'phi': '\\phi'}
     return index_dict.get(str(index_symbol), str(index_symbol))
 
@@ -26,7 +23,6 @@ def latex_index(index_symbol): # El argumento es un símbolo (ej: t, r, theta, p
 init_printing(use_unicode=True)
 
 ## Métrica de Kerr (g_ij)
-# Usando las variables 'sigma' y 'delta' que son las expresiones definidas arriba
 g_ij = [
     [-(1 - 2*M*r/sigma)*c**2, 0, 0, -2*M*a*r*sin(theta)**2*c/sigma],
     [0, sigma/delta, 0, 0],
@@ -35,7 +31,6 @@ g_ij = [
 ]
 
 # Métrica inversa g^ij (tu variable 'gij')
-# El cálculo de la inversa es correcto. len(g_ij) será 4.
 gij = [[Matrix(g_ij).inv()[i-1, j-1] for j in range(1, len(g_ij)+1)] for i in range(1, len(g_ij)+1)]
 
 # Función para calcular Símbolos de Christoffel
@@ -51,11 +46,8 @@ def Christoffel(upperIndex, lowerIndex1, lowerIndex2):
     
     # La suma ahora itera correctamente de 0 a 3 (len(indices) es 4)
     for i in range(0, len(indices), 1): # 'i' es el índice de suma (0-basado)
-        # 'indices[i]' es el símbolo de coordenada para la diferenciación del tercer término
-        # g_ij[i][lowerIndex2-1] -> g_{sum_idx, lowerIndex2_sym}
-        # lowerIndexSymbol1 -> símbolo para la primera derivada (ej: ∂/∂t)
         
-    
+       
         term_inv_metric = gij[upperIndex-1][i]
         
         diff1 = diff(g_ij[i][lowerIndex2-1], lowerIndexSymbol1)
@@ -63,23 +55,31 @@ def Christoffel(upperIndex, lowerIndex1, lowerIndex2):
         diff3 = diff(g_ij[lowerIndex1-1][lowerIndex2-1], indices[i])
         
         Christoffel_sum = Christoffel_sum + Rational(1,2) * term_inv_metric * (diff1 + diff2 - diff3)
-    
-    Christoffel_simplified = simplify(Christoffel_sum)
 
-    latex_str = f"\\Gamma^{{{latex_index(upperIndexSymbol)}}}{{ }}_{{{latex_index(lowerIndexSymbol1)} {latex_index(lowerIndexSymbol2)}}} &= {latex(Christoffel_simplified)} \\\\"
-    
-    print(latex_str)
-    return latex_str # o Christoffel_simplified si prefieres devolver el valor SymPy
+        # Reemplaza primero para que SymPy sepa que esas expresiones son Delta y Sigma
+    expr = Christoffel_sum.replace(r**2 - 2*M*r + a**2, delta_s)
+    expr = expr.replace(r**2 + a**2*cos(theta)**2, sigma_s)
+
+    # Aplica simplificaciones trigonométricas, algebraicas y factorización
+    expr = trigsimp(expr)               # Simplifica funciones trigonométricas
+    expr = simplify(expr)               # Simplificación general
+    expr = cancel(expr)                 # Cancela factores comunes en numerador/denominador
+    expr = factor(expr)                 # Agrupa factores (incluye Sigma y Delta)
+
+    Christoffel_simplified = expr
+
+
+    if (Christoffel_simplified != 0):
+        latex_str = f"\\Gamma^{{{latex_index(upperIndexSymbol)}}}{{ }}_{{{latex_index(lowerIndexSymbol1)} {latex_index(lowerIndexSymbol2)}}} &= {latex(Christoffel_simplified)} \\\\"
+        print(latex_str)
+        return latex_str # o Christoffel_simplified si prefieres devolver el valor SymPy
 
 # Calcular todos los símbolos de Christoffel
-# Los bucles de 1 a 4 (range(1,5,1)) son correctos para una métrica 4x4
 print("Calculando todos los símbolos de Christoffel para la métrica de Kerr:")
-print("(Esto puede tomar un tiempo considerable...)")
+
 for i in range(1, 5, 1):      # Índice superior k
     for j in range(1, 5, 1):  # Primer índice inferior m
-        for k_loop in range(1, 5, 1): # Segundo índice inferior n (usé k_loop para evitar sobreescribir la k del bucle externo si la usaras)
-            # Imprimir qué símbolo se está calculando puede ayudar a rastrear el progreso
-            print(f"% Calculando Gamma^{latex_index(indices[i-1])}_({latex_index(indices[j-1])}{latex_index(indices[k_loop-1])})")
+        for k_loop in range(1, 5, 1): # Segundo índice inferior n 
             Christoffel(i, j, k_loop)
 
 print("\nCálculo completado.")
