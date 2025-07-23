@@ -2,15 +2,23 @@
 
 Las ecuaciones de Einstein son la teoría moderna por la cual describimos la gravedad
 \begin{equation}
-    R_{\mu \nu}-\frac{1}{2} R g_{\mu \nu}-\Lambda g_{\mu \nu} = \frac{8 \pi G}{c^4} T_{\mu \nu},
+    R_{\mu \nu}-\frac{1}{2} R g_{\mu \nu} = \frac{8 \pi G}{c^4} T_{\mu \nu},\footnotemark
     \label{EinsteinFieldEquations}
 \end{equation}
-estas describen como se curva el espacio dada una distribución de materia. Para los casos donde no estemos en presencia de materia se deben de cumplir las ecuaciones de vació
+\footnotetext{Se tomara en este trabajo la constante cosmológica $\Lambda = 0$. }
+y su otra forma equivalente 
+\begin{equation}
+    R_{\mu v}=\frac{8 \pi G}{c^2}\left(T_{\mu v}-1 / 2 g_{\mu v} \mathbf{T}\right) 
+    \label{eq:EinsteinFieldEquations2}    
+\end{equation}
+(Donde $\mathbf{T} = g_{\mu\nu}T^{\mu\nu}$)
+estas describen como se curva el espacio dada una distribución de materia. Para los casos donde se analice una región sin materia es decir con $T_{\mu\nu}=0$, es fácil ver a partir de (\ref{eq:EinsteinFieldEquations2}) que esa región se deben cumplir las denominadas ecuaciones de vació 
 \begin{equation}
     R_{\mu \nu} = 0.
     \label{vacuumFieldEquations}
 \end{equation}
-De manera genérica las ecuaciones de campo son un sistema de 16 ecuaciones parciales acopladas no lineales usualmente en un espacio-tiempo 3+1,  y aunque la ecuaciones tienden a ser muy complicadas, existen métodos de aproximación, para tratar con casos mas generales, pero de momento nos cenaremos en algunas de las  soluciones analíticas que se han encontrado. Estas soluciones representan casos idealizados que solo  nos permiten entender cómo se comporta la gravedad en situaciones específicas. Algunas de las soluciones más importantes son:
+
+De manera genérica las ecuaciones de campo son un sistema de 16 ecuaciones parciales acopladas no lineales usualmente en un espacio-tiempo 3+1,  y aunque la ecuaciones tienden a ser muy complicadas, existen métodos de aproximación, para tratar con casos mas generales, pero de momento nos cenaremos en algunas de las  soluciones de métrica analíticas que se han encontrado. Estas soluciones representan casos idealizados que solo  nos permiten entender cómo se comporta la gravedad en situaciones específicas. Algunas de las soluciones más importantes son:
 
 \begin{itemize}
     \item La métrica de Schwarzschild, que describe el campo gravitacional de un objeto esféricamente simétrico y no rotante.
@@ -18,18 +26,31 @@ De manera genérica las ecuaciones de campo son un sistema de 16 ecuaciones parc
     \item La métrica de Reissner-Nordström, que describe el campo gravitacional de un objeto cargado.
     \item La métrica de Kerr-Newman, que describe el campo gravitacional de un objeto cargado y rotante.
 \end{itemize}
-Este capítulo se partirá de la métrica de Schwarzschild, ya que esta es la solución base para el desarrollo de conceptos más avanzados, ademas de que representa la forma que debe alcanzarse en cierto limite de las otras soluciones.
 
-Se partirá de algunas definiciones necesarias para  para simetrías en el espacio-tiempo,
+
+\begin{table}
+    \begin{small}
+        \caption{Soluciones a las ecuaciones de Einstein basado en las características de carga y momento angular}
+        \begin{center}
+\begin{tabular}{|l|l|l|}
+\hline & No rotante $(\boldsymbol{J}=\mathbf{0})$ & Rotante $(\boldsymbol{J} \in \mathbb{R})$ \\
+\hline Sin carga $(\boldsymbol{Q}=\mathbf{0})$ & Schwarzschild & Kerr \\
+\hline Con carga $(\boldsymbol{Q} \in \mathbb{R})$ & Reissner-Nordström & Kerr-Newman \\
+\hline
+\end{tabular}            
+        \end{center}
+    \end{small}
+\end{table}
+
+
+Este capítulo se partirá de la métrica de Schwarzschild, ya que esta es la solución base para el desarrollo de conceptos más avanzados, además de que representa la forma que debe alcanzarse en el limite de las otras soluciones cuando carga y momento angular sea $0$.
+
+Con la intención de que este trabajo sea autocontenido se partirá de herramientas que son necesarias para un desarrollo formal del tema, la intención es que estas complementen el conocimiento del lector antes de pasar al desarrollo de las soluciones.
+
 \input{AgujerosNegros/DerivadaLieVectoresKilling.tex}
 \input{AgujerosNegros/Schwarzschild/Schwarzschild.tex}
 \input{AgujerosNegros/kerr/Kerr.tex}
 \input{AgujerosNegros/DiagramasDePenrose/DiagramasDePenrose.tex}
 
 
-\printbibliography[keyword={BlackHoles},heading=subbibliography]
-
-\begin{task}{Latex}{}
-    Cambiar el titulo de referencias a referencias del capitulo
-\end{task}
-\nocite{*}
+\printbibliography[keyword={BlackHoles},title={Referencias del capítulo}]

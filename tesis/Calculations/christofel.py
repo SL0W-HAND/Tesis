@@ -8,11 +8,13 @@ indices = [t, r, theta, phi]
 
 
 # Parámetros y expresiones para la métrica de Kerr
-a, M, c, delta_s, sigma_s = symbols('a M c Delta Sigma', real=True) # Delta y Sigma (mayúsculas) son símbolos, delta y sigma (minúsculas) se definen abajo
+a, m, c, delta_s, sigma_s, rho_s = symbols('a m c Delta Sigma rho', real=True) # Delta y Sigma (mayúsculas) son símbolos, delta y sigma (minúsculas) se definen abajo
 
 # Expresiones para la métrica (usando _expr para distinguirlas de los símbolos si fuera necesario)
-delta = r**2 - 2*M*r + a**2
-sigma = r**2 + a**2*cos(theta)**2
+delta = r**2 - 2*m*r + a**2
+sigma = (r**2 + a**2)**2 - a**2*sin(theta)**2*delta 
+rho = r**2 + a**2*cos(theta)**2
+
 
 # Función para convertir índices a su forma de LaTeX
 def latex_index(index_symbol): 
@@ -24,11 +26,27 @@ init_printing(use_unicode=True)
 
 ## Métrica de Kerr (g_ij)
 g_ij = [
-    [-(1 - 2*M*r/sigma)*c**2, 0, 0, -2*M*a*r*sin(theta)**2*c/sigma],
-    [0, sigma/delta, 0, 0],
-    [0, 0, sigma, 0],
-    [-2*M*a*r*sin(theta)**2*c/sigma, 0, 0, (r**2 + a**2 + 2*M*a*r*sin(theta)**2/sigma)*sin(theta)**2]
+    [-(1 - 2*m*r/(rho**2)), 0, 0, -2*m*a*r*sin(theta)**2/(rho**2)],
+    [0, rho**2/delta, 0, 0],
+    [0, 0, rho**2, 0],
+    [-2*m*a*r*sin(theta)**2/(rho**2), 0, 0, sigma*sin(theta)**2/(rho**2)]
 ]
+
+## metrica minkowski (g_minkowski)
+# g_ij = [
+#     [-1, 0, 0, 0],
+#     [0, 1, 0, 0],
+#     [0, 0, 1, 0],
+#     [0, 0, 0, 1]
+# ]
+
+##metrica de Schwarzschild (g_schwarzschild)
+# g_ij = [
+#     [-1 + 2*m/r, 0, 0, 0],
+#     [0, 1/(1 - 2*m/r), 0, 0],
+#     [0, 0, r**2, 0],
+#     [0, 0, 0, r**2*sin(theta)**2]
+# ]
 
 # Métrica inversa g^ij (tu variable 'gij')
 gij = [[Matrix(g_ij).inv()[i-1, j-1] for j in range(1, len(g_ij)+1)] for i in range(1, len(g_ij)+1)]
@@ -56,17 +74,18 @@ def Christoffel(upperIndex, lowerIndex1, lowerIndex2):
         
         Christoffel_sum = Christoffel_sum + Rational(1,2) * term_inv_metric * (diff1 + diff2 - diff3)
 
-        # Reemplaza primero para que SymPy sepa que esas expresiones son Delta y Sigma
-    expr = Christoffel_sum.replace(r**2 - 2*M*r + a**2, delta_s)
-    expr = expr.replace(r**2 + a**2*cos(theta)**2, sigma_s)
+    # Reemplaza primero para que SymPy sepa que esas expresiones son Delta y Sigma
+    #expr = Christoffel_sum.replace(r**2 - 2*m*r + a**2, delta_s)
+    #expr = expr.replace((r**2 + a**2)**2 - a**2*sin(theta)**2*delta, sigma_s)
+    #expr = expr.replace(r**2 + a**2*cos(theta)**2, rho_s)
 
     # Aplica simplificaciones trigonométricas, algebraicas y factorización
-    expr = trigsimp(expr)               # Simplifica funciones trigonométricas
-    expr = simplify(expr)               # Simplificación general
-    expr = cancel(expr)                 # Cancela factores comunes en numerador/denominador
-    expr = factor(expr)                 # Agrupa factores (incluye Sigma y Delta)
+    #expr = simplify(expr)               # Simplificación general
+    #expr = trigsimp(expr)               # Simplifica funciones trigonométricas
+    #expr = cancel(expr)                 # Cancela factores comunes en numerador/denominador
+    #expr = factor(expr)                 # Agrupa factores (incluye Sigma y Delta)
 
-    Christoffel_simplified = expr
+    Christoffel_simplified = Christoffel_sum
 
 
     if (Christoffel_simplified != 0):

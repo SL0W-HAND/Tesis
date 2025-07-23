@@ -1,356 +1,119 @@
 
-\section{Algoritmo de Newman-Janis y agujeros negros rotantes}
+\section[Algoritmo de Newman-Janis]{Algoritmo de Newman-Janis}
 
-El algoritmo de Newman-Janis es una técnica en relatividad general que permite generar soluciones exactas a las ecuaciones de Einstein. En 1965, Ezra T. Newman y Alfred I. Janis \cite{newman-1965} descubrieron que, mediante una transformación de coordenadas complejas aplicada a la métrica de Schwarzschild, podían obtener la métrica de Kerr, que describe un agujero negro en rotación.
+El algoritmo de Newman-Janis es una técnica en relatividad general que permite generar métricas típicamente en rotación (lo cual no es siempre el caso) a partir de métricas semilla  axialmente simétricas. En 1965, Ezra T. Newman y Alfred I. Janis \cite{newman-1965}  mediante una transformación de coordenadas complejas aplicada a la métrica de Schwarzschild, obtuvieron la métrica de Kerr, que describe un agujero negro en rotación, además este fue el procedimiento usado para encontrar la métrica de Kerr-Newman\cite{newman-1965b} .
 
-Particularmente nos centraremos en usar el desarrollo hecho por \cite{drake-2000} donde da una versión de este algoritmo donde remueve algunas de las ambigüedades presentes en el trabajo original de \cite{newman-1965}.
-
-El algoritmo se puede resumir en 5 pasos:
-
-\begin{enumerate}[1.]
-    \item Escribe un elemento de línea estático y esféricamente simétrico en coordenadas nulas avanzadas $\{u, r, \theta, \phi\}$:
-
-          \begin{equation}
-              ds^2 = e^{2 \Phi(r)} du^2 + e^{\Phi(r) + \lambda(r)} du dr - r^2 (d\theta^2 + \sin^2 \theta d\phi^2)
-          \end{equation}
-
-    \item Expresar la forma contravariante de la métrica en términos de un tetrad nulo:
-
-          \begin{equation}
-              g^{\mu \nu} = l^\mu n^\nu + l^\nu n^\mu - m^\mu \bar{m}^\nu - m^\nu \bar{m}^\mu
-              \label{MetricaTetrada}
-          \end{equation}
-
-          donde
-
-          \begin{equation}
-              l_\mu l^\mu = m_\mu m^\mu = n_\mu n^\mu = 0, \quad l_\mu n^\mu = -m_\mu \bar{m}^\mu = 1, \quad l_\mu m^\mu = n_\mu m^\mu = 0
-          \end{equation}
-
-          Donde los tetrads nulos tendrán la forma inicial:
-
-          \begin{equation}
-              \begin{aligned}
-                  l^\mu & = \delta_1^\mu                                                                          \\
-                  n^\mu & = e^{-\lambda(r) - \Phi(r)} \delta_0^\mu - \frac{1}{2} e^{-2 \lambda(r)} \delta_1^\mu   \\
-                  m^\mu & = \frac{1}{\sqrt{2} r} \left( \delta_2^\mu + \frac{i}{\sin \theta} \delta_3^\mu \right)
-              \end{aligned}
-          \end{equation}
-
-          En este punto es conveniente usar la notación de tetradas:
-
-          \begin{equation}
-              Z_a^\mu = (l^\mu, n^\mu, m^\mu, \bar{m}^\mu), \quad a = 1, 2, 3, 4
-          \end{equation}
-
-    \item El siguiente paso es hacer una transformación compleja directa que extiende las coordenadas $x^\rho$ a un nuevo conjunto de coordenadas complejas $\tilde{x}^\rho$:
-
-          \begin{equation}
-              x^\rho \rightarrow \tilde{x}^\rho = x^\rho + i y^\rho(x^\sigma)
-          \end{equation}
-
-          donde $y^\rho(x^\sigma)$ son funciones analíticas de las coordenadas reales $x^\sigma$, y simultáneamente dejamos que los vectores tetrad nulos $Z_a^\mu$ sufran una transformación:
-
-          \begin{equation}
-              Z_a^\mu(x^\rho) \rightarrow \tilde{Z}_a^\mu(\tilde{x}^\rho, \overline{\tilde{x}}^\rho)
-          \end{equation}
-
-          Finalmente requerimos como condición que la transformación recupere el tetrad y la métrica antiguos cuando $\tilde{x}^\rho = \overline{\tilde{x}}^\rho$. En resumen, el efecto de esta "transformación tilde" es crear una nueva métrica cuyos componentes (reales) son funciones de variables complejas:
-
-          \begin{equation}
-              g_{\mu \nu} \rightarrow \tilde{g}_{\mu \nu}: \tilde{x} \times \tilde{x} \mapsto \mathbb{R}
-          \end{equation}
-
-          mientras que se debe de cumplir también:
-
-          \begin{equation}
-              \left. \tilde{Z}_a^\mu(\tilde{x}^\rho, \overline{\tilde{x}}^\rho) \right|_{\overline{x} = \tilde{x}} = Z_a^\mu(x^\rho)
-          \end{equation}
-
-          La transformación tilde claramente no es única, ya que existen muchas opciones diferentes para los coeficientes de los vectores tetrad nulos que satisfacen las condiciones. En el paper original \cite{newman-1965} se elige la transformación tilde como:
-
-          \begin{equation}
-              \tilde{x}^\rho = x^\rho + i a \cos x^2 (\delta_0^\rho - \delta_1^\rho) = x^\rho + i a \cos \theta (\delta_0^\rho - \delta_1^\rho)
-          \end{equation}
-
-          En este caso, la transformación tilde se escribe para cada coordenada $\rho$ como:
-
-          \begin{itemize}
-              \item Para $\rho = 0$ (coordenada $u$):
-                    \begin{equation}
-                        \tilde{u} = u + i a \cos \theta
-                    \end{equation}
-                    porque $\delta_0^0 = 1$ y $\delta_1^0 = 0$.
-
-              \item Para $\rho = 1$ (coordenada $r$):
-                    \begin{equation}
-                        \tilde{r} = r - i a \cos \theta
-                    \end{equation}
-                    ya que $\delta_0^1 = 0$ y $\delta_1^1 = 1$.
-
-              \item Para $\rho = 2, 3$ (coordenadas $\theta$ y $\phi$):
-                    \begin{equation}
-                        \tilde{\theta} = \theta, \quad \tilde{\phi} = \phi
-                    \end{equation}
-                    pues $\delta_0^\rho - \delta_1^\rho = 0$ para $\rho = 2, 3$.
-          \end{itemize}
-
-          Después de aplicar la transformación, las coordenadas $\tilde{x}^\rho$ son complejas. El radio $r$ se reemplaza por $\tilde{r} = r - i a \cos \theta$, lo que permitirá que las funciones métricas (por ejemplo, $e^{2 \Phi}$) pasen a tener una dependencia combinada en $r$ y $\theta$.
-
-          \begin{itemize}
-              \item $u \rightarrow \tilde{u} = u + ia \cos \theta$ (coordenada tipo luz)
-              \item $r \rightarrow \tilde{r} = r - i a \cos \theta$
-              \item $\theta \rightarrow \tilde{\theta} = \theta$
-              \item $\phi \rightarrow \tilde{\phi} = \phi$
-          \end{itemize}
-
-          \begin{equation}
-              \begin{aligned}
-                  l^\mu & \rightarrow \tilde{l}^\mu = \delta_1^\mu                                                                                                                                                                  \\
-                  n^\mu & \rightarrow \tilde{n}^\mu = e^{-\lambda(\tilde{r}, \overline{\tilde{r}}) - \phi(\tilde{r}, \overline{\tilde{r}})} \delta_0^\mu - \frac{1}{2} e^{-2 \lambda(\tilde{r}, \overline{\tilde{r}})} \delta_1^\mu \\
-                  m^\mu & \rightarrow \tilde{m}^\mu = \frac{1}{\sqrt{2} \overline{\tilde{r}}} \left( \delta_2^\mu + \frac{i}{\sin \tilde{\theta}} \delta_3^\mu \right)
-              \end{aligned}
-          \end{equation}
-
-          En este paso se extiende la variable radial $r$ a una variable compleja. La idea es reemplazar $r$ por $\tilde{r}$ (y análogamente para $\theta$ si fuera necesario) de modo que las funciones métricas pasen a depender de dos variables: $r$ y $\theta$. De esta forma, se escriben las funciones como $\phi(\tilde{r}, \overline{\tilde{r}})$ y $\lambda(\tilde{r}, \overline{\tilde{r}})$.
-
-          \begin{itemize}
-              \item $\tilde{r} \rightarrow r$,
-              \item $\overline{\tilde{r}} \rightarrow r$,
-              \item $\tilde{\theta} \rightarrow \theta$,
-              \item $\tilde{r} + \overline{\tilde{r}} = 2r$,
-              \item $\tilde{r} - \overline{\tilde{r}} = 2ia \cos \theta$.
-          \end{itemize}
-          \begin{note}[Problema de la Complejidad]
-              Una métrica compleja no tiene sentido físico en relatividad general, ya que el espacio-tiempo es real. Por lo tanto, se requiere eliminar las partes imaginarias introducidas por la complejificación. Esto se logra mediante la condición de realidad.
-
-              \textbf{Mecanismo de la Condición de Realidad}
-
-              La condición de realidad opera en dos niveles:
-              \begin{enumerate}[a.]
-                  \item \textbf{Sustitución de $\tilde{r}$ y $\overline{\tilde{r}}$}
-
-                        Se reemplazan las combinaciones de $\tilde{r}$ (complejo) y su conjugado $\overline{\tilde{r}} = r - ia \cos \theta$ por expresiones reales que dependen de $r$ y $\theta$. Por ejemplo:
-
-                        $$
-                            \tilde{r} + \overline{\tilde{r}} = 2r, \quad \tilde{r} \overline{\tilde{r}} = r^2 + a^2 \cos^2 \theta.
-                        $$
-
-                        Ejemplo:
-                        Si una función compleja es $f(\tilde{r}) = \frac{1}{\tilde{r}}$, la condición de realidad la convierte en:
-
-                        $$
-                            f(r, \theta) = \frac{1}{r^2 + a^2 \cos^2 \theta} \cdot (r - ia \cos \theta)
-                        $$
-
-                        pero solo se conserva la parte real relevante para la métrica.
-                  \item  \textbf{Simetrización de Funciones}
-
-                        Las funciones que dependían originalmente de $r$ en la métrica estática se redefinen como funciones simétricas en $\tilde{r}$ y $\overline{\tilde{r}}$. Por ejemplo:
-                        - En la métrica de Schwarzschild, $1 - \frac{2M}{r}$ se convierte en $1 - \frac{2M}{\tilde{r}} \rightarrow 1 - \frac{2Mr}{r^2 + a^2 \cos^2 \theta}$.
-
-              \end{enumerate}
-
-
-
-              \textbf{Aplicación en las Tetradas}
-
-              Las tetradas nulas $l^\mu, n^\mu, m^\mu$ también se afectan por la complejificación. Para garantizar su realidad:
-
-              \begin{enumerate}[a.]
-                  \item \textbf{Tetrada $m^\mu$}
-
-                        La parte angular $m^\mu$ adquiere un término adicional $ia \sin \theta (\delta_0^\mu - \delta_1^\mu)$, que cancela las contribuciones imaginarias del denominador complejo $\tilde{r} = r + ia \cos \theta$.
-                        Ejemplo:
-
-                        $$
-                            m^\mu = \frac{1}{\sqrt{2}(r + ia \cos \theta)} \left( ia \sin \theta (\delta_0^\mu - \delta_1^\mu) + \delta_2^\mu + \frac{i}{\sin \theta} \delta_3^\mu \right)
-                        $$
-
-                  \item \textbf{Tetradas $l^\mu$ y $n^\mu$}
-
-                        Se mantienen reales al reemplazar $\tilde{r} \rightarrow r$ en sus componentes radiales, pero incorporando $a$ en las funciones $\phi(r, \theta)$ y $\lambda(r, \theta)$.
-              \end{enumerate}
-          \end{note}
-
-
-
-
-    \item Se obtiene una nueva métrica al realizar una transformación de coordenadas complejas en los vectores tetrad nulos $\tilde{Z}_a^\mu$. Los vectores tetrad nulos se transforman de la manera habitual:
-
-          \begin{equation}
-              Z_a^\mu = \tilde{Z}_a^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}
-          \end{equation}
-
-          mediante esta transformación, de forma genérica podemos efectuar la de las tetradas $m^\mu = \tilde{m}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}$ y $l^\mu = \tilde{l}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}$:
-          \begin{note}
-            Las derivadas parciales $\pd{x^\mu}{\tilde{x}^\nu}$ las tomamos a partir de las transformaciones inversas:
-            $$\begin{aligned} u & =\tilde{u}-i a \cos \tilde{\theta} \\ r & =\tilde{r}+i a \cos \tilde{\theta} \\ \theta & =\tilde{\theta} \\ \phi & =\tilde{\phi}\end{aligned}$$
-            y la matriz jacobiana de la transformación es:
-            \begin{equation}
-               \left(\pd{x^\mu}{\tilde{x}^\nu}\right) =\left(\begin{array}{cccc}
-                1 & 0 & +i a \sin \theta & 0\\
-                0 & 1 & -i a \sin \theta & 0\\
-                0 & 0 & 1 & 0\\
-                0 & 0 & 0& 1
-                \end{array}\right)
-                \end{equation}
-                Lo cual nos da que:
-                \begin{align*}
-                \pd{x^\mu}{\tilde{x}^0}&= \delta^\mu_0\\
-                \pd{x^\mu}{\tilde{x}^1}&= \delta^\mu_1\\
-                \pd{x^\mu}{\tilde{x}^2}&= ia (\delta^\mu_0 - \delta^\mu_1)\sin \theta + \delta^\mu_2\\
-                \pd{x^\mu}{\tilde{x}^3}&=\delta^\mu_3
-                \end{align*}
-          \end{note}
-          \begin{equation}
-              \begin{aligned}
-                  l^\mu & = \tilde{l}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}                                                                                                                                                                           \\
-                        & = \tilde{l}^0 \frac{\partial x^\mu}{\partial \tilde{x}^0} + \tilde{l}^1 \frac{\partial x^\mu}{\partial \tilde{x}^1} + \tilde{l}^2 \frac{\partial x^\mu}{\partial \tilde{x}^2} + \tilde{l}^3 \frac{\partial x^\mu}{\partial \tilde{x}^3} \\
-                        & = \delta_1^0 \frac{\partial x^\mu}{\partial \tilde{x}^0} + \delta_1^1 \frac{\partial x^\mu}{\partial \tilde{x}^1} + \delta_1^2 \frac{\partial x^\mu}{\partial \tilde{x}^2} + \delta_1^3 \frac{\partial x^\mu}{\partial \tilde{x}^3}     \\
-                        & = \delta_1^1 \frac{\partial x^\mu}{\partial \tilde{x}^1} = \delta_1^\mu
-              \end{aligned}
-          \end{equation}
-
-          el caso $m^\mu = \tilde{m}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}$:
-
-          \begin{equation}
-              \begin{aligned}
-                  m^\mu & = \tilde{m}^\nu \frac{\partial x^\mu}{\partial \tilde{x}^\nu}                                                                                                                                                                                                                           \\
-                        & = \tilde{m}^0 \frac{\partial x^\mu}{\partial \tilde{x}^0} + \tilde{m}^1 \frac{\partial x^\mu}{\partial \tilde{x}^1} + \tilde{m}^2 \frac{\partial x^\mu}{\partial \tilde{x}^2} + \tilde{m}^3 \frac{\partial x^\mu}{\partial \tilde{x}^3}                                                 \\
-                        & = 0 * \frac{\partial x^\mu}{\partial \tilde{x}^0} + 0 * \frac{\partial x^\mu}{\partial \tilde{x}^1} + \frac{1}{\sqrt{2} \tilde{r}} \frac{\partial x^\mu}{\partial \tilde{x}^2} + \frac{1}{\sqrt{2} \tilde{r}} \frac{i}{\sin \tilde{\theta}} \frac{\partial x^\mu}{\partial \tilde{x}^3} \\
-                        & = \frac{1}{\sqrt{2}(r + ia \cos \theta)} \left( ia \sin \theta (\delta_0^\mu - \delta_1^\mu) + \delta_2^\mu + \frac{i}{\sin \theta} \delta_3^\mu \right)
-              \end{aligned}
-          \end{equation}
-
-          dado que la tetrada $n^\mu$ es particular para cada métrica semilla que se use, el cálculo de esta debe de hacerse de forma particular. Al efectuar la transformación del tetrad, se obtiene:
-
-          \begin{equation}
-              \begin{aligned}
-                  l^\mu & = \delta_1^\mu     \\
-                  m^\mu & = \frac{1}{\sqrt{2}(r + ia \cos \theta)} \left[ ia \sin \theta (\delta_0^\mu - \delta_1^\mu) + \delta_2^\mu + \frac{i}{\sin \theta} \delta_3^\mu \right]
-              \end{aligned}
-          \end{equation}
-
-    \item \begin{task}
-        Convertir la métrica obtenida a coordenadas de Boyer-Lindquist, que son las coordenadas más comunes para describir agujeros negros rotantes. 
-    \end{task}
-\end{enumerate}
-
-\subsection{Aplicación a la métrica de Schwarzschild}
-La métrica de Schwarzschild en coordenadas avanzadas de Eddington-Finkelstein es:
-\begin{equation}
-    ds^2=\left(1-\frac{2 m}{r}\right) d u^2+2 d u d r-r^2\left(d \theta^2+\sin ^2 \theta d \phi^2\right) .
-\end{equation}
-
-El "seed metric" propuesto es
+En resumen, el procedimiento del algoritmo que se toman las transformaciones complejas de las coordenadas de Edington-Finkelstein 
 
 \begin{equation}
-    d s^2=e^{2 \Phi(r)} d u^2+e^{\Phi(r)+\lambda(r)} d u d r-r^2\left(d \theta^2+\sin ^2 \theta d \phi^2\right)
+r \rightarrow r+\mathrm{i} a \cos \theta, \quad u \rightarrow u-\mathrm{i} a \cos \theta,
 \end{equation}
+Y mediante el uso de tetradas nulas después del proceso de complexificación se reconstruye una nueva métrica. Sin embargo, esto no implica que la métrica resultante sea solución a las ecuaciones de Einstein, por lo que este procedimiento solo genera candidatos a soluciones que posteriormente debe de corroborar.
+A pesar de que el algoritmo se ha intentado justificar y formalizar en trabajos posteriores como lo señala \cite{drake-2000}, no se ha llegado a un consenso sobre su validez general.
 
-Comparando término a término con la métrica obtenida:
-Tenemos
+Este algoritmo es un tanto polémico debido a la introducción de coordenadas complejas, como menciona la review hecha por \cite{drake-2000} mucho lo consideran como un procedimiento ad-hoc y ambiguo ya que existen diferentes maneras de realizar la complexificación como lo discute \cite{azreg-ainou-2014} .
 
-\begin{equation}
-    e^{2 \Phi(r)}=1-\frac{2 m}{r}
-\end{equation}
+\begin{align}
+r^2 & \rightarrow(r+\mathrm{i} a \cos \theta)(r-\mathrm{i} a \cos \theta)=r^2+a^2 \cos ^2 \theta, \\
+\frac{1}{r}& \rightarrow \frac{1}{2}\left(\frac{1}{r+\mathrm{i} a \cos \theta}+\frac{1}{r-\mathrm{i} a \cos \theta}\right)=\frac{r}{r^2+a^2 \cos ^2 \theta}, \\
+r^2 & \rightarrow r \sqrt{(r+\mathrm{i} a \cos \theta)(r-\mathrm{i} a \cos \theta)}=r \sqrt{r^2+a^2 \cos ^2 \theta} .
+\end{align}
+Incluso con lo ya mencionado esta es una herramienta extremadamente util en el marco de la relatividad, por lo que para este trabajo se usara el desarrollo hecho por \cite{azreg-ainou-2014} donde se propone un una refinación del método para crear una métrica que satisface las ecuaciones de Einstein, además de no requerir la complexificación tal que incluso puede (en algunos casos) dar la métrica en la forma de Boyer-Lindquist.
 
-lo que implica
-
-\begin{equation}
-    \Phi(r)=\frac{1}{2} \ln \left(1-\frac{2 M}{r}\right) .
-\end{equation}
-
-En la métrica obtenida aparece el coeficiente +2 , por lo que se identifica
-
-\begin{equation}
-    e^{\Phi(r)+\lambda(r)}=2
-\end{equation}
-
-Despejando para $\lambda(r)$,
+La forma de proceder que nos da el articulo es la siguiente:
+Se parte de la métrica estática de la forma
 
 \begin{equation}
-    \begin{aligned}
-        \lambda(r)= & \ln 2-\Phi(r)=\ln 2-\frac{1}{2} \ln \left(1-\frac{2 M}{r}\right)   \\
-        =           & \frac{1}{2}\ln 4 -\frac{1}{2} \ln \left(1-\frac{2 M}{r}\right)     \\
-        =           & \frac{1}{2} \left(\ln 4 -  \ln \left(1-\frac{2 M}{r}\right)\right) \\
-        =           & \frac{1}{2} \ln \left(\frac{4}{1-\frac{2 M}{r}}\right)             \\
-        =           & \frac{1}{2} \ln \left(\frac{4 r}{r-2 M}\right)
-    \end{aligned}
+\footnotemark \mathrm{d} s_{\text {stat }}^2 = - G(r) \mathrm{d} t^2+\frac{\mathrm{d} r^2}{F(r)}+H(r)\left(\mathrm{d} \theta^2+\sin ^2 \theta \mathrm{~d} \varphi^2\right).
 \end{equation}
-como lo comentamos en el caso genérico solo hace falta preocuparse por el caso de la tetrada $n^\mu$ que es particular para cada métrica semilla, en este caso se obtiene
+\footnotetext{En este trabajo se uso la signatura $(-,+,+,+)$ para la métrica, por lo que se reemplazó la signatura de la métrica del articulo }
+
+En el caso ideal $G(r)=F(r)$ y $H(r)=r^2$, que por suerte es el caso de la métrica de Schwarzschild y el de algunas soluciones regulares  el  algoritmo refinado de \cite{azreg-ainou-2014} produce la métrica
+\begin{align}
+\mathrm{d}s^2 = & 
+- \left(1 - \frac{2f}{\rho^2}\right) \mathrm{d}t^2 
++ \frac{\rho^2}{\Delta} \mathrm{d}r^2 
+- \frac{4af \sin^2\theta}{\rho^2} \mathrm{d}t\, \mathrm{d}\phi 
++ \rho^2 \mathrm{d}\theta^2 
++ \frac{\Sigma \sin^2\theta}{\rho^2} \mathrm{d}\phi^2,
+\label{eq:metricGeneratedByNewmanJanis}
+\end{align}
+con las siguientes definiciones
+
+\begin{align}
+\rho^2 & =r^2+a^2 \cos ^2 \theta, \\
+ 2 f&=r^2(1-F), \\
+\Delta & =r^2 F+a^2=r^2-2 f+a^2, \\
+\Sigma & =\left(r^2+a^2\right)^2-a^2 \Delta \sin ^2 \theta .
+\end{align}
+Lo importante de este procedimiento es que como lo menciona el articulo, la métrica resultante es una solución a las ecuaciones de Einstein (ya sea que la métrica semilla sea regular o no) $G_{\mu \nu}=T_{\mu \nu}$, donde $T^{\mu \nu}$ es de la forma
 \begin{equation}
-    n^\mu=e^{-\lambda(r)-\Phi(r)} \delta_0^\mu-\frac{1}{2} e^{-2 \lambda(r)} \delta_1^\mu
+T^{\mu \nu}=\epsilon e_t^\mu e_t^\nu+p_r e_r^\mu e_r^\nu+p_\theta e_\theta^\mu e_\theta^\nu+p_\phi e_\phi^\mu e_\phi^\nu
 \end{equation}
-Para el caso particular de la métrica de Schwarzschild tenemos
+Donde $e_t^\mu$ es el vector de cuatro-velocidad del fluido, $\epsilon$ es la densidad, $\left(p_r, p_\theta, p_\phi\right)$ son los componentes de la presión, y la base $\left(e_t, e_r, e_\theta, e_\phi\right)$ es dual a la métrica anterior.
+
+\subsection{Aplicación del algoritmo de Newman-Janis sobre la métrica de Schwarzschild}
+Dada la métrica de Schwarzschild
 \begin{equation}
-   \begin{aligned}
-    n^\mu&=e^{- \frac{1}{2} \ln \left(\frac{4 r}{r-2 m}\right) -\frac{1}{2} \ln \left(1-\frac{2 m}{r}\right)  }\delta_0^\mu-\frac{1}{2} e^{-2 \frac{1}{2} \ln \left(\frac{4 r}{r-2 m}\right)} \delta_1^\mu \\
-    &=e^{\ln \left(\frac{4 r}{r-2 m}\right)^{-1/2}}e^{\ln \left(1-\frac{2 m}{r}\right)^{-1/2}} \delta_0^\mu-\frac{1}{2} e^{\ln \left(\frac{4 r}{r-2 m}\right)^{-1}} \delta_1^\mu \\
-    &=\left(\frac{4 r}{r-2 m}\right)^{-1/2}\left(1-\frac{2 m}{r}\right)^{-1/2} \delta_0^\mu-\frac{1}{2} \left(\frac{4 r}{r-2 m}\right)^{-1} \delta_1^\mu \\ 
-    &=\left(\frac{4 r}{r-2 m}\frac{r - 2 m}{r}\right)^{-1/2}\delta_0^\mu-\frac{1}{2} \left(\frac{r-2 m}{4r}\right)\delta_1^\mu \\
-    &= \frac{1}{2}\delta_0^\mu-\frac{1}{8} \left(1 - \frac{2 m}{r}\right)\delta_1^\mu \\
-   \end{aligned}
+\mathrm{d} s^2=-\left(1-\frac{2 m}{r}\right) \mathrm{d} t^2+\left(1-\frac{2m}{r}\right)^{-1} \mathrm{d} r^2+r^2\mathrm{d} \Omega,
 \end{equation}
-procederemos a la hacer la transformación compleja de la tetrada $n^\mu \to \tilde{n}^\mu$:
+podemos hacer las identificaciones directas
+
 \begin{equation}
-    \tilde{n}^\mu=\frac{1}{2}\delta_0^\mu-\frac{1}{8} \left(1 - \frac{2 m}{\tilde{\bar{r} }}\right)\delta_1^\mu 
+G(r) = F(r) = 1-\frac{2m}{r}, \quad H(r) = r^2.    
 \end{equation}
-Para sacar la nueva tetrada $n^\mu$ se hace el siguiente procedimiento:
+y proceder a aplicar el algoritmo de Newman-Janis sin complexificación
+
 \begin{equation}
 \begin{aligned}
-    n^\mu&= \tilde{n}^\mu \pd{x^\mu}{\tilde{x}^\nu} \\
-&= \tilde{n}^0 \pd{x^\mu}{\tilde{x}^0} + \tilde{n}^1 \pd{x^\mu}{\tilde{x}^1} + \tilde{n}^2 \pd{x^\mu}{\tilde{x}^2} + \tilde{n}^3 \pd{x^\mu}{\tilde{x}^3} \\
-&= \tilde{n}^0 \pd{x^\mu}{\tilde{x}^0} + \tilde{n}^1 \pd{x^\mu}{\tilde{x}^1} +0 \cdot \pd{x^\mu}{\tilde{x}^2} + 0 \cdot \pd{x^\mu}{\tilde{x}^3} \\
-& = \frac{1}{2}\delta^{\mu}_0 -\frac{1}{8} \left(1 - \frac{2 m\tilde{r}}{\tilde{\bar{r}}\tilde{r}}\right)\delta_1^\mu \\
-& = \frac{1}{2}\delta^{\mu}_0 -\frac{1}{8} \left(1 - \frac{2 m(r-ia\cos\theta)}{r^2+a^2 \cos^2 \theta }\right)\delta_1^\mu \\
+    2f &=  2mr,\\
+    \Delta &= r^2 - 2mr + a^2,\\
+    \Sigma &= \left(r^2+a^2\right)^2-a^2 \Delta \sin ^2 \theta \\
+    & =\left(r^2+a^2\right)^2-a^2 (r^2 - 2mr + a^2) \sin ^2 \theta . 
 \end{aligned}    
 \end{equation}
-de forma que todas las tetradas quedan como:
+
+Y la métrica de Kerr resultante aplicando directamente (\ref{eq:metricGeneratedByNewmanJanis})
+    \begin{align}
+        \mathrm{d}s^2 = & 
+- \left(1 - \frac{2mr}{\rho^2}\right) \mathrm{d}t^2 
++ \frac{\rho^2}{\Delta} \mathrm{d}r^2 
+- \frac{4amr \sin^2\theta}{\rho^2} \mathrm{d}t\, \mathrm{d}\phi 
++ \rho^2 \mathrm{d}\theta^2 
++ \frac{\Sigma \sin^2\theta}{\rho^2} \mathrm{d}\phi^2,
+    \end{align}
+
+Dando la métrica de Kerr en coordenadas de Boyer-Lindquist
+
+\begin{definition}{Métrica de Kerr en coordenadas de Boyer-Lindquist}{}
+Donde los términos son definidos como
+\begin{equation}
+        g_{\mu \nu}=\left( 
+            \begin{array}{cccc}
+               -\left(1-\frac{2 mr}{\rho^2}\right) &0&0& - \frac{2amr \sin^2\theta}{\rho^2} \\
+               0& \frac{\rho^2}{\Delta} & 0 & 0 \\
+                0& 0 & \rho^2 & 0 \\
+                -\frac{2amr \sin^2\theta}{\rho^2} & 0 & 0 & \frac{\Sigma \sin^2\theta}{\rho^2}
+            \end{array}
+        \right).
+        \label{eq:covariantKerrMetric}
+    \end{equation}
+Con las siguientes definiciones
+
 \begin{equation}
     \begin{aligned}
-        l^\mu & = \delta_1^\mu     \\
-        n^\mu & = \frac{1}{2}\delta^{\mu}_0 -\frac{1}{8} \left(1 - \frac{2 m(r-ia\cos\theta)}{r^2+a^2 \cos^2 \theta }\right)\delta_1^\mu  \\
-        m^\mu & = \frac{1}{\sqrt{2}(r + ia \cos \theta)} \left[ ia \sin \theta (\delta_0^\mu - \delta_1^\mu) + \delta_2^\mu + \frac{i}{\sin \theta} \delta_3^\mu \right]
-    \end{aligned}
+        \Delta &= r^2 - 2mr + a^2\\
+    \Sigma &= \left(r^2+a^2\right)^2-a^2 \Delta \sin ^2 \theta  \\
+    &=\left(r^2+a^2\right)^2-a^2 (r^2 - 2mr + a^2) \sin ^2 \theta ,\\
+    \rho & = r^2+a^2 \cos ^2 \theta.
+\end{aligned}
 \end{equation}
-Y usando la transformación (\ref{MetricaTetrada}) obtenemos una forma de la métrica de Kerr
-\begin{equation}
-   g^{\mu\nu} =  \left(\begin{matrix}
-- \frac{a^{2} \sin^{2}{\left(\theta \right)}}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} & \frac{0.5 \left(a^{2} \sin^{2}{\left(\theta \right)} + a^{2} + r^{2}\right)}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} & 0 & - \frac{a}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} \\
-\frac{0.5 \left(a^{2} \sin^{2}{\left(\theta \right)} + a^{2} + r^{2}\right)}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} & \frac{- 3 a^{2} \sin^{2}{\left(\theta \right)} - a^{2} - 2 i a m \cos{\left(\theta \right)} + 2 m r - r^{2}}{4 \left(a^{2} \cos^{2}{\left(\theta \right)} + r^{2}\right)} & 0 & \frac{a}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} \\
-0 & 0 & - \frac{1}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} & 0 \\
-- \frac{a}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} & \frac{a}{a^{2} \cos^{2}{\left(\theta \right)} + r^{2}} & 0 & - \frac{1}{\left(a^{2} \cos^{2}{\left(\theta \right)} + r^{2}\right) \sin^{2}{\left(\theta \right)}} \\
-\end{matrix}\right),
-\end{equation}
+\end{definition}
 
-por conveniencia se definen las siguientes variables:
-\begin{equation}
-    \Sigma = r^2 + a^2 \cos^2 \theta, \quad \Delta = r^2 - 2 m r + a^2
-\end{equation}
+\section{Regiones de la métrica de Kerr}
 
 
 
-\begin{task}
-    Verificar que la métrica obtenida es equivalente a la métrica de Kerr en coordenadas de Boyer-Lindquist.
-
-\end{task}
-La mewtrica en coordenadas de Boyer-Lindquist es:
-
-\begin{equation}
-    g_{\mu \nu}=\left(\begin{array}{cccc}
--\left(1-\frac{2 M r}{\Sigma}\right) c^2 & 0 & 0 & -\frac{2 M a r \sin ^2 \theta}{\Sigma} c \\
-0 & \frac{\Sigma}{\Delta} & 0 & 0 \\
-0 & 0 & \Sigma & 0 \\
--\frac{2 M a r \sin ^2 \theta}{\Sigma} c & 0 & 0 & \left(r^2+a^2+\frac{2 M r a^2 \sin ^2 \theta}{\Sigma}\right) \sin ^2 \theta
-\end{array}\right)
-    \label{eq:MetricaKerrBL}
-\end{equation}
-Donde funciones $\Sigma$ y $\Delta$ son:
-- $\Sigma=r^2+a^2 \cos ^2 \theta$
-- $\Delta=r^2-2 M r+a^2$
-
-\section{Análisis de la métrica de Kerr}
-\subsection{Símbolos de Christoffel}
+\subsection{Geodésicas en Kerr}
 Se uso el algoritmo que aparece en los anexos para calcular los símbolos de Christoffel no cero de la métrica de Kerr
+
