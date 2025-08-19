@@ -1,13 +1,7 @@
-\appendix
-\chapter{Programa para el calculo de símbolos de  Christoffel}
-\label{chap:programa_christoffel}
-
-Este es el programa utilizado para calcular los símbolos de Christoffel de la métrica \ref{eq:genericmetric2} usados en la derivación de la métrica  de Schwarzschild.
-%%\lstinputlisting[language=Python]{christofel.py}
-\begin{lstlisting}[language=Python, caption=Programa para el calculo de símbolos de  Christoffel]
 from sympy import symbols,trigsimp,factor,cancel, Function, Matrix, Rational, diff, simplify, latex, init_printing, sin, cos
 
 # Definición de Símbolos
+
 t, r, theta, phi, Gamma_sym = symbols('t r theta phi Gamma') 
 
 indices = [t, r, theta, phi] 
@@ -33,8 +27,15 @@ init_printing(use_unicode=True)
 A = Function('A', real=True)(r)
 B = Function('B', real=True)(r)
 
+## Métrica de Kerr (g_ij)
+# g_ij = [
+#     [-(1 - 2*m*r/(rho**2)), 0, 0, -2*m*a*r*sin(theta)**2/(rho**2)],
+#     [0, rho**2/delta, 0, 0],
+#     [0, 0, rho**2, 0],
+#     [-2*m*a*r*sin(theta)**2/(rho**2), 0, 0, sigma*sin(theta)**2/(rho**2)]
+# ]
 
-# Métrica genérica para la derivación de la métrica de Schwarzschild
+# Metrica generica para la derivacion de la metrica de Schwarzschild
 g_ij = [
     [-A, 0, 0, 0],
     [0, B, 0, 0],
@@ -42,7 +43,13 @@ g_ij = [
     [0, 0, 0, r**2*sin(theta)**2]
 ]
 
-
+#metrica de Schwarzschild (g_schwarzschild)
+# g_ij = [
+#     [-1 + 2*m/r, 0, 0, 0],
+#     [0, 1/(1 - 2*m/r), 0, 0],
+#     [0, 0, r**2, 0],
+#     [0, 0, 0, r**2*sin(theta)**2]
+# ]
 
 # Métrica inversa g^ij (tu variable 'gij')
 gij = [[Matrix(g_ij).inv()[i, j] for j in range(0, len(g_ij))] for i in range(0, len(g_ij))]
@@ -71,6 +78,16 @@ def Christoffel(upperIndex, lowerIndex1, lowerIndex2, latex_output=True):
         
         Christoffel_sum += Rational(1,2) * term_inv_metric * (diff1 + diff2 - diff3)
 
+    # Reemplaza primero para que SymPy sepa que esas expresiones son Delta y Sigma
+    #expr = Christoffel_sum.replace(r**2 - 2*m*r + a**2, delta_s)
+    #expr = expr.replace((r**2 + a**2)**2 - a**2*sin(theta)**2*delta, sigma_s)
+    #expr = expr.replace(r**2 + a**2*cos(theta)**2, rho_s)
+
+    # Aplica simplificaciones trigonométricas, algebraicas y factorización
+    #expr = simplify(expr)               # Simplificación general
+    #expr = trigsimp(expr)               # Simplifica funciones trigonométricas
+    #expr = cancel(expr)                 # Cancela factores comunes en numerador/denominador
+    #expr = factor(expr)                 # Agrupa factores (incluye Sigma y Delta)
 
     Christoffel_simplified = simplify(Christoffel_sum)  # Simplificación general
     Christoffel_simplified = trigsimp(Christoffel_simplified)  # Simplifica funciones trigonométricas
@@ -107,41 +124,3 @@ def Christoffel_all(latex_output=False):
     return Christoffel_list
 
 Christoffel_all()
-\end{lstlisting}
-
-\chapter{Programa para el calculo del tensor de Ricci}
-\label{chap:programa_ricci}
-Este programa calcula la los componentes del tensor de Ricci por la definición de \ref{eq:ricci_tensor}
-
-\begin{lstlisting}[language=Python, caption=Programa para el calculo del tensor de Ricci]
-from christoffel import Christoffel_all # importar el programa anterior
-from sympy import *
-
-t, r, theta, phi, = symbols('t r theta phi') 
-
-indices = [t, r, theta, phi]
-
-# Lista con los símbolos de Christoffel
-Christoffel_symbols = Christoffel_all()
-
-
-# Por definición el tensor de Ricci es la contracción de 2 indices del tensor de Riemann
-
-# mu , nu siendo los indices del Ricci
-for mu in range(0,4,1):
-    for nu in range(0,4,1):
-        ricci_mu_nu = 0
-        ##sobre el indice mudo alpha
-        for alpha in range(0,4,1):
-            ricci_mu_nu += diff(Christoffel_symbols[alpha][mu][nu],indices[alpha]) -diff(Christoffel_symbols[alpha][mu][alpha],indices[nu]) 
-            # indice mudo lambda
-            for lam in range(0,4,1):
-                ricci_mu_nu +=  Christoffel_symbols[alpha][alpha][lam]*Christoffel_symbols[lam][mu][nu] - Christoffel_symbols[alpha][nu][lam]*Christoffel_symbols[lam][mu][alpha]
-        ricci_mu_nu = cancel(ricci_mu_nu)
-        ricci_mu_nu = simplify(ricci_mu_nu)
- 
-        # imprimir en pantalla los componentes no cero
-        if ricci_mu_nu != 0:
-            print(f"R_{{{mu}{nu}}} &= {latex(ricci_mu_nu)} \\\\")
-\end{lstlisting}
-

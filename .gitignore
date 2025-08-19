@@ -9,3 +9,4 @@ tesis/indent.log
 */*/*/__pycache__
 *.fls
 *.xml
+*.pyc

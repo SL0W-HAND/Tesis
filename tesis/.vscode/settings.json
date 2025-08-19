@@ -3,13 +3,22 @@
         "además",
         "Boyer",
         "Christoffel",
+        "invarianza",
+        "irrotacional",
+        "isotrópico",
         "Janis",
         "Kerr",
         "Killing",
         "Lindquist",
+        "Minkowski",
         "Newman",
+        "Ricci",
+        "Riemann",
         "Schwarzschild",
         "tetrada",
         "tetradas"
-    ]
+    ],
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda",
+    "python-envs.pythonProjects": []
 }

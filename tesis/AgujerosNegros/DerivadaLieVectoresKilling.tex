@@ -9,27 +9,27 @@ La definición algebraica de la derivada de Lie de un campo tensorial se basa en
 \begin{axiom}\label{ax:Lie1}
     La derivada de Lie de una función es igual a la derivada direccional de la función. Este hecho a menudo se expresa con la fórmula
     \begin{equation}
-    \mathcal{L}_X f = \v{X}(f) = X^\mu \partial_\mu f        
+        \mathcal{L}_X f = \v{X}(f) = X^\mu \partial_\mu f
     \end{equation}
-    
+
 \end{axiom}
 
 \begin{axiom}\label{ax:Lie2}
     La derivada de Lie obedece la siguiente versión de la regla de Leibniz: Para cualquier par de campos tensoriales $\T{S}$ y $\T{T}$, tenemos
 
-        \begin{equation}
-        \mathcal{L}_X(\T{S} \otimes \T{T}) = (\mathcal{L}_X \T{S}) \otimes \T{T} + \T{S} \otimes (\mathcal{L}_X \T{T})            
-        \end{equation}
-        
+    \begin{equation}
+        \mathcal{L}_X(\T{S} \otimes \T{T}) = (\mathcal{L}_X \T{S}) \otimes \T{T} + \T{S} \otimes (\mathcal{L}_X \T{T})
+    \end{equation}
+
 \end{axiom}
 
 \begin{axiom}\label{ax:Lie3}
     La derivada de Lie obedece la regla de Leibniz con respecto a la contracción:
-    
-        \begin{equation}
+
+    \begin{equation}
         \mathcal{L}_X(\T{T}(\T{Y_1}, \ldots, \T{Y_n})) = (\mathcal{L}_X \T{T})(\T{Y_1}, \ldots, \T{Y_n}) + \sum_{i=1}^n \T{T}(\T{Y_1}, \ldots, \mathcal{L}_X \T{Y_i}, \ldots, \T{Y_n})
-        \end{equation}
-        
+    \end{equation}
+
 \end{axiom}
 
 \begin{axiom}\label{ax:Lie4}
@@ -37,25 +37,25 @@ La definición algebraica de la derivada de Lie de un campo tensorial se basa en
 
 
     \begin{equation}
-    \left[\mathcal{L}_X, \mathbf{d} \right] = 0 \quad \text{o equivalentemente,} \quad \mathcal{L}_X \circ \mathbf{d} = \mathbf{d} \circ \mathcal{L}_X
+        \left[\mathcal{L}_X, \mathbf{d} \right] = 0 \quad \text{o equivalentemente,} \quad \mathcal{L}_X \circ \mathbf{d} = \mathbf{d} \circ \mathcal{L}_X
     \end{equation}
-    
+
 \end{axiom}
-\noindent La primera forma y la más genérica para dos campos vectoriales 
+\noindent La primera forma y la más genérica para dos campos vectoriales
 \begin{equation}
     \mathscr{L}_X Y^\alpha := X^\beta \frac{\partial Y^\alpha}{\partial x^\beta}-Y^\beta \frac{\partial X^\alpha}{\partial x^\beta}.
 \end{equation}
 \footnote{Para ver por que esta forma cumple los axiomas mencionados revise \cite{Lie}}
 Si se observa esta definición esta hecha con derivadas parciales(y no depende de la métrica), pero es util representarla con derivadas covariantes. Para esto solamente  remplaza las parciales por covariantes.
 \begin{equation}
-    \mathscr{L}_X Y^\alpha = X^\beta \nabla_\beta Y^\alpha  - Y^\beta \nabla_\beta X^\alpha 
+    \mathscr{L}_X Y^\alpha = X^\beta \nabla_\beta Y^\alpha  - Y^\beta \nabla_\beta X^\alpha
 \end{equation}
 \begin{proof}[Demostración:]
     Empezamos escribiendo las derivadas covariantes de los vectores $Y$ y $X$ multiplicadas por su contraparte
     \begin{align*}
-        \nabla_\beta X^\alpha & =\partial_\beta X^\alpha+\Gamma_{\beta \gamma}^\alpha X^\gamma ,\\
-        \nabla_\beta Y^\alpha & =\partial_\beta Y^\alpha+\Gamma_{\beta \gamma}^\alpha Y^\gamma .\\
-        Y^\beta \nabla_\beta X^\alpha & =Y^\beta \partial_\beta X^\alpha+\Gamma_{\beta \gamma}^\alpha Y^\beta X^\gamma  ,\\
+        \nabla_\beta X^\alpha         & =\partial_\beta X^\alpha+\Gamma_{\beta \gamma}^\alpha X^\gamma ,                  \\
+        \nabla_\beta Y^\alpha         & =\partial_\beta Y^\alpha+\Gamma_{\beta \gamma}^\alpha Y^\gamma .                  \\
+        Y^\beta \nabla_\beta X^\alpha & =Y^\beta \partial_\beta X^\alpha+\Gamma_{\beta \gamma}^\alpha Y^\beta X^\gamma  , \\
         X^\beta \nabla_\beta Y^\alpha & =X^\beta \partial_\beta Y^\alpha+\Gamma_{\beta \gamma}^\alpha X^\beta Y^\gamma.
     \end{align*}
     Sacamos la diferencia entre estas dos expresiones
@@ -69,7 +69,7 @@ Si se observa esta definición esta hecha con derivadas parciales(y no depende d
     \end{equation}
 \end{proof}
 
-\noindent De memento la derivada solo la definimos para un vector contravariante $Y^\alpha$, para la derivada de Lie de un vector covariante $u^\beta$ se puede escribir como,  
+\noindent De memento la derivada solo la definimos para un vector contravariante $Y^\alpha$, para la derivada de Lie de un vector covariante $u^\beta$ se puede escribir como,
 \begin{equation}
     \mathscr{L}_u X_\alpha=X_\beta \partial_\alpha u^\beta+u^\mu \partial_\mu X_\alpha .
 \end{equation}
@@ -85,14 +85,14 @@ Si se observa esta definición esta hecha con derivadas parciales(y no depende d
     \end{equation}
     Desarrollando ambos lados
     \begin{align*}
-        \left(u^\beta \partial_\beta Y^\alpha-Y^\beta \partial_\beta u^\alpha\right) X_\alpha+Y^\alpha \mathscr{L}_u X_\alpha=u^\mu\left(\partial_\mu Y^\alpha\right) X_\alpha+u^\mu Y^\alpha (\partial_\mu X_\alpha ),\\
+        \left(u^\beta \partial_\beta Y^\alpha-Y^\beta \partial_\beta u^\alpha\right) X_\alpha+Y^\alpha \mathscr{L}_u X_\alpha=u^\mu\left(\partial_\mu Y^\alpha\right) X_\alpha+u^\mu Y^\alpha (\partial_\mu X_\alpha ), \\
         \left(u^\beta \partial_\mu Y^\alpha\right) X_\alpha-Y^\beta\left(\partial_\mu u^\alpha\right) X_\alpha+Y^\alpha \mathscr{L}_u X_\alpha=u^\mu X_\alpha \partial_\mu Y^\alpha+u^\mu Y^\alpha \partial_\mu X_\alpha,
     \end{align*}
-    Y aislando el termino 
+    Y aislando el termino
     \begin{align*}
-        Y^\alpha \mathscr{L}_u X_\alpha   & =  u^\mu X_\alpha \partial_\mu Y^\alpha+u^\mu Y^\alpha \partial_\mu X_\alpha  - \left(u^\beta \partial_\mu Y^\alpha\right) X_\alpha + Y^\beta\left(\partial_\mu u^\alpha\right) X_\alpha \\
-        & = X_\alpha Y^\beta \partial_\beta u^\alpha+u^\mu Y^\alpha \partial_\mu X_\alpha\\
-        & = Y^\alpha\left(X_\beta \partial_\alpha u^\beta+u^\mu \partial_\mu X_\alpha\right).\\
+        Y^\alpha \mathscr{L}_u X_\alpha & =  u^\mu X_\alpha \partial_\mu Y^\alpha+u^\mu Y^\alpha \partial_\mu X_\alpha  - \left(u^\beta \partial_\mu Y^\alpha\right) X_\alpha + Y^\beta\left(\partial_\mu u^\alpha\right) X_\alpha \\
+                                        & = X_\alpha Y^\beta \partial_\beta u^\alpha+u^\mu Y^\alpha \partial_\mu X_\alpha                                                                                                          \\
+                                        & = Y^\alpha\left(X_\beta \partial_\alpha u^\beta+u^\mu \partial_\mu X_\alpha\right).                                                                                                      \\
     \end{align*}
     Finalmente
     \begin{equation}
@@ -108,106 +108,106 @@ Si se observa esta definición esta hecha con derivadas parciales(y no depende d
 \end{equation}
 
 
-\noindent Por ultimo la derivada de un tensor $T^{\mu \nu} \v{e_\mu} \otimes \v{e_\nu}$, es 
+\noindent Por ultimo la derivada de un tensor $T^{\mu \nu} \v{e_\mu} \otimes \v{e_\nu}$, es
 \begin{equation}
     \mathscr{L}_u T^{\mu \nu} = u^\beta \partial_\beta T^{\mu \nu}   -  T^{\alpha \nu} \partial_\alpha u^\mu  -T^{\mu \alpha} \partial_\alpha u^\nu.
 \end{equation}
 
 \begin{proof}
     A partir del axioma \ref{ax:Lie2}
-\begin{equation}
-    \mathscr{L}_u \left( T^{\mu \nu} \v{e_\mu} \otimes \v{e_\nu} \right) = \mathscr{L}_u(T^{\mu \nu}) \v{e_\mu} \otimes \v{e_\nu} + T^{\mu \nu} \mathscr{L}_u \left( \v{e_\mu} \otimes \v{e_\nu} \right).
-\end{equation}
-Primero nos ocupamos de la parte de la derivada de Lie de la base.
-Las componentes de la base las representare como $\v{e_\alpha} = \delta^\mu_\alpha \v{e_\mu} $,
+    \begin{equation}
+        \mathscr{L}_u \left( T^{\mu \nu} \v{e_\mu} \otimes \v{e_\nu} \right) = \mathscr{L}_u(T^{\mu \nu}) \v{e_\mu} \otimes \v{e_\nu} + T^{\mu \nu} \mathscr{L}_u \left( \v{e_\mu} \otimes \v{e_\nu} \right).
+    \end{equation}
+    Primero nos ocupamos de la parte de la derivada de Lie de la base.
+    Las componentes de la base las representare como $\v{e_\alpha} = \delta^\mu_\alpha \v{e_\mu} $,
 
 
-\begin{equation}
-    \begin{aligned}
-        \mathscr{L}_u (\delta^\mu_\alpha \v{e_\mu})& = \mathscr{L}_u (\delta^\alpha_\nu) \v{e_\alpha} \\
-        &= \left( u^\beta \partial_\beta \delta^\alpha_\nu - \delta^\beta_\nu \partial_\beta u^\alpha \right) \v{e_\alpha} \\
-        &= \left(  - \delta^\beta_\nu \partial_\beta u^\alpha \right) \v{e_\alpha}                                         \\
-        &   = - (\partial_\nu u^\alpha) \v{e_\alpha}   .                                                                           \\
-    \end{aligned}
-\end{equation}
-Con la regla de Leibniz
-\begin{equation}
-    \begin{aligned}
-        \mathscr{L}_u (\v{e_\mu} \otimes \v{e_\nu}) & = (\mathscr{L}_u \v{e_\mu}) \otimes  \v{e_\nu} +(\v{e_\nu}\otimes\mathscr{L}_u \v{e_\nu})                                                     \\
-                                                    & = \left( - \partial_\mu u^\alpha \v{e_\alpha} \right) \otimes  \v{e_\nu} + \v{e_\mu}\otimes\left( - \partial_\nu u^\alpha \v{e_\alpha} \right) \\
-                                                    & = - \partial_\mu u^\alpha \v{e_\alpha} \otimes  \v{e_\nu} - \partial_\nu u^\alpha \v{e_\mu}\otimes\v{e_\alpha}      .                           \\
-    \end{aligned}
-\end{equation}
-Ahora nos ocupamos de la parte de la derivada de Lie del tensor, sabemos que en si el componente $T^{\mu \nu}$ de un tensor es una función de las coordenadas, y su derivada de Lie es $\mathscr{L}_u T^{\mu \nu} = u^\beta \partial_\beta T^{\mu \nu} $.
+    \begin{equation}
+        \begin{aligned}
+            \mathscr{L}_u (\delta^\mu_\alpha \v{e_\mu}) & = \mathscr{L}_u (\delta^\alpha_\nu) \v{e_\alpha}                                                                  \\
+                                                        & = \left( u^\beta \partial_\beta \delta^\alpha_\nu - \delta^\beta_\nu \partial_\beta u^\alpha \right) \v{e_\alpha} \\
+                                                        & = \left(  - \delta^\beta_\nu \partial_\beta u^\alpha \right) \v{e_\alpha}                                         \\
+                                                        & = - (\partial_\nu u^\alpha) \v{e_\alpha}   .                                                                      \\
+        \end{aligned}
+    \end{equation}
+    Con la regla de Leibniz
+    \begin{equation}
+        \begin{aligned}
+            \mathscr{L}_u (\v{e_\mu} \otimes \v{e_\nu}) & = (\mathscr{L}_u \v{e_\mu}) \otimes  \v{e_\nu} +(\v{e_\nu}\otimes\mathscr{L}_u \v{e_\nu})                                                      \\
+                                                        & = \left( - \partial_\mu u^\alpha \v{e_\alpha} \right) \otimes  \v{e_\nu} + \v{e_\mu}\otimes\left( - \partial_\nu u^\alpha \v{e_\alpha} \right) \\
+                                                        & = - \partial_\mu u^\alpha \v{e_\alpha} \otimes  \v{e_\nu} - \partial_\nu u^\alpha \v{e_\mu}\otimes\v{e_\alpha}      .                          \\
+        \end{aligned}
+    \end{equation}
+    Ahora nos ocupamos de la parte de la derivada de Lie del tensor, sabemos que en si el componente $T^{\mu \nu}$ de un tensor es una función de las coordenadas, y su derivada de Lie es $\mathscr{L}_u T^{\mu \nu} = u^\beta \partial_\beta T^{\mu \nu} $.
 
-Finalmente todo el conjunto
-\begin{equation}
-    \begin{aligned}
-        \mathscr{L}_u \left( T^{\mu \nu} \v{e_\mu} \otimes \v{e_\nu} \right) & = \mathscr{L}_u(T^{\mu \nu}) \v{e_\mu} \otimes \v{e_\nu} + T^{\mu \nu} \mathscr{L}_u \left( \v{e_\mu} \otimes \v{e_\nu} \right)                                                                                                                                                                \\
-                                                                                 & = u^\beta \partial_\beta T^{\mu \nu}  \v{e_\mu} \otimes \v{e_\nu}  - T^{\mu \nu}( \partial_\mu u^\alpha \v{e_\alpha} \otimes  \v{e_\nu} +\partial_\nu u^\alpha \v{e_\mu}\otimes\v{e_\alpha} )                                                                                                      \\
+    Finalmente todo el conjunto
+    \begin{equation}
+        \begin{aligned}
+            \mathscr{L}_u \left( T^{\mu \nu} \v{e_\mu} \otimes \v{e_\nu} \right) & = \mathscr{L}_u(T^{\mu \nu}) \v{e_\mu} \otimes \v{e_\nu} + T^{\mu \nu} \mathscr{L}_u \left( \v{e_\mu} \otimes \v{e_\nu} \right)                                                                                                                                                                \\
+                                                                                 & = u^\beta \partial_\beta T^{\mu \nu}  \v{e_\mu} \otimes \v{e_\nu}  - T^{\mu \nu}( \partial_\mu u^\alpha \v{e_\alpha} \otimes  \v{e_\nu} +\partial_\nu u^\alpha \v{e_\mu}\otimes\v{e_\alpha} )                                                                                                  \\
                                                                                  & = u^\beta \partial_\beta T^{\mu \nu}  \v{e_\mu} \otimes \v{e_\nu}  - ( \underbrace{T^{\mu \nu} \partial_\mu u^\alpha \v{e_\alpha} \otimes  \v{e_\nu} }_{\alpha \leftrightarrow \mu}+\underbrace{T^{\mu \nu} \partial_\nu u^\alpha \v{e_\mu}\otimes\v{e_\alpha} }_{\alpha \leftrightarrow \nu}) \\
                                                                                  & = u^\beta \partial_\beta T^{\mu \nu}  \v{e_\mu} \otimes \v{e_\nu}  - ( T^{\alpha \nu} \partial_\alpha u^\mu \v{e_\mu} \otimes  \v{e_\nu} +T^{\mu \alpha} \partial_\alpha u^\nu \v{e_\mu}\otimes\v{e_\nu} )                                                                                     \\
                                                                                  & = (u^\beta \partial_\beta T^{\mu \nu}   -  T^{\alpha \nu} \partial_\alpha u^\mu  -T^{\mu \alpha} \partial_\alpha u^\nu  )\v{e_\mu}\otimes\v{e_\nu},
-    \end{aligned}
-\end{equation}
-de manera que  podemos hacer la siguiente identificación
-\begin{equation}
-  \mathscr{L}_u T^{\mu \nu} = u^\beta \partial_\beta T^{\mu \nu}   -  T^{\alpha \nu} \partial_\alpha u^\mu  -T^{\mu \alpha} \partial_\alpha u^\nu.
-\end{equation}
+        \end{aligned}
+    \end{equation}
+    de manera que  podemos hacer la siguiente identificación
+    \begin{equation}
+        \mathscr{L}_u T^{\mu \nu} = u^\beta \partial_\beta T^{\mu \nu}   -  T^{\alpha \nu} \partial_\alpha u^\mu  -T^{\mu \alpha} \partial_\alpha u^\nu.
+    \end{equation}
 \end{proof}
 
-\noindent Haciendo el mismo procedimiento prácticamente igual  para la derivada un tensor covariante 
+\noindent Haciendo el mismo procedimiento prácticamente igual  para la derivada un tensor covariante
 \begin{equation}
     \mathscr{L}_u T_{\mu \nu} = u^\beta \partial_\beta T_{\mu \nu}   +  T_{\mu \beta } \partial_\nu u^\beta  + T_{ \beta \nu} \partial_\mu u^\beta.
 \end{equation}
-De manera similar a la anterior definición de la derivada de Lie para un vector contravariante, podemos expresar la derivada de lie de un tensor covariante en términos de la derivada covariante 
+De manera similar a la anterior definición de la derivada de Lie para un vector contravariante, podemos expresar la derivada de lie de un tensor covariante en términos de la derivada covariante
 
 \begin{equation}
     \mathscr{L}_u T_{\mu \nu} = u^\beta \v{\nabla}_\beta T_{\mu \nu}+T_{\beta \nu}\v{\nabla}_\mu u^\beta +T_{\mu \beta } \v{\nabla}_\nu u^\beta.
 \end{equation}
 
 \begin{proof}
-  
- La derivada covariante de un tensor (0,2) contraída con un vector $u^\beta$ es
- \begin{equation}
-     u^\beta \v{\nabla}_\beta T_{\mu \nu} = u^\beta \partial_\beta T_{\mu \nu} - u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu} - u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}.
- \end{equation}
- Y la derivada covariante de un vector $u^\beta$ 
- \begin{equation}
-     \v{\nabla}_\mu u^\beta =  \partial_\mu u^\beta + \Gamma^\beta_{\mu \gamma} u^\gamma,
- \end{equation}
- multiplicado por el tensor $T_{\beta \nu}$ es
- \begin{equation}
-     T_{\beta \nu}\v{\nabla}_\mu u^\beta =  T_{\beta \nu}\partial_\mu u^\beta +T_{\beta \nu}\Gamma^\beta_{\mu \gamma} u^\gamma.
- \end{equation}
- Tal que re acomodando los términos de las ecuaciones anteriores podemos escribir
- \begin{equation}
-     \begin{aligned}
-         u^\beta \partial_\beta T_{\mu \nu}      & = u^\beta \v{\nabla}_\beta T_{\mu \nu} +u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu} + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}, \\
-         T_{\beta \nu}\partial_\mu u^\beta   & = T_{\beta \nu}\v{\nabla}_\mu u^\beta - T_{\beta \nu}\Gamma^\beta_{\mu \gamma} u^\gamma                                                 , \\
-         T_{\mu \beta } \partial_\nu u^\beta & = T_{\mu \beta } \v{\nabla}_\nu u^\beta -  T_{\mu \beta } \Gamma^\beta_{\nu \gamma} u^\gamma.
-     \end{aligned}
- \end{equation}
- Podemos reconstruir la derivada de Lie de un tensor (0,2) como
- \begin{equation}
-     \begin{aligned}
-         \mathscr{L}_u T_{\mu \nu} & = u^\beta \v{\nabla}_\beta T_{\mu \nu} +u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu} + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha} + T_{\beta \nu}\v{\nabla}_\mu u^\beta \\
-         & \qquad  - T_{\beta \nu}\Gamma^\beta_{\mu \gamma} u^\gamma +T_{\mu \beta } \v{\nabla}_\nu u^\beta -  T_{\mu \beta } \Gamma^\beta_{\nu \gamma} u^\gamma \\
-                                       & = u^\beta \v{\nabla}_\beta T_{\mu \nu}+T_{\beta \nu}\v{\nabla}_\mu u^\beta +T_{\mu \beta } \v{\nabla}_\nu u^\beta +  \\
-         &\qquad u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu} + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}- T_{\beta \nu}\Gamma^\beta_{\mu \gamma} u^\gamma  -  T_{\mu \beta } \Gamma^\beta_{\nu \gamma} u^\gamma                                                                                                                                                                \\
-                                       & = u^\beta \v{\nabla}_\beta T_{\mu \nu}+T_{\beta \nu}\v{\nabla}_\mu u^\beta +T_{\mu \beta } \v{\nabla}_\nu u^\beta +                                                                                        \\
-        & \qquad u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu}- \underbrace{u^\gamma\Gamma^\beta_{\mu \gamma}T_{\beta \nu}}_{\begin{array}{l}
-                                                                                                                                    \gamma \rightarrow \beta \\
-                                                                                                                                    \beta \rightarrow \alpha
-                                                                                                                                \end{array}}  + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}- \underbrace{u^\gamma \Gamma^\beta_{\nu \gamma}T_{\mu \beta }}_{\begin{array}{l}
-                                                                                                                                                                                                                                                                         \gamma \rightarrow \beta \\
-                                                                                                                                                                                                                                                                         \beta \rightarrow \alpha
-                                                                                                                                                                                                                                                                     \end{array}}                                                                                                  \\
-                                       & =  u^\beta \v{\nabla}_\beta T_{\mu \nu}+T_{\beta \nu}\v{\nabla}_\mu u^\beta +T_{\mu \beta } \v{\nabla}_\nu u^\beta +                                                                                                                                                                                                                  \\
-        &\qquad u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu}-u^\beta \Gamma^\alpha_{\mu \beta}T_{\alpha \nu} + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}- u^\beta \Gamma^\alpha_{\nu \beta}T_{\mu \alpha }                                                                                                                                                                     \\
-                                       & = u^\beta \v{\nabla}_\beta T_{\mu \nu}+T_{\beta \nu}\v{\nabla}_\mu u^\beta +T_{\mu \beta } \v{\nabla}_\nu u^\beta.
-     \end{aligned}
- \end{equation}
+
+    La derivada covariante de un tensor (0,2) contraída con un vector $u^\beta$ es
+    \begin{equation}
+        u^\beta \v{\nabla}_\beta T_{\mu \nu} = u^\beta \partial_\beta T_{\mu \nu} - u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu} - u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}.
+    \end{equation}
+    Y la derivada covariante de un vector $u^\beta$
+    \begin{equation}
+        \v{\nabla}_\mu u^\beta =  \partial_\mu u^\beta + \Gamma^\beta_{\mu \gamma} u^\gamma,
+    \end{equation}
+    multiplicado por el tensor $T_{\beta \nu}$ es
+    \begin{equation}
+        T_{\beta \nu}\v{\nabla}_\mu u^\beta =  T_{\beta \nu}\partial_\mu u^\beta +T_{\beta \nu}\Gamma^\beta_{\mu \gamma} u^\gamma.
+    \end{equation}
+    Tal que re acomodando los términos de las ecuaciones anteriores podemos escribir
+    \begin{equation}
+        \begin{aligned}
+            u^\beta \partial_\beta T_{\mu \nu}  & = u^\beta \v{\nabla}_\beta T_{\mu \nu} +u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu} + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}, \\
+            T_{\beta \nu}\partial_\mu u^\beta   & = T_{\beta \nu}\v{\nabla}_\mu u^\beta - T_{\beta \nu}\Gamma^\beta_{\mu \gamma} u^\gamma                                                 ,    \\
+            T_{\mu \beta } \partial_\nu u^\beta & = T_{\mu \beta } \v{\nabla}_\nu u^\beta -  T_{\mu \beta } \Gamma^\beta_{\nu \gamma} u^\gamma.
+        \end{aligned}
+    \end{equation}
+    Podemos reconstruir la derivada de Lie de un tensor (0,2) como
+    \begin{equation}
+        \begin{aligned}
+            \mathscr{L}_u T_{\mu \nu} & = u^\beta \v{\nabla}_\beta T_{\mu \nu} +u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu} + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha} + T_{\beta \nu}\v{\nabla}_\mu u^\beta                                                                                               \\
+                                      & \qquad  - T_{\beta \nu}\Gamma^\beta_{\mu \gamma} u^\gamma +T_{\mu \beta } \v{\nabla}_\nu u^\beta -  T_{\mu \beta } \Gamma^\beta_{\nu \gamma} u^\gamma                                                                                                                           \\
+                                      & = u^\beta \v{\nabla}_\beta T_{\mu \nu}+T_{\beta \nu}\v{\nabla}_\mu u^\beta +T_{\mu \beta } \v{\nabla}_\nu u^\beta +                                                                                                                                                             \\
+                                      & \qquad u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu} + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}- T_{\beta \nu}\Gamma^\beta_{\mu \gamma} u^\gamma  -  T_{\mu \beta } \Gamma^\beta_{\nu \gamma} u^\gamma                                                               \\
+                                      & = u^\beta \v{\nabla}_\beta T_{\mu \nu}+T_{\beta \nu}\v{\nabla}_\mu u^\beta +T_{\mu \beta } \v{\nabla}_\nu u^\beta +                                                                                                                                                             \\
+                                      & \qquad u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu}- \underbrace{u^\gamma\Gamma^\beta_{\mu \gamma}T_{\beta \nu}}_{\begin{array}{l}
+                                                                                                                                                                  \gamma \rightarrow \beta \\
+                                                                                                                                                                  \beta \rightarrow \alpha
+                                                                                                                                                              \end{array}}  + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}- \underbrace{u^\gamma \Gamma^\beta_{\nu \gamma}T_{\mu \beta }}_{\begin{array}{l}
+                                                                                                                                                                                                                                                                                                   \gamma \rightarrow \beta \\
+                                                                                                                                                                                                                                                                                                   \beta \rightarrow \alpha
+                                                                                                                                                                                                                                                                                               \end{array}} \\
+                                      & =  u^\beta \v{\nabla}_\beta T_{\mu \nu}+T_{\beta \nu}\v{\nabla}_\mu u^\beta +T_{\mu \beta } \v{\nabla}_\nu u^\beta +                                                                                                                                                            \\
+                                      & \qquad u^\beta \Gamma_{\beta \mu}^\alpha T_{\alpha \nu}-u^\beta \Gamma^\alpha_{\mu \beta}T_{\alpha \nu} + u^\beta \Gamma_{\beta \nu}^\alpha T_{\mu \alpha}- u^\beta \Gamma^\alpha_{\nu \beta}T_{\mu \alpha }                                                                    \\
+                                      & = u^\beta \v{\nabla}_\beta T_{\mu \nu}+T_{\beta \nu}\v{\nabla}_\mu u^\beta +T_{\mu \beta } \v{\nabla}_\nu u^\beta.
+        \end{aligned}
+    \end{equation}
 \end{proof}
 \noindent Asimismo la derivada de Lie de un tensor (2,0) se puede expresar como
 \begin{equation}
@@ -225,20 +225,20 @@ Como recopilatorio de esta sección sobre la derivada de Lie
     \begin{equation}
         \mathscr{L}_u X_\alpha=X_\beta \partial_\alpha u^\beta+u^\mu \partial_\mu X_\alpha =X_\beta \v{\nabla}_\alpha u^\beta+u^\mu \v{\nabla}_\mu X_\alpha.
     \end{equation}
-   Tensor (2,0)
+    Tensor (2,0)
     \begin{equation}
         \begin{aligned}
             \mathscr{L}_u T^{\mu \nu} & = u^\beta \partial_\beta T^{\mu \nu}   -  T^{\alpha \nu} \partial_\alpha u^\mu  -T^{\mu \alpha} \partial_\alpha u^\nu \\
-         &u^\beta \v{\nabla}_\beta T^{\mu \nu}-T^{\beta \nu}\v{\nabla}_\beta u^\mu - T^{\mu \beta } \v{\nabla}_\beta u^\nu.
+                                      & = u^\beta \v{\nabla}_\beta T^{\mu \nu}-T^{\beta \nu}\v{\nabla}_\beta u^\mu - T^{\mu \beta } \v{\nabla}_\beta u^\nu.
         \end{aligned}
     \end{equation}
     Tensor (0,2)
     \begin{equation}
         \begin{aligned}
-        \mathscr{L}_u T_{\mu \nu}&= u^\beta \partial_\beta T_{\mu \nu}   +  T_{\mu \beta } \partial_\nu u^\beta  + T_{ \beta \nu} \partial_\mu u^\beta\\
-        & = u^\beta \v{\nabla}_\beta T_{\mu \nu}+T_{\beta \nu}\v{\nabla}_\mu u^\beta +T_{\mu \beta } \v{\nabla}_\nu u^\beta.    
+            \mathscr{L}_u T_{\mu \nu} & = u^\beta \partial_\beta T_{\mu \nu}   +  T_{\mu \beta } \partial_\nu u^\beta  + T_{ \beta \nu} \partial_\mu u^\beta \\
+                                      & = u^\beta \v{\nabla}_\beta T_{\mu \nu}+T_{\beta \nu}\v{\nabla}_\mu u^\beta +T_{\mu \beta } \v{\nabla}_\nu u^\beta.
         \end{aligned}
-        \end{equation}
+    \end{equation}
 \end{definition}
 
 
@@ -255,11 +255,11 @@ por mera notación estos vectores de killing los representare con $\xi ^\beta$ p
 Aquí es donde podemos observar la ventaja de usar la derivada de Lie con derivadas covariantes, ya que podemos aprovechar la compatibilidad de la métrica
 \begin{equation}
     \begin{aligned}
-        \mathscr{L}_\xi g_{\mu \nu} &= \xi^\beta \v{\nabla}_\beta g_{\mu \nu} +g_{\beta \nu}\v{\nabla}_\mu \xi^\beta +g_{\mu \beta } \v{\nabla}_\nu \xi^\beta \\
-        &= g_{\beta \nu}\v{\nabla}_\mu \xi^\beta +g_{\mu \beta } \v{\nabla}_\nu \xi^\beta                                                                             \\
-        &= \v{\nabla}_\mu (g_{\beta \nu} \xi^\beta) + \v{\nabla}_\nu (g_{\mu \beta } \xi^\beta)                                                                       \\
-        &= \v{\nabla}_\mu  \xi_\nu + \v{\nabla}_\nu \xi_\mu\\
-        & =0             \\
+        \mathscr{L}_\xi g_{\mu \nu} & = \xi^\beta \v{\nabla}_\beta g_{\mu \nu} +g_{\beta \nu}\v{\nabla}_\mu \xi^\beta +g_{\mu \beta } \v{\nabla}_\nu \xi^\beta \\
+                                    & = g_{\beta \nu}\v{\nabla}_\mu \xi^\beta +g_{\mu \beta } \v{\nabla}_\nu \xi^\beta                                         \\
+                                    & = \v{\nabla}_\mu (g_{\beta \nu} \xi^\beta) + \v{\nabla}_\nu (g_{\mu \beta } \xi^\beta)                                   \\
+                                    & = \v{\nabla}_\mu  \xi_\nu + \v{\nabla}_\nu \xi_\mu                                                                       \\
+                                    & =0                                                                                                                       \\
     \end{aligned}
 \end{equation}
 \begin{definition}{Vectores de killing}{}
@@ -270,7 +270,7 @@ Aquí es donde podemos observar la ventaja de usar la derivada de Lie con deriva
         \label{eq:killing}
     \end{equation}
     Representan simetrías del espacio-tiempo, es decir, son vectores que no cambian la métrica al moverse a lo largo de las trayectorias definidas por el campo vectorial $\v{\xi}$.
-    
+
 \end{definition}
 \begin{note}
     La ecuación de Killing es una ecuación diferencial parcial de segundo orden, por lo que en general tiene un máximo de $n(n+1)/2$ soluciones independientes, donde $n$ es la dimensión del espacio-tiempo.
@@ -284,7 +284,7 @@ Encontrar los vectores de Killing implica resolver la ecuación (\ref{eq:killing
 Tomemos la derivada parcial de la ecuación con respecto a una tercera coordenada, $x^\sigma$ :
 
 \begin{equation}
-\partial_\sigma\left(\partial_\mu \xi_\nu+\partial_\nu \xi_\mu\right)=0    
+    \partial_\sigma\left(\partial_\mu \xi_\nu+\partial_\nu \xi_\mu\right)=0
 \end{equation}
 
 
@@ -300,21 +300,21 @@ Ahora, combinamos estas tres ecuaciones. Si sumamos la (\ref{eq:MK2}) y la (\ref
 
 
 \begin{equation}
-\left(\partial_\mu \partial_\nu \xi_\sigma+\partial_\mu \partial_\sigma \xi_\nu\right)+\left(\partial_\nu \partial_\sigma \xi_\mu+\partial_\nu \partial_\mu \xi_\sigma\right)-\left(\partial_\sigma \partial_\mu \xi_\nu+\partial_\sigma \partial_\nu \xi_\mu\right)=0
+    \left(\partial_\mu \partial_\nu \xi_\sigma+\partial_\mu \partial_\sigma \xi_\nu\right)+\left(\partial_\nu \partial_\sigma \xi_\mu+\partial_\nu \partial_\mu \xi_\sigma\right)-\left(\partial_\sigma \partial_\mu \xi_\nu+\partial_\sigma \partial_\nu \xi_\mu\right)=0
 \end{equation}
 Reagrupando términos y usando la conmutatividad de las derivadas:
 \begin{equation}
-2 \partial_\mu \partial_\nu \xi_\sigma+\left(\partial_\mu \partial_\sigma \xi_\nu-\partial_\sigma \partial_\mu \xi_\nu\right)+\left(\partial_\nu \partial_\sigma \xi_\mu-\partial_\sigma \partial_\nu \xi_\mu\right)=0
+    2 \partial_\mu \partial_\nu \xi_\sigma+\left(\partial_\mu \partial_\sigma \xi_\nu-\partial_\sigma \partial_\mu \xi_\nu\right)+\left(\partial_\nu \partial_\sigma \xi_\mu-\partial_\sigma \partial_\nu \xi_\mu\right)=0
 \end{equation}
-Los términos entre paréntesis son cero. 
+Los términos entre paréntesis son cero.
 \begin{equation}
-2 \partial_\mu \partial_\nu \xi_\sigma=0 \quad \Longrightarrow \quad \partial_\mu \partial_\nu \xi_\sigma=0
+    2 \partial_\mu \partial_\nu \xi_\sigma=0 \quad \Longrightarrow \quad \partial_\mu \partial_\nu \xi_\sigma=0
 \end{equation}
 La ecuación $\partial_\mu \partial_\nu \xi_\sigma=0$ nos dice que la segunda derivada de cualquier componente de $\xi$ con respecto a cualquier par de coordenadas es cero. La única función cuya segunda derivada es siempre cero es una función lineal.
 
 Por lo tanto, la solución general para cada componente $\xi_\sigma$ debe ser lineal en las coordenadas $x^\rho$ :
 \begin{equation}
-\xi_\sigma(x)=Y_{\sigma \rho} x^\rho+c_\sigma
+    \xi_\sigma(x)=Y_{\sigma \rho} x^\rho+c_\sigma
 \end{equation}
 Donde $Y_{\sigma \rho}$ y $c_\sigma$ son constantes. $Y_{\sigma \rho}$ es una matriz constante de $4 \times 4$ y $c_\sigma$ es un vector constante de 4 componentes.
 
@@ -322,81 +322,81 @@ Ahora debemos encontrar las restricciones que la ecuación de Killing original i
 
 Primero, calculamos la derivada
 \begin{equation}
-\partial_\mu \xi_\nu=\partial_\mu\left(Y_{\nu \rho} x^\rho+c_\nu\right)=Y_{\nu \rho} \delta_\mu^\rho=Y_{\nu \mu}    
+    \partial_\mu \xi_\nu=\partial_\mu\left(Y_{\nu \rho} x^\rho+c_\nu\right)=Y_{\nu \rho} \delta_\mu^\rho=Y_{\nu \mu}
 \end{equation}
 Ahora sustituimos este resultado en la ecuación de Killing:
 
 \begin{equation}
-Y_{\nu \mu}+Y_{\mu \nu}=0
+    Y_{\nu \mu}+Y_{\mu \nu}=0
 \end{equation}
 Esto implica que:
 
 \begin{equation}
-Y_{\mu \nu}=-Y_{\nu \mu}
+    Y_{\mu \nu}=-Y_{\nu \mu}
 \end{equation}
 Esta condición nos dice que la matriz de constantes $Y_{\mu \nu}$ debe ser antisimétrica. Por ejemplo, la elección $Y_{21}=-Y_{12}=1$ y el resto cero, nos da el vector de Killing rotacional $\xi^\mu=(0,-y, x, 0)$.
 
 Todas las soluciones de la ecuación de Killing en Minkowski se muestran en la tabla \ref{tab:killingMinkowski}.
 
 \begin{table}[H]
-\centering
-\caption{Vectores de Killing en Minkowski}
+    \centering
+    \caption{Vectores de Killing en Minkowski}
 
-\begin{tabular}{c|l}
-\hline
-\textbf{Vector de Killing} & \textbf{Interpretación} \\ \hline
-$\v{\xi}=e_1$ & Traslación en $x$ \\ \hline
-$\v{\xi}=e_2$ & Traslación en $y$ \\ \hline
-$\v{\xi}=e_3$ & Traslación en $z$ \\ \hline
-$\v{\xi}=x e_2-y e_1$ & Rotación en torno al eje $z$ \\ \hline
-$\v{\xi}=y e_3-z e_2$ & Rotación en torno al eje $x$ \\ \hline
-$\v{\xi}=z e_1-x e_3$ & Rotación en torno al eje $y$ \\ \hline
-$\v{\xi}=e_0$ & Traslación en el tiempo \\ \hline
-$\v{\xi}=x e_0+c t e_1$ & Boost en $x$ \\ \hline
-$\v{\xi}=y e_0+c t e_2$ & Boost en $y$ \\ \hline
-$\v{\xi}=z e_0+c t e_3$ & Boost en $z$ \\ \hline
-\end{tabular}
-\label{tab:killingMinkowski}
+    \begin{tabular}{c|l}
+        \hline
+        \textbf{Vector de Killing} & \textbf{Interpretación}      \\ \hline
+        $\v{\xi}=e_1$              & Traslación en $x$            \\ \hline
+        $\v{\xi}=e_2$              & Traslación en $y$            \\ \hline
+        $\v{\xi}=e_3$              & Traslación en $z$            \\ \hline
+        $\v{\xi}=x e_2-y e_1$      & Rotación en torno al eje $z$ \\ \hline
+        $\v{\xi}=y e_3-z e_2$      & Rotación en torno al eje $x$ \\ \hline
+        $\v{\xi}=z e_1-x e_3$      & Rotación en torno al eje $y$ \\ \hline
+        $\v{\xi}=e_0$              & Traslación en el tiempo      \\ \hline
+        $\v{\xi}=x e_0+c t e_1$    & Boost en $x$                 \\ \hline
+        $\v{\xi}=y e_0+c t e_2$    & Boost en $y$                 \\ \hline
+        $\v{\xi}=z e_0+c t e_3$    & Boost en $z$                 \\ \hline
+    \end{tabular}
+    \label{tab:killingMinkowski}
 \end{table}
 
 \subsection{Vectores de Killing y cantidades conservadas}
 Consideremos una partícula masiva que se mueve a lo largo de una geodésica en un espacio-tiempo que admite un vector de Killing $\v{\xi}$. Las ecuaciones de la geodésica, escritas en términos de la cuatro-velocidad de la partícula $U^\alpha=\frac{d x^\alpha}{d \tau}$, son
 
 \begin{equation}
-\frac{d U^\alpha}{d \tau}+\Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu=0 .
-\label{eq:geodesicaU}
+    \frac{d U^\alpha}{d \tau}+\Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu=0 .
+    \label{eq:geodesicaU}
 \end{equation}
 Si contraemos esta ecuación con el vector de Killing $\xi_\alpha$, obtenemos
 
 \begin{equation}
-\begin{aligned}
-    \xi_\alpha\left[\frac{d U^\alpha}{d \tau}+\Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu\right] & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau}-U^\alpha \frac{d \xi_\alpha}{d \tau}+\Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu \xi_\alpha \\
-    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta \frac{\partial \xi_\beta}{\partial x^\nu} \frac{d x^\nu}{d \tau} + \Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu \xi_\alpha \\
-    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \frac{\partial \xi_\beta}{\partial x^\nu} + \Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu \xi_\alpha\\
-    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \left[ \frac{\partial \xi_\beta}{\partial x^\nu} - \Gamma^\alpha{ }_{\beta \nu}  \xi_\alpha \right]\\ 
-    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \v{\nabla}_\nu \xi_\beta ,\\
-\end{aligned}    
+    \begin{aligned}
+        \xi_\alpha\left[\frac{d U^\alpha}{d \tau}+\Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu\right] & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau}-U^\alpha \frac{d \xi_\alpha}{d \tau}+\Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu \xi_\alpha                                         \\
+                                                                                                    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta \frac{\partial \xi_\beta}{\partial x^\nu} \frac{d x^\nu}{d \tau} + \Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu \xi_\alpha \\
+                                                                                                    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \frac{\partial \xi_\beta}{\partial x^\nu} + \Gamma^\alpha{ }_{\beta \nu} U^\beta U^\nu \xi_\alpha                  \\
+                                                                                                    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \left[ \frac{\partial \xi_\beta}{\partial x^\nu} - \Gamma^\alpha{ }_{\beta \nu}  \xi_\alpha \right]                \\
+                                                                                                    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \v{\nabla}_\nu \xi_\beta ,                                                                                         \\
+    \end{aligned}
 \end{equation}
-Desarrollando el lado derecho tomando   
- $\v{\nabla}_\nu \xi_\beta $ como la suma de su parte simetrizada y antisimetrizada
+Desarrollando el lado derecho tomando
+$\v{\nabla}_\nu \xi_\beta $ como la suma de su parte simetrizada y antisimetrizada
 \begin{equation}
-        \begin{aligned}
-            \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \left(\frac{1}{2}\v{\nabla}_{(\nu }\xi_{\beta)} + \frac{1}{2}\v{\nabla}_{[\nu }\xi_{\beta]}\right)  = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} 
-            \\ -U^\beta U^\nu \left(\frac{1}{2}(\v{\nabla}_{\nu }\xi_{\beta} + \v{\nabla}_{\beta }\xi_{\nu}) + \frac{1}{2}(\v{\nabla}_{\nu }\xi_{\beta} - \v{\nabla}_{\beta }\xi_{\nu})\right) \\
-            =\d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - \frac{1}{2}(U^\nu U^\beta  \v{\nabla}_{\nu }\xi_{\beta} + U^\beta U^\nu\v{\nabla}_{\beta }\xi_{\nu})\\
-             + \frac{1}{2}( U^\nu U^\beta \v{\nabla}_{\nu }\xi_{\beta} - \underbrace{U^\beta U^\nu\v{\nabla}_{\beta }\xi_{\nu}}_{\beta,\nu \rightarrow \nu,\beta})\\
-            =\d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - \frac{1}{2}(U^\nu U^\beta  \v{\nabla}_{\nu }\xi_{\beta} + U^\beta U^\nu\v{\nabla}_{\beta }\xi_{\nu}) \\
-            + \frac{1}{2}( U^\nu U^\beta \v{\nabla}_{\nu }\xi_{\beta} -  U^\nu U^\beta \v{\nabla}_{\nu }\xi_{\beta})\\
-            =\d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - \frac{1}{2}(U^\nu U^\beta  \v{\nabla}_{\nu }\xi_{\beta} + U^\beta U^\nu\v{\nabla}_{\beta }\xi_{\nu})     
-        \end{aligned}
+    \begin{aligned}
+        \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \left(\frac{1}{2}\v{\nabla}_{(\nu }\xi_{\beta)} + \frac{1}{2}\v{\nabla}_{[\nu }\xi_{\beta]}\right)  = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau}
+        \\ -U^\beta U^\nu \left(\frac{1}{2}(\v{\nabla}_{\nu }\xi_{\beta} + \v{\nabla}_{\beta }\xi_{\nu}) + \frac{1}{2}(\v{\nabla}_{\nu }\xi_{\beta} - \v{\nabla}_{\beta }\xi_{\nu})\right) \\
+        =\d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - \frac{1}{2}(U^\nu U^\beta  \v{\nabla}_{\nu }\xi_{\beta} + U^\beta U^\nu\v{\nabla}_{\beta }\xi_{\nu})   \\
+        + \frac{1}{2}( U^\nu U^\beta \v{\nabla}_{\nu }\xi_{\beta} - \underbrace{U^\beta U^\nu\v{\nabla}_{\beta }\xi_{\nu}}_{\beta,\nu \rightarrow \nu,\beta}) \\
+        =\d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - \frac{1}{2}(U^\nu U^\beta  \v{\nabla}_{\nu }\xi_{\beta} + U^\beta U^\nu\v{\nabla}_{\beta }\xi_{\nu})   \\
+        + \frac{1}{2}( U^\nu U^\beta \v{\nabla}_{\nu }\xi_{\beta} -  U^\nu U^\beta \v{\nabla}_{\nu }\xi_{\beta})                                              \\
+        =\d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - \frac{1}{2}(U^\nu U^\beta  \v{\nabla}_{\nu }\xi_{\beta} + U^\beta U^\nu\v{\nabla}_{\beta }\xi_{\nu})
+    \end{aligned}
 \end{equation}
-Y además usando la ecuación de Killing (\ref{eq:killing}) 
+Y además usando la ecuación de Killing (\ref{eq:killing})
 \begin{equation}
-\begin{aligned}
-    \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \v{\nabla}_\nu \xi_\beta & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - \frac{1}{2}U^\beta U^\nu  \left( \v{\nabla}_\nu \xi_\beta + \v{\nabla}_\beta \xi_\nu \right)\\
-    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - \frac{1}{2}U^\beta U^\nu \mathscr{L}_\xi g_{\beta \nu} \\
-    & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau}.
-\end{aligned}    
+    \begin{aligned}
+        \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - U^\beta U^\nu \v{\nabla}_\nu \xi_\beta & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - \frac{1}{2}U^\beta U^\nu  \left( \v{\nabla}_\nu \xi_\beta + \v{\nabla}_\beta \xi_\nu \right) \\
+                                                                                             & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau} - \frac{1}{2}U^\beta U^\nu \mathscr{L}_\xi g_{\beta \nu}                                       \\
+                                                                                             & = \d{\left(\xi_\alpha U^\alpha\right)}{ \tau}.
+    \end{aligned}
 \end{equation}
 Dado que \ref{eq:geodesicaU} es $0$ su contracción con $\xi_\alpha$ también es $0$, por lo que podemos escribir
 \begin{equation}
@@ -404,14 +404,14 @@ Dado que \ref{eq:geodesicaU} es $0$ su contracción con $\xi_\alpha$ también es
 \end{equation}
 
 De maneta que la cantidad $\xi_\alpha U^\alpha$ es constante a lo largo de la geodésica, es decir, es una cantidad conservada.
-Como ejemplo tomemos el caso del vector de killing $\v{\xi} = \v{e}_0$($\xi^0 =1$) en el espacio-tiempo de Minkowski, que representa la traslación temporal. 
+Como ejemplo tomemos el caso del vector de killing $\v{\xi} = \v{e}_0$($\xi^0 =1$) en el espacio-tiempo de Minkowski, que representa la traslación temporal.
 \begin{equation}
     \begin{aligned}
         \xi_0 U^\alpha & = \eta_{0 \beta} \xi^0 U^\beta \\
-        & = \eta_{0 0 } U^0 \\
-        & = U^0 = \text{cte.} \\
+                       & = \eta_{0 0 } U^0              \\
+                       & = U^0 = \text{cte.}            \\
     \end{aligned}
-\end{equation} 
+\end{equation}
 Dado que en el espacio-tiempo plano el vector energía-momento de una partícula masiva es $p^\alpha=m c U^\alpha=$ $\left\{E / c, m v^i \gamma\right\}$, la ecuación anterior se convierte en
 \[
     \frac{E}{c}=\text{constante}.
@@ -424,7 +424,7 @@ Con los  vectores de killing podemos identificar e imponer simetrías en el espa
 Supongamos que tienes un vector de Killing temporal
 
 \begin{equation}
-    \xi_\mu=(cte.,0,0,0),   
+    \xi_\mu=(cte.,0,0,0),
 \end{equation}
 (lo cual equivale a decir que $\v{e}_0$ es un vector de Killing).
 Ahora, debe cumplirse la ecuación de Killing:
@@ -442,12 +442,12 @@ Desarrollando un término:
 Pero como $\xi_\alpha$ solo tiene componente temporal ( $\xi_0=cte.$ ), esto se reduce a:
 
 \begin{equation}
-    \nabla_\mu \xi_\nu=-cte.\Gamma_{\mu \nu}^0   . 
+    \nabla_\mu \xi_\nu=-cte.\Gamma_{\mu \nu}^0   .
 \end{equation}
 Entonces, la ecuación de Killing dice:
 
 \begin{equation}
-    \Gamma_{\mu \nu}^0+\Gamma_{\nu \mu}^0=0   . 
+    \Gamma_{\mu \nu}^0+\Gamma_{\nu \mu}^0=0   .
 \end{equation}
 Es decir, el símbolo de Christoffel con índice superior 0 debe ser antisimétrico en los índices $\mu, \nu$.
 Como los Christoffel dependen de derivadas de la métrica:
@@ -456,17 +456,17 @@ Como los Christoffel dependen de derivadas de la métrica:
 \end{equation}
 Para que sean antisimétricos en $\mu, \nu$ :
 \begin{equation}
-\begin{aligned}
-    \Gamma^0{}_{\mu \nu} & =-\Gamma^0{}_{\nu \mu} \\
-    \frac{1}{2} g^{0 \sigma}\left(\pdi{\mu} g_{ \sigma \nu}+\pdi{\nu} g_{ \sigma \mu}-\pdi{\sigma} g_{\mu \nu}\right) & = - \frac{1}{2} g^{0 \sigma}\left(\pdi{\nu} g_{ \sigma \mu}+\pdi{\mu} g_{ \sigma \nu}-\pdi{\sigma} g_{\nu \mu}\right)  \\
-    \pdi{0} g_{\mu \nu}& = -\pdi{0} g_{\nu \mu }, \\
-\end{aligned}    
+    \begin{aligned}
+        \Gamma^0{}_{\mu \nu}                                                                                              & =-\Gamma^0{}_{\nu \mu}                                                                                                \\
+        \frac{1}{2} g^{0 \sigma}\left(\pdi{\mu} g_{ \sigma \nu}+\pdi{\nu} g_{ \sigma \mu}-\pdi{\sigma} g_{\mu \nu}\right) & = - \frac{1}{2} g^{0 \sigma}\left(\pdi{\nu} g_{ \sigma \mu}+\pdi{\mu} g_{ \sigma \nu}-\pdi{\sigma} g_{\nu \mu}\right) \\
+        \pdi{0} g_{\mu \nu}                                                                                               & = -\pdi{0} g_{\nu \mu },                                                                                              \\
+    \end{aligned}
 \end{equation}
 las derivadas respecto al tiempo deben desaparecer, las componentes de la métrica no dependen del tiempo.
 \begin{equation}
-    \partial_t g_{\mu \nu}=0    
+    \partial_t g_{\mu \nu}=0
 \end{equation}
 para todas las $\mu, \nu$.
 \begin{note}
-Esto se repite si imponemos que un vector de Killing sea igual a una constante multiplicando alguna de las direcciones de la base, por ejemplo $\xi_\mu=(0,1,0,0)$, implica directamente que la métrica no depende de esa dirección de la base, en el ejemplo la métrica no depende de la la coordenada $x$ suponiendo que trabajemos con coordenadas cartesianas. 
+    Esto se repite si imponemos que un vector de Killing sea igual a una constante multiplicando alguna de las direcciones de la base, por ejemplo $\xi_\mu=(0,1,0,0)$, implica directamente que la métrica no depende de esa dirección de la base, en el ejemplo la métrica no depende de la la coordenada $x$ suponiendo que trabajemos con coordenadas cartesianas.
 \end{note}
