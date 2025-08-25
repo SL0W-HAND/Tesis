@@ -256,9 +256,9 @@ Los símbolos de Christoffel no cero son
     \end{array}
 \end{equation}
 
-Particularmente nos interesa el caso de geodésicas nulas, es decir, aquellas que describen la trayectoria de la luz en el espacio-tiempo. Además se considera $\theta=\pi/2$ y $\phi=0$, para una simplificación de los cálculos (Si se desea ver las demás trayectorias solo hay que remplazar los valores en la ecuación \ref{eq:geodesic}).
+Particularmente nos interesa el caso de geodésicas nulas, es decir, aquellas que describen la trayectoria de la luz en el espacio-tiempo, por lo que se toma la ecuación genérica de geodésica, y se impone la condición $ds^2 = 0$  . Además se considera $\theta=\pi/2$ y $\phi=0$, para una simplificación de los cálculos  (Si se desea ver las demás trayectorias solo hay que remplazar los valores en la ecuación \ref{eq:geodesic}).
 
-Nos centraremos únicamente en las que nos interesan para describir la luz. Considere  la ecuación geodésica con $\mu=0$ es
+Considere  la ecuación geodésica con $\mu=0$ es
 
 \begin{equation}    
     \frac{\mathrm{d}^2 t}{\mathrm{d} \lambda^2}+\dfrac{2 G M}{c^2 r\left(r - \dfrac{2 G M}{c^2}\right)} \frac{\mathrm{d} t}{\mathrm{d} \lambda} \frac{\mathrm{d} r}{\mathrm{d} \lambda}=0
@@ -272,14 +272,14 @@ lo cual se integra para dar
 \begin{equation}
     \left(1-\dfrac{2 G M}{c^2 r}\right) \frac{\mathrm{d} t}{\mathrm{~d} \lambda}=b=\text { const. }
 \end{equation}
-La ecuación de geodésica tipo luz es una relación siempre valida, pero esta anclada a un parámetro $\lambda$, si queremos hacer comparaciones con otras variables, es util usar el elemento de linea ``light-like'' $ds = 0$ que describe precisamente a la luz  en particular aquí
+Tomando elemento de linea ``light-like'' $ds^2 = 0$ que es la condición que describe precisamente a la luz 
 \begin{equation}
     \begin{aligned}
         \mathrm{d} s^2 & =g_{\mu \nu} \mathrm{d} x^\mu \mathrm{d} x^\nu                                                                      \\
                        & =-\left(1-\dfrac{2 G M}{r c^2}\right)c^2 \mathrm{d} t^2+\left(1-\dfrac{2 G M}{r c^2}\right)^{-1} \mathrm{d} r^2 = 0
     \end{aligned}
 \end{equation}
-usando la relación de la geodésica tipo luz 
+manipulando la relación de la geodésica tipo luz
 \begin{equation}
     \left(1-\frac{2 G M}{r c^2}\right)^{-1} \frac{dt}{d\lambda}  = b \rightarrow  \left(\frac{dt}{d\lambda}\right)^2 = b^2 \left(1-\frac{2 G M}{r c^2}\right)^{-2},
 \end{equation}
@@ -306,13 +306,13 @@ donde el signo $+$ es para geodésicas salientes y el signo $-$ es para geodési
         \begin{center}
             \includegraphics[width=0.99\textwidth]{AgujerosNegros/Schwarzschild/media/images/rayos_Luz_Schwarzschild_ManimCE_v0.19.0.png}
         \end{center}
-        \caption{Gráfica $ct-r $ representando las trayectorias tipo luz, las salientes, son representadas de color azul y las entrantes en color rojo }
+        \caption{Gráfica $ct,r $ representando las trayectorias tipo luz, las salientes, son representadas de color azul y las entrantes en color rojo }
         \label{fig:lightraysSchwarzschild}
     \end{small}
 \end{figure}
 
 \subsection{Coordenadas Eddington-Finkelstein}
-Las coordenadas de Eddington-Finkelstein son un sistema de coordenadas para la solución de Schwarzschild cuya idea principal es usar las trayectorias de la luz (geodésicas nulas radiales) para definir las coordenadas temporal y radial. Esto es posible debido a la simetría radial, donde \( \theta, \varphi = \text{cte} \implies d\Omega^2 = 0 \).
+Las coordenadas de Eddington-Finkelstein son un sistema de coordenadas para la solución de Schwarzschild cuya idea principal es usar las trayectorias de la luz (geodésicas nulas radiales) para definir las coordenadas temporal y radial.
 Partimos de la trayectoria de luz \ref{eq:lightRaysSchwarzschild} que esta en términos de la coordenada radial \( r \) y el tiempo \( ct \) e introducimos la nueva coordenada \( c\tilde{t} \), normalmente llamada coordenada temporal avanzada
 \begin{equation}
         c\tilde{t}  = ct + r_s \ln \left| \frac{r}{r_s} - 1 \right|,      \Rightarrow 
@@ -387,7 +387,7 @@ Los componentes de la métrica \( g_{\mu\nu} = \v{e_\mu} \cdot \v{e_\nu} \) son:
         g_{rr}          & = \v{e_{r_{\text{in}}}} \cdot \v{e_{r_{\text{in}}}} = 0.
     \end{aligned}
 \end{equation}
-Por lo tanto, la métrica en coordenadas de Eddington-Finkelstein es 
+Por lo tanto, la métrica en coordenadas entrantes de Eddington-Finkelstein es 
 \begin{equation}
     ds^2 = -\left(1 - \frac{r_s}{r}\right) dv^2 + 2 dv dr + r^2 d\Omega^2,
 \end{equation}
@@ -451,9 +451,11 @@ El cambio de coordenadas permite mostrar que las partículas de luz/masivas pued
 
 
 \subsection{Coordenadas Kruskal-Szekeres}
-La idea detrás de las coordenadas Kruskal-Szekeres es extender las coordenadas de Eddington-Finkelstein manteniendo los rayos de luz salientes y entrantes con pendiente $\pm 1$ obteniendo las ventajas de los diagramas de coordenadas avanzadas y retrasadas.
+La idea detrás de las coordenadas Kruskal-Szekeres es extender las coordenadas de Eddington-Finkelstein manteniendo los rayos de luz salientes y entrantes con pendiente $\pm 1$ obteniendo las ventajas de los diagramas de coordenadas avanzadas y retrasadas, en uno solo.
+
+Se usa la ventaja de montar los vectores base sobre los rayos de luz entrantes y salientes, y se define un nuevo conjunto de coordenadas \( (U, V) \) que son funciones de las coordenadas de Eddington-Finkelstein \( (u, v) \).
 \subsubsection{Coordenadas nulas originales}
-Con las coordenadas entrante (\(v\)) y saliente (\(u\)) de Eddington-Finkelstein:
+Con las coordenadas entrante (\(v\)) y saliente (\(u\)) de Eddington-Finkelstein que usan en conjunto la parte espacial y temporal original
 \begin{equation}
     \begin{aligned}
         v   & = ct + r^*                                      \\
@@ -461,9 +463,10 @@ Con las coordenadas entrante (\(v\)) y saliente (\(u\)) de Eddington-Finkelstein
         r^* & \equiv r + r_s \log\left|\frac{r}{r_s}-1\right|
     \end{aligned}
 \end{equation}
-y las coordenadas \( (r, t) \) como 
+se puede recobrar las componentes temporal y espacial \( (r, ct) \) como 
 \begin{equation}
 \frac{v+ u}{2} = ct, \quad \frac{v- u}{2} = r^*.
+\label{eq:ryt_in_terms_of_uv}
 \end{equation}
 
 
@@ -471,89 +474,127 @@ y las coordenadas \( (r, t) \) como
 Expresamos los vectores base en términos de \( e_{ct} \) y \( e_r \):
 \begin{equation}
     \begin{aligned}
-        \v{e_v} & = \frac{\partial ct}{\partial v}\v{e_{ct}} + \frac{\partial r}{\partial v}\v{e_r} = \frac{1}{2}\v{e_{ct}} + \frac{1}{2}\left(1-\frac{r_s}{r}\right)^{-1}\v{e_r} \\
-        \v{e_u} & = \frac{\partial ct}{\partial u}\v{e_{ct}} + \frac{\partial r}{\partial u}\v{e_r} = \frac{1}{2}\v{e_{ct}} - \frac{1}{2}\left(1-\frac{r_s}{r}\right)^{-1}\v{e_r}
+        \v{e_v} & = \frac{\partial ct}{\partial v}\v{e_{ct}} + \frac{\partial r}{\partial v}\v{e_r} = \frac{1}{2}\v{e_{ct}} + \frac{1}{2}\left(1-\frac{r_s}{r}\right)\v{e_r} \\
+        \v{e_u} & = \frac{\partial ct}{\partial u}\v{e_{ct}} + \frac{\partial r}{\partial u}\v{e_r} = \frac{1}{2}\v{e_{ct}} - \frac{1}{2}\left(1-\frac{r_s}{r}\right)\v{e_r}
     \end{aligned}
 \end{equation}
 
-\subsubsection{Productos punto fundamentales}
-Usando la métrica de Schwarzschild \( g(e_{ct},e_{ct}) = -\left(1-\frac{r_s}{r}\right) \) y \( g(e_r,e_r) = \left(1-\frac{r_s}{r}\right)^{-1} \):
-\begin{equation}
-    \begin{aligned}
-        e_v \cdot e_v & = \left(\frac{1}{2}\right)^2 g(e_{ct},e_{ct}) + \left(\frac{1}{2}\left(1-\frac{r_s}{r}\right)^{-1}\right)^2 g(e_r,e_r) = 0                                        \\
-        e_u \cdot e_u & = \left(\frac{1}{2}\right)^2 g(e_{ct},e_{ct}) + \left(\frac{1}{2}\left(1-\frac{r_s}{r}\right)^{-1}\right)^2 g(e_r,e_r) = 0                                        \\
-        e_v \cdot e_u & = \left(\frac{1}{2}\right)^2 g(e_{ct},e_{ct}) - \left(\frac{1}{2}\left(1-\frac{r_s}{r}\right)^{-1}\right)^2 g(e_r,e_r) = -\frac{1}{2}\left(1-\frac{r_s}{r}\right)
-    \end{aligned}
-\end{equation}
+
 
 \subsubsection{Métrica en coordenadas nulas}
-La métrica se expresa como:
+
+Usando la métrica de Schwarzschild \( g(e_{ct},e_{ct}) = -\left(1-\frac{r_s}{r}\right) \) y \( g(e_r,e_r) = \left(1-\frac{r_s}{r}\right)^{-1} \), se calcula los productos internos de las nuevas bases
 \begin{equation}
-    ds^2 = 2(e_v \cdot e_u) du\, dv + r^2 d\Omega^2 = -\left(1-\frac{r_s}{r}\right) du\, dv + r^2(d\theta^2 + \sin^2\theta d\varphi^2)
+    \begin{aligned}
+       \v{ e_v }\cdot \v{e_v} & = \left(\frac{1}{2}\right)^2 g(e_{ct},e_{ct}) + \left(\frac{1}{2}\left(1-\frac{r_s}{r}\right)\right)^2 g(e_r,e_r) = 0                                        \\
+        \v{ e_u }\cdot \v{e_u} & = \left(\frac{1}{2}\right)^2 g(e_{ct},e_{ct}) + \left(\frac{1}{2}\left(1-\frac{r_s}{r}\right)\right)^2 g(e_r,e_r) = 0                                        \\
+        \v{ e_v }\cdot \v{e_u} & = \left(\frac{1}{2}\right)^2 g(e_{ct},e_{ct}) - \left(\frac{1}{2}\left(1-\frac{r_s}{r}\right)\right)^2 g(e_r,e_r) = -\frac{1}{2}\left(1-\frac{r_s}{r}\right).
+    \end{aligned}
 \end{equation}
+% -------------------
+\begin{figure}[H]
+    \begin{small}
+        \begin{center}
+            \begin{otherlanguage}{english}
+\begin{tikzpicture}[scale=1.2,>=Latex, line cap=round, line join=round, thin]
+
+% Definir tamaños
+\def\AxisLen{3.2}      % longitud de los ejes
+\def\ConeScale{2.0}    % tamaño del cono de luz
+
+% --- Ejes (r*, ct)
+\draw[thick,->] (-0.9*\AxisLen,0) -- (\AxisLen,0) node [above]{$r^*$};
+\draw[thick,->] (0,0) -- (0,\AxisLen) node [above left]{$c\,t$};
+
+% --- Cono de luz
+\begin{scope}
+  \clip (-\ConeScale,0) rectangle (\ConeScale,\ConeScale);
+  % Sombra / volumen del cono
+  \shade [top color=yellow!20, bottom color=orange!30, opacity=0.4] 
+    (0,0) -- (\ConeScale,\ConeScale) -- (-\ConeScale,\ConeScale) -- cycle;
+  
+  % Bordes del cono
+  \draw [thick, dashed, orange!80!red] (-\ConeScale,\ConeScale) -- (0,0) -- (\ConeScale,\ConeScale);
+\end{scope}
+
+% --- Flechas de la base original
+\draw[->, thick, cyan!70!black] (0,0) -- (0,1.8) node [above right]{$e_{ct}$};
+\draw[->, thick, cyan!70!black] (0,0) -- (1.8,0) node [above right]{$e_r$};
+
+% --- Flechas de la nueva base (combinación)
+\draw[->, thick, magenta!80!black] (0,0) -- (1.4,1.4) node [ right]{$e_v$};
+\draw[->, thick, magenta!80!black] (0,0) -- (-1.4,1.4) node [ left]{$e_u$};
+
+\end{tikzpicture}
+\end{otherlanguage}
+        \end{center}
+        \caption{Los nuevos vectores base $\v{e_u}$ y $\v{e_v}$ de tipo nulo están en direcciones tipo luz y son una composición de los vectores base originales.}
+    \end{small}
+\end{figure}
+El uso directo de ambas coordenadas tipo luz entrantes y salientes de Eddington-Finkelstein aun presenta un problema en $r_s$ y es que $\v{e_v}\cdot \v{e_u}$ se solapan y la métrica  
+\begin{equation}
+    ds^2 = 2(e_v \cdot e_u) du\, dv + r^2 d\Omega^2 = -\left(1-\frac{r_s}{r}\right) du\, dv + r^2(d\theta^2 + \sin^2\theta d\varphi^2),
+\end{equation}
+en su parte $g_{uv}$ se vuelve cero.
+
 
 \subsubsection{Transformación a Kruskal-Szekeres}
+El problema de querer usar ambas coordenadas de Eddington-Finkelstein se puede rastrear al logaritmo tal que para deshacernos de el 
 
 \begin{equation}
     \begin{aligned}
-        \frac{v-u}{2}=r+r_s \log \left|\frac{r}{r_s}-1\right|                 \\
-        \frac{v-u}{2 r_s}=\frac{r}{r_s}+\log \left|\frac{r}{r_s}-1\right|     \\
-        e^{\frac{v-u}{2 r_s}}=e^{\frac{r}{r_s}+\log \abs{ \frac{r}{r_s} 1} }, \\
-        -e^{\frac{v}{2 r_s}}\left(-e^{-\frac{u}{2 r_s}}\right)=e^{\frac{r}{r_s}}\left|\frac{r}{r_s}-1\right|
+        \frac{v-u}{2}&=r+r_s \log \left|\frac{r}{r_s}-1\right|                 \\
+        \frac{v-u}{2 r_s}&=\frac{r}{r_s}+\log \left|\frac{r}{r_s}-1\right|     \\
+        e^{\frac{v-u}{2 r_s}}&=e^{\frac{r}{r_s}+\log \abs{ \frac{r}{r_s} - 1} }, \\
+        -e^{\frac{v}{2 r_s}}\left(-e^{-\frac{u}{2 r_s}}\right)&=e^{\frac{r}{r_s}}\left|\frac{r}{r_s}-1\right|
     \end{aligned}
 \end{equation}
-Definimos las nuevas coordenadas:
+(La razón de poner $-e(-e)$ es meramente a conveniencia para que las nuevas coordenadas sean escalaciones de $\v{e_v}$ y $\v{e_u}$).
+Definimos las nuevas coordenadas
 \begin{equation}
-    \mathcal{U} = -e^{-\frac{u}{4r_s}}, \quad \mathcal{V} = e^{\frac{v}{4r_s}}
+    U = -e^{-\frac{u}{2r_s}}, \quad V = e^{\frac{v}{2 r_s}}
 \end{equation}
 
-\subsubsection{Vectores base en Kruskal-Szekeres}
-Relación diferencial usando la regla de la cadena:
+Los vectores base en Kruskal-Szekeres 
 \begin{equation}
     \begin{aligned}
-        e_\mathcal{U} & = \frac{\partial u}{\partial \mathcal{U}} e_u = 4r_s e^{\frac{u}{4r_s}} e_u = -4r_s \mathcal{U}^{-1} e_u \\
-        e_\mathcal{V} & = \frac{\partial v}{\partial \mathcal{V}} e_v = 4r_s e^{-\frac{v}{4r_s}} e_v = 4r_s \mathcal{V}^{-1} e_v
+        \v{e_U} & = \frac{\partial u}{\partial U} \v{e_u} = 2r_s e^{\frac{u}{2r_s}} \v{e_u}  = 2r_s U^{-1} \v{e_u} \\
+        \v{e_V} & = \frac{\partial v}{\partial V} \v{e_v} = -  2r_s \left(- e^{-\frac{v}{2r_s}}\right) \v{e_v} =- 2r_s V^{-1} \v{e_v}
     \end{aligned}
 \end{equation}
 
-\subsubsection{Producto punto clave}
-Calculamos el producto punto usando \( e_u \cdot e_v = -\frac{1}{2}\left(1-\frac{r_s}{r}\right) \):
+\subsubsection{Métrica de Kruskal-Szekeres}
+Calculamos el producto punto usando \( \v{e_u} \cdot \v{e_v} = -\frac{1}{2}\left(1-\frac{r_s}{r}\right) \)
 \begin{equation}
-    e_\mathcal{U} \cdot e_\mathcal{V} = (-4r_s \mathcal{U}^{-1})(4r_s \mathcal{V}^{-1})(e_u \cdot e_v) = \frac{8r_s^2}{\mathcal{U}\mathcal{V}}\left(1-\frac{r_s}{r}\right)
+    \v{e_U} \cdot \v{e_V} = (2r_s U^{-1})(-2r_s V^{-1})(\v{e_u} \cdot \v{e_v}) = - \frac{2r_s^2}{U V}\left(1-\frac{r_s}{r}\right)
 \end{equation}
 
-\subsubsection{Relación geométrica fundamental}
-De la definición de \( \mathcal{U} \) y \( \mathcal{V} \):
+De la definición de \( U \) y \( V \) se obtiene $UV = -e^{\frac{r}{r_s}}\left|\frac{r}{r_s} - 1\right|$ para sustituirlo en el producto punto
 \begin{equation}
-    \mathcal{U}\mathcal{V} = -e^{\frac{r^*}{2r_s}} = -\left|\frac{r}{r_s}-1\right|^{1/2}e^{\frac{r}{2r_s}}
+    \begin{aligned}
+        \v{e_U} \cdot \v{e_V} &= (2r_s U^{-1})(-2r_s V^{-1})(\v{e_u} \cdot \v{e_v}) = \frac{2r_s^2 e^{-\frac{r}{r_s}}}{\left(\frac{r}{r_s} - 1\right)}\left(1-\frac{r_s}{r}\right)\\
+        & =2r_s^2 e^{-\frac{r}{r_s}} \frac{\left(\frac{r - r_s}{r}\right)}{\left(\frac{r -r_s}{r_s}\right)}\\
+        & = \frac{2r_s^3}{r} e^{-\frac{r}{r_s}}.
+    \end{aligned}
 \end{equation}
 
-Sustituyendo en el producto punto:
-\begin{equation}
-    e_\mathcal{U} \cdot e_\mathcal{V} = \frac{32r_s^3}{r}e^{-\frac{r}{r_s}}
-\end{equation}
-
-\subsubsection{Métrica final de Kruskal-Szekeres}
 La métrica toma su forma canónica:
 \begin{equation}
-    \boxed{ds^2 = \frac{32r_s^3}{r}e^{-\frac{r}{r_s}} d\mathcal{U}d\mathcal{V} + r^2(d\theta^2 + \sin^2\theta d\varphi^2)}
+    ds^2 = \frac{2 r_s^3}{r}e^{-\frac{r}{r_s}} dUdV + r^2(d\theta^2 + \sin^2\theta d\varphi^2).
 \end{equation}
 
-\begin{equation}
-    \text{con } \mathcal{U}\mathcal{V} = \left(1-\frac{r}{r_s}\right)e^{\frac{r}{r_s}} \quad \text{y} \quad \frac{\mathcal{V}}{\mathcal{U}} = -e^{\frac{ct}{2r_s}}
-\end{equation}
-De momento $\mathcal{V}$ y $\mathcal{U}$ son coordenadas nulas, que describen trayectorias de luz, pero podemos hacerlas espaciales y temporales definiendo:
+De momento $V$ y $U$ son coordenadas nulas, que describen trayectorias de luz, ya que estas son escalaciones de $u,v$ podemos hacer un análogo a la ecuación \ref{eq:ryt_in_terms_of_uv} para definir coordenadas espacial y temporal 
 \begin{equation}
     \begin{aligned}
-        T \equiv \frac{\mathcal{V}+\mathcal{U}}{2} \\
-        X \equiv \frac{\mathcal{V}-\mathcal{U}}{2} \\
+        T \equiv \frac{V+U}{2} \\
+        X \equiv \frac{V-U}{2} \\
     \end{aligned}
 \end{equation}
 y viceversa
 \begin{equation}
     \begin{aligned}
-        \mathcal{V}=T+X \\
-        \mathcal{U}=T-X
+        V=T+X \\
+        U=T-X
     \end{aligned}
 \end{equation}
 De modo que la métrica en términos de $T$ y $X$ es:
@@ -565,19 +606,18 @@ De modo que la métrica en términos de $T$ y $X$ es:
                                              0                                     & 0                                     & 0    & -r^2(\sin \theta)^2
                                          \end{array}\right]
 \end{equation}
-Usando el mismo truco que usamos anteriormente podemos encontar las geodésicas nulas en estas coordenadas.
+Usando $ds^2 = 0 $ encontramos las geodésicas nulas en estas coordenadas
 \begin{equation}
     \begin{array}{l}
-        0=\left(\frac{d T}{d \lambda}\right)^2\left(\frac{\partial}{\partial T} \cdot \frac{\partial}{\partial T}\right)+\left(\frac{d X}{d \lambda}\right)^2\left(\frac{\partial}{\partial X} \cdot \frac{\partial}{\partial X}\right) \\
+        
         0=\left(\frac{d T}{d \lambda}\right)^2 g_{T T}+\left(\frac{d X}{d \lambda}\right)^2 g_{X X}                                                                                                                                     \\
         0=\left(\frac{d T}{d \lambda}\right)^2\left(+2 g_{U V}\right)+\left(\frac{d X}{d \lambda}\right)^2\left(-2 g_{U V}\right)
     \end{array}
 \end{equation}
 
 \begin{equation}
-    \d{X}{\lambda} =\pm \d{T}{\lambda} \to \d{X}{T} = \pm 1 \to T = \pm Y + k
+    \d{X}{\lambda} =\pm \d{T}{\lambda} \to \d{X}{T} = \pm 1 \to T = \pm Y + k.
 \end{equation}
-
 Eso quiere decir que las geodésicas nulas en estas coordenadas son rectas en el espacio-tiempo. 
 ahora volver a poner las coordenadas en términos de $r$ y $t$ solo es cuestión de una composición de funciones.
 
@@ -647,7 +687,7 @@ Esto implica que, dentro del horizonte de eventos, las coordenadas \(T\) y \(X\)
 \begin{equation}
     X^2 - T^2 = e^{\frac{r}{r_s}} \left(\frac{r}{r_s}-1\right) \left[ \cosh^2\left(\frac{ct}{2r_s}\right) - \sinh^2\left(\frac{ct}{2r_s}\right) \right],
 \end{equation} 
-para $r \epsilon [0,\infty ) $.
+para $r \, \epsilon \, [0,\infty ) $.
 
 Dado que el negativo de estas coordenadas $-X$ y $-T$ cumplen la identidad (\ref{eq:Kruskal-SzekeresT^2-X^2}) podemos escribir lo que se llama la extensión máxima de las coordenadas de Kruskal-Szekeres
 \begin{table}[H]
@@ -676,7 +716,12 @@ Con esto tenemos todo lo necesario para construir el diagrama de Kruskal-Szekere
         \begin{center}
             \includegraphics[width=0.95\textwidth]{AgujerosNegros/Schwarzschild/media/images/Kruskal_Szekeres_diagram_ManimCE_v0.19.0.png}
         \end{center}
-        \caption{}
-        \label{fig:}
+        \caption{El diagrama de Kruskal-Szekeres muestra las líneas de luz (en azul) y las líneas de tiempo (en rojo) en las coordenadas \(T\) y \(X\). Las líneas de luz tienen pendiente \(\pm 1\), lo que indica que la velocidad de la luz es constante en todas las direcciones. El horizonte de eventos está representado por las líneas diagonales que separan las regiones I, II, III y IV.}
+        \label{fig:Kruskal_Szekeres_diagram}
     \end{small}
 \end{figure}
+En la figura \ref{fig:Kruskal_Szekeres_diagram} los conos de luz tienen pendiente \(\pm 1\) .
+
+
+
+
