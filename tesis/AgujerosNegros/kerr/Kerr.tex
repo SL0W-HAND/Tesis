@@ -3,10 +3,10 @@
 
 El algoritmo de Newman-Janis es una técnica en relatividad general que permite generar métricas típicamente en rotación (lo cual no es siempre el caso) a partir de métricas semilla  axialmente simétricas. En 1965, Ezra T. Newman y Alfred I. Janis \cite{newman-1965}  mediante una transformación de coordenadas complejas aplicada a la métrica de Schwarzschild, obtuvieron la métrica de Kerr, que describe un agujero negro en rotación, además este fue el procedimiento usado para encontrar la métrica de Kerr-Newman\cite{newman-1965b} .
 
-En resumen, el procedimiento del algoritmo que se toman las transformaciones complejas de las coordenadas de Edington-Finkelstein 
+En resumen, el procedimiento del algoritmo que se toman las transformaciones complejas de las coordenadas de Edington-Finkelstein
 
 \begin{equation}
-r \rightarrow r+\mathrm{i} a \cos \theta, \quad u \rightarrow u-\mathrm{i} a \cos \theta,
+    r \rightarrow r+\mathrm{i} a \cos \theta, \quad u \rightarrow u-\mathrm{i} a \cos \theta,
 \end{equation}
 Y mediante el uso de tetradas nulas después del proceso de complexificación se reconstruye una nueva métrica. Sin embargo, esto no implica que la métrica resultante sea solución a las ecuaciones de Einstein, por lo que este procedimiento solo genera candidatos a soluciones que posteriormente debe de corroborar.
 A pesar de que el algoritmo se ha intentado justificar y formalizar en trabajos posteriores como lo señala \cite{drake-2000}, no se ha llegado a un consenso sobre su validez general.
@@ -14,106 +14,215 @@ A pesar de que el algoritmo se ha intentado justificar y formalizar en trabajos 
 Este algoritmo es un tanto polémico debido a la introducción de coordenadas complejas, como menciona la review hecha por \cite{drake-2000} mucho lo consideran como un procedimiento ad-hoc y ambiguo ya que existen diferentes maneras de realizar la complexificación como lo discute \cite{azreg-ainou-2014} .
 
 \begin{align}
-r^2 & \rightarrow(r+\mathrm{i} a \cos \theta)(r-\mathrm{i} a \cos \theta)=r^2+a^2 \cos ^2 \theta, \\
-\frac{1}{r}& \rightarrow \frac{1}{2}\left(\frac{1}{r+\mathrm{i} a \cos \theta}+\frac{1}{r-\mathrm{i} a \cos \theta}\right)=\frac{r}{r^2+a^2 \cos ^2 \theta}, \\
-r^2 & \rightarrow r \sqrt{(r+\mathrm{i} a \cos \theta)(r-\mathrm{i} a \cos \theta)}=r \sqrt{r^2+a^2 \cos ^2 \theta} .
+    r^2         & \rightarrow(r+\mathrm{i} a \cos \theta)(r-\mathrm{i} a \cos \theta)=r^2+a^2 \cos ^2 \theta,                                                     \\
+    \frac{1}{r} & \rightarrow \frac{1}{2}\left(\frac{1}{r+\mathrm{i} a \cos \theta}+\frac{1}{r-\mathrm{i} a \cos \theta}\right)=\frac{r}{r^2+a^2 \cos ^2 \theta}, \\
+    r^2         & \rightarrow r \sqrt{(r+\mathrm{i} a \cos \theta)(r-\mathrm{i} a \cos \theta)}=r \sqrt{r^2+a^2 \cos ^2 \theta} .
 \end{align}
 Incluso con lo ya mencionado esta es una herramienta extremadamente util en el marco de la relatividad, por lo que para este trabajo se usara el desarrollo hecho por \cite{azreg-ainou-2014} donde se propone un una refinación del método para crear una métrica que satisface las ecuaciones de Einstein, además de no requerir la complexificación tal que incluso puede (en algunos casos) dar la métrica en la forma de Boyer-Lindquist.
 
 La forma de proceder que nos da el articulo es la siguiente:
-Se parte de la métrica estática de la forma
+Se parte de la métrica estática de la forma\footnote{En este trabajo se uso la signatura $(-,+,+,+)$ para la métrica, por lo que se reemplazó la signatura de la métrica del articulo }
 
 \begin{equation}
-\footnotemark \mathrm{d} s_{\text {stat }}^2 = - G(r) \mathrm{d} t^2+\frac{\mathrm{d} r^2}{F(r)}+H(r)\left(\mathrm{d} \theta^2+\sin ^2 \theta \mathrm{~d} \varphi^2\right).
+    \mathrm{d} s_{\text {stat }}^2 = - G(r) c^2 \mathrm{d} t^2+\frac{\mathrm{d} r^2}{F(r)}+H(r)\left(\mathrm{d} \theta^2+\sin ^2 \theta \mathrm{~d} \varphi^2\right).
 \end{equation}
-\footnotetext{En este trabajo se uso la signatura $(-,+,+,+)$ para la métrica, por lo que se reemplazó la signatura de la métrica del articulo }
 
 En el caso ideal $G(r)=F(r)$ y $H(r)=r^2$, que por suerte es el caso de la métrica de Schwarzschild y el de algunas soluciones regulares  el  algoritmo refinado de \cite{azreg-ainou-2014} produce la métrica
 \begin{align}
-\mathrm{d}s^2 = & 
-- \left(1 - \frac{2f}{\rho^2}\right) \mathrm{d}t^2 
-+ \frac{\rho^2}{\Delta} \mathrm{d}r^2 
-- \frac{4af \sin^2\theta}{\rho^2} \mathrm{d}t\, \mathrm{d}\phi 
-+ \rho^2 \mathrm{d}\theta^2 
-+ \frac{\Sigma \sin^2\theta}{\rho^2} \mathrm{d}\phi^2,
-\label{eq:metricGeneratedByNewmanJanis}
+    \mathrm{d}s^2 = &
+    - \left(1 - \frac{2f}{\rho^2}\right) c^2 \mathrm{d}t^2
+    + \frac{\rho^2}{\Delta} \mathrm{d}r^2
+    - \frac{4acf \sin^2\theta}{\rho^2} \mathrm{d}t\, \mathrm{d}\phi
+    + \rho^2 \mathrm{d}\theta^2
+    + \frac{\Sigma \sin^2\theta}{\rho^2} \mathrm{d}\phi^2,
+    \label{eq:metricGeneratedByNewmanJanis}
 \end{align}
-con las siguientes definiciones
+con las siguientes definiciones \footnote{Aquí  $a=\frac{J}{M c} [\mathrm{~m}]$.}
 
 \begin{align}
-\rho^2 & =r^2+a^2 \cos ^2 \theta, \\
- 2 f&=r^2(1-F), \\
-\Delta & =r^2 F+a^2=r^2-2 f+a^2, \\
-\Sigma & =\left(r^2+a^2\right)^2-a^2 \Delta \sin ^2 \theta .
+    \rho^2 & =r^2+a^2 \cos ^2 \theta,                            \\
+    2 f    & =r^2(1-F),                                          \\
+    \Delta & =r^2 F+a^2=r^2-2 f+a^2,                             \\
+    \Sigma & =\left(r^2+a^2\right)^2-a^2 \Delta \sin ^2 \theta .
 \end{align}
 Lo importante de este procedimiento es que como lo menciona el articulo, la métrica resultante es una solución a las ecuaciones de Einstein (ya sea que la métrica semilla sea regular o no) $G_{\mu \nu}=T_{\mu \nu}$, donde $T^{\mu \nu}$ es de la forma
 \begin{equation}
-T^{\mu \nu}=\epsilon e_t^\mu e_t^\nu+p_r e_r^\mu e_r^\nu+p_\theta e_\theta^\mu e_\theta^\nu+p_\phi e_\phi^\mu e_\phi^\nu
+    T^{\mu \nu}=\epsilon e_t^\mu e_t^\nu+p_r e_r^\mu e_r^\nu+p_\theta e_\theta^\mu e_\theta^\nu+p_\phi e_\phi^\mu e_\phi^\nu
 \end{equation}
 Donde $e_t^\mu$ es el vector de cuatro-velocidad del fluido, $\epsilon$ es la densidad, $\left(p_r, p_\theta, p_\phi\right)$ son los componentes de la presión, y la base $\left(e_t, e_r, e_\theta, e_\phi\right)$ es dual a la métrica anterior.
 
 \subsection{Aplicación del algoritmo de Newman-Janis sobre la métrica de Schwarzschild}
-Dada la métrica de Schwarzschild
+Dada la métrica de Schwarzschild\footnote{Aquí se usó la notación $m=\frac{G M}{c^2}[\mathrm{~m}]$ .}
 \begin{equation}
-\mathrm{d} s^2=-\left(1-\frac{2 m}{r}\right) \mathrm{d} t^2+\left(1-\frac{2m}{r}\right)^{-1} \mathrm{d} r^2+r^2\mathrm{d} \Omega,
+    \mathrm{d} s^2=-\left(1-\frac{2 m}{r}\right) c^2 \mathrm{d}  t^2+\left(1-\frac{2m}{r}\right)^{-1} \mathrm{d} r^2+r^2\mathrm{d} \Omega,
 \end{equation}
 podemos hacer las identificaciones directas
 
 \begin{equation}
-G(r) = F(r) = 1-\frac{2m}{r}, \quad H(r) = r^2.    
+    G(r) = F(r) = 1-\frac{2m}{r}, \quad H(r) = r^2.
 \end{equation}
 y proceder a aplicar el algoritmo de Newman-Janis sin complexificación
 
 \begin{equation}
-\begin{aligned}
-    2f &=  2mr,\\
-    \Delta &= r^2 - 2mr + a^2,\\
-    \Sigma &= \left(r^2+a^2\right)^2-a^2 \Delta \sin ^2 \theta \\
-    & =\left(r^2+a^2\right)^2-a^2 (r^2 - 2mr + a^2) \sin ^2 \theta . 
-\end{aligned}    
+    \begin{aligned}
+        2f     & =  2mr,                                                        \\
+        \Delta & = r^2 - 2mr + a^2,                                             \\
+        \Sigma & = \left(r^2+a^2\right)^2-a^2 \Delta \sin ^2 \theta             \\
+               & =\left(r^2+a^2\right)^2-a^2 (r^2 - 2mr + a^2) \sin ^2 \theta .
+    \end{aligned}
 \end{equation}
 
 Y la métrica de Kerr resultante aplicando directamente (\ref{eq:metricGeneratedByNewmanJanis})
-    \begin{align}
-        \mathrm{d}s^2 = & 
-- \left(1 - \frac{2mr}{\rho^2}\right) \mathrm{d}t^2 
-+ \frac{\rho^2}{\Delta} \mathrm{d}r^2 
-- \frac{4amr \sin^2\theta}{\rho^2} \mathrm{d}t\, \mathrm{d}\phi 
-+ \rho^2 \mathrm{d}\theta^2 
-+ \frac{\Sigma \sin^2\theta}{\rho^2} \mathrm{d}\phi^2,
-    \end{align}
+\begin{align}
+    \mathrm{d}s^2 = &
+    - \left(1 - \frac{2mr}{\rho^2}\right) c^2 \mathrm{d}t^2
+    + \frac{\rho^2}{\Delta} \mathrm{d}r^2
+    - \frac{4a c mr \sin^2\theta}{\rho^2} \mathrm{d}t\, \mathrm{d}\phi
+    + \rho^2 \mathrm{d}\theta^2
+    + \frac{\Sigma \sin^2\theta}{\rho^2} \mathrm{d}\phi^2,
+\end{align}
 
 Dando la métrica de Kerr en coordenadas de Boyer-Lindquist
 
 \begin{definition}{Métrica de Kerr en coordenadas de Boyer-Lindquist}{}
-Donde los términos son definidos como
-\begin{equation}
-        g_{\mu \nu}=\left( 
-            \begin{array}{cccc}
-               -\left(1-\frac{2 mr}{\rho^2}\right) &0&0& - \frac{2amr \sin^2\theta}{\rho^2} \\
-               0& \frac{\rho^2}{\Delta} & 0 & 0 \\
-                0& 0 & \rho^2 & 0 \\
-                -\frac{2amr \sin^2\theta}{\rho^2} & 0 & 0 & \frac{\Sigma \sin^2\theta}{\rho^2}
+    Donde los términos son definidos como
+    \begin{equation}
+        g_{\mu \nu}=\left(
+        \begin{array}{cccc}
+                -\left(1-\frac{2 mr}{\rho^2}\right) c^2 & 0                     & 0      & - \frac{2a c mr \sin^2\theta}{\rho^2} \\
+                0                                       & \frac{\rho^2}{\Delta} & 0      & 0                                     \\
+                0                                       & 0                     & \rho^2 & 0                                     \\
+                -\frac{2a c mr \sin^2\theta}{\rho^2}    & 0                     & 0      & \frac{\Sigma \sin^2\theta}{\rho^2}
             \end{array}
         \right).
         \label{eq:covariantKerrMetric}
     \end{equation}
-Con las siguientes definiciones
+    Con las siguientes definiciones
 
-\begin{equation}
-    \begin{aligned}
-        \Delta &= r^2 - 2mr + a^2\\
-    \Sigma &= \left(r^2+a^2\right)^2-a^2 \Delta \sin ^2 \theta  \\
-    &=\left(r^2+a^2\right)^2-a^2 (r^2 - 2mr + a^2) \sin ^2 \theta ,\\
-    \rho & = r^2+a^2 \cos ^2 \theta.
-\end{aligned}
-\end{equation}
+    \begin{equation}
+        \begin{aligned}
+            \Delta & = r^2 - 2mr + a^2                                              \\
+            \Sigma & = \left(r^2+a^2\right)^2-a^2 \Delta \sin ^2 \theta             \\
+                   & =\left(r^2+a^2\right)^2-a^2 (r^2 - 2mr + a^2) \sin ^2 \theta , \\
+            \rho   & = r^2+a^2 \cos ^2 \theta.
+        \end{aligned}
+    \end{equation}
 \end{definition}
 
 \section{Regiones de la métrica de Kerr}
 
+Siguiendo el análisis presentado en \cite{chandrasekhar-1983}, la métrica de Kerr puede estudiarse más claramente mediante un cambio de coordenadas. En este marco, se definen nuevas variables cartesianas $(x,y,z)$ relacionadas con las coordenadas de Boyer-Lindquist por
+
+\begin{equation}
+    \begin{aligned}
+        x & = (r \cos \tilde{\varphi}+a \sin \tilde{\varphi}) \sin \theta, \\
+        y & = (r \sin \tilde{\varphi}-a \cos \tilde{\varphi}) \sin \theta, \\
+        z & = r \cos \theta,
+    \end{aligned}
+\end{equation}
+
+de modo que se cumple la relación
+\begin{equation}
+    x^2+y^2=(r^2+a^2)\sin^2\theta .
+\end{equation}
+
+
+Con estas coordenadas, la métrica se mantiene regular en todo el espacio excepto en la superficie
+\begin{equation}
+    x^2+y^2+z^2=a^2 , \qquad z=0,
+\end{equation}
+la cual corresponde a la singularidad de anillo característica de este tipo de agujeros negros.
+
+Por otro lado, un aspecto fundamental de la geometría de Kerr es la presencia de superficies nulas. Estas aparecen al imponer la condición
+\begin{equation}
+    \Delta(r)=r^2-2mr+a^2=0 ,
+\end{equation}
+
+cuyas soluciones están dadas por
+\begin{equation}
+    r_{\pm}=m \pm \sqrt{m^2-a^2}.
+\end{equation}
+
+Los valores $r_{+}$ y $r_{-}$ definen, respectivamente, el horizonte de eventos y el horizonte interno, siempre que se cumpla la condición $a^2<M^2$. En ese caso, las raíces son reales, positivas y distintas.
+
+\subsection{La ergosfera}
+
+Una de las características más notables que distingue la geometría de Kerr de las de Schwarzschild y Reissner-Nordström es la aparición de la llamada \textit{ergosfera}. A diferencia de estos últimos casos, en el espacio-tiempo de Kerr el horizonte de eventos no coincide con la superficie definida por la condición
+\begin{equation}
+    g_{tt}=1-\frac{2mr}{\rho^2}=0,
+\end{equation}
+
+la cual puede reescribirse como
+\begin{equation}
+    r^2-2mr+a^2\cos^2\theta = \Delta - a^2\sin^2\theta = 0 .
+\end{equation}
+
+La solución de esta ecuación conduce a la superficie
+\begin{equation}
+    r=r_e(\theta)=m+\sqrt{m^2-a^2\cos^2\theta},
+\end{equation}
+
+que se encuentra situada por fuera del horizonte de eventos y en la cual el coeficiente métrico $g_{tt}$ se anula.
+
+Dicha superficie recibe el nombre de \textit{ergosfera}, y coincide con el horizonte únicamente en los polos, es decir, para $\theta=0$ y $\theta=\pi$. Su interpretación geométrica es la de una \textit{superficie límite estacionaria}, ya que representa la frontera interior de la región en la que ninguna partícula puede permanecer en reposo respecto a un observador asintóticamente estático: dentro de la ergosfera, las trayectorias con $\mathrm{d}t=0$ dejan de ser tipo tiempo.
+
 
 
 \subsection{Geodésicas en Kerr}
-Se uso el algoritmo que aparece en los anexos para calcular los símbolos de Christoffel no cero de la métrica de Kerr
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+La métrica de Kerr tiene 2 vectores de Killing que nos llaman la atención, uno temporal y otro axial, esto se puede intuir al observar la métrica (\ref{eq:covariantKerrMetric}) y notar que no depende de las coordenadas $t$ y $\varphi$ (Nótese que esta esta expresada en una base esférica).Alternativamente se puede resolver la ecuación de Killing(\ref{eq:killing}) y comprobar que existen dos soluciones linealmente independientes $\v{e_t}$ y $\v{e_\varphi}$.
+
+Usaremos estos vectores de Killing para construir cantidades conservadas a lo largo de las geodésicas usando el resultado de la ecuación (\ref{eq:KillingCantidadConservada}) que usa un Killing y el cuatro-vector de velocidad, considerando primero el Killing axial $\v{\xi}=\v{e_\varphi}$
+
+\begin{align}
+      \d{(\xi_\mu U^\mu)}{\lambda} & = \d{(g_{\mu\nu} \xi^\nu U^\mu)}{\lambda}\\
+      & =\d{(g_{\mu\varphi}  U^\mu)}{\lambda}                           \\
+      & =\d{(g_{ t \varphi}  U^t + g_{\varphi\varphi}  U^\varphi)}{\lambda}                           \\
+      & =0 .
+\end{align}
+La cantidad $g_{ t \varphi}  U^t + g_{\varphi\varphi}  U^\varphi$ es constante a lo largo de las geodésicas, y representa el componente del momento angular del cuatro-momento de una partícula en la dirección azimutal
+
+\begin{equation}
+    \begin{aligned}
+L &\equiv  g_{ t \varphi}  U^t + g_{\varphi\varphi}  U^\varphi \\ 
+  & =- \frac{2a c mr \sin^2\theta}{\rho^2}   U^t + \frac{\Sigma \sin^2\theta}{\rho^2}  U^\varphi,
+    \end{aligned}
+\end{equation}
+es mas sencillo notar esto al recobrar la definicion clasica de momento angular cuando  $a=0$ el termino  $\frac{\Sigma \sin^2\theta}{\rho^2} U^\varphi$ se convierte en el momento angular por unidad de masa clásico $L= r^2 sin^2\theta U^\varphi$.
+
+Análogamente para el vector de Killing $\v{\xi} = \v{e_t}$ la cantidad conservada es energía por unidad de masa
+
+\begin{equation}
+    \begin{aligned}
+E &= -g_{ t t}  U^t - g_{t \varphi}  U^\varphi \\ 
+  & =  \left(1-\frac{2 mr}{\rho^2}\right) c^2 U^t +    \frac{2a c mr \sin^2\theta}{\rho^2}    U^\varphi
+    \end{aligned}
+\end{equation}
+
+\subsection{Arrastre de marcos inerciales}
+
+Para la medición de los efectos del arrastre de marcos inerciales en la métrica de Kerr, se propone la cantidad
+
+\begin{equation}
+    \Omega \equiv \frac{d \varphi}{d t}=\frac{U^{\varphi}}{U^t}.
+\end{equation}
+
+Un observador estacionario que mantenga una posición fija en $r,\theta$ tendrá su cuadrivelocidad dada por  $U^\mu=\left(U^t, 0,0, U^{\varphi}\right)$ y el elemento de linea no tendrá las componentes $dr$ y $d\theta$.
+Para que la trayectoria sea físicamente posible $\left(d s^2<0\right)$ debe cumplirse
+
+\begin{equation}
+    d s^2=g_{t t}dt^2+2 g_{t \varphi} dtd\varphi+g_{\varphi \varphi}d\varphi^2<0.
+\end{equation}
+Si consideramos que este observador es de tipo ZAMO  (Zero Angular Momentum Observer) es un observador con masa que no tiene momento angular propio con respecto al eje de rotación, la cantidad conservada $L=0$ implica que
+\begin{equation}
+    \begin{aligned}
+        \Omega &=\frac{U^{\varphi}}{U^t} = \frac{ - g_{t \varphi}}{g_{\varphi \varphi}}\\ 
+& = \frac{ \frac{2a c mr \sin^2\theta}{\rho^2}}{\frac{\Sigma \sin^2\theta}{\rho^2}}\\ 
+& = \frac{2a c mr}{\Sigma}
+    \end{aligned}
+\end{equation}
+
 

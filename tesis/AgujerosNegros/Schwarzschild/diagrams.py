@@ -711,74 +711,121 @@ class EddingtonFinkelsteinUR(Scene):
 
 
 
+
+
 class Kruskal_Szekeres_diagram(Scene):
     def construct(self):
-        self.camera.background_color = "#FFF"
+        # Background color
+        self.camera.background_color = "#FFFFFF"
+
+        # Base plane
         plane = NumberPlane(
             x_range=(-2, 2),
             y_range=(-2, 2),
             background_line_style={
-                "stroke_color": WHITE,
-                "stroke_width": 0,
-                "stroke_opacity": 0.6
+                "stroke_color": GRAY,
+                "stroke_width": 1,
+                "stroke_opacity": 0.3
             },
-            axis_config={"color": WHITE},
+            axis_config={"color": BLACK},
             x_length=6,
             y_length=6
         )
-        # Configuración de los ejes
-        #Ecuacion de la singularidad
-        singularity = plane.plot_implicit_curve(lambda x, y: y**2 - x**2 - 1 , color=BLACK,stroke_width = 5)
-        singularity = DashedVMobject(singularity,num_dashes=100)
-       
-        #Lineas de r constante
+
+        # Singularity (y^2 - x^2 = 1)
+        singularity = plane.plot_implicit_curve(
+            lambda x, y: y**2 - x**2 - 1,
+            color=RED,
+            stroke_width=4
+        )
+        singularity = DashedVMobject(singularity, num_dashes=100)
+        singularity_label = Text("Singularity", font_size=20, color=RED)
+        singularity_label.move_to([0, 2, 0])
+
+        # Horizon (y^2 = x^2)
+        horizon = plane.plot_implicit_curve(
+            lambda x, y: y**2 - x**2,
+            color=BLACK,
+            stroke_width=3
+        )
+        horizon = DashedVMobject(horizon, num_dashes=100)
+        horizon_label = Text("Event Horizon", font_size=20, color=BLACK).rotate(PI/4)
+        horizon_label.next_to(horizon, 0.02*RIGHT+0.02*UP, buff=0.3).move_to([2.5,2.5,0])
+
+        # r = const lines
         r_group = VGroup()
-        #interior
-        for r in np.arange(0.2, 0.98, 0.07):
-            r_const = plane.plot_implicit_curve(lambda x,y: y**2 - x**2 + np.exp(r)*(r-1),
-                color=RED,
+        for r in np.arange(0.2, 0.98, 0.07):  # interior
+            r_const = plane.plot_implicit_curve(
+                lambda x,y: y**2 - x**2 + np.exp(r)*(r-1),
+                color=ORANGE,
                 stroke_width=1
             )
             r_group.add(r_const)
-        #exterior
-        for r in np.arange(1.05, 5, 0.1):
+        for r in np.arange(1.05, 5, 0.2):  # exterior
             r_const = plane.plot_implicit_curve(
                 lambda x,y: y**2 - x**2 + np.exp(r)*(r-1),
-                color=RED,
-                stroke_width = 1
+                color=ORANGE,
+                stroke_width=1
             )
             r_group.add(r_const)
-        
 
-
-        #Horizonte de Schwarzschild
-        horizon = plane.plot_implicit_curve(lambda x, y: y**2 - x**2 , color=BLACK,stroke_width = 5 )
-        horizon = DashedVMobject(horizon,num_dashes=100)
-        
-
-        #Lineas de t constante
-        t_const_group = VGroup()
-        for t in np.arange(-4.3, 4.3, 0.3):
-            #Izquierda y derecha
+        # t = const lines
+        t_group = VGroup()
+        for t in np.arange(-4.3, 4.3, 0.6):
             t_const = plane.plot_implicit_curve(
-            lambda x,y: y - x*np.tanh(t/2),
-            color=BLACK,
-            stroke_width = 1,
+                lambda x,y: y - x*np.tanh(t/2),
+                color=BLUE,
+                stroke_width=1,
             )
-            t_const_group.add(t_const)
-           # Top & bottom curves (red)
+            t_group.add(t_const)
+            # Top & bottom curves
             y_max = np.sqrt(1/(1-np.tanh(t/2)**2))
-            t_const = plane.plot_implicit_curve(
+            t_const2 = plane.plot_implicit_curve(
                 lambda x, y: np.where(y <= y_max and y>= - y_max, x - y * np.tanh(t / 2), np.nan),
                 color=BLUE,
                 stroke_width=1,
             )
-            t_const_group.add(t_const)
+            t_group.add(t_const2)
 
-            
-        Kruskal_diag = VGroup( plane, singularity, r_group, horizon, t_const_group,).scale(1.6)
-       
-        self.add(Kruskal_diag)
+        # --- Timelike trajectory ---
+        # Starts in right region (x>0), falls into singularity (inside horizon)
+        trajectory = ParametricFunction(
+            lambda tau: np.array([1.5-0.5*np.tanh(tau), tau/2, 0]),  # curved inward
+            t_range=[-2, 2.3],
+            color=GRAY,
+            stroke_width=3
+        )
+
+        # --- Light cones along the trajectory ---
+        lightcones = VGroup()
+        for alpha in np.linspace(0, 1, 3):  # 6 cones along path
+            pt = trajectory.point_from_proportion(alpha)
+            x0, y0, _ = pt
+
+            right_leg = Line(
+                start=[x0, y0, 0],
+                end=[x0+0.4, y0+0.4, 0],
+                color=PURPLE, stroke_width=1.5
+            )
+            left_leg = Line(
+                start=[x0, y0, 0],
+                end=[x0-0.4, y0+0.4, 0],
+                color=PURPLE, stroke_width=1.5
+            )
+         
+            triangle = Polygon([x0, y0, 0], [x0+0.4, y0+0.4, 0], [x0-0.4, y0+0.4, 0], color=GRAY, fill_color=GRAY, fill_opacity=0.5, stroke_width = 0.5)
+            lightcones.add(VGroup( left_leg, right_leg, triangle))
+
+
+
+        # Group diagram elements
+        kruskal_diag = VGroup(
+            singularity, horizon, r_group, t_group,
+            trajectory, lightcones
+        )
+        kruskal_diag.scale(1.3).shift(0.3*DOWN)
+
+        # Reference axes at bottom-left
         directions = Axes(
             x_range=[0, 1],
             y_range=[0, 1],
@@ -787,16 +834,25 @@ class Kruskal_Szekeres_diagram(Scene):
             x_length=2,
             y_length=2
         )
-        x_label = MathTex("U").next_to(directions.x_axis, RIGHT).set_color(BLACK).shift(2.3*DOWN).shift(3.2*LEFT)
-        y_label = MathTex("V").next_to(directions.y_axis, UP).set_color(BLACK).shift(3*LEFT).shift(2.1*DOWN)
-        directions.shift(3*LEFT + 2*DOWN)
+        x_label = MathTex("X").next_to(directions.x_axis, RIGHT, buff=0.2).set_color(BLACK)
+        y_label = MathTex("T").next_to(directions.y_axis, UP, buff=0.2).set_color(BLACK)
+        reference = VGroup(directions, x_label, y_label).scale(0.7)
+        reference.to_edge(DOWN+LEFT, buff=0.7)
 
-        reference = VGroup(directions, x_label, y_label).scale(0.7).shift(DOWN).shift(LEFT)
-        self.add(reference)
+        #Region labels
+        one = Text("I", font_size=24, color=BLACK).move_to([3,0 , 0])
+        two = Text("II", font_size=24, color=BLACK).move_to([0, 3, 0])
+        three = Text("III", font_size=24, color=BLACK).move_to([-3, 0, 0])
+        four = Text("IV", font_size=24, color=BLACK).move_to([0, -3, 0])
+        # Put everything together
+        full_diagram = VGroup(
+            kruskal_diag, singularity_label, horizon_label,
+            reference, one, two, three, four
+        )
 
-        
+        self.add(full_diagram)
 
 
 with tempconfig({"quality": "medium_quality", "preview": False, "pixel_width": 1520, "pixel_height": 1080 }):
-    scene = LightCone2D()
+    scene = Kruskal_Szekeres_diagram()
     scene.render()
