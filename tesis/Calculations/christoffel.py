@@ -29,27 +29,21 @@ B = Function('B', real=True)(r)
 
 ## Métrica de Kerr (g_ij)
 # g_ij = [
-#     [-(1 - 2*m*r/(rho**2)), 0, 0, -2*m*a*r*sin(theta)**2/(rho**2)],
-#     [0, rho**2/delta, 0, 0],
-#     [0, 0, rho**2, 0],
-#     [-2*m*a*r*sin(theta)**2/(rho**2), 0, 0, sigma*sin(theta)**2/(rho**2)]
+#     [-(1 - 2*m*r/((r**2 + a**2*cos(theta)**2)**2)), 0, 0, -2*m*c*a*r*(sin(theta)**2)/((r**2 + a**2*cos(theta)**2)**2)],
+#     [0, (r**2 + a**2*cos(theta)**2)**2/(r**2 - 2*m*r + a**2), 0, 0],
+#     [0, 0, (r**2 + a**2*cos(theta)**2)**2, 0],
+#     [-2*m*c*a*r*(sin(theta)**2)/((r**2 + a**2*cos(theta)**2)**2), 0, 0, ((r**2 + a**2)**2 - a**2*sin(theta)**2*(r**2 - 2*m*r + a**2))*(sin(theta)**2)/((r**2 + a**2*cos(theta)**2)**2)]
 # ]
 
 # Metrica generica para la derivacion de la metrica de Schwarzschild
+
+#metrica de Schwarzschild (g_schwarzschild)
 g_ij = [
-    [-A, 0, 0, 0],
-    [0, B, 0, 0],
+    [-1 + 2*m/r, 0, 0, 0],
+    [0, 1/(1 - 2*m/r), 0, 0],
     [0, 0, r**2, 0],
     [0, 0, 0, r**2*sin(theta)**2]
 ]
-
-#metrica de Schwarzschild (g_schwarzschild)
-# g_ij = [
-#     [-1 + 2*m/r, 0, 0, 0],
-#     [0, 1/(1 - 2*m/r), 0, 0],
-#     [0, 0, r**2, 0],
-#     [0, 0, 0, r**2*sin(theta)**2]
-# ]
 
 # Métrica inversa g^ij (tu variable 'gij')
 gij = [[Matrix(g_ij).inv()[i, j] for j in range(0, len(g_ij))] for i in range(0, len(g_ij))]
@@ -76,34 +70,19 @@ def Christoffel(upperIndex, lowerIndex1, lowerIndex2, latex_output=True):
         diff2 = diff(g_ij[i][lowerIndex1], lowerIndexSymbol2)
         diff3 = diff(g_ij[lowerIndex1][lowerIndex2], indices[i])
         
-        Christoffel_sum += Rational(1,2) * term_inv_metric * (diff1 + diff2 - diff3)
-
-    # Reemplaza primero para que SymPy sepa que esas expresiones son Delta y Sigma
-    #expr = Christoffel_sum.replace(r**2 - 2*m*r + a**2, delta_s)
-    #expr = expr.replace((r**2 + a**2)**2 - a**2*sin(theta)**2*delta, sigma_s)
-    #expr = expr.replace(r**2 + a**2*cos(theta)**2, rho_s)
-
-    # Aplica simplificaciones trigonométricas, algebraicas y factorización
-    #expr = simplify(expr)               # Simplificación general
-    #expr = trigsimp(expr)               # Simplifica funciones trigonométricas
-    #expr = cancel(expr)                 # Cancela factores comunes en numerador/denominador
-    #expr = factor(expr)                 # Agrupa factores (incluye Sigma y Delta)
-
-    Christoffel_simplified = simplify(Christoffel_sum)  # Simplificación general
-    Christoffel_simplified = trigsimp(Christoffel_simplified)  # Simplifica funciones trigonométricas
-    Christoffel_simplified = cancel(Christoffel_simplified)  #
-
-    # Imprimir en pantalla los coeficientes no cero
-    if (Christoffel_simplified != 0):
+        Christoffel_sum += Rational(1,2)*term_inv_metric * (diff1 + diff2 - diff3)    
+            # Imprimir en pantalla los coeficientes no cero
+    if (Christoffel_sum != 0):
         if (latex_output == True):
-            latex_str = f"\\Gamma^{{{latex_index(upperIndexSymbol)}}}{{ }}_{{{latex_index(lowerIndexSymbol1)} {latex_index(lowerIndexSymbol2)}}} &= {latex(Christoffel_simplified)} \\\\"
+            latex_str = f"\\Gamma^{{{latex_index(upperIndexSymbol)}}}{{ }}_{{{latex_index(lowerIndexSymbol1)} {latex_index(lowerIndexSymbol2)}}} &= {latex(Christoffel_sum)} \\\\"
             print(latex_str)
         else:
-            latex_str = f"\\Gamma^{{{upperIndex}}}{{ }}_{{{lowerIndex1} {lowerIndex2}}} &= {latex(Christoffel_simplified)} \\\\"
+            latex_str = f"\\Gamma^{{{upperIndex}}}{{ }}_{{{lowerIndex1} {lowerIndex2}}} &= {latex(Christoffel_sum)} \\\\"
             print(latex_str)
     
-    return Christoffel_simplified
+    return Christoffel_sum
 
+# Función para calcular todos los Símbolos de Christoffel y almacenarlos en una lista anidada   
 
 def Christoffel_all(latex_output=False):
     """
