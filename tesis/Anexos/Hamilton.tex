@@ -12,7 +12,7 @@ L = L(q_i, \dot{q}_i, t)
 
 tomemos la acción de una partícula libre de masa $M$ en un espacio-tiempo curvo respecto a su tiempo propio $\tau$
 \begin{equation}
-    S = \int -Mc \mathbf{d}\tau  \qquad [\text{Energía} \times \text{Tiempo}]. 
+    S = \int -Mc^2 \mathbf{d}\tau  \qquad [\text{Energía} \cdot  \text{Tiempo}]. 
 \end{equation}
 Por definición del tiempo propio $d\tau^2 = -ds^2/c^2$
 \begin{equation}
@@ -100,6 +100,7 @@ La ecuación de Hamilton-Jacobi para la función principal $S\left(x^\mu, \lambd
 
 \begin{equation}
 \frac{\partial S}{\partial \lambda}+H(x, \partial S / \partial x)=0
+\label{eq:HamiltonJacobi}
 \end{equation}
 
 donde $\lambda$ es un parámetro afín a lo largo de la trayectoria.Con las transformaciones canónicas usuales
@@ -123,7 +124,7 @@ podemos buscar una solución separada del tipo
 S(x, \lambda)=W(x)+\frac{1}{2} Mc^2 \lambda
 \end{equation}
 (donde la parte lineal en $\lambda$ refleja que el hamiltoniano es constante a lo largo de la evolución afín). 
-Sustituyendo:
+Sustituyendo el Hamiltoniano en (\ref{eq:HamiltonJacobi}) se obtiene:
 \begin{equation}
     \frac{1}{2} Mc^2+\frac{1}{2 M} g^{\mu \nu} \partial_\mu S \partial_\nu S=0 \quad \Longrightarrow \quad g^{\mu \nu} \partial_\mu S \partial_\nu S=-M^2 c^2
     \label{eq:geodesicHamiltonJacobi}

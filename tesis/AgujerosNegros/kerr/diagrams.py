@@ -15,7 +15,7 @@ class kerr_BH_regions(ThreeDScene):
         )
 
         # Parámetros del agujero negro
-        a = 0.99   # momento angular (rotación)
+        a = 0.99  # momento angular (rotación)
         m = 1   # masa
 
         r_plus = m + np.sqrt(m**2 - a**2)   # horizonte externo
@@ -82,12 +82,34 @@ class kerr_BH_regions(ThreeDScene):
             fill_opacity=0.15
         )
         ergosphere_label = Text("Ergosfera", color=ORANGE, font_size=28).next_to(ergosphere, OUT, buff=0.3)
-
+        
         # --------------------
+        # Ergosfera interna
+        # --------------------
+        def ergosphere_inner_func(u, v):
+            r_ergo_inner = m - np.sqrt(m**2 - a**2 * np.cos(u)**2)
+            x = r_ergo_inner * np.sin(u) * np.cos(v)
+            y = r_ergo_inner * np.sin(u) * np.sin(v)
+            z = r_ergo_inner * np.cos(u)
+            return np.array([x, y, z])
+
+        interior_ergosphere = Surface(
+            ergosphere_inner_func,
+            u_range=[0, np.pi],
+            v_range=[0, 2*np.pi],
+            checkerboard_colors=[YELLOW, YELLOW],
+            fill_opacity=0.15
+        )
+        ergosphere_inner_label = Text(
+            "Ergosfera interna",
+            color=YELLOW,
+            font_size=28
+        ).next_to(interior_ergosphere, IN, buff=0.5)
+        #---------------
         # Agrupamos todo
         # --------------------
         bh_group = VGroup(
-            axes,ring, horizon_outer, horizon_inner, ergosphere,
+            axes,ring, horizon_outer, horizon_inner, ergosphere, interior_ergosphere,
             horizon_outer_label, horizon_inner_label, ergosphere_label, ring_label
         )
 
@@ -155,5 +177,5 @@ class GeodesicFunction(Scene):
         self.wait(2)
 
 with tempconfig({"quality": "medium_quality", "preview": False, "pixel_width": 1520, "pixel_height": 1080 }):
-    scene = GeodesicFunction()
+    scene = kerr_BH_regions()
     scene.render()

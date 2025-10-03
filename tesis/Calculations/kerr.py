@@ -1,4 +1,4 @@
-from sympy import symbols, Matrix, sin, cos, simplify, pretty_print
+from sympy import cancel, latex, symbols, Matrix, sin, cos, simplify, pretty_print, roots, together, factor, trigsimp
 
 # ------------------------------
 # Definición de símbolos
@@ -36,19 +36,34 @@ gij = Matrix([[-sigma/(delta*rho), 0, 0, -2*a*m*r/(delta*rho)],
 # ecuaciones de geodésicas
 # ------------------------------
 #constantes de movimiento
-E = 0.95  # Energía específica
-Lz = 3.0  # Momento angular específico
-Q = 15.0  # Constante de Carter
-# Parámetros del agujero
-m = 1.0  #
-a = 0.95  # Parámetro de espín
-mu = 1.0  # Masa de la partícula (1 para masa normalizada)
-c = 1.0   # Velocidad de la luz (1 en unidades naturales)
 ## Funciones auxiliares
-def theta_func(theta):
-    return Q - cos(theta)**2 *((Lz**2)/(sin(theta)**2) + a**2*(mu*c - E**2))
-def P_func(r):
-    return E*(r**2 + a**2) - a*Lz
-def R_func(r):
-    return (P_func(r))**2 - delta*(mu**2*r**2*c**2 + (Lz - a*E)**2 + Q)
+eta,E, Lz, Q, mu, c = symbols('\\eta E Lz Q mu c', real=True)
 
+P_func = E*(r**2 + a**2) - a*Lz
+R_func = (P_func)**2 - delta*(mu**2*r**2*c**2 + (Lz - a*E)**2 + Q)
+theta_func = Q - cos(theta)**2 *((Lz**2)/(sin(theta)**2) + a**2*(mu*c - E**2))
+
+# ------------------------------
+# derivada de R
+
+R_prime = R_func.diff(r).simplify()
+pretty_print(R_prime)
+#print(latex(R_prime))
+R_prime = R_prime.subs(r,eta*m)
+pretty_print(R_prime)
+
+# ------------------------------
+zeros = roots(R_prime, eta)
+
+
+delta_s, rho_s, sigma_s = symbols('delta rho sigma', real=True)
+
+subs_dict = {
+    sigma: sigma_s,
+    delta: delta_s,
+    rho: rho_s
+}
+
+for key, value in zeros.items():
+    print(f"r = {simplify(key)}, multiplicidad = {value}")
+pretty_print(zeros)
