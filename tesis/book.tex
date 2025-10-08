@@ -34,6 +34,20 @@
 \usepackage{listings}
 \usepackage{xcolor}
 
+\usepackage{tikz}
+\usepackage{mathrsfs} % Para el comando \mathscr
+\usepackage{xfp}      % Para cálculos de punto flotante en TikZ
+\usepackage{graphicx} % Buena práctica para incluir figuras
+
+% --- PAQUETES DE TU CONFIGURACIÓN ---
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{cancel}
+
+
+
+
 % Definición de colores
 \definecolor{codebg}{HTML}{F5F4ED}
 \definecolor{codecomment}{HTML}{5A7D7C}
@@ -76,6 +90,7 @@
 }
 
 %% Custom 
+\input{tikzconfig.tex}
 \input{EnvLayouts.tex}
 \input{shortcuts.tex}
 

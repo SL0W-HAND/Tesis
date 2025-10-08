@@ -1,8 +1,7 @@
 import numpy as np
 from manim import *
 
-from manim import *
-import numpy as np
+
 
 class kerr_BH_regions(ThreeDScene):
     def construct(self):
@@ -116,8 +115,7 @@ class kerr_BH_regions(ThreeDScene):
         self.set_camera_orientation(theta=45 * DEGREES, phi=75 * DEGREES,zoom=2.5)
         self.add(bh_group)
 
-from manim import *
-import numpy as np
+
 
 class GeodesicFunction(Scene):
     def construct(self):

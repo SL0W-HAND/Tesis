@@ -9,140 +9,740 @@ Con el propósito de construir los diagramas de Penrose, podemos seguir la sigui
 
 
 \begin{enumerate}
-    \item Empieza con alguna métrica en algún sistema de coordenadas no compacto (nota el rango de las coordenadas)
-    \item Encuentra una coordenadas tales que las anteriores sean reemplazadas por coordenadas nulas
-    \item Compacta las dos coordenadas nulas de forma separada
-          Para esto hay varias maneras y varias funciones que cumplen este requisito, por ejemplo $sinh(x)$ o $tanh(x)$ o $tan^{-1}(x)$, cada una de estas son funciones biyectivas de los reales $\mathbb{R} $ a un dominio compacto.
+  \item Empieza con alguna métrica en algún sistema de coordenadas no compacto (nota el rango de las coordenadas)
+  \item Encuentra una coordenadas tales que las anteriores sean reemplazadas por coordenadas nulas
+  \item Compacta las dos coordenadas nulas de forma separada
+        Para esto hay varias maneras y varias funciones que cumplen este requisito, por ejemplo $sinh(x)$ o $tanh(x)$ o $tan^{-1}(x)$, cada una de estas son funciones biyectivas de los reales $\mathbb{R} $ a un dominio compacto.
 
 
-          En este caso se introduce las nuevas coordenadas como:
-          \begin{equation}
-              \begin{array}{l}
-                  p:=\tan ^{-1}(v) \\
-                  q:=\tan ^{-1}(w)
-              \end{array}
-          \end{equation}
-          Donde el par ordenado $(p,q)$ tomara valores dentro de un subconjunto de rango
-          $(\frac{-\pi}{2},\frac{\pi}{2})X(\frac{-\pi}{2},\frac{\pi}{2})$
-          (La elección  de la función tangente inversa es arbitraria, pero es una elección común, para el caso de Minkowski es posible también hacer  esta compactación con la función $sinh(x)$)
-    \item Define de nuevo coordenadas espaciales y temporales
-          \begin{equation}
-              \begin{array}{l}
-                  T:=p+q \\
-                  X:=p-q
-              \end{array}
-          \end{equation}
-          (Mantén una "bitácora" de los rangos de estas coordenadas, ya que la información de esta transformación esta dada por donde se encuentran las nuevas fronteras finitas)
+        En este caso se introduce las nuevas coordenadas como:
+        \begin{equation}
+          \begin{array}{l}
+            p:=\tan ^{-1}(v) \\
+            q:=\tan ^{-1}(w)
+          \end{array}
+        \end{equation}
+        Donde el par ordenado $(p,q)$ tomara valores dentro de un subconjunto de rango
+        $(\frac{-\pi}{2},\frac{\pi}{2})X(\frac{-\pi}{2},\frac{\pi}{2})$
+        (La elección  de la función tangente inversa es arbitraria, pero es una elección común, para el caso de Minkowski es posible también hacer  esta compactación con la función $sinh(x)$)
+  \item Define de nuevo coordenadas espaciales y temporales
+        \begin{equation}
+          \begin{array}{l}
+            T:=p+q \\
+            X:=p-q
+          \end{array}
+        \end{equation}
+        (Mantén una "bitácora" de los rangos de estas coordenadas, ya que la información de esta transformación esta dada por donde se encuentran las nuevas fronteras finitas)
 \end{enumerate}
 \subsection{Diagrama en el espacio-tiempo de Minkowski}
 El espacio-tiempo de Minkowski es la solución mas sencilla de las ecuaciones de campo, donde las coordenadas poseen los rangos:
 \begin{equation}
-    \begin{array}{c|c|c|c}
-        t                  & r           & \theta   & \varphi   \\
-        ( -\infty, \infty) & (0, \infty) & (0, \pi) & (0, 2\pi)
-    \end{array}
+  \begin{array}{c|c|c|c}
+    t                  & r           & \theta   & \varphi   \\
+    ( -\infty, \infty) & (0, \infty) & (0, \pi) & (0, 2\pi)
+  \end{array}
 \end{equation}
 y la métrica es:
 \begin{equation}
-    ds^2 = -dt^2 + dr^2 + r^2 d\Omega^2,
+  ds^2 = -c^2dt^2 + dr^2 + r^2 d\Omega^2,
 \end{equation}
-nótese  que se expreso en unidades naturales donde $c=1$.
 Definimos las coordenadas nulas $v$ y $w$ como:
-$$
-    \begin{array}{ll}
-        v:=t+r & r = \frac{1}{2}(v-w) \\
-        w:=t-r & t = \frac{1}{2}(v+w)
-    \end{array}
-$$
+
+\begin{equation}
+  \begin{array}{rcl|rcl}
+    v & := & t+r & r & = & \frac{1}{2}(v-w) \\
+    w & := & t-r & t & = & \frac{1}{2}(v+w)
+  \end{array}
+\end{equation}
+
 Donde los rangos de las nuevas coordenadas son  $r=\frac{1}{2}(v-w)>0 \longrightarrow v>w$.
 Las coordenadas nulas $v$ y $w$ son compactificadas con la función tangente inversa, obteniendo las coordenadas $p$ y $q$:
-$$ p:=\tan ^{-1}(v) \\
-    q =\tan ^{-1}(w)
-$$
+\begin{equation}
+  \begin{aligned}
+    p:=\tan ^{-1}(v) \\
+    q :=\tan ^{-1}(w)
+  \end{aligned}
+\end{equation}
 Debido a que la función tangente inversa es monótona creciente, se tiene que $v>w \longrightarrow p>q$ y cambia el rango del par ordenado $v,w \in (-\infty, \infty) \longrightarrow p,q \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$.
 
 Una vez que las coordenadas nulas han sido compactificadas, se definen las coordenadas temporales y espaciales $T$ y $X$ como:
-$$
-    \begin{array}{ll}
-        T:=p+q, & p = \frac{1}{2} (T + X) \\
-        X:=p-q, & q = \frac{1}{2} (T - X)
-    \end{array}
-$$
-y los nuevos rangos de estas coordenadas son:
+\begin{equation}
+  \begin{array}{rcl|rcl}
+    T & := & p + q, & p & = & \tfrac{1}{2}(T + X) \\[4pt]
+    X & := & p - q, & q & = & \tfrac{1}{2}(T - X)
+  \end{array}
+\end{equation}
+Ya que los argumentos de $tan(\theta)$ esta entre $(-\frac{\pi}{2}, \frac{\pi}{2})$ y $p>q$, los nuevos rangos de estas coordenadas son:
 
 \begin{equation}
-    \left[\begin{array}{c}
-            -\frac{\pi}{2}<\frac{1}{2}(T+X)<\frac{\pi}{2} \\
-            -\frac{\pi}{2}<\frac{1}{2}(T-X)<\frac{\pi}{2} \\
-            \frac{1}{2}(T+X)>\frac{1}{2}(T-X)
-        \end{array}\right] \Leftrightarrow\left[\begin{array}{l}
-            -\pi<T+X<\pi \\
-            -\pi<T-X<\pi \\
-            X>0
-        \end{array}\right]
+  \left[\begin{array}{c}
+      -\frac{\pi}{2}<\frac{1}{2}(T+X)<\frac{\pi}{2} \\
+      -\frac{\pi}{2}<\frac{1}{2}(T-X)<\frac{\pi}{2} \\
+      \frac{1}{2}(T+X)>\frac{1}{2}(T-X)
+    \end{array}\right] \Leftrightarrow\left[\begin{array}{l}
+      -\pi<T+X<\pi \\
+      -\pi<T-X<\pi \\
+      X>0
+    \end{array}\right]
 \end{equation}
-por lo ahora podemos dibujar la región permitida
+En base  a estas desigualdades  la región permitida
 \begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=0.8]
+    % Definimos la constante pi
+    \pgfmathsetmacro{\mypi}{3.1416}
+
+    % Fondo gris para toda el área de dibujo (ajustable)
+    %\fill[gray!30] (-4,-4) rectangle (4,4);
+
+    % Región permitida (blanca): para x>0, T entre -pi+x y pi-x
+    \fill[pattern=north east lines, pattern color=black!60]
+    (0,-\mypi) -- (0,\mypi) -- (\mypi,0) -- cycle;
+    % Límites sólidos de la región permitida:
+    % T+x=\pi  =>  T=\pi-x, que une (0,\pi) con (\mypi,0)
+    % T-x=-\pi =>  T=-\pi+x, que une (0,-\mypi) con (\mypi,0)
+    % y la recta x=0 (eje vertical) que une (0,-\mypi) con (0,\mypi)
+    \draw[line width=1.5pt] (0,-\mypi) -- (0,\mypi) -- (\mypi,0) -- cycle;
+
+    % Límites adicionales (discontinuos) de las otras inecuaciones:
+    % 1. T+x=-\pi  =>  T=-\pi-x (línea discontinua en verde)
+    % Se dibuja en un rango amplio de x para visualizarla.
+    \draw[dashed,green] (-4, {4 - \mypi}) -- (0.9, {-0.9 - \mypi});
+
+    % 2. T-x=\pi   =>  T=\pi+x (línea discontinua en magenta)
+    \draw[dashed,magenta] (-4, { \mypi - 4 }) -- (0.9, { \mypi + 0.9 });
+
+    % Etiquetas para los límites (se pueden ajustar las posiciones):
+    % Etiqueta de la frontera T+x=\pi (límite sólido superior de la región)
+    \node[above, black] at ({0.8*\mypi}, {0.5*\mypi}) {$T+x=\pi$};
+
+    % Etiqueta de la frontera T-x=-\pi (límite sólido inferior de la región)
+    \node[below, black] at ({0.8*\mypi}, {-0.5*\mypi}) {$T-x=-\pi$};
+
+    % Etiqueta para la frontera T+x=-\pi (línea discontinua, verde)
+    % Se coloca en un punto representativo, por ejemplo, en x=-2.
+    \node[above left, black] at (-2, { -\mypi  }) {$T+x=-\pi$};
+
+    % Etiqueta para la frontera T-x=\pi (línea discontinua, magenta)
+    \node[above left, black] at (-2, { \mypi - 2 }) {$T-x=\pi$};
+
+    % Etiqueta para la frontera x=0 (eje vertical)
+    \node[above left] at (0,0) {$x=0$};
+
+    % Se dibujan los ejes coordenados
+    \draw[->] (-4,0) -- (4,0) node[right] {$X$};
+    \draw[->] (0,-4) -- (0,4) node[above] {$T$};
+
+    % Etiquetas de los vértices de la región permitida
+    \node[below left] at (0,-\mypi) {$(0,-\pi)$};
+    \node[above left] at (0,\mypi) {$(0,\pi)$};
+    \node[below right] at (\mypi,0) {$(\pi,0)$};
+
+  \end{tikzpicture}
+  \caption{Regiones definidas por \(-\pi<T+x<\pi\), \(-\pi<T-x<\pi\) y \(x>0\). Límites sólidos: región permitida (\(T+x=\pi\) y \(T-x=-\pi\)); discontinuos: fronteras de las inecuaciones restantes.}
+\end{figure}
+Para el caso de Minkowski, la región permitida es un rombo a la derecha, donde las líneas diagonales representan la luz, las líneas horizontales representan el espacio constante y las líneas verticales representan el tiempo constante, mediante la transformación de coordenadas.
+\begin{equation}
+  \begin{aligned}
+    X = \tan^{-1}(t+r) + \tan^{-1}(t-r) \\
+    Y = \tan^{-1}(t+r) - \tan^{-1}(t-r)
+  \end{aligned}
+\end{equation}
+con el rango $r>0$, $-\infty<t<\infty$.
+\begin{figure}[H]
+  \centering % Centra el diagrama en la página
+  % PENROSE DIAGRAM of Minkowski space - radius r
+  \begin{tikzpicture}[scale=4]
+    \message{Penrose diagram (radius r)^^J}
+
+    \def\Nlines{4} % number of world lines (at constant r/t)
+    \def\ta{tan(90*1.0/(\Nlines+1))} % constant r/t value 1
+    \def\tb{tan(90*2.0/(\Nlines+1))} % constant r/t value 2
+    \coordinate (O) at ( 0, 0); % center: origin (r,t) = (0,0)
+    \coordinate (S) at ( 0,-1); % south: t=-infty, i-
+    \coordinate (N) at ( 0, 1); % north: t=+infty, i+
+    \coordinate (E) at ( 1, 0); % east:  r=+infty, i0
+    \coordinate (X) at ({penroseu(\tb,\tb)},{penrosev(\tb,\tb)});
+    \coordinate (X0) at ({penroseu(\ta,-\tb)},{penrosev(\ta,-\tb)});
+
+    % AXES
+    \fill[mylightblue] (N) -- (E) -- (S) -- cycle;
+    \draw[->,thick] (-0.1,0) -- (1.2,0) node[below right=-2] {$u$};
+    \draw[->,thick] (0,-1.1) -- (0,1.2) node[left=-1] {$v$};
+
+    % INFINITY LABELS
+    \node[above=1,above left=0,mydarkblue,align=center] at (O)
+    {$r=0$};
+    \node[left=6,above right=-2,mydarkblue,align=center] at (1,0.04)
+    {spacelike\\[-2]infinity ($i^0$)\\[-2]$r=+\infty$};
+    \node[above=6,below right=0,mydarkpurple,align=left] at (0.04,-1)
+    {$t=-\infty$\\[-2]past timelike\\[-2]infinity ($i^-$)};
+    \node[below=6,above right=0,mydarkpurple,align=left] at (0.04,1)
+    {future timelike\\[-2]infinity ($i^+$)\\[-2]$t=+\infty$};
+    \node[mydarkblue,above right,align=right] at (57:0.68)
+    {future lightlike\\[-2]infinity ($\calI^+$)};
+    \node[mydarkblue,below right,align=right] at (-60:0.68)
+    {past lightlike\\[-2]infinity ($\calI^-$)};
+
+    % CONE BACK
+    \coneback{X};
+    \coneback{X0};
+
+    % WORLD LINES
+    \draw[world line] (N) -- (S);
+    \draw[world line] (O) -- (E);
+    \message{Making world lines...^^J}
+
+    \foreach \i [evaluate={\c=\i/(\Nlines+1); \ct=tan(90*\c);}] in {1,...,\Nlines}{
+        \message{  Running i/N=\i/\Nlines, c=\c, tan(90*\c)=\ct...^^J}
+        \draw[world line t,samples=\Nsamples,smooth,variable=\t,domain=0.001:1] % constant t
+        plot(\t,{-penrose(\t*pi/2,\ct)})
+        plot(\t,{ penrose(\t*pi/2,\ct)});
+        \draw[world line,samples=\Nsamples,smooth,variable=\r,domain=-1:1] % constant r
+        plot({penrose(\r*pi/2,\ct)},\r);
+      }
+    \draw[thick,mydarkblue] (N) -- (E) -- (S) -- cycle;
+
+    % CONSTANT
+    \draw[->,mydarkpurple!80!black,shorten <=0.4] % constant r
+    (0.66,{-penrose(0.66*pi/2,tan(90*3/(\Nlines+1)))}) to[out=-70,in=150]++ (-45:0.23)
+    node[right=-1] {$t=\text{constant}$};
+
+    \draw[->,mydarkblue!80!black,shorten <=0.4] % constant t
+    ({penrose(-0.27*pi/2,tan(90*3/(\Nlines+1)))},-0.27) to[out=-55,in=170]++ (-35:0.3)
+    node[right=-1] {$r=\text{constant}$};
+
+    % PARTICLE
+    \draw[particle,decoration={markings,mark=at position 0.24 with {\arrow{latex}},
+          mark=at position 0.55 with {\arrow{latex}},
+          mark=at position 0.82 with {\arrow{latex}}},postaction={decorate}]
+    (S) to[out=90,in=-80] (X0) to[out=100,in=-95] (X) to[out=85,in=-90] (N);
+
+    % LIGHT CONE FRONT
+    \conefront{X};
+    \conefront{X0};
+
+    % PHOTON
+    \draw[->,photon] (O) -- (0.5,0.5) node[above=2,right=1] {photon};
+
+    % TICKS
+    \tick{E}{90} node[right=4,below=-1] {$+\pi$};
+    \tick{S}{ 0} node[left=-1] {$-\pi$};
+    \tick{N}{ 0} node[left=-1] {$+\pi$};
+
+  \end{tikzpicture}
+  \caption{Diagrama de Penrose para el espacio-tiempo de Minkowski, mostrando la estructura causal compactada. Las líneas curvas representan hipersuperficies de tiempo constante (Recuperado de \cite{neutelings-2024}).}
+\end{figure}
+\subsection{Diagrama de espacio-tiempo de Schwarzschild}
+
+Comenzamos con la métrica de Schwarzschild en las coordenadas de Kruskal-Szekeres $(T, X)$. La parte radial-temporal de la métrica es conformemente plana, es decir, proporcional a la métrica de Minkowski:
+\begin{equation}
+  ds^2 = \frac{4r_s^3}{r} e^{-r/r_s}(-dT^2 + dX^2) + r^2 d\Omega^2
+\end{equation}
+La estructura causal está determinada por el término $-dT^2 + dX^2$. Las coordenadas $(T, X)$ definen las regiones de interés a través de las siguientes relaciones:
+
+\begin{itemize}
+  \item \textbf{Región I (Exterior, $r > r_s$):} Se caracteriza por la condición $X^2 - T^2 > 0$ con $X > 0$. Geométricamente, esta es la región a la derecha del origen, contenida entre las hipérbolas nulas $T = \pm X$.
+
+  \item \textbf{Región II (Interior, $0 < r < r_s$):} Se caracteriza por la condición $T^2 - X^2 > 0$ con $T > 0$. Esta es la región futura, contenida entre las hipérbolas nulas $T = \pm X$.
+\end{itemize}
+
+De forma análoga al espaciotiempo de Minkowski, definimos las coordenadas nulas $(U, V)$ a partir de $(T, X)$:
+\begin{equation}
+  \begin{array}{l}
+    V := T+X \\
+    U := T-X
+  \end{array}
+\end{equation}
+A continuación, determinamos el rango de estas coordenadas para cada región.
+
+\begin{itemize}
+  \item \textbf{Para la Región I ($X > |T|$):}
+        \begin{itemize}
+          \item $V = T+X > 0 \implies V \in (0, \infty)$
+          \item $U = T-X < 0 \implies U \in (-\infty, 0)$
+        \end{itemize}
+
+  \item \textbf{Para la Región II ($T > |X|$):}
+        \begin{itemize}
+          \item $V = T+X > 0 \implies V \in (0, \infty)$
+          \item $U = T-X > 0 \implies U \in (0, \infty)$
+        \end{itemize}
+\end{itemize}
+
+
+
+Utilizamos la función tangente inversa para mapear los rangos infinitos de $U$ y $V$ a un intervalo finito. Definimos las nuevas coordenadas compactificadas $(p, q)$:
+\begin{equation}
+  \begin{array}{l}
+    p := \tan^{-1}(V) \\
+    q := \tan^{-1}(U)
+  \end{array}
+\end{equation}
+Los rangos de $(p, q)$ se transforman de la siguiente manera:
+
+\begin{itemize}
+  \item \textbf{Para la Región I ($V>0, U<0$):}
+        \begin{itemize}
+          \item $p = \tan^{-1}(V)$ toma valores en $\left(0, \frac{\pi}{2}\right)$.
+          \item $q = \tan^{-1}(U)$ toma valores en $\left(-\frac{\pi}{2}, 0\right)$.
+        \end{itemize}
+
+  \item \textbf{Para la Región II ($V>0, U>0$):}
+        \begin{itemize}
+          \item $p = \tan^{-1}(V)$ toma valores en $\left(0, \frac{\pi}{2}\right)$.
+          \item $q = \tan^{-1}(U)$ toma valores en $\left(0, \frac{\pi}{2}\right)$.
+        \end{itemize}
+\end{itemize}
+
+
+
+Finalmente, definimos las coordenadas del diagrama de Penrose, que llamaremos $(T', X')$, a partir de $(p, q)$:
+\begin{equation}
+  \begin{array}{l}
+    T' := p+q \\
+    X' := p-q
+  \end{array}
+\end{equation}
+Ahora, calculamos los límites de $(T', X')$ para cada región para determinar su forma en el diagrama final.
+
+\begin{itemize}
+  \item \textbf{Límites para la Región I:} Con $p \in (0, \frac{\pi}{2})$ y $q \in (-\frac{\pi}{2}, 0)$:
+        \begin{align*}
+          T' = p+q \quad & \implies \quad T' \in (-\pi/2, \pi/2) \\
+          X' = p-q \quad & \implies \quad X' \in (0, \pi)
+        \end{align*}
+        Podemos expresar estas condiciones de forma más restrictiva. Sabemos que $p = \frac{1}{2}(T'+X')$ y $q = \frac{1}{2}(T'-X')$. Aplicando los rangos de $p$ y $q$:
+        \begin{equation}
+          \left[\begin{array}{c}
+              0 < \frac{1}{2}(T'+X') < \frac{\pi}{2} \\
+              -\frac{\pi}{2} < \frac{1}{2}(T'-X') < 0
+            \end{array}\right] \Leftrightarrow \left[\begin{array}{c}
+              0 < T'+X' < \pi \\
+              -\pi < T'-X' < 0
+            \end{array}\right] \Leftrightarrow
+          \left[\begin{array}{c}
+              T' > -X'    \\
+              T' < \pi-X' \\
+              T' < X'     \\
+              T' > X'-\pi
+            \end{array}\right]
+        \end{equation}
+        Estas desigualdades definen un triángulo con vértices en $(0,0)$, $(\pi/2, \pi/2)$ y $(\pi/2, -\pi/2)$.
+
+  \item \textbf{Límites para la Región II:} Con $p \in (0, \frac{\pi}{2})$ y $q \in (0, \frac{\pi}{2})$:
+        \begin{align*}
+          T' = p+q \quad & \implies \quad T' \in (0, \pi)        \\
+          X' = p-q \quad & \implies \quad X' \in (-\pi/2, \pi/2)
+        \end{align*}
+        Aplicando los rangos de $p$ y $q$ de manera similar:
+        \begin{equation}
+          \left[\begin{array}{c}
+              0 < \frac{1}{2}(T'+X') < \frac{\pi}{2} \\
+              0 < \frac{1}{2}(T'-X') < \frac{\pi}{2}
+            \end{array}\right] \Leftrightarrow \left[\begin{array}{c}
+              0 < T'+X' < \pi \\
+              0 < T'-X' < \pi
+            \end{array}\right] \Leftrightarrow
+          \left[\begin{array}{c}
+              T' > -X'    \\
+              T' < \pi-X' \\
+              T' > X'     \\
+              T' < \pi+X'
+            \end{array}\right]
+        \end{equation}
+        Estas desigualdades definen un triángulo adyacente al anterior, con vértices en $(0,0)$, $(\pi/2, \pi/2)$ y $(-\pi/2, \pi/2)$.
+\end{itemize}
+
+Las regiones permitidas son
+\begin{figure}[H]
+  \begin{subfigure}{0.5\textwidth}
     \centering
-    \shorthandoff{>}
-    \begin{tikzpicture}[scale=1]
+    \begin{tikzpicture}[scale=0.6]
+      \pgfmathsetmacro{\mypi}{3.1416}
 
-        % Definimos la constante pi
-        \pgfmathsetmacro{\mypi}{3.1416}
+      %===========================
+      % Región permitida (relleno gris)
+      %===========================
+      \draw[line width=1.5pt] (0,0) -- (\mypi /2 ,\mypi/2) -- (\mypi,0) -- (\mypi /2 ,-\mypi/2) -- cycle;
+      \fill[pattern=north east lines, pattern color=black!60](0,0) -- (\mypi /2 ,\mypi/2) -- (\mypi,0) -- (\mypi /2 ,-\mypi/2) -- cycle;
 
-        % Fondo gris para toda el área de dibujo (ajustable)
-        \fill[gray!30] (-4,-4) rectangle (4,4);
 
-        % Región permitida (blanca): para x>0, T entre -pi+x y pi-x
-        \fill[white] (0,-\mypi) -- (0,\mypi) -- (\mypi,0) -- cycle;
 
-        % Límites sólidos de la región permitida:
-        % T+x=\pi  =>  T=\pi-x, que une (0,\pi) con (\mypi,0)
-        % T-x=-\pi =>  T=-\pi+x, que une (0,-\mypi) con (\mypi,0)
-        % y la recta x=0 (eje vertical) que une (0,-\mypi) con (0,\mypi)
-        \draw[line width=1.5pt] (0,-\mypi) -- (0,\mypi) -- (\mypi,0) -- cycle;
+      %===========================
+      % Líneas límites
+      %===========================
+      % T' = X'
+      \draw[dashed,red,thick] (-3,-3) -- (3,3) node[above right] {$T' = X'$};
 
-        % Límites adicionales (discontinuos) de las otras inecuaciones:
-        % 1. T+x=-\pi  =>  T=-\pi-x (línea discontinua en verde)
-        % Se dibuja en un rango amplio de x para visualizarla.
-        \draw[dashed,green] (-4, {4 - \mypi}) -- (0.9, {-0.9 - \mypi});
+      % T' = -X'
+      \draw[dashed,blue,thick] (-3,3) -- (3,-3) node[below right] {$T' = -X'$};
 
-        % 2. T-x=\pi   =>  T=\pi+x (línea discontinua en magenta)
-        \draw[dashed,magenta] (-4, { \mypi - 4 }) -- (0.9, { \mypi + 0.9 });
+      % T' = \pi - X'
+      \draw[dashed,green!70!black,thick] (0, {3.1416}) -- (3, {3.1416-3}) node[above right] {$T' = \pi - X'$};
 
-        % Etiquetas para los límites (se pueden ajustar las posiciones):
-        % Etiqueta de la frontera T+x=\pi (límite sólido superior de la región)
-        \node[above, black] at ({0.5*\mypi}, {0.5*\mypi}) {$T+x=\pi$};
+      % T' = X' - \pi
+      \draw[dashed,orange!90!black,thick] (0, {-3.1416}) -- (3, {-3.1416+3}) node[below right] {$T' = X' - \pi$};
 
-        % Etiqueta de la frontera T-x=-\pi (límite sólido inferior de la región)
-        \node[below, black] at ({0.5*\mypi}, {-0.5*\mypi}) {$T-x=-\pi$};
+      %===========================
+      % Ejes coordenados
+      %===========================
+      \draw[->] (-4,0) -- (4,0) node[right] {$X'$};
+      \draw[->] (0,-4) -- (0,4) node[above] {$T'$};
 
-        % Etiqueta para la frontera T+x=-\pi (línea discontinua, verde)
-        % Se coloca en un punto representativo, por ejemplo, en x=-2.
-        \node[above left, green] at (-2, { -\mypi + 2 }) {$T+x=-\pi$};
+      %===========================
+      % Etiqueta de la región
+      %===========================
 
-        % Etiqueta para la frontera T-x=\pi (línea discontinua, magenta)
-        \node[above left, magenta] at (-2, { \mypi - 2 }) {$T-x=\pi$};
-
-        % Etiqueta para la frontera x=0 (eje vertical)
-        \node[left] at (0,0) {$x=0$};
-
-        % Se dibujan los ejes coordenados
-        \draw[->] (-4,0) -- (4,0) node[right] {$X$};
-        \draw[->] (0,-4) -- (0,4) node[above] {$T$};
-
-        % Etiquetas de los vértices de la región permitida
-        \node[below left] at (0,-\mypi) {$(0,-\pi)$};
-        \node[above left] at (0,\mypi) {$(0,\pi)$};
-        \node[below right] at (\mypi,0) {$(\pi,0)$};
 
     \end{tikzpicture}
-    \caption{Regiones definidas por \(-\pi<T+x<\pi\), \(-\pi<T-x<\pi\) y \(x>0\). Límites sólidos: región permitida (\(T+x=\pi\) y \(T-x=-\pi\)); discontinuos: fronteras de las inecuaciones restantes.}
+    \caption{Región definida por el sistema  $\;T' > -X',\; T' < \pi - X',\; T' < X',\; T' > X' - \pi$. Las líneas discontinuas marcan los límites del dominio.}
+  \end{subfigure}
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.6]
+      \pgfmathsetmacro{\mypi}{3.1416}
+
+      %===========================
+      % Región II (relleno con patrón)
+      %===========================
+      \fill[pattern=north east lines, pattern color=black!60, opacity=0.6]
+      (-\mypi/2,\mypi/2)
+      -- (\mypi/2,\mypi/2)
+      -- (0,0)
+      -- cycle;
+      \draw[line width=1.5pt]    (-\mypi/2,\mypi/2)
+      -- (\mypi/2,\mypi/2)
+      -- (0,0)
+      -- cycle;
+      %===========================
+      % Líneas límites
+      %===========================
+      % T' = X'
+      \draw[dashed,red,thick] (-3,-3) -- (3,3) node[above right] {$T' = X'$};
+
+      % T' = -X'
+      \draw[dashed,blue,thick] (-3,3) -- (3,-3) node[below right] {$T' = -X'$};
+
+      % T' = \pi - X'
+      \draw[dashed,green!70!black,thick] (-0.5, {3.1416+0.5}) -- (3, {3.1416-3}) node[above right] {$T' = \pi - X'$};
+
+      % T' = \pi + X'
+      \draw[dashed,orange!90!black,thick] (-3, {3.1416-3}) -- (0+0.5, {3.1416+0.5}) node[above right] {$T' = \pi + X'$};
+      % T' = \pi
+      \draw[dashed,orange!90!black,thick]  (-3.5, {\mypi/2}) -- (3.5, {\mypi/2}) node[above right] {$T' = \pi/2 $};
+
+
+      %===========================
+      % Ejes coordenados
+      %===========================
+      \draw[->] (-4,0) -- (4,0) node[right] {$X'$};
+      \draw[->] (0,-4) -- (0,4) node[above] {$T'$};
+
+      %===========================
+      % Etiqueta de la región
+      %===========================
+
+    \end{tikzpicture}
+    \caption{Región II definida por $\;T' > -X',\; T' < \pi - X',\; T' > X',\; T' < \pi + X'$. Se ubica a la izquierda del eje \(X'=0\), entre las líneas nulas y sus traslaciones en \(\pi\).}
+  \end{subfigure}
+  \caption{Regiones permitidas en el diagrama de Penrose para un agujero de Schwarzschild.}
+\end{figure}
+Por composición de constantes, las funciones las funciones
+$$
+  \begin{array}{l}
+    T^{\prime}=p+q=\tan ^{-1}(T+X)+\tan ^{-1}(T-X) \\
+    X^{\prime}=p-q=\tan ^{-1}(T+X)-\tan ^{-1}(T-X)
+  \end{array}
+$$
+
+Con el dominio interior definido por $-\frac{\pi}{2}<X^{\prime}<\frac{\pi}{2}$, $0<T^{\prime}<\frac{\pi}{2}$, y el exterior $0<X^{\prime}<\pi$, $-\frac{\pi}{2}<T^{\prime}<\frac{\pi}{2}$.
+
+Sustituyendo las expresiones de $T$ y $X$ en estas ecuaciones se obtienen $T^{\prime}$ y $X^{\prime}$ en términos de $r$ y $t$.
+- Para la región exterior ( $r>r_s$ ):
+
+$$
+  \begin{aligned}
+    T & =\sqrt{\frac{r}{r_s}-1} e^{r /\left(2 r_s\right)} \sinh \left(\frac{t}{2 r_s}\right) \\
+    X & =\sqrt{\frac{r}{r_s}-1} e^{r /\left(2 r_s\right)} \cosh \left(\frac{t}{2 r_s}\right)
+  \end{aligned}
+$$
+
+- Para la región interior ( $0<r<r_s$ ):
+
+$$
+  \begin{aligned}
+    T & =\sqrt{1-\frac{r}{r_s}} e^{r /\left(2 r_s\right)} \cosh \left(\frac{t}{2 r_s}\right) \\
+    X & =\sqrt{1-\frac{r}{r_s}} e^{r /\left(2 r_s\right)} \sinh \left(\frac{t}{2 r_s}\right)
+  \end{aligned}
+$$
+
+
+
+Donde las funciones para las lineas de $r, t$ constantes son:
+\begin{equation}
+  \begin{aligned}
+    \tan\left(\frac{T'+X'}{2}\right) \tan\left(\frac{T'-X'}{2}\right)                                                                               & = \left(1-\frac{r}{r_s}\right)e^{r/r_s} \\
+    \frac{\tan\left(\frac{T'+X'}{2}\right) + \tan\left(\frac{T'-X'}{2}\right)}{\tan\left(\frac{T'+X'}{2}\right) - \tan\left(\frac{T'-X'}{2}\right)} & = \tanh\left(\frac{t}{2r_s}\right)
+  \end{aligned}
+\end{equation}
+A partir de estas ecuaciones, podemos identificar las superficies más importantes del espacio-tiempo de Schwarzschild en el diagrama de Penrose:
+
+\begin{itemize}
+  \item \textbf{El horizonte de eventos ($r=r_s$):} Si sustituimos $r=r_s$ en la primera ecuación, el lado derecho se anula:
+        \begin{equation}
+          \tan\left(\frac{T'+X'}{2}\right) \tan\left(\frac{T'-X'}{2}\right) = \left(1-\frac{r_s}{r_s}\right)e^{r_s/r_s} = 0
+        \end{equation}
+        Esto implica que $\tan\left(\frac{T'+X'}{2}\right)=0$ o $\tan\left(\frac{T'-X'}{2}\right)=0$. Dentro de los rangos de las coordenadas del diagrama, esto se cumple cuando $T'+X'=0$ o $T'-X'=0$. Por lo tanto, el horizonte de eventos corresponde a las líneas diagonales $T' = \pm X'$.
+
+  \item \textbf{La singularidad ($r=0$):} Al sustituir $r=0$ en la misma ecuación, obtenemos:
+        \begin{equation}
+          \tan\left(\frac{T'+X'}{2}\right) \tan\left(\frac{T'-X'}{2}\right) = (1-0)e^0 = 1
+        \end{equation}
+        Esta condición es equivalente a $\cos(T')=0$. En el diagrama, esto corresponde a las líneas horizontales $T' = \pi/2$ (la singularidad futura, hacia la que todo cae) y $T' = -\pi/2$ (la singularidad pasada, de la que todo emerge en el caso de un agujero blanco).
+\end{itemize}
+
+De forma similar a las coordenadas de Kruskal-Szekeres, el diagrama de Penrose revela la estructura causal del espacio-tiempo de Schwarzschild. Las líneas diagonales representan los horizontes de eventos, mientras que las líneas horizontales representan las singularidades. La región exterior (Región I) está separada de la región interior (Región II) por estas líneas diagonales, mostrando claramente que nada puede escapar del interior una vez que cruza el horizonte de eventos.
+\begin{figure}[H]
+  \centering % Centra el diagrama en la página
+  % PENROSE DIAGRAM of a Schwarzschild black hole
+  \begin{tikzpicture}[scale=3.2]
+    \message{Extended Penrose diagram: Schwarzschild black hole^^J}
+
+    \def\R{0.08} % size lightcone
+    \def\Nlines{3} % number of world lines (at constant r/t)
+    \pgfmathsetmacro\ta{1/sin(90*1/(\Nlines+1))} % constant r/t value 1
+    \pgfmathsetmacro\tb{sin(90*2/(\Nlines+1))}   % constant r/t value 2
+    \pgfmathsetmacro\tc{1/sin(90*2/(\Nlines+1))} % constant r/t value 3
+    \pgfmathsetmacro\td{sin(90*1/(\Nlines+1))}   % constant r/t value 4
+    \coordinate (-O) at (-1, 0); % center III: origin (r,t) = (0,0)
+    \coordinate (-N) at (-1, 1); % north III: t=+infty, i+
+    \coordinate (O)  at ( 1, 0); % center I: origin (r,t) = (0,0)
+    \coordinate (S)  at ( 1,-1); % south I: t=-infty, i-
+    \coordinate (N)  at ( 1, 1); % north I: t=+infty, i+
+    \coordinate (E)  at ( 2, 0); % east I:  r=-infty, i0
+    \coordinate (W)  at ( 0, 0); % west I:  r=+infty, i0
+    \coordinate (B)  at ( 0,-1); % singularity bottom
+    \coordinate (X0) at ({asin(sqrt((\ta^2-1)/(\ta^2-\tb^2)))/90},
+    {-acos(\ta*sqrt((1-\tb^2)/(\ta^2-\tb^2)))/90}); % particle 1
+    \coordinate (X1) at ({asin(sqrt((\tc^2-1)/(\tc^2-\td^2)))/90},
+    {acos(\tc*sqrt((1-\td^2)/(\tc^2-\td^2)))/90}); % particle 2
+    \coordinate (X2) at (45:0.87); % particle falling in BH horizon
+    \coordinate (X3) at (0.60,1.05); % particle falling in BH singularity
+
+    % AXES
+    \draw[->,thick] (0,-0.1) -- (0,1.15) node[above=1,left=-1] {$v$};
+    \draw[->,thick] (-0.1,0) -- (2.15,0) node[left=1,above=0] {$u$};
+
+    \begin{scope}
+
+      % CLIP to fill inside zigzag lines
+      \clip[decorate,decoration={zigzag,amplitude=2,segment length=6.17}]
+      (-N) -- (N) --++ (1.1,0.1) |-++ (-3.1,-2.3) -- cycle;
+
+      % REGIONS FILLS
+      \fill[mylightpurple] (-N) |-++ (2,0.1) -- (N) -- (W) -- cycle;
+      \fill[mylightblue] (N) -- (E) -- (S) -- (W) -- cycle;
+
+      % CONE BACK
+      \coneback{X0};
+      \coneback{X1};
+      \coneback{X2};
+
+      % WORLD LINES
+      \draw[world line] (N) -- (S);
+      \draw[world line t] (W) -- (E) (W) -- (0,1.1);
+      \message{Making world lines...^^J}
+      \foreach \i [evaluate={\c=\i/(\Nlines+1); \cs=sin(90*\c);}] in {1,...,\Nlines}{
+          \message{  Running i/N=\i/\Nlines, c=\c, cs=\cs...^^J}
+          \draw[world line t,samples=\Nsamples,smooth,variable=\x,domain=0:2] % region I, constant t
+          plot(\x,{-kruskal(\x*pi/4,\cs)})
+          plot(\x,{ kruskal(\x*pi/4,\cs)});
+          \draw[world line,samples=\Nsamples,smooth,variable=\y,domain=0:2] % region I, constant r
+          plot({1-kruskal(\y*pi/4,\cs)},\y-1)
+          plot({1+kruskal(\y*pi/4,\cs)},\y-1);
+          \draw[world line,samples=\Nsamples,smooth,variable=\x,domain=0:2] % region II, constant r
+          plot(\x-1,{1-kruskal(\x*pi/4,\cs)});
+          \draw[world line t,samples=\Nsamples,smooth,variable=\y,domain=0:1.05] % region II constant t
+          plot({-kruskal(\y*pi/4,\cs)},\y)
+          plot({ kruskal(\y*pi/4,\cs)},\y);
+        }
+
+      % PARTICLE WORLD LINE
+      \draw[particle,decoration={markings,mark=at position 0.16 with {\arrow{latex}},
+            mark=at position 0.45 with {\arrow{latex}},
+            mark=at position 0.72 with {\arrow{latex}},
+            mark=at position 0.90 with {\arrow{latex}}},postaction={decorate}]
+      (S) to[out=77,in=-70] (X0) to[out=110,in=-80] (X1)
+      to[out=100,in=-90] (X2) to[out=75,in=-80] (X3);
+
+    \end{scope}
+
+    % LIGHT CONE FRONT
+    \conefront{X0};
+    \conefront{X1};
+    \conefront{X2};
+
+    % ESCAPING PHOTONS
+    \draw[photon] (X0) ++ (45:0.1) --++ (45:0.3);
+    \draw[photon] (X1) ++ (45:0.1) --++ (45:0.3);
+
+    % REGIONS
+    \node[fill=mylightblue,inner sep=2] at (O) {I};
+    \node[fill=mylightpurple,inner sep=2] at (0,0.64) {II};
+
+    % BOUNDARIES
+    \draw[singularity] (-N) -- node[pos=0.46,above left=-2] {\strut singularity} (N);
+    \draw[singularity] (-N) -- node[pos=0.54,above right=-2] {\strut $r=0$} (N);
+    \path (S) -- (W) node[mydarkblue,pos=0.50,below=-2.5,rotate=-45,scale=0.85]
+    {anti-horizon $r=2GM$};
+    \path (W) -- (N) node[mydarkblue,pos=0.32,above=-2.5,rotate=45,scale=0.85]
+    {\contour{mylightpurple}{horizon $r=2GM$}};
+    \draw[thick,mydarkblue] (N) -- (E) -- (S) --  (W) -- cycle;
+    \draw[thick,mydarkblue] (W) -- (-N);
+
+    % TICKS
+    \node[below left=-1] at (W) {$0$};
+    \tick{E}{90} node[right=4,below=-3] {$\pi/2$};
+    \tick{S}{0} node[left=-1] {$-\pi/2$};
+    \tick{N}{180} node[right=-1] {$\pi/2$};
+
+    % INFINITY LABELS
+    \node[above=1,right=1,mydarkblue] at (2.15,0) {$i^0$};
+    \node[right=1,below=1,mydarkpurple] at (S) {$i^-$};
+    \node[right=1,above=1,mydarkpurple] at (N) {$i^+$};
+    \node[mydarkblue,above right=-1] at (1.5,0.5) {$\calI^+$};
+    \node[mydarkblue,below right=-2] at (1.5,-0.5) {$\calI^-$};
+
+  \end{tikzpicture}
+  \caption{Diagrama de Penrose para el agujero negro de Schwarzschild (Recuperado de \cite{neutelings-2024})}
+\end{figure}
+También se puede hacer la extensión máxima del espacio-tiempo de Schwarzschild, que incluye las regiones adicionales (Región III y IV) que representan un agujero blanco y un universo paralelo. En este caso, el diagrama de Penrose se extiende para incluir estas regiones, mostrando la simetría del espacio-tiempo alrededor del horizonte de eventos.
+
+
+\begin{figure}[H]
+  \centering % Centra el diagrama en la página
+  \begin{tikzpicture}[scale=3.2]
+    \message{Extended Penrose diagram: Schwarzschild black hole^^J}
+
+    \def\R{0.08} % size lightcone
+    \def\Nlines{3} % number of world lines (at constant r/t)
+    \pgfmathsetmacro\ta{1/sin(90*1/(\Nlines+1))} % constant r/t value 1
+    \pgfmathsetmacro\tb{sin(90*2/(\Nlines+1))}   % constant r/t value 2
+    \pgfmathsetmacro\tc{1/sin(90*2/(\Nlines+1))} % constant r/t value 3
+    \pgfmathsetmacro\td{sin(90*1/(\Nlines+1))}   % constant r/t value 4
+    \coordinate (-O) at (-1, 0); % center III: origin (r,t) = (0,0)
+    \coordinate (-S) at (-1,-1); % south III: t=-infty, i-
+    \coordinate (-N) at (-1, 1); % north III: t=+infty, i+
+    \coordinate (-W) at (-2, 0); % east III:  r=-infty, i0
+    \coordinate (-E) at ( 0, 0); % west III:  r=+infty, i0
+    \coordinate (O)  at ( 1, 0); % center I: origin (r,t) = (0,0)
+    \coordinate (S)  at ( 1,-1); % south I: t=-infty, i-
+    \coordinate (N)  at ( 1, 1); % north I: t=+infty, i+
+    \coordinate (E)  at ( 2, 0); % east I:  r=-infty, i0
+    \coordinate (W)  at ( 0, 0); % west I:  r=+infty, i0
+    \coordinate (B)  at ( 0,-1); % singularity bottom
+    \coordinate (T)  at ( 0, 1); % singularity top
+    \coordinate (X0) at ({asin(sqrt((\ta^2-1)/(\ta^2-\tb^2)))/90},
+    {-acos(\ta*sqrt((1-\tb^2)/(\ta^2-\tb^2)))/90}); % particle 1
+    \coordinate (X1) at ({asin(sqrt((\tc^2-1)/(\tc^2-\td^2)))/90},
+    {acos(\tc*sqrt((1-\td^2)/(\tc^2-\td^2)))/90}); % particle 2
+    \coordinate (X2) at (45:0.87); % particle falling in BH horizon
+    \coordinate (X3) at (0.60,1.05); % particle falling in BH singularity
+
+    \begin{scope}
+
+      % CLIP to fill inside zigzag lines
+      \clip[decorate,decoration={zigzag,amplitude=2,segment length=6.17}]
+      (S) -- (-S) --++ (-1.1,-0.1) |-++ (4.2,2.2) |- cycle;
+      \clip[decorate,decoration={zigzag,amplitude=2,segment length=6.17}]
+      (-N) -- (N) --++ (1.1,0.1) |-++ (-4.2,-2.2) |- cycle;
+
+      % REGIONS FILLS
+      \fill[mylightpurple] (-N) |-++ (2,0.1) -- (N) -- (-S) -- (S) -- cycle;
+      \fill[mylightpurple] (-S) |-++ (2,-0.1) -- (S) -- (-N) -- (N) -- cycle;
+
+      \fill[mylightblue] (-N) -- (-E) -- (-S) -- (-W) -- cycle;
+      \fill[mylightblue] (N) -- (E) -- (S) -- (W) -- cycle;
+
+      % CONE BACK
+      \coneback{X0};
+      \coneback{X1};
+      \coneback{X2};
+
+      % WORLD LINES
+      \draw[world line] (-N) -- (-S) (N) -- (S);
+      \draw[world line t] (-W) -- (-E) (W) -- (E) (0,-1.1) -- (0,1.1);
+      \message{Making world lines...^^J}
+      \foreach \i [evaluate={\c=\i/(\Nlines+1); \cs=sin(90*\c);}] in {1,...,\Nlines}{
+          \message{  Running i/N=\i/\Nlines, c=\c, cs=\cs...^^J}
+          \draw[world line t,samples=2*\Nsamples,smooth,variable=\x,domain=-2:2] % region I/III, constant t
+          plot(\x,{-kruskal(\x*pi/4,\cs)})
+          plot(\x,{ kruskal(\x*pi/4,\cs)});
+          \draw[world line,samples=\Nsamples,smooth,variable=\y,domain=0:2] % region I/III, constant r
+          plot({-1-kruskal(\y*pi/4,\cs)},\y-1)
+          plot({-1+kruskal(\y*pi/4,\cs)},\y-1)
+          plot({1-kruskal(\y*pi/4,\cs)},\y-1)
+          plot({1+kruskal(\y*pi/4,\cs)},\y-1);
+          \draw[world line,samples=\Nsamples,smooth,variable=\x,domain=0:2] % region II/IV, constant r
+          plot(\x-1,{kruskal(\x*pi/4,\cs)-1})
+          plot(\x-1,{1-kruskal(\x*pi/4,\cs)});
+          \draw[world line t,samples=\Nsamples,smooth,variable=\y,domain=-1.05:1.05] % region II/IV constant t
+          plot({-kruskal(\y*pi/4,\cs)},\y)
+          plot({ kruskal(\y*pi/4,\cs)},\y);
+        }
+
+      % PARTICLE WORLD LINE
+      \draw[particle,decoration={markings,mark=at position 0.16 with {\arrow{latex}},
+            mark=at position 0.45 with {\arrow{latex}},
+            mark=at position 0.72 with {\arrow{latex}},
+            mark=at position 0.90 with {\arrow{latex}}},postaction={decorate}]
+      (S) to[out=77,in=-70] (X0) to[out=110,in=-80] (X1)
+      to[out=100,in=-90] (X2) to[out=75,in=-80] (X3);
+
+    \end{scope}
+
+    % BOUNDARIES
+    \draw[singularity] (-N) -- node[above] {future singularity $r=0$} (N);
+    \draw[singularity] (S) -- node[below] {past singularity $r=0$} (-S);
+    \path (S) -- (W) node[mydarkblue,pos=0.50,below=-2.5,rotate=-45,scale=0.85]
+    {\contour{mylightpurple}{anti-horizon $r=2GM$}};
+    \path (W) -- (N) node[mydarkblue,pos=0.32,above=-2.5,rotate=45,scale=0.85]
+    {\contour{mylightpurple}{horizon $r=2GM$}};
+    \draw[thick,mydarkblue] (-N) -- (-E) -- (-S) -- (-W) -- cycle;
+    \draw[thick,mydarkblue] (N) -- (E) -- (S) -- (W) -- cycle;
+
+    % REGIONS
+    \node[fill=mylightblue,inner sep=2] at (-O) {III};
+    \node[fill=mylightblue,inner sep=2] at (O) {I};
+    \node[fill=mylightpurple,inner sep=2] at (0,0.64) {II};
+    \node[fill=mylightpurple,inner sep=2] at (0,-0.64) {IV};
+
+    % INFINITY LABELS
+    \node[above=1,left=1,mydarkblue] at (-2,0) {$i^0$};
+    \node[above=1,right=1,mydarkblue] at (2,0) {$i^0$};
+    \node[right=1,below=1,mydarkpurple] at (-S) {$i^-$};
+    \node[right=1,above=1,mydarkpurple] at (-N) {$i^+$};
+    \node[right=1,below=1,mydarkpurple] at (S) {$i^-$};
+    \node[right=1,above=1,mydarkpurple] at (N) {$i^+$};
+    \node[mydarkblue,below left=-1] at (-1.5,-0.5) {$\calI^-$};
+    \node[mydarkblue,above left=-1] at (-1.5,0.5) {$\calI^+$};
+    \node[mydarkblue,above right=-1] at (1.5,0.5) {$\calI^+$};
+    \node[mydarkblue,below right=-1] at (1.5,-0.5) {$\calI^-$};
+
+    % LIGHT CONE FRONT
+    \conefront{X0};
+    \conefront{X1};
+    \conefront{X2};
+
+    % ESCAPING PHOTONS
+    \draw[photon] (X0) ++ (45:0.1) --++ (45:0.3);
+    \draw[photon] (X1) ++ (45:0.1) --++ (45:0.3);
+
+  \end{tikzpicture}
+  \caption{Diagrama de Penrose extendido para el agujero negro de Schwarzschild (Recuperado de \cite{neutelings-2024})}
 \end{figure}
 
-para el caso de Minkowski, la región permitida es un rombo, donde las líneas diagonales representan la luz, las líneas horizontales representan el espacio constante y las líneas verticales representan el tiempo constante.
-
-\subsection{Diagrama de espacio-tiempo de Schwarzschild}
 
 
 
