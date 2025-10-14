@@ -1,24 +1,24 @@
 \chapter{Formalismo de Hamilton en relatividad general}
 \label{chap:hamilton}
-El formalismo de Hamilton es una reformulación de la mecánica clásica que se utiliza para describir sistemas dinámicos. En relatividad general, este formalismo se adapta para manejar la dinámica del espacio-tiempo y los campos gravitacionales. 
+El formalismo de Hamilton es una reformulación de la mecánica clásica que se utiliza para describir sistemas dinámicos. En relatividad general, este formalismo se adapta para manejar la dinámica del espacio-tiempo y los campos gravitacionales.
 Clásicamente la acción se define como la integral del lagrangiano $L$ a lo largo del tiempo
 \[
-S = \int L dt
-\]  
+    S = \int L dt
+\]
 y el lagrangiano es una función de las coordenadas generalizadas $q_i$ y sus velocidades $\dot{q}_i$ (derivadas respecto al tiempo)
 \[
-L = L(q_i, \dot{q}_i, t)
+    L = L(q_i, \dot{q}_i, t)
 \]
 
 tomemos la acción de una partícula libre de masa $M$ en un espacio-tiempo curvo respecto a su tiempo propio $\tau$
 \begin{equation}
-    S = \int -Mc^2 \mathbf{d}\tau  \qquad [\text{Energía} \cdot  \text{Tiempo}]. 
+    S = \int -Mc^2 \mathbf{d}\tau  \qquad [\text{Energía} \cdot  \text{Tiempo}].
 \end{equation}
 Por definición del tiempo propio $d\tau^2 = -ds^2/c^2$
 \begin{equation}
     S = \int -Mc \sqrt{-g_{\mu \nu} \frac{dx^\mu}{d\lambda} \frac{dx^\nu}{d\lambda}} d\lambda
     \label{eq:accionParticulaRaiz}
-\end{equation} 
+\end{equation}
 bajo la parametrización arbitraria $\lambda$ (que puede ser el tiempo coordenado $t$, el tiempo propio $\tau$ o cualquier otro parámetro afín).
 Por razones de sencillez y para tener congruencia con los textos que están ahi afuera como \cite[p. 45]{wald-1984} que presentan un lagrangiano sin la raíz cuadrada, se tomara el parámetro afín $\lambda = \tau$ tal que la normalización
 \begin{equation}
@@ -31,18 +31,18 @@ Además de eso por mera conveniencia matemática se multiplicara por el factor u
 Esta acción es equivalente a la de (\ref{eq:accionParticulaRaiz}) ya que ambas producen las mismas ecuaciones de movimiento (geodésicas) y difieren en una constante multiplicativa(que no afecta las ecuaciones de movimiento).
 El lagrangiano es entonces
 \begin{equation}
-    L = \frac{1}{2} M g_{\mu \nu} \dot{x}^\mu \dot{x}^\nu 
+    L = \frac{1}{2} M g_{\mu \nu} \dot{x}^\mu \dot{x}^\nu
 \end{equation}
 donde $\dot{x}^\mu = dx^\mu / d\tau$
 \begin{note}
-     En esta parte intente hacer el enfoque mas natural para proponer el lagrangiano de la acción, ahi afuera hay varias formas de llegar a este lagrangiano, a veces solo se propone el lagrangiano sin la raíz cuadrada sin justificar mucho de donde ha salido.
+    En esta parte intente hacer el enfoque mas natural para proponer el lagrangiano de la acción, ahi afuera hay varias formas de llegar a este lagrangiano, a veces solo se propone el lagrangiano sin la raíz cuadrada sin justificar mucho de donde ha salido.
 
     Fragmento tomado de \cite[ver p. 45]{wald-1984}:
-            \begin{quote}
-                 An identical derivation shows that the curves which extremize proper time between two points are precisely the timelike geodesics. These derivations also show that the geodesic equation (with affine parameterization) can be obtained from variation of the Lagrangian,
-                 $$
-                 L=\sum_{\mu, \nu} g_{\mu \nu} \frac{d x^\mu}{d t} \frac{d x^\nu}{d t}
-                 $$
+    \begin{quote}
+        An identical derivation shows that the curves which extremize proper time between two points are precisely the timelike geodesics. These derivations also show that the geodesic equation (with affine parameterization) can be obtained from variation of the Lagrangian,
+        $$
+            L=\sum_{\mu, \nu} g_{\mu \nu} \frac{d x^\mu}{d t} \frac{d x^\nu}{d t}
+        $$
     \end{quote}
 \end{note}
 
@@ -53,26 +53,26 @@ Ya que este lagrangiano describe la dinámica de una particula libre en un espac
 
 Para el lagrangiano propuesto, las ecuaciones de Euler-Lagrange se convierten en
 \begin{equation}
- \begin{aligned}
-    \frac{d}{d\tau} \left( \frac{\partial }{\partial \dot{x}^\beta} \left(\frac{1}{2} M g_{\mu \nu} \dot{x}^\mu \dot{x}^\nu \right) \right) - \frac{\partial }{\partial x^\beta}\left(\frac{1}{2} M g_{\mu \nu} \dot{x}^\mu \dot{x}^\nu \right) = 0\\ 
-    \frac{d}{d\tau} \left( \frac{1}{2} M g_{\mu \nu} \frac{\partial }{\partial \dot{x}^\beta} \left(  \dot{x}^\mu \dot{x}^\nu \right) \right) 
-    - \frac{1}{2} M \left( \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0\\
-    \frac{d}{d\tau} \left( \frac{1}{2}  g_{\mu \nu}  \left(  \dot{x}^\mu \delta_\beta^\nu +\delta_\beta^\mu \dot{x}^\nu \right) \right) 
-    - \frac{1}{2}  \left( \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0\\
-    \frac{d}{d\tau} \left( \frac{1}{2}   \left(  g_{\mu \beta} \dot{x}^\mu  + g_{\beta \nu}  \dot{x}^\nu \right) \right) 
-    - \frac{1}{2}  \left( \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0\\
-    \frac{d}{d\tau} \left(    g_{\mu \beta} \dot{x}^\mu \right) 
-    - \frac{1}{2}  \left( \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0\\
-    \left(\partial_\sigma g_{\mu \beta }\right) \dot{x}^\sigma \dot{x}^\mu+    g_{\mu \beta} \frac{d \dot{x}^\mu}{d\tau}
-    - \frac{1}{2}  \left( \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0\\
-    \frac{1}{2}\left(\partial_\sigma g_{\mu \beta } + \partial_\mu g_{\sigma \beta } \right) \dot{x}^\sigma \dot{x}^\mu+    g_{\mu \beta} \frac{d \dot{x}^\mu}{d\tau}
-    - \frac{1}{2}  \left( \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0\\
-    g_{\mu \beta}  \ddot{x}^\mu+
-    \frac{1}{2}\left(\partial_\nu g_{\mu \beta } + \partial_\mu g_{\nu \beta } -  \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0\\
-    g^{\alpha \beta}g_{\mu \beta}  \ddot{x}^\mu+
-    \underbrace{g^{\alpha \beta}\frac{1}{2}\left(\partial_\nu g_{\mu \beta } + \partial_\mu g_{\nu \beta } -  \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0}_{\Gamma^\alpha_{\mu \nu}}\\
-    \ddot{x}^\alpha + \Gamma^\alpha_{\mu \nu} \dot{x}^\mu \dot{x}^\nu = 0
- \end{aligned}   
+    \begin{aligned}
+        \frac{d}{d\tau} \left( \frac{\partial }{\partial \dot{x}^\beta} \left(\frac{1}{2} M g_{\mu \nu} \dot{x}^\mu \dot{x}^\nu \right) \right) - \frac{\partial }{\partial x^\beta}\left(\frac{1}{2} M g_{\mu \nu} \dot{x}^\mu \dot{x}^\nu \right) = 0 \\
+        \frac{d}{d\tau} \left( \frac{1}{2} M g_{\mu \nu} \frac{\partial }{\partial \dot{x}^\beta} \left(  \dot{x}^\mu \dot{x}^\nu \right) \right)
+        - \frac{1}{2} M \left( \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0                                                                                                                                                           \\
+        \frac{d}{d\tau} \left( \frac{1}{2}  g_{\mu \nu}  \left(  \dot{x}^\mu \delta_\beta^\nu +\delta_\beta^\mu \dot{x}^\nu \right) \right)
+        - \frac{1}{2}  \left( \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0                                                                                                                                                            \\
+        \frac{d}{d\tau} \left( \frac{1}{2}   \left(  g_{\mu \beta} \dot{x}^\mu  + g_{\beta \nu}  \dot{x}^\nu \right) \right)
+        - \frac{1}{2}  \left( \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0                                                                                                                                                            \\
+        \frac{d}{d\tau} \left(    g_{\mu \beta} \dot{x}^\mu \right)
+        - \frac{1}{2}  \left( \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0                                                                                                                                                            \\
+        \left(\partial_\sigma g_{\mu \beta }\right) \dot{x}^\sigma \dot{x}^\mu+    g_{\mu \beta} \frac{d \dot{x}^\mu}{d\tau}
+        - \frac{1}{2}  \left( \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0                                                                                                                                                            \\
+        \frac{1}{2}\left(\partial_\sigma g_{\mu \beta } + \partial_\mu g_{\sigma \beta } \right) \dot{x}^\sigma \dot{x}^\mu+    g_{\mu \beta} \frac{d \dot{x}^\mu}{d\tau}
+        - \frac{1}{2}  \left( \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0                                                                                                                                                            \\
+        g_{\mu \beta}  \ddot{x}^\mu+
+        \frac{1}{2}\left(\partial_\nu g_{\mu \beta } + \partial_\mu g_{\nu \beta } -  \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0                                                                                                    \\
+        g^{\alpha \beta}g_{\mu \beta}  \ddot{x}^\mu+
+        \underbrace{g^{\alpha \beta}\frac{1}{2}\left(\partial_\nu g_{\mu \beta } + \partial_\mu g_{\nu \beta } -  \partial_\beta g_{\mu \nu} \right) \dot{x}^\mu \dot{x}^\nu = 0}_{\Gamma^\alpha_{\mu \nu}}                                             \\
+        \ddot{x}^\alpha + \Gamma^\alpha_{\mu \nu} \dot{x}^\mu \dot{x}^\nu = 0
+    \end{aligned}
 \end{equation}
 
 que son precisamente las ecuaciones de geodésicas (\ref{eq:geodesic}).
@@ -80,27 +80,27 @@ que son precisamente las ecuaciones de geodésicas (\ref{eq:geodesic}).
 \section{Ecuación de Hamilton-Jacobi para geodésicas}
 Una vez que hemos comprobado que el lagrangiano propuesto describe la dinámica de una partícula libre en un espacio-tiempo curvo, podemos proceder a derivar el hamiltoniano por la transformación de Legendre, el momento conjugado se define como
 \begin{equation}
-p_\alpha=\frac{\partial L}{\partial \dot{x}^\alpha}=\frac{\partial }{\partial \dot{x}^\alpha}\left( \frac{1}{2} M g_{\mu \nu} \dot{x}^\mu \dot{x}^\nu\right)= M g_{\alpha \nu} \dot{x}^\nu
+    p_\alpha=\frac{\partial L}{\partial \dot{x}^\alpha}=\frac{\partial }{\partial \dot{x}^\alpha}\left( \frac{1}{2} M g_{\mu \nu} \dot{x}^\mu \dot{x}^\nu\right)= M g_{\alpha \nu} \dot{x}^\nu
 \end{equation}
 multiplicando ambos lados por $g^{\alpha \beta}$ se obtiene
 \begin{equation}
-g^{\alpha \beta} p_\alpha = g^{\alpha \beta} M g_{\alpha \nu} \dot{x}^\nu = M \delta^\beta_\nu \dot{x}^\nu = M \dot{x}^\beta \rightarrow  \dot{x}^\beta= \frac{p^{\beta}}{M}
+    g^{\alpha \beta} p_\alpha = g^{\alpha \beta} M g_{\alpha \nu} \dot{x}^\nu = M \delta^\beta_\nu \dot{x}^\nu = M \dot{x}^\beta \rightarrow  \dot{x}^\beta= \frac{p^{\beta}}{M}
 \end{equation}
 Y se escribe el hamiltoniano como
 
 \begin{equation}
-\begin{aligned}
-    H(x, p)&=p_\mu \dot{x}^\mu-L=  \frac{p_\mu p^{\mu}}{M} -\frac{1}{2} M g_{\mu \nu} \frac{p^{\mu}}{M} \frac{p^{\nu}}{M} \\
-    &= \frac{1}{2M}  p_\mu p^{\mu}\\
-    &= \frac{1}{2M} g^{\mu \nu} p_\mu p_\nu 
-\end{aligned}
+    \begin{aligned}
+        H(x, p) & =p_\mu \dot{x}^\mu-L=  \frac{p_\mu p^{\mu}}{M} -\frac{1}{2} M g_{\mu \nu} \frac{p^{\mu}}{M} \frac{p^{\nu}}{M} \\
+                & = \frac{1}{2M}  p_\mu p^{\mu}                                                                                 \\
+                & = \frac{1}{2M} g^{\mu \nu} p_\mu p_\nu
+    \end{aligned}
 \end{equation}
- 
+
 La ecuación de Hamilton-Jacobi para la función principal $S\left(x^\mu, \lambda\right)$ es
 
 \begin{equation}
-\frac{\partial S}{\partial \lambda}+H(x, \partial S / \partial x)=0
-\label{eq:HamiltonJacobi}
+    \frac{\partial S}{\partial \lambda}+H(x, \partial S / \partial x)=0
+    \label{eq:HamiltonJacobi}
 \end{equation}
 
 donde $\lambda$ es un parámetro afín a lo largo de la trayectoria.Con las transformaciones canónicas usuales
@@ -109,21 +109,21 @@ donde $\lambda$ es un parámetro afín a lo largo de la trayectoria.Con las tran
 \end{equation}
 la ecuación de Hamilton-Jacobi en este caso se convierte en
 \begin{equation}
-\frac{\partial S}{\partial \lambda}+\frac{1}{2M} g^{\mu \nu} \frac{\partial S}{\partial x^\mu}  \frac{\partial S}{\partial x^\nu} =0.
+    \frac{\partial S}{\partial \lambda}+\frac{1}{2M} g^{\mu \nu} \frac{\partial S}{\partial x^\mu}  \frac{\partial S}{\partial x^\nu} =0.
 \end{equation}
-Aquí es útil calcular ahora la cantidad contravariante $g^{\mu \nu} p_\mu p_\nu$ 
+Aquí es útil calcular ahora la cantidad contravariante $g^{\mu \nu} p_\mu p_\nu$
 \begin{equation}
-g^{\mu \nu} p_\mu p_\nu=M^2 g^{\mu \nu} g_{\mu \alpha} g_{\nu \beta} \dot{x}^\alpha \dot{x}^\beta=M^2 g_{\alpha \beta} \dot{x}^\alpha \dot{x}^\beta
+    g^{\mu \nu} p_\mu p_\nu=M^2 g^{\mu \nu} g_{\mu \alpha} g_{\nu \beta} \dot{x}^\alpha \dot{x}^\beta=M^2 g_{\alpha \beta} \dot{x}^\alpha \dot{x}^\beta
 \end{equation}
 Recuérdese que geodésicas timelike normalizadas con tiempo propio $g_{\alpha \beta} \dot{x}^\alpha \dot{x}^\beta=-c^2 \rightarrow g^{\mu \nu} p_\mu p_\nu=-M^2 c^2$, y por tanto
 \begin{equation}
-\frac{\partial S}{\partial \lambda}=\frac{1}{2} M c^2,
+    \frac{\partial S}{\partial \lambda}=\frac{1}{2} M c^2,
 \end{equation}
 podemos buscar una solución separada del tipo
 \begin{equation}
-S(x, \lambda)=W(x)+\frac{1}{2} Mc^2 \lambda
+    S(x, \lambda)=W(x)+\frac{1}{2} Mc^2 \lambda
 \end{equation}
-(donde la parte lineal en $\lambda$ refleja que el hamiltoniano es constante a lo largo de la evolución afín). 
+(donde la parte lineal en $\lambda$ refleja que el hamiltoniano es constante a lo largo de la evolución afín).
 Sustituyendo el Hamiltoniano en (\ref{eq:HamiltonJacobi}) se obtiene:
 \begin{equation}
     \frac{1}{2} Mc^2+\frac{1}{2 M} g^{\mu \nu} \partial_\mu S \partial_\nu S=0 \quad \Longrightarrow \quad g^{\mu \nu} \partial_\mu S \partial_\nu S=-M^2 c^2

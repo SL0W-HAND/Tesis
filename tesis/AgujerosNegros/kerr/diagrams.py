@@ -28,7 +28,7 @@ class kerr_BH_regions(ThreeDScene):
             t_range=[0, TAU],
             color=RED
         )
-        ring_label = Text("Singularidad en anillo", color=RED, font_size=28).next_to(ring, DOWN, buff=0.3)
+        ring_label = Text("Singularidad en anillo", fill_color=RED,stroke_width=0.3,stroke_color=BLACK, font_size=18).to_edge(UP+IN, buff=0.5).rotate(270*DEGREES, axis=RIGHT).rotate(180*DEGREES, axis=UP).next_to(ring, LEFT, buff=0.2).rotate(-45*DEGREES, axis=OUT)
 
         # --------------------
         # Horizonte externo (esfera)
@@ -43,9 +43,11 @@ class kerr_BH_regions(ThreeDScene):
             u_range=[0, np.pi],
             v_range=[0.5*np.pi, 2 * np.pi],
             checkerboard_colors=[BLUE, BLUE],
-            fill_opacity=0.15
+            fill_opacity=0.4,
+            stroke_color = BLUE,
+            resolution=40
         )
-        horizon_outer_label = Text("Horizonte de eventos", color=BLUE, font_size=28).next_to(horizon_outer, UP+RIGHT, buff=0.3)
+        horizon_outer_label = Text("Horizonte externo", fill_color=BLUE,stroke_width=0.3,stroke_color=BLACK, font_size=18).next_to(horizon_outer, RIGHT+0.1*UP, buff=1.4).rotate(270*DEGREES, axis=RIGHT).rotate(180*DEGREES, axis=UP).rotate(-45*DEGREES, axis=OUT)
 
         # --------------------
         # Horizonte interno (esfera)
@@ -60,7 +62,9 @@ class kerr_BH_regions(ThreeDScene):
             u_range=[0, np.pi],
             v_range=[0.5*np.pi, 2 * np.pi],
             checkerboard_colors=[GREEN, GREEN],
-            fill_opacity=0.15
+            fill_opacity=0.4,
+            stroke_color = GREEN,
+            resolution=40   
         )
         horizon_inner_label = Text("Horizonte interno", color=GREEN, font_size=28).next_to(horizon_inner, LEFT, buff=0.3)
 
@@ -77,11 +81,13 @@ class kerr_BH_regions(ThreeDScene):
             ergosphere_func,
             u_range=[0, np.pi],
             v_range=[0.5*np.pi, 2 * np.pi],
-            checkerboard_colors=[ORANGE, ORANGE],
-            fill_opacity=0.15
+            checkerboard_colors=[PURPLE, PURPLE],
+            fill_opacity=0.5,
+            stroke_color = PURPLE,
+            resolution=40
         )
-        ergosphere_label = Text("Ergosfera", color=ORANGE, font_size=28).next_to(ergosphere, OUT, buff=0.3)
-        
+        ergosphere_label = Text("Ergosfera", color=PURPLE, font_size=18).next_to(ergosphere, OUT, buff=0.3).rotate(270*DEGREES, axis=RIGHT).rotate(180*DEGREES, axis=UP).rotate(-45*DEGREES, axis=OUT)
+
         # --------------------
         # Ergosfera interna
         # --------------------
@@ -96,12 +102,14 @@ class kerr_BH_regions(ThreeDScene):
             ergosphere_inner_func,
             u_range=[0, np.pi],
             v_range=[0, 2*np.pi],
-            checkerboard_colors=[YELLOW, YELLOW],
-            fill_opacity=0.15
+            checkerboard_colors=[PINK, PINK],
+            fill_opacity=0.6,
+            stroke_color = PINK,
+            resolution=40
         )
         ergosphere_inner_label = Text(
             "Ergosfera interna",
-            color=YELLOW,
+            color=PINK,
             font_size=28
         ).next_to(interior_ergosphere, IN, buff=0.5)
         #---------------
@@ -109,10 +117,12 @@ class kerr_BH_regions(ThreeDScene):
         # --------------------
         bh_group = VGroup(
             axes,ring, horizon_outer, horizon_inner, ergosphere, interior_ergosphere,
-            horizon_outer_label, horizon_inner_label, ergosphere_label, ring_label
+            horizon_outer_label, ergosphere_label, ring_label
         )
 
-        self.set_camera_orientation(theta=45 * DEGREES, phi=75 * DEGREES,zoom=2.5)
+        self.set_camera_orientation(theta=45 * DEGREES, phi=75 * DEGREES,zoom=2)
+
+
         self.add(bh_group)
 
 
