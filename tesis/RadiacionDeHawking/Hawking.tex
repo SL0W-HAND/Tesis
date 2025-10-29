@@ -1,0 +1,277 @@
+\section{Metodo tradicional}
+El mecanismo de la radiación de Hawking es un resultado fundamental de la teoría cuántica de campos en espaciotiempo curvo (QFTCS). Demuestra que la formación de un agujero negro, un proceso puramente gravitacional y clásico, conduce inevitablemente a la emisión de partículas desde el horizonte de sucesos, comportándose este como un cuerpo negro con una temperatura precisa.
+
+La derivación canónica se basa en la falta de un estado de vacío globalmente definido en un espaciotiempo que es dinámico. El vacío definido por los observadores antes del colapso (en el pasado asintótico) no es el mismo que el vacío definido por los observadores después de que el agujero negro se ha formado (en el futuro asintótico).
+
+
+La derivación canónica de la radiación de Hawking, como la presentada por Stephen Hawking en su trabajo seminal de 1975, se basa en la falta de un estado de vacío globalmente definido en un espaciotiempo que es dinámico.
+
+El concepto clave es que la noción de "partícula" depende del observador (o, más formalmente, del sistema de coordenadas y su vector de Killing temporal asociado). En este espaciotiempo de colapso, la definición de partículas en el pasado distante es diferente de la definición en el futuro distante.
+
+\begin{figure}[H]
+    \begin{small}
+        \begin{center}
+            \includegraphics[width=0.5\textwidth]{RadiacionDeHawking/figures/colapsing.png}
+        \end{center}
+        \caption{Diagrama de Penrose que ilustra el colapso gravitacional de una estrella (región sombreada) para formar un agujero negro. El espaciotiempo es asintóticamente plano en el pasado nulo ($\mathcal{I}^{-}$) y en el futuro nulo ($\mathcal{I}^{+}$). El horizonte de sucesos ($\mathcal{H}^+$) es la frontera de la región de la que nada puede escapar.}
+        \label{fig:penrose_collapse}
+    \end{small}
+\end{figure}
+
+\subsubsection{pasado asintótico $\calI^{-}$}
+Nos situamos en el pasado lejano, antes de cualquier colapso significativo, donde el espaciotiempo es esencialmente plano (Minkowski). Introducimos un campo escalar de prueba $\phi$ que satisface la ecuación de Klein--Gordon libre
+\begin{equation}
+    \square\phi=0,
+    \label{eq:wave_Klein_Gordon}
+\end{equation}
+o, en notación covariante general, $g^{\mu\nu}\nabla_\mu\nabla_\nu\phi=0$.
+
+En esta región asintótica $\calI^{-}$, existe un vector de Killing temporal bien definido (llamémoslo $\partial_t$), lo que permite hacer una distinción inequívoca entre soluciones de frecuencia positiva y negativa respecto al tiempo $t$ de Minkowski.
+
+Definimos un conjunto de modos $\{f_i(x)\}$ que forman una base completa y ortonormal para el espacio de soluciones de la ecuación \eqref{eq:wave_Klein_Gordon}. Estos $\{f_i\}$ se eligen como los modos de frecuencia positiva (con comportamiento $\sim e^{-i\omega_i x}$ y $\omega_i > 0$), mientras que sus conjugados complejos $\{f_i^*\}$ son los modos de frecuencia negativa.
+
+La cuantización ``in'' del campo se realiza expandiendo el operador de campo $\hat{\phi}$ en esta base de modos
+\begin{equation}
+    \hat{\phi}=\sum_i\bigl(a_i f_i + a_i^{\dagger} f_i^*\bigr).
+\end{equation}
+Los coeficientes $a_i$ y $a_i^{\dagger}$ se promueven a operadores de aniquilación y creación de partículas ``in'', respectivamente. Se impone que satisfagan las relaciones de conmutación canónicas:
+\begin{equation}
+    [a_i,a_j^{\dagger}]=\delta_{ij},\qquad [a_i,a_j]=[a_i^{\dagger},a_j^{\dagger}]=0.
+\end{equation}
+El estado de vacío ``in'', $\ket{0_{\mathrm{in}}}$, se define como el estado que es aniquilado por todos los operadores de aniquilación $a_i$:
+\begin{equation}
+    a_i\ket{0_{\mathrm{in}}}=0 \quad \forall i.
+\end{equation}
+Este estado representa, por definición, la ausencia de partículas para un observador en $\calI^{-}$. El espacio de Hilbert (o espacio de Fock) del campo cuántico se construye mediante la acción sucesiva de los operadores de creación $a_i^{\dagger}$ sobre este vacío $\left\{\ket{0_{\mathrm{in}}}, a_i^{\dagger} \ket{0_{\mathrm{in}}}, a_i^{\dagger} a_j^{\dagger} \ket{0_{\mathrm{in}}}, \ldots \right\}$.
+
+\subsubsection{Colapso gravitacional: evolución intermedia}
+Durante el colapso de la estrella la geometría es dinámica y deja de existir un Killing temporal global. Los modos se propagan sobre esta geometría cambiante y, debido a ello, la separación entre frecuencia positiva y negativa respecto al tiempo del pasado no coincide en general con la separación que usarán los observadores en el futuro, por simplicidad Hawking propuso un colapso simétrico de una estrella como se muestra en la figura \ref{fig:penrose_collapse}.
+
+\subsubsection{Evolución y Futuro Asintótico (Región "out")}
+Durante el colapso gravitacional, la geometría es dinámica y no existe un vector de Killing temporal. Los modos $f_i$ se propagan a través de esta región curva.
+
+Finalmente, en el futuro nulo asintótico, $\calI^{+}$, la geometría se estabiliza (formando una geometría de Schwarzschild exterior). En un espacio-tiempo general no existe elección preferida de bases, los observadores en $\calI^{+}$ pueden definir su propio tiempo y, por tanto, su propia noción de frecuencia. Definen una nueva base de modos de frecuencia positiva $\{p_j\}$ (respecto a su tiempo) y expanden el mismo operador de campo $\hat{\phi}$:
+\begin{equation}
+    \hat{\phi} = \sum_j \left( b_j p_j + b_j^{\dagger} p_j^* \right),
+\end{equation}
+con sus propios operadores $b_j$, $b_j^{\dagger}$ y su propio estado de vacío $\ket{0_{\mathrm{out}}}$, tal que:
+\begin{equation}
+    b_j \ket{0_{\mathrm{out}}} = 0, \quad \forall j.
+\end{equation}
+
+Dado que ambas familias de modos tanto $\{f_i, f_i^*\}$ como $\{p_j, p_j^*\}$, son bases completas de soluciones de la ecuación de onda, están relacionadas por una transformación lineal (coeficientes de Bogoliubov):
+\begin{equation}
+    p_j=\sum_i\bigl(\alpha_{ji} f_i + \beta_{ji} f_i^*\bigr),
+\end{equation}
+lo que implica una relación entre los operadores
+\begin{equation}\label{eq:bogop}
+    b_j=\sum_i\bigl(\alpha_{ji}^* a_i - \beta_{ji}^* a_i^{\dagger}\bigr),
+\end{equation}
+dependiendo de la convención de signos adoptada para los coeficientes.
+Los coeficientes $\alpha_{ji}$ y $\beta_{ji}$ se denominan coeficientes de Bogoliubov. El coeficiente $\alpha_{ji}$ ("alfa") mezcla modos de frecuencia positiva con positiva, mientras que $\beta_{ji}$ ("beta") mezcla modos de positiva "out" con negativa "in".
+
+La pregunta fundamental que planteó Hawking es: dado que el sistema se define en el estado de vacío $\ket{0_{\mathrm{in}}}$ para los observadores en $\calI^-$, ¿cómo perciben este mismo estado los observadores en $\calI^+$? Específicamente, ¿cuál será el número esperado de partículas que detectará un observador en el futuro asintótico ($\calI^+$)?,  el número esperado de partículas ``out'' en el modo $j$ viene dado por
+\begin{equation}
+    \avg{N_j} = \matrixel{0_{\mathrm{in}}}{b_j^{\dagger} b_j}{0_{\mathrm{in}}}.
+\end{equation}
+
+Usando la relación \eqref{eq:bogop}, podemos expresar $\avg{N_j}$ en términos de los operadores $a_i$ y $a_i^{\dagger}$:
+\begin{equation}
+    \begin{aligned}
+        \matrixel{0_{\mathrm{in}}}{b_j^{\dagger} b_j}{0_{\mathrm{in}}} & = \matrixel{0_{\mathrm{in}}}{ \left( \sum_l (\alpha_{j l}^* a_l - \beta_{j l}^* a_l^\dagger) \right) ^{\dagger}  \left( \sum_k (\alpha_{j k}^* a_k - \beta_{j k}^* a_k^\dagger) \right) }{0_{\mathrm{in}}} \\
+                                                                       & = \left(\bra{0_{in}}\sum_l - \beta_{j l} a_l\right)\left(\sum_k -\beta_{j k}^* a_k^\dagger \ket{0_{in}}\right)                                                                                             \\
+                                                                       & = \sum_l \sum_k \beta_{j l} \beta_{j k}^* \matrixel{0_{in}}{a_l a_k^\dagger}{0_{in}}.
+    \end{aligned}
+\end{equation}
+Usamos la CCR: $a_l a_k^\dagger = a_k^\dagger a_l + \delta_{lk}$:
+
+\begin{equation}
+    \begin{aligned}
+        \avg{N_j} & = \sum_l \sum_k \beta_{j l} \beta_{j k}^* \matrixel{0_{in}}{a_k^\dagger a_l + \delta_{lk}}{0_{in}}                                         \\
+                  & = \sum_l \sum_k \beta_{j l} \beta_{j k}^* \left(\matrixel{0_{in}}{a_k^\dagger a_l }{0_{in}} +\matrixel{0_{in}}{\delta_{lk}}{0_{in}}\right) \\
+    \end{aligned}
+\end{equation}
+El primer término es cero, ya que $a_l$ aniquila el vacío $\langle 0 | a_k^\dagger (a_l | 0 \rangle_{\mathrm{in}}) = 0$. El segundo término es $\delta_{lk} \avg{0|0}_{\mathrm{in}} = \delta_{lk}$ (asumiendo un vacío normalizado).
+
+\begin{equation}
+    \begin{aligned}
+        \avg{N_j} & = \sum_l \sum_k \beta_{j l} \beta_{j k}^* \delta_{lk} \\
+                  & = \sum_k \beta_{j k} \beta_{j k}^*                    \\
+                  & =\sum_k |\beta_{j k}|^2.
+    \end{aligned}
+\end{equation}
+Es decir, la presencia de coeficientes $\beta_{ji}\neq0$ indica producción de partículas: los modos ``out'' contienen excitaciones cuando el estado físico es el vacío ``in''.
+
+Calcular los coeficientes $\beta_{ji}$ exactamente requiere resolver la propagación del campo $\phi$ en la geometría dinámica del colapso, una tarea intratable. Sin embargo, Hawking demostró que el resultado es insensible a los detalles del colapso y puede obtenerse mediante una aproximación de óptica geométrica (alta frecuencia $\omega$).
+
+En este límite, los modos del campo pueden tratarse como rayos de luz (geodésicas nulas) que se propagan hacia atrás en el tiempo desde $\mathcal{I}^{+}$ hasta $\mathcal{I}^{-}$.
+
+En el futuro nulo $\mathscr{I}^{+}$ se emplea la coordenada retardada $u$ (retarded time). Un observador ``out'' define la frecuencia de los modos respecto a $u$(el tiempo de Killing en la geometría de Schwarzschild final). Un modo ``out'' de frecuencia positiva se comporta asintóticamente como
+\begin{equation}
+      p_{\omega}(u)\sim \frac{1}{\sqrt{\omega}}\,e^{-i\omega u}\quad\text{en }\mathscr{I}^{+}.
+\end{equation}
+En el pasado nulo $\mathscr{I}^{-}$ se emplea la coordenada avanzada $v$ (advanced time). El vacío ``in'' se define con respecto a $v$(el tiempo de Minkowski). Un modo ``in'' de frecuencia positiva tiene el comportamiento asintótico
+\begin{equation}
+        f_{\omega'}(v)\sim \frac{1}{\sqrt{\omega'}}\,e^{-i\omega' v}\quad\text{en }\mathscr{I}^{-}.
+\end{equation}
+El objetivo es descomponer $p_\omega$ en la base "in" (ahora continua)
+\begin{equation}
+        p_{\omega} = \int_0^{\infty}  \, \left( \alpha_{\omega\omega'} f_{\omega'} + \beta_{\omega\omega'} f_{\omega'}^* \right)d\omega'.
+\end{equation}
+Para hacer esto se describe un modo critico que viaja hacia atrás en el tiempo desde $\mathcal{I}^{+}$ hasta $\mathcal{I}^{-}$, atravesando la región dinámica del colapso. La relación entre las coordenadas $u$ y $v$ cerca del horizonte de sucesos es crucial para determinar los coeficientes de Bogoliubov.
+\begin{figure}[H]
+    \begin{small}
+        \begin{center}
+            \includegraphics[width=0.95\textwidth]{RadiacionDeHawking/figures/rayoluz.png}
+        \end{center}
+        \caption{}
+        \label{fig:rayo_critico}
+    \end{small}
+\end{figure}
+
+Como se muuestra en la figura \ref{fig:rayo_critico}, se traza un rayo de luz (modo $p_\omega$) hacia atrás en el tiempo desde $\mathcal{I}^{+}$ hasta $\mathcal{I}^{-}$. Los rayos que llegan a $\mathcal{I}^{+}$ en tiempos muy grandes $u$ (cercanos al horizonte) se originan en $\mathcal{I}^{-}$ justo antes de un rayo crítico $v_0$ que forma el horizonte de sucesos. 
+
+
+El argumento es encontrar la relación entre las coordenadas nulas $u$ y $v$ para estos rayos tardíos que se acercan al horizonte, esto mediante un emparejamiento de coordenadas entre la región asintótica pasada (plana) y la región asintótica futura .
+
+Mediante las coordenadas de Kruskal-Szekeres, que son regulares en el horizonte
+Trazamos un único rayo de luz hacia atrás desde $\mathcal{I}^{+}$ hasta $\mathcal{I}^{-}$. Este rayo está descrito por $U$ en el futuro y $v$ en el pasado. Dado que el rayo es un camino continuo, $U$ debe ser alguna función de $v$, $U=f(v)$. Encontraremos esta función.
+
+La relación entre el tiempo retardado de Schwarzschild $u$ y la coordenada de Kruskal $U$ es:
+
+$$
+U=-C_1 e^{-\kappa u}
+$$
+
+Ahora, trazamos este mismo rayo (etiquetado por $U$) hacia atrás en el tiempo, a través de la estrella colapsante, hasta llegar a la infinita nulidad pasada $\mathcal{I}^{-}$.
+- En $\mathcal{I}^{-}$, nuestra coordenada es el tiempo avanzado $v$ del espacio plano.
+Existe un rayo crítico, $v_0$, que es el último rayo "in" que queda atrapado y forma el horizonte de sucesos. Por definición, este rayo crítico $v_0$ debe mapearse al horizonte de sucesos futuro $\mathcal{H}^{+}$. En coordenadas de Kruskal, el horizonte de sucesos futuro $\mathcal{H}^{+}$ es la línea $U=0$. Por lo tanto, por definición: $v_0$ se mapea a $U=0$.
+
+Ahora, consideremos un rayo $v$ que llega justo antes de $v_0$. La separación es $\left(v_0-v\right)$, que es un número pequeño y positivo.
+
+Dado que $v$ es una coordenada "buena" (analítica) en el pasado y $U$ es una coordenada "buena" (analítica) en el origen del colapso, la relación entre ellas debe ser suave y casi lineal para separaciones pequeñas. Podemos hacer una expansión de Taylor de primer orden de $U(v)$ alrededor de $v_0$:
+
+\begin{equation}
+    U(v) \approx \underbrace{{U\left(v_0\right)}}_{=0}+\left.\left(v-v_0\right) \frac{d U}{d v}\right|_{v_0} \propto C_2\left(v_0-v\right)
+\end{equation}
+(usamos un signo negativo por conveniencia, ya que sabemos que $v<v_0$ y $U<0$)
+
+Ahora tenemos dos expresiones diferentes para el mismo rayo de luz, $U$:
+\begin{enumerate}[]
+    \item $U=-C_1 e^{-\kappa u}$ (Su identidad en el futuro)
+    \item $U=-C_2\left(v_0-v\right)$ (Su identidad en el pasado)
+\end{enumerate}
+Igualemos ambas: $-C_1 e^{-\kappa u}=-C_2\left(v_0-v\right)$
+
+\begin{equation}
+\begin{aligned}
+e^{-\kappa u} & =\left(\frac{C_2}{C_1}\right)\left(v_0-v\right)\\
+    \ln \left(e^{-\kappa u}\right) & = \ln \left[\left(\frac{C_2}{C_1}\right)\left(v_0-v\right)\right]\\
+    -\kappa u & =\ln \left(\frac{C_2}{C_1}\right)+\ln \left(v_0-v\right)\\
+    u& =-\frac{1}{\kappa} \ln \left(v_0-v\right)-\frac{1}{\kappa} \ln \left(\frac{C_2}{C_1}\right)
+\end{aligned}
+\end{equation}
+
+De esta manera, hemos encontrado una relación entre las coordenadas nulas $u$ y $v$ para los rayos que se acercan al horizonte de sucesos.
+\begin{equation}
+    u(v) \approx-\frac{1}{\kappa} \ln \left(v_0-v\right)
+\end{equation}
+
+
+Propagamos el modo ``out'' $p_\omega \sim e^{-i \omega u}$ hacia atrás en el tiempo hasta $\mathscr{I}^{-}$. Usando la relación $u(v)$ para los rayos tardíos, el modo cerca de $v_0$ se comporta como
+\begin{equation}
+    p_\omega(v) \approx e^{-i \omega\left[-\frac{1}{\kappa} \log(v_0-v)\right]} = e^{\frac{i \omega}{\kappa} \log(v_0-v)} = (v_0-v)^{\frac{i \omega}{\kappa}}.
+\end{equation}
+Este modo $p_\omega(v)$ debe ahora descomponerse en la base ``in'' de frecuencias positivas ($e^{-i \omega' v}$) y negativas ($e^{+i \omega' v}$). El coeficiente $\beta_{\omega\omega'}$ mide la proyección de $p_\omega$ sobre los modos ``in'' de frecuencia negativa.
+
+ \begin{equation}
+    \beta_{\omega\omega'} \propto \int \underbrace{(v_0 - v)^{i\omega/\kappa}}_{\text{La función } p_{\omega}(u(v))} \cdot \underbrace{e^{+i\omega' v}}_{\text{La base } f_{\omega'}^*} \, dv
+    \end{equation}
+
+Análogamente, el coeficiente $\alpha_{\omega\omega'}$ que mide la parte de frecuencia positiva es
+\begin{equation}
+    \alpha_{\omega \omega'} \sim \int_{-\infty}^{v_0} (v_0-v)^{\frac{i \omega}{\kappa}} e^{-i \omega' v} dv\,.
+\end{equation}
+
+Estas integrales se resuelven con la función Gamma. Para $\alpha_{\omega\omega'}$, con el cambio de variable $x = \omega'(v_0-v)$,
+\begin{align}
+    \alpha_{\omega \omega'} & \sim \int_{-\infty}^{v_0} dv\, (v_0-v)^{\frac{i \omega}{\kappa}} e^{-i \omega' v} = e^{-i\omega'v_0} \int_0^\infty dx\, \left(\frac{x}{\omega'}\right)^{\frac{i\omega}{\kappa}} e^{ix} \frac{1}{\omega'} \nonumber \\
+                            & \sim e^{-i\omega'v_0} (\omega')^{-1-i\omega/\kappa} \int_0^\infty dx\, x^{i\omega/\kappa} e^{ix}.
+\end{align}
+La integral es una representación de la función Gamma, $\int_0^\infty t^z e^{-kt}dt = \Gamma(z+1)k^{-(z+1)}$. Con $z=i\omega/\kappa$ y $k=-i$, se obtiene
+\begin{equation}
+    \alpha_{\omega \omega'} \sim e^{-i\omega'v_0} (\omega')^{-1-i\omega/\kappa} \Gamma(1+i\omega/\kappa) (e^{-i\pi/2})^{-(1+i\omega/\kappa)}.
+\end{equation}
+Para $\beta_{\omega\omega'}$, el cálculo es similar con $k=i$:
+\begin{equation}
+    \beta_{\omega \omega'} \sim e^{i\omega'v_0} (\omega')^{-1-i\omega/\kappa} \Gamma(1+i\omega/\kappa) (e^{i\pi/2})^{-(1+i\omega/\kappa)}.
+\end{equation}
+
+Nos interesa el cociente de las magnitudes al cuadrado. La mayor parte de los factores son comunes y se cancelan. La diferencia crucial reside en los términos $(e^{\pm i\pi/2})^{-(1+i\omega/\kappa)}$:
+\begin{align}
+    | (e^{-i\pi/2})^{-(1+i\omega/\kappa)} |^2 & = | e^{i\pi/2} e^{\pi\omega/(2\kappa)} |^2 = e^{\pi\omega/\kappa},    \\
+    | (e^{i\pi/2})^{-(1+i\omega/\kappa)} |^2  & = | e^{-i\pi/2} e^{-\pi\omega/(2\kappa)} |^2 = e^{-\pi\omega/\kappa}.
+\end{align}
+Por tanto, la relación de los coeficientes es
+\begin{equation}
+    \frac{|\alpha_{\omega \omega'}|^2}{|\beta_{\omega \omega'}|^2} = \frac{e^{\pi\omega/\kappa}}{e^{-\pi\omega/\kappa}} = e^{2\pi\omega/\kappa}.
+\end{equation}
+Este resultado es independiente de $\omega'$, lo que simplifica enormemente el análisis.
+
+
+Ahora tenemos un sistema de dos ecuaciones. Primero, la relación que acabamos de encontrar:
+\begin{equation}
+    |\alpha_{\omega \omega'}|^2 = e^{2\pi\omega/\kappa} |\beta_{\omega \omega'}|^2.
+\end{equation}
+Segundo, la condición de unitaridad de la transformación de Bogoliubov, que (en este contexto heurístico "por modo") implica:
+\begin{equation}
+    |\alpha_{\omega \omega'}|^2 - |\beta_{\omega \omega'}|^2 = 1.
+\end{equation}
+Sustituimos la primera ecuación en la segunda:
+\[
+    \left( e^{2\pi\omega/\kappa} |\beta_{\omega \omega'}|^2 \right) - |\beta_{\omega \omega'}|^2 = 1
+\]
+\[
+    |\beta_{\omega \omega'}|^2 \left( e^{2\pi\omega/\kappa} - 1 \right) = 1
+\]
+Despejando $|\beta_{\omega \omega'}|^2$:
+\begin{equation}
+    |\beta_{\omega \omega'}|^2 = \frac{1}{e^{2\pi\omega/\kappa} - 1}.
+\end{equation}
+Dado que $|\beta_{\omega\omega'}|^2$ no depende de $\omega'$, la integral $\langle N_{\omega} \rangle = \int_0^\infty d\omega' \, |\beta_{\omega\omega'}|^2$ diverge. Esto indica una emisión constante de partículas a lo largo del tiempo es el espectro de emisión de un cuerpo negro perfecto. Sin embargo, este es el espectro de partículas tal como se crea \emph{en el horizonte}.
+
+
+Un análisis más riguroso (que incluye los "factores de cuerpo gris" $\Gamma_\omega$, que representan la probabilidad de que un modo escape del potencial gravitacional) muestra que el número de partículas por unidad de tiempo y frecuencia (la tasa de emisión) es:
+\begin{equation}
+    \frac{d^2N}{d\omega dt} \propto \frac{\Gamma_\omega}{e^{2\pi\omega/\kappa} - 1}.
+\end{equation}
+Este espectro es idéntico al de un cuerpo negro.
+
+\section{La Temperatura de Hawking}
+El espectro de un cuerpo negro térmico a temperatura $T$ viene dado por la estadística de Bose-Einstein para bosones de energía $E = \hbar\omega$ (reintroduciendo las constantes fundamentales):
+\begin{equation}
+    N_{\text{Termal}} \propto \frac{1}{e^{E / (k_B T)} - 1} = \frac{1}{e^{\hbar\omega / (k_B T)} - 1}.
+\end{equation}
+Comparando nuestro resultado con la fórmula térmica, podemos identificar los exponentes:
+\begin{equation}
+    \frac{\hbar\omega}{k_B T_H} = \frac{2\pi\omega}{\kappa}
+\end{equation}
+La frecuencia $\omega$ se cancela. Despejamos la temperatura $T_H$ (Temperatura de Hawking):
+\begin{equation}
+    k_B T_H = \frac{\hbar \kappa}{2\pi}.
+\end{equation}
+(Reintroduciendo $c$, $k_B T_H = \frac{\hbar \kappa}{2\pi c}$).
+
+Para un agujero negro de Schwarzschild (sin rotación, sin carga) de masa $M$, la gravedad superficial $\kappa$ viene dada por la Relatividad General:
+\begin{equation}
+    \kappa = \frac{c^4}{4 G M}.
+\end{equation}
+Sustituimos este valor en nuestra fórmula de temperatura:
+\begin{equation}
+    T_H = \frac{\hbar}{k_B} \frac{1}{2\pi c} \left( \frac{c^4}{4GM} \right)
+\end{equation}
+Simplificando, llegamos a la famosa ecuación:
+\begin{equation}
+    T_H = \frac{\hbar c^3}{8 \pi k_B G M}
+\end{equation}
+Este resultado implica que los agujeros negros no son completamente negros. Evaporan lentamente, emitiendo radiación térmica con una temperatura inversamente proporcional a su masa.
