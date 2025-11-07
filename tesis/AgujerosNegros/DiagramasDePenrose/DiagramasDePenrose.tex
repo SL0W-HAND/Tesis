@@ -35,6 +35,80 @@ Con el propósito de construir los diagramas de Penrose, podemos seguir la sigui
         (Mantén una "bitácora" de los rangos de estas coordenadas, ya que la información de esta transformación esta dada por donde se encuentran las nuevas fronteras finitas)
 \end{enumerate}
 \subsection{Diagrama en el espacio-tiempo de Minkowski}
+\begin{figure}[H]
+    \centering
+    
+% PENROSE DIAGRAM of Minkowski space - 45 rotation
+\begin{tikzpicture}[scale=3.2]
+  \message{Penrose diagram (45 rotation)^^J}
+  
+  \def\R{0.10} % size lightcone
+  \def\Nlines{6} % number of world lines (at constant r/t)
+  \pgfmathsetmacro\d{0.92/\Nlines} % grid size
+  
+  \coordinate (O) at (0,0);
+  \coordinate (W) at (-1.05,0);
+  \coordinate (E) at (1.15,0);
+  \coordinate (S) at (0,-1.05);
+  \coordinate (N) at (0,1.15);
+  \coordinate (SW) at (-135:1.45);
+  \coordinate (SE) at (-45:1.45);
+  \coordinate (NW) at (135:1.45);
+  \coordinate (NE) at (45:1.45);
+  \coordinate (X0) at (-0.41,-1);
+  \coordinate (X1) at (-\d,-3*\d);
+  \coordinate (X2) at (2*\d,2*\d);
+  \coordinate (X3) at (0.54,1);
+  
+  % WORLD LINES GRID
+  \message{Making world lines...^^J}
+  \foreach \i [evaluate={\x=\i*\d;}] in {1,...,\Nlines}{
+    \message{  Running i/N=\i/\Nlines, x=\x...^^J}
+    \draw[world line]   (-\x,-1) -- (-\x,1);
+    \draw[world line]   ( \x,-1) -- ( \x,1);
+    \draw[world line t] (-1,-\x) -- (1,-\x);
+    \draw[world line t] (-1, \x) -- (1, \x);
+  }
+  
+  % AXES
+  \draw[->,thick,mydarkblue!70!black]
+    (W) -- (E) node[left=4,below=0] {$x$};
+  \draw[->,thick,mydarkpurple!70!black]
+    (S) -- (N) coordinate (N) node[below=4,left=0] {$t$};
+  \draw[->,thick,mydarkred] (SW) -- (NE) node[below right=-2] {$u=x+t$};
+  \draw[->,thick,mydarkred] (SE) -- (NW) node[below left=-2] {$x-t=v$};
+  
+  \draw pic[->,"$45^\circ$"{above,scale=0.9},draw=black,angle radius=16,
+            angle eccentricity=1.0] {angle = N--O--NW};
+  
+  % INFINITY LABELS
+  \node[above=1,left=1,mydarkblue] at (W) {$i^0$};
+  \node[above=1,right=1,mydarkblue] at (E) {$i^0$};
+  \node[right=3,below=2,mydarkpurple] at (0,-1) {$i^-$};
+  \node[right=3,above=0,mydarkpurple] at (N) {$i^+$};
+  \node[mydarkblue,left=5,below right=-1] at (SE) {$\calI^-$};
+  \node[mydarkblue,right=8,below left=-1] at (SW) {$\calI^-$};
+  \node[mydarkblue,left=5,above right=-1] at (NE) {$\calI^+$};
+  \node[mydarkblue,right=8,above left=-1] at (NW) {$\calI^+$};
+  
+  % LIGHT CONE BACK
+  \coneback{X1};
+  \coneback{X2};
+  
+  % PARTICLE
+  \draw[particle,decoration={markings,mark=at position 0.170 with {\arrow{latex}},
+                                      mark=at position 0.505 with {\arrow{latex}},
+                                      mark=at position 0.860 with {\arrow{latex}}},postaction={decorate}]
+    (X0) to[out=70,in=-110] (X1) to[out=70,in=-110] (X2) to[out=70,in=-120] (X3);
+  
+  % LIGHT CONE FRONT
+  \conefront{X1};
+  \conefront{X2};
+  
+\end{tikzpicture}
+    \caption{Caption}
+\end{figure}
+
 El espacio-tiempo de Minkowski es la solución mas sencilla de las ecuaciones de campo, donde las coordenadas poseen los rangos:
 \begin{equation}
   \begin{array}{c|c|c|c}
@@ -542,8 +616,8 @@ De forma similar a las coordenadas de Kruskal-Szekeres, el diagrama de Penrose r
       (-N) -- (N) --++ (1.1,0.1) |-++ (-3.1,-2.3) -- cycle;
 
       % REGIONS FILLS
-      \fill[mylightpurple] (-N) |-++ (2,0.1) -- (N) -- (W) -- cycle;
-      \fill[mylightblue] (N) -- (E) -- (S) -- (W) -- cycle;
+      %\fill[mylightpurple] (-N) |-++ (2,0.1) -- (N) -- (W) -- cycle;
+      %\fill[mylightblue] (N) -- (E) -- (S) -- (W) -- cycle;
 
       % CONE BACK
       \coneback{X0};
@@ -660,11 +734,11 @@ También se puede hacer la extensión máxima del espacio-tiempo de Schwarzschil
       (-N) -- (N) --++ (1.1,0.1) |-++ (-4.2,-2.2) |- cycle;
 
       % REGIONS FILLS
-      \fill[mylightpurple] (-N) |-++ (2,0.1) -- (N) -- (-S) -- (S) -- cycle;
-      \fill[mylightpurple] (-S) |-++ (2,-0.1) -- (S) -- (-N) -- (N) -- cycle;
+      %\fill[mylightpurple] (-N) |-++ (2,0.1) -- (N) -- (-S) -- (S) -- cycle;
+      %\fill[mylightpurple] (-S) |-++ (2,-0.1) -- (S) -- (-N) -- (N) -- cycle;
 
-      \fill[mylightblue] (-N) -- (-E) -- (-S) -- (-W) -- cycle;
-      \fill[mylightblue] (N) -- (E) -- (S) -- (W) -- cycle;
+      %\fill[mylightblue] (-N) -- (-E) -- (-S) -- (-W) -- cycle;
+      %\fill[mylightblue] (N) -- (E) -- (S) -- (W) -- cycle;
 
       % CONE BACK
       \coneback{X0};
@@ -714,10 +788,10 @@ También se puede hacer la extensión máxima del espacio-tiempo de Schwarzschil
     \draw[thick,mydarkblue] (N) -- (E) -- (S) -- (W) -- cycle;
 
     % REGIONS
-    \node[fill=mylightblue,inner sep=2] at (-O) {III};
-    \node[fill=mylightblue,inner sep=2] at (O) {I};
-    \node[fill=mylightpurple,inner sep=2] at (0,0.64) {II};
-    \node[fill=mylightpurple,inner sep=2] at (0,-0.64) {IV};
+    \node[fill=white,inner sep=2] at (-O) {III};
+    \node[fill=white,inner sep=2] at (O) {I};
+    \node[fill=white,inner sep=2] at (0,0.64) {II};
+    \node[fill=white,inner sep=2] at (0,-0.64) {IV};
 
     % INFINITY LABELS
     \node[above=1,left=1,mydarkblue] at (-2,0) {$i^0$};

@@ -71,5 +71,10 @@ kruskal(\x,\c)  = {\fpeval{asin( \c*sin(2*\x) )*2/pi}};% Penrose coordinates for
 (#1) --++ (45:\R) arc({\angb-90}:{-90-\angb}:{\a} and {\b})
 --++ (-45:2*\R) arc({90-\angb}:{-270+\angb}:{\a} and {\b}) -- cycle;
 }
-
+\tikzset{declare function={% Kruskal-Szekeres coordinates
+  sing(\x)        = {\fpeval{sqrt(\x*\x+1)}};%
+  rstar(\c)       = {\fpeval{(\c/2-1)*exp(\c/2)}};%
+  kruskalu(\x,\c) = {\fpeval{sqrt(\x*\x+(\c/2-1)*exp(\c/2))}};%
+  kruskalv(\x,\c) = {\fpeval{sqrt(\x*\x-(\c/2-1)*exp(\c/2))}};%
+}}
 % --- Fin del archivo de configuración ---
