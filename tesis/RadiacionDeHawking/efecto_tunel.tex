@@ -1,0 +1,211 @@
+\section{Efecto túnel}
+El efecto túnel es un fenómeno cuántico que permite a las partículas atravesar barreras de potencial que, según la física clásica, serían insuperables. En el contexto de la radiación de Hawking, este efecto juega un papel crucial en la explicación de cómo las partículas pueden escapar del horizonte de eventos de un agujero negro.
+
+La propuesta más famosa para este enfoque fue realizada por Parikh y Wilczek \cite{parikh-2000}, quienes sugirieron que la radiación de Hawking puede ser entendida como un proceso de túnel cuántico. Según su interpretación, las partículas que se encuentran en el horizonte de eventos de un agujero negro pueden ``tunelizar'' hacia afuera, convirtiéndose en radiación detectable en el espacio exterior.
+
+la primera parte consiste en escoger un tipo de coordenadas que sean regulares en el horizonte de eventos, $r=2m$. En particular se usan las coordenadas de Painlevé-Gullstrand. Para el caso de Schwarzschild, la métrica de Painlevé-Gullstrand es:
+
+\begin{equation}
+    d s^2=-\left(1-\frac{2 m}{r}\right) d t^2+ 2 \sqrt{\frac{2 m}{r}} c d t d r+d r^2+r^2 d \Omega^2
+\end{equation}
+
+Las geodésicas radiales nulas están dadas por
+
+\begin{equation}
+    \dot{r} \equiv \frac{d r}{d t}= \pm 1-\sqrt{1-\frac{2 m}{r}},
+    \label{eq:PG_null_geodesics}
+\end{equation}
+
+con el signo superior (inferior) en la Ec. (\ref{eq:PG_null_geodesics}) correspondiente a geodésicas salientes (entrantes), bajo la suposición implícita de que $t$ aumenta.
+
+La derivación de efecto túnel toma en cuenta que la métrica puede ser modificada cuando la partícula atraviesa el horizonte de eventos. Considerando una perturbación de energía proporcional a $\omega$, la masa efectiva de la partícula que escapa $M_{eff} = \frac{\hbar \omega}{c^2} $
+
+\[
+    \frac{2G(M - \frac{\hbar \omega}{c^2})}{c^2}=\frac{2GM}{c^2}-\frac{2G \hbar \omega}{c^4}= 2(m -\tilde{\omega}) \quad \text{con} \quad \tilde{\omega}\equiv \frac{G \hbar \omega}{c^4}
+\]
+Y la métrica de Painlevé-Gullstrand modificada es:
+
+\begin{equation}
+    \begin{aligned}
+        d s^2= & -\left(1-\frac{2(M-\tilde{\omega})}{r}\right) d t^2+2 \sqrt{\frac{2(M-\tilde{\omega})}{r}} d t d r \\
+               & +d r^2+r^2 d \Omega^2
+    \end{aligned}
+\end{equation}
+
+
+
+
+\subsection{aproximación WKB}
+El "tunelamiento" ocurre cuando la partícula intenta atravesar una región donde $V(x)>E$. En esta región, $E- V(x)$ es negativo. Por lo tanto, el momento clásico $p(x)$ se vuelve imaginario. Definimos $p(x)=i|p(x)|$, donde $|p(x)|=\sqrt{2 m(V(x)-E)}$. La ecuación de Schrödinger se convierte en:
+
+\begin{equation}
+    \frac{d^2 \psi(x)}{d x^2}=\frac{|p(x)|^2}{\hbar^2} \psi(x)
+\end{equation}
+
+La Solución WKB en lugar de ser oscilatoria (como lo es en la región clásica donde $E>V$ ), la solución en la región prohibida es una superposición de exponenciales crecientes y decrecientes. La solución WKB general en esta región es:
+
+\begin{equation}
+    \psi(x) \approx \frac{C_1}{\sqrt{|p(x)|}} \exp \left(\frac{1}{\hbar} \int|p(x)| d x\right)+\frac{C_2}{\sqrt{|p(x)|}} \exp \left(-\frac{1}{\hbar} \int|p(x)| d x\right)
+\end{equation}
+
+
+Para un proceso de tunelamiento hacia afuera (desde el interior de la barrera), debemos seleccionar la solución físicamente relevante, que es la que decae a medida que se adentra en la barrera (o crece a medida que sale).
+
+El Factor de Decaimiento de la Amplitud $(\psi)$ : Imaginemos una barrera que se extiende desde $x_{\text {in }}$ hasta $x_{\text {out }}$. La amplitud de la función de onda $\psi$ se atenúa exponencialmente mientras la atraviesa. La relación entre la amplitud al salir ( $x_{\text {out }}$ ) y la amplitud al entrar ( $x_{\text {in }}$ ) es:
+
+\begin{equation}
+    \left|\psi\left(x_{\text {out }}\right)\right| \propto\left|\psi\left(x_{\text {in }}\right)\right| \cdot \exp \left(-\frac{1}{\hbar} \int_{x_{\text {in }}}^{x_{\text {out }}}|p(x)| d x\right)
+\end{equation}
+La probabilidad de que la partícula atraviese la barrera es la relación de las probabilidades:
+
+\begin{equation}
+    P=\frac{P\left(x_{\text {out }}\right)}{P\left(x_{\text {in }}\right)}=\frac{\left|\psi\left(x_{\text {out }}\right)\right|^2}{\left|\psi\left(x_{\text {in }}\right)\right|^2}
+\end{equation}
+
+Usando nuestra expresión del paso anterior para las amplitudes, obtenemos:
+\begin{equation}
+    P  \propto\left[\exp \left(-\frac{1}{\hbar} \int_{x_{\text {in }}}^{x_{\text {out }}}|p(x)| d x\right)\right]^2 = \exp \left(-\frac{2}{\hbar} \int_{x_{\text {in }}}^{x_{\text {out }}}|p(x)| d x\right) \\
+\end{equation}
+En la región clásicamente prohibida (dentro de la barrera), $p(x)$ es imaginario: $p(x)= i|p(x)|$.
+Por lo tanto, la acción $S$ calculada a lo largo de esta trayectoria "prohibida" es puramente imaginaria:
+
+\begin{equation}
+    S=\int_{x_{\text {in }}}^{x_{\text {out }}} p(x) d x=\int_{x_{\text {in }}}^{x_{\text {out }}} i|p(x)| d x=i \int_{x_{\text {in }}}^{x_{\text {out }}}|p(x)| d x
+\end{equation}
+La parte imaginaria de la acción es:
+
+\begin{equation}
+    \operatorname{Im}[S]=\int_{x_{\text {in }}}^{x_{\text {out }}}|p(x)| d x
+\end{equation}
+
+Finalmente, podemos expresar la probabilidad de tunelamiento en términos de la parte imaginaria de la acción:
+
+\begin{equation}
+    \Gamma \propto P \approx \exp \left(-\frac{2 \cdot \operatorname{Im}[S]}{\hbar}\right)
+\end{equation}
+
+
+
+\section{Acción}
+La acción para el proceso de tunelamiento se calcula como
+
+\begin{equation}
+    S=\int_{r_i}^{r_f} p_r d r=\int_{r_i}^{r_f} \int_0^{p_r} d p_r^{\prime} d r
+\end{equation}
+
+Tomando en cuenta que estamos trabajando con la acción de Hamilton-Jacobi $H(x^\mu, p^\mu)$, podemos escribir
+
+\begin{equation}
+    dp_r^{\prime}=\left(\pd{H}{p_r^{\prime}}\right)^{-1}\left( - \pd{H}{r^{\prime}}\underbrace{dr^{\prime}}_{=0} + dH\right)
+\end{equation}
+
+De la mecánica hamiltoniana sabemos que $\dot{r}=\frac{\partial H}{\partial p_r},$
+
+
+Esta ecuación se puede invertir formalmente para expresar $d p_r$ en términos de $d H$ :
+
+$$
+    d H=\frac{\partial H}{\partial p_r} d p_r=\dot{r} d p_r \quad \Rightarrow \quad d p_r=\frac{d H}{\dot{r}}
+$$
+
+siendo $p_r$ el momento radial de la particula ( $p_r^{\prime}$ es una variable muda, no confundir con una derivada) y donde se ha utilizado la ecuación de Hamilton-Jacobi $\left(\dot{r}=\left(\partial H / \partial p_r\right)\right.$ siendo $\dot{r}$ la derivada temporal para obtener la última igualdad.
+
+donde el hamiltoniano inicial corresponde a la masa en reposo del agujero negro
+\[
+    H_{in} = M c^2
+\]
+y el hamiltoniano final es
+\[
+    H_{fin} = M c^2 - \hbar \omega_f
+\]
+
+Utilizando el cambio de variable $H=M c^2 - \hbar \omega$ y utilizando la ecuación de la geodésica radial para partículas salientes (+) se obtiene
+
+
+\begin{equation}
+    S=\int_{r_i}^{r_f} p_r d r=\int_{r_i}^{r_f} \int_0^{p_r} d p_r^{\prime} d r=\int_{r_i}^{r_f} \int_{H_{\mathrm{in}}}^{H_{\mathrm{fin}}} \frac{d H}{\dot{r}} d r
+\end{equation}
+\begin{equation}
+    \int_0^\omega \int_{r_i}^{r_f} \frac{d r}{c(1-\sqrt{1-f(r)})}\left(- \hbar d \omega^{\prime}\right)=\frac{-\hbar}{c}\int_0^\omega \int_{r_i}^{r_f} \frac{d r}{1-\sqrt{1-f(r)}} d \omega^{\prime}
+\end{equation}
+
+
+Teniendo en cuenta que $r_i>r_H>r_f$ y que $f\left(r_H\right)=0$, esta integral será compleja,
+Tu función en el plano complejo $z$ es:
+
+\[
+    g(z)=\frac{1}{1-\sqrt{1-f(z)}}
+\]
+El residuo de una función $g(z)$ en un polo simple $z_0$ se calcula con el limite:
+
+\[
+    \operatorname{Res}\left[g(z), r_H\right]=\lim _{z \rightarrow r_H}\left(z-r_H\right) \cdot g(z)
+\]
+
+
+Aplicándolo a tu función:
+
+\begin{equation}
+    \begin{aligned}
+        \operatorname{Res} & =\lim _{z \rightarrow r_H}\left(z-r_H\right) \frac{1}{1-\sqrt{1-f(z)}}=\lim _{z \rightarrow r_H} \frac{z-r_H}{1-\sqrt{1-f(z)}}             \\
+                           & =\lim _{z \rightarrow r_H} \frac{1}{\frac{f^{\prime}(z)}{2 \sqrt{1-f(z)}}}=\lim _{z \rightarrow r_H} \frac{2 \sqrt{1-f(z)}}{f^{\prime}(z)} \\
+                           & =\frac{2}{f^{\prime}\left(r_H\right)}
+    \end{aligned}
+    \label{eq:res_simple_pole}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        f^{\prime}(r)              & =\frac{d}{d r}\left[1-2(m-\tilde{\omega}) r^{-1}\right]                                                                              \\
+        f^{\prime}\left(r_H\right) & =\frac{2(m-\tilde{\omega})}{[2(m-\tilde{\omega})]^2}=\frac{2(m-\tilde{\omega})}{4(m-\tilde{\omega})^2}=\frac{1}{2(m-\tilde{\omega})}
+    \end{aligned}
+\end{equation}
+por lo que el residuo en el polo simple $r_H$ es
+\begin{equation}
+    \operatorname{Res}=\frac{2}{1 /[2(m-\tilde{\omega})]}=4(m-\tilde{\omega})
+\end{equation}
+y la integral de la accion queda
+\begin{equation}
+    \begin{aligned}
+        S= & \frac{-\hbar}{c} \int_0^\omega\left(-4 i \pi\left(m-\tilde{\omega}\right)\right) d \omega^{\prime}=\frac{-\hbar}{c} \int_0^\omega\left(-4 i \pi\left(m-\frac{G \hbar \omega^{\prime}}{c^4}\right)\right) d \omega^{\prime} \\
+           & =i\frac{4 \pi \hbar}{c} \left(m\omega - \frac{G \hbar \omega^2}{2c^4}\right)                                                                                                                                               \\
+    \end{aligned}
+\end{equation}
+
+Ésta es la parte que nos interesa porque está relacionada (el factor no es significativo fisicamente) con la tasa de emisión semiclásica [25]: $\Gamma \sim e^{-2 \Im[S]/\hbar}$. En el caso que nos ocupa ésta es,
+
+
+
+\begin{equation}
+    \Gamma \sim e^{-\frac{8 \pi }{c} \left(m\omega - \frac{G \hbar \omega^2}{2c^4}\right)  }
+    \label{emision_tunel}
+\end{equation}
+
+Esta expresión muestra que la tasa de emisión no es estrictamente térmica debido al término cuadrático en $\omega$. Este resultado es consistente con la conservación de la energía y sugiere que la radiación de Hawking tiene correcciones que dependen de la energía de las partículas emitidas.
+
+Solo para efectos complementarios en principrio se puede deducir esta distribucion con cuaklquier tipo de coordenadas regulares en el horizonte de eventos, como las coordenadas de Eddington-Finkelstein o las coordenadas Kruskal-Szekeres.
+
+Considerando nuevamente las ecuaciones de hamilton jacobi $g^{\mu\nu}\pdi{\mu}S\pdi{\nu}S=0$ para el espacio-tiempo de Eddington-Finkelstein, se puede ver que la forma de la tasa de emisión se mantiene, aunque los detalles específicos de la integral pueden cambiar .
+con el anzats de la accion $S = -E\nu + W(r)+ \text{(constantes angulares)}$ se obtiene
+\begin{equation}
+    g^{rr}p_r^2 + 2g^{vr}\pdi{v}S p_r + g^{vv}(\pdi{v}S)^2 =0
+\end{equation}
+
+recuerde que en estas coordenadas $g^{rr}=1-\frac{2m}{r}$, $g^{vr}=1$ y $g^{vv}=0$, por lo que la ecuacion anterior se reduce a
+\begin{equation}
+    \left(1-\frac{2m}{r}\right)p_r^2 + 2(1)(-E)p_r =0 \quad \Rightarrow \quad p_r = \frac{2E}{1-\frac{2m}{r}}
+\end{equation}
+La integral de la acción se hace de forma análoga considerando $H=E$ ,
+$$
+    \left(\pd{H}{p_r}\right)^{-1}=\pd{p_r}{H} =\frac{2}{1-\frac{2m}{r}}
+$$
+Y agregando la corrección por la retroalimentación gravitacional $m \rightarrow (m - \tilde{\omega})$ y el cambio de variable $H=M c^2-\hbar \omega$se obtiene
+\begin{equation}
+    S = \frac{-\hbar}{c} \int_0^\omega \int_{r_i}^{r_f} \frac{2}{1-\frac{2(m-\tilde{\omega})}{r}} d r d \omega^{\prime}
+\end{equation}
+Donde la integral radial se hace por el teorema del residuo
+
+\begin{equation}
+    \operatorname{Res}=\lim _{z \rightarrow r_H}\left(z-r_H\right) \cdot g(z)=\lim _{z \rightarrow r_H} \left(z-r_H\right) \frac{2z}{z-2(m-\tilde{\omega})}=2(m-\tilde{\omega})
+\end{equation}
+que es igual al residuo anterior por lo que es el mismo resultado

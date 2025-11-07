@@ -130,3 +130,78 @@ Sustituyendo el Hamiltoniano en (\ref{eq:HamiltonJacobi}) se obtiene:
     \label{eq:geodesicHamiltonJacobi}
 \end{equation}
 esta es la ecuación de Hamilton-Jacobi para geodésicas.
+
+
+\section{De klein Gordon a Hamilton Jacobi}
+
+Comenzamos con los dos elementos que usted ha planteado:
+1. La Ecuación de Klein-Gordon (K-G) para un campo escalar $\phi$ sin masa en espaciotiempo curvo: $\square \phi=g^{\mu \nu} \nabla_\mu \nabla_\nu \phi=0$ (Donde $\nabla_\mu$ es la derivada covariante).
+2. El "Ansatz" WKB (Eikonal): $\phi(x)=C(x) \exp \left(\frac{i}{\hbar} S(x)\right)$ (Donde $S(x)$ varia rápidamente y $C(x)$ varia lentamente).
+
+Nuestro objetivo es sustituir (2) en (1) y analizar el resultado en el limite $\hbar \rightarrow 0$.
+
+Paso 1: Calcular la primera derivada covariante $\left(\nabla_\nu \phi\right)$
+Aplicamos $\nabla_\nu$ al ansatz. Usando la regla del producto (regla de Leibniz), que se aplica a las derivadas covariantes: $\nabla_\nu \phi=\nabla_\nu\left(C e^{i S / \hbar}\right)=\left(\nabla_\nu C\right) e^{i S / \hbar}+C\left(\nabla_\nu e^{i S / \hbar}\right)$
+
+Ahora, resolvemos cada parte:
+- Como $C$ es un escalar, $\nabla_\nu C=\partial_\nu C$.
+- Usando la regla de la cadena (ya que $S$ es un escalar, $\nabla_\nu S=\partial_\nu S$ ): $\nabla_\nu e^{i S / \hbar}= \left(\frac{d}{d S} e^{i S / \hbar}\right) \nabla_\nu S=\left(\frac{i}{\hbar} e^{i S / \hbar}\right) \partial_\nu S$
+
+Sustituimos estos resultados de nuevo: $\nabla_\nu \phi=\left(\partial_\nu C\right) e^{i S / \hbar}+C\left(\frac{i}{\hbar} e^{i S / \hbar}\right) \partial_\nu S$
+Agrupando, la primera derivada es: $\nabla_\nu \phi=\left(\partial_\nu C+\frac{i}{\hbar} C\left(\partial_\nu S\right)\right) e^{i S / \hbar}$
+Paso 2: Calcular la segunda derivada covariante ( $\square \phi=g^{\mu \nu} \nabla_\mu \nabla_\nu \phi$ )
+Ahora aplicamos el operador $g^{\mu \nu} \nabla_\mu$ al resultado del Paso 1. $\square \phi= g^{\mu \nu} \nabla_\mu\left[\left(\partial_\nu C+\frac{i}{\hbar} C\left(\partial_\nu S\right)\right) e^{i S / \hbar}\right]$
+
+Nuevamente, usamos la regla del producto. El operador $\nabla_\mu$ actúa sobre el término entre corchetes $[\ldots]$ y sobre el término exponencial $e^{i S / \hbar}$ :
+
+$$
+\square \phi=g^{\mu \nu} \underbrace{\left[\nabla_\mu\left(\partial_\nu C+\frac{i}{\hbar} C\left(\partial_\nu S\right)\right)\right] e^{i S / \hbar}}_{\text {Término 1 }}+g^{\mu \nu} \underbrace{\left[\left(\partial_\nu C+\frac{i}{\hbar} C\left(\partial_\nu S\right)\right)\left(\nabla_\mu e^{i S / \hbar}\right)\right]}_{\text {Término 2 }}
+$$
+
+
+Paso 3: Analizar cada término y agrupar por potencias de $\hbar$
+Análisis del Término 2: Usamos $\nabla_\mu e^{i S / \hbar}=\left(\frac{i}{\hbar} e^{i S / \hbar}\right) \partial_\mu S$ (del Paso 1). Término $2= g^{\mu \nu}\left(\partial_\nu C+\frac{i}{\hbar} C\left(\partial_\nu S\right)\right)\left(\frac{i}{\hbar} \partial_\mu S\right) e^{i S / \hbar}$
+
+Distribuimos el producto: Término $2=\left[g^{\mu \nu}\left(\partial_\nu C\right)\left(\frac{i}{\hbar} \partial_\mu S\right)+g^{\mu \nu}\left(\frac{i}{\hbar} C\left(\partial_\nu S\right)\right)\left(\frac{i}{\hbar} \partial_\mu S\right)\right] e^{i S / \hbar}$
+Simplificamos (notando que $(i / \hbar)^2=-1 / \hbar^2$ y que $g^{\mu \nu}\left(\partial_\nu C\right)\left(\partial_\mu S\right)=g^{\mu \nu}\left(\partial_\mu C\right)\left(\partial_\nu S\right)$ por la simetría de $g^{\mu \nu}$ ): Término $2=\left[\frac{i}{\hbar} g^{\mu \nu}\left(\partial_\mu C\right)\left(\partial_\nu S\right)-\frac{1}{\hbar^2} C g^{\mu \nu}\left(\partial_\mu S\right)\left(\partial_\nu S\right)\right] e^{i S / \hbar}$
+
+Análisis del Término 1: Término $1=g^{\mu \nu}\left[\nabla_\mu\left(\partial_\nu C\right)+\nabla_\mu\left(\frac{i}{\hbar} C\left(\partial_\nu S\right)\right)\right] e^{i S / \hbar}$
+Expandimos la segunda parte del corchete usando la regla del producto: Término $1= g^{\mu \nu}\left[\nabla_\mu \partial_\nu C+\frac{i}{\hbar}\left(\nabla_\mu C\right)\left(\partial_\nu S\right)+\frac{i}{\hbar} C\left(\nabla_\mu \partial_\nu S\right)\right] e^{i S / \hbar}$
+
+Ahora, usamos las definiciones $g^{\mu \nu} \nabla_\mu \partial_\nu C=\square C$ (D'Alembertian de $C$ ) y $g^{\mu \nu} \nabla_\mu \partial_\nu S=\square S$. Y recordamos $\nabla_\mu C=\partial_\mu C$. Término $1=\left[\square C+\frac{i}{\hbar} g^{\mu \nu}\left(\partial_\mu C\right)\left(\partial_\nu S\right)+\frac{i}{\hbar} C(\square S)\right] e^{i S / \hbar}$
+
+Paso 4: Sumar los términos y tomar el limite $\hbar \rightarrow 0$
+Ahora sumamos Término $1+$ Término 2 y lo igualamos a cero (según la ecuación de $\mathrm{K}-\mathrm{G}$ ):
+
+$$
+\square \phi=\text { (Término } 1+\text { Término } 2 \text { ) }=0
+$$
+
+
+Dividimos por el factor común $e^{i S / \hbar}$ (que no es cero): $0=$
+
+$$
+\left[\square C+\frac{i}{\hbar} g^{\mu \nu}\left(\partial_\mu C\right)\left(\partial_\nu S\right)+\frac{i}{\hbar} C(\square S)\right]+\left[\frac{i}{\hbar} g^{\mu \nu}\left(\partial_\mu C\right)\left(\partial_\nu S\right)-\frac{1}{\hbar^2} C g^{\mu \nu}\left(\partial_\mu S\right)\left(\partial_\nu S\right)\right]
+$$
+
+
+Finalmente, agrupamos los términos por sus potencias de $\hbar$ :
+
+$$
+\underbrace{-\frac{1}{\hbar^2} C\left(g^{\mu \nu}\left(\partial_\mu S\right)\left(\partial_\nu S\right)\right)}_{\mathcal{O}\left(\hbar^{-2}\right)}+\underbrace{\frac{i}{\hbar}\left(2 g^{\mu \nu}\left(\partial_\mu C\right)\left(\partial_\nu S\right)+C(\square S)\right)}_{\mathcal{O}\left(\hbar^{-1}\right)}+\underbrace{\square C}_{\mathcal{O}\left(\hbar^0\right)}=0
+$$
+
+
+En el limite semiclásico ( $\hbar \rightarrow 0$ ), $\hbar$ es un parámetro pequeño. Para que esta ecuación sea válida, los coeficientes de cada potencia de $\hbar$ deben anularse independientemente.
+
+El término dominante, de orden $\mathcal{O}\left(\hbar^{-2}\right)$, debe ser cero: $-\frac{1}{\hbar^2} C\left(g^{\mu \nu}\left(\partial_\mu S\right)\left(\partial_\nu S\right)\right)=0$
+Asumiendo que la amplitud $C(x)$ no es trivial ( $C \neq 0$ ), la única forma de satisfacer la ecuación es si el término en el paréntesis es cero.
+
+$$
+g^{\mu \nu}\left(\partial_\mu S\right)\left(\partial_\nu S\right)=0
+$$
+
+
+Quod Erat Demonstrandum.
+Hemos demostrado que, en el límite semiclásico, la ecuación de onda cuántica de Klein-Gordon se reduce a la ecuación de Hamilton-Jacobi para una partícula relativista sin masa.
+(Como nota adicional, el siguiente término, de orden $\mathcal{O}\left(\hbar^{-1}\right)$, debe anularse también, $2 g^{\mu \nu}\left(\partial_\mu C\right)\left(\partial_\nu S\right)+C(\square S)=0$. Esta es la ecuación de transporte, que describe cómo la amplitud $C$ evoluciona a lo largo de las geodésicas nulas definidas por $S$ ).
